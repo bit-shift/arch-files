@@ -9,5 +9,20 @@
 *.log.*
 *.sig
 
+.bash_history
+.bash_logout
+.cache
+.esd_auth
+.fehbg
+.lesshst
+.local
+.lyris
+Mail
+.pki
+Screenshots
+.vim
+.viminf*
+.wget-hsts
+
 pkg/
 src/
