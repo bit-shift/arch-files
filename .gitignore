@@ -12,17 +12,23 @@
 .bash_history
 .bash_logout
 .cache
+.dmrc
 .esd_auth
 .fehbg
 .lesshst
 .local
 .lyris
-Mail
 .pki
-Screenshots
 .vim
 .viminf*
 .wget-hsts
+
+Mail
+Screenshots
+Git
+.config/chromium
+.config/pulse
+.config/spotify
 
 pkg/
 src/
