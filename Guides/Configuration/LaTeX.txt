@@ -1,0 +1,8 @@
+Install the texlive-most and texlive-lang packages
+	- pacman -S texlive-most texlive-lang
+	
+Install the vimtex plugin
+	- Refer to the vim.txt for details
+
+Install the zathura pdf viewer
+	- pacman -S zathura zathura-pdf-mupdf

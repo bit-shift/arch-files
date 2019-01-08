@@ -1,0 +1,25 @@
+Install neofetch and htop
+	- pacman -S neofetch htop
+	- Bind the keys in the i3 config file
+	- Refer to the file for the bindings
+
+Install the scrot package
+	- pacman -S scrot
+	- -u is focused window screenshot 
+	- -z is silent
+	- -e executes command after taking the screenshot
+	- mkdir ~/Screenshots
+	- In my case the command moves the screenshot to the ~/Screenshots folder
+	- Refer to i3 config file for key bindings
+	- scrot -h gives other available options for screenshots
+
+Install the cava package
+	- pacman -S cava
+	- Audio-visualiser that works with spotify
+	- Arrow keys 	- up/down 		= inc/dec sensitivity
+					- right/left 	= inc/dec number of bars
+	- Create config file and specify path using -p
+	- Set colors in config file
+	- cava -p /path/to/config/file
+	- Refer to i3 config for the bindings
+	- Refer to cava config for the settings

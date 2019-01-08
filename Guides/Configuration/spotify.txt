@@ -1,0 +1,14 @@
+Install the spotify package from the AUR repository
+	- pakku -S spotify
+	- Check build files 
+	- Refer to i3 config for key bindings for volume and play/pause etc
+
+Install the playerctl package for interface
+	- pacman -S playerctl
+	- Prevents having to use D-Bus
+	- Refer to the i3 config file for the key bindings using playerctl
+	- Far more simple commands
+
+D-Bus configuration
+	- Check the i3 config file for the commands used to talk to spotify using D-Bus
+	- Will leave them commented when playerctl is implemented as a fallback

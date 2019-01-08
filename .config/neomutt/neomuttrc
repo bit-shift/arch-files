@@ -1,0 +1,18 @@
+# #------ Setup ------# #
+folder-hook 'account.com.gmail.keegan.gyoery' 'source ~/.mutt/account.com.gmail.keegan.gyoery'
+folder-hook 'account.com.icloud.keegan.gyoery' 'source ~/.mutt/account.com.icloud.keegan.gyoery'
+folder-hook 'account.com.gmail.keegangyoery3' 'source ~/.mutt/account.com.gmail.keegangyoery3'
+folder-hook 'account.com.gmail.keegangyoery4' 'source ~/.mutt/account.com.gmail.keegangyoery4'
+
+source ~/.mutt/account.com.gmail.keegan.gyoery
+
+macro index <f9> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.keegan.gyoery<enter><change-folder>!<enter>'
+macro index <f10> '<sync-mailbox><enter-command>source ~/.mutt/account.com.icloud.keegan.gyoery<enter><change-folder>!<enter>'
+macro index <f11> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.keegangyoery3<enter><change-folder>!<enter>'
+macro index <f12> '<sync-mailbox><enter-command>source ~/.mutt/account.com.gmail.keegangyoery4<enter><change-folder>!<enter>'
+
+bind index G imap-fetch-mail
+set editor=`echo \$EDITOR`
+set charset = "utf-8"
+set record = ''
+

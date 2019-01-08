@@ -1,0 +1,18 @@
+Install the newsboat package 
+	- pacman -S newsboat
+	
+Create the directory newsboat in ~/.config
+	- cd ~/.config
+	- mkdir newsboat
+
+Create the urls file in ~/.config/newsboat/urls
+	- vim urls 
+	- Add the url of the RSS feed to the file 
+	- One per line
+
+Create the config file for newsboat
+	- vim config
+	- Located at ~/.config/newsboat/config
+	- Add the -c /path/to/config to the newsboat command
+	- Use an alias, refer to the .bashrc file
+	- Refer to the ~/.config/newsboat/config for key binds and settings

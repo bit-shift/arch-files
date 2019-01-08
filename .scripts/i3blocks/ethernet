@@ -1,0 +1,18 @@
+#!/bin/bash
+
+device=$(nmcli device | awk '/enp0s25/ {print $1}')
+type=$(nmcli device | awk '/enp0s25/ {print $2}')
+state=$(nmcli device | awk '/enp0s25/ {print $3}')
+conn=$(nmcli device | awk '/enp0s25/ {print $4}')
+
+if [ "$state" = "connected" ]; then
+	color="#00DDF4" #color11
+elif [ "$state" = "connecting" ]; then
+	color="#D5B8FF" #color12
+elif [ "$state" = "disconnected" ]; then
+	color="#6751A6" #color4"
+else
+	color="#FF0025" #red
+fi
+
+printf "<span foreground='%s'>E: %s</span>" "$color" "$conn"

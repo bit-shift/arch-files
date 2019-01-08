@@ -1,0 +1,17 @@
+#!/bin/bash
+
+touch hold.txt
+pakku -Qe > hold.txt
+
+diffo=$(diff hold.txt ~/Packages/package-list.txt)
+message="Pkg List"
+
+if [ "$diffo" = "" ]; then
+	color="#3BD6FF" # color10
+else
+	color="#A43261" # color1
+fi
+
+printf "<span foreground='%s'>%s</span>" "$color" "$message"
+
+rm hold.txt

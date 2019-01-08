@@ -1,0 +1,10 @@
+#!/bin/bash
+
+wget wttr.in/Sydney
+
+weather=$(cat Sydney | sed -n 3p | sed 's/\x1b\[[0-9;]*m//g' | egrep -o '[A-Z].*')
+temp=$(cat Sydney | sed -n 4p | sed 's/\x1b\[[0-9;]*m//g' | egrep -o '[0-9]+.*C')
+
+printf "<span>%s %s</span>" "$weather" "$temp"
+
+rm -f Sydney

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+capacity=$(cat /sys/class/power_supply/"$1"/capacity) || exit
+status=$(cat /sys/class/power_supply/"$1"/status)
+
+if [ "$capacity" -ge 75 ]; then
+	color="#3BD6FF" #color10
+elif [ "$capacity" -ge 50 ]; then
+	color="#D5B8FF" #color12
+elif [ "$capacity" -ge 25 ]; then
+	color="#6751A6" #color4
+else 
+	color="#A43261" #color1
+fi
+
+printf "<span foreground='%s'>%s - [%s%%]</span>" "$color" "$status" "$capacity"

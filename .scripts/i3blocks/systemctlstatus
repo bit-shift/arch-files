@@ -1,0 +1,14 @@
+#!/bin/bash
+
+state=$(sudo systemctl is-system-running)
+state_p=$(sudo systemctl status | sed -n 2p | cut -d':' -f2 | cut -d' ' -f2)
+
+if [ "$state" = "running" ]; then
+	color="#3BD6FF" #color10
+elif [ "$state" = "degraded" ]; then
+	color="#FFA7F6" #color13
+else 
+	color="#FF0025" #red
+fi
+
+printf "<span foreground='%s'>%s</span>" "$color" "$state"

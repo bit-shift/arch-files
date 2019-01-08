@@ -1,0 +1,37 @@
+! !------ URxvt ------! !
+*.scrollBar: 		false
+
+*.pointerBlank:		true
+*.pointerBlankDelay:	5
+
+*.internalBorder:	10
+*.borderLess: 		false
+
+! !------ Cursor ------! !
+*.cursorBlink:		true
+*.cursorColor:		#00ddff
+
+! !------ Fonts ------! !
+*.font:			xft:Inconsolata:size=18
+*.boldFont:		xft:Inconsolata:size=18
+
+! !------ Colours ------! !
+*.background: 		#0f0f0f
+*.foreground:		#e3e3e3
+
+*.color0:		#303030
+*.color8:		#5e5e5e
+*.color1:		#a43261
+*.color9:		#ff9fc9
+*.color2:		#006ca5
+*.color10:		#3bd6ff
+*.color3:		#007086
+*.color11:		#00ddf4
+*.color4:		#6751a6
+*.color12:		#d5b8ff
+*.color5:		#913e88
+*.color13:		#ffa7f6
+*.color6:		#0061b1
+*.color14:		#93c9ff
+*.color7:		#c6c6c6
+*.color15:		#ffffff

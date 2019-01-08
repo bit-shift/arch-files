@@ -1,0 +1,16 @@
+# Allows vim commands to be run in the terminal
+set editing-mode vi
+
+# Shows all tab-completions even if ambiguous
+set show-all-if-ambiguous on
+# First displays the common prefix and then cycles through the options
+set menu-complete-display-prefix on
+
+# All mappings below are used during normal mode
+set keymap vi-command
+
+# All mappings below are used during insert mode
+set keymap vi-insert
+# Pressing TAB cycles through the options
+TAB: menu-complete
+

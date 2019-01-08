@@ -1,0 +1,11 @@
+#!/bin/bash
+
+[ -z "$1" ]
+
+name="$2"
+
+[ -z "$2"] && name="$1"
+
+usage=$(df -h "$1" | awk ' /[0-9]/ {print $3 "/" $2}')
+
+printf "<span>%s: %s</span>" "$name" "$usage"

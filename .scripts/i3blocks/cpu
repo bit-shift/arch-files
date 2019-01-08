@@ -1,0 +1,19 @@
+#!/bin/bash
+
+temp=$(sensors | awk '/Core 0/ {print $3}' | cut -d'+' -f2 | sed 's/\..*//') 
+
+if [ "$temp" -ge 105 ]; then
+	color="#FF0025" # red
+elif [ "$temp" -ge 90 ]; then
+	color="#A43261" #color1
+elif [ "$temp" -ge 70 ]; then
+	color="#FFA7F6" #color13
+elif [ "$temp" -ge 50 ]; then
+	color="#3BD6FF" #color10
+else 
+	color="#006CA5" #color2
+fi
+
+tstr=$(sensors | awk '/Core 0/ {print $3}' | cut -d'+' -f2)
+
+printf "<span foreground='%s'>%s</span>" "$color" "$tstr"

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+device=$(nmcli device | awk '/wlp4s0/ {print $1}')
+type=$(nmcli device | awk '/wlp4s0/ {print $2}')
+state=$(nmcli device | awk '/wlp4s0/ {print $3}')
+conn=$(nmcli device | awk '/wlp4s0/ {print $4}')
+
+if [ "$state" = "connected" ]; then
+	color="#3BD6FF" #color10
+elif [ "$state" = "connecting" ]; then
+	color="#D5B8FF" #color12
+elif [ "$state" = "disconnected" ]; then
+	color="#6751A6" #color4"
+else
+	color="#FF0025" #red
+fi
+
+printf "<span foreground='%s'>W: %s</span>" "$color" "$conn"

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+sudo pakku -Syw > /dev/null
+count=$(sudo pakku -Qu | wc -l)
+
+if [ "$count" = "0" ]; then
+	message="Updated"
+	color="#3BD6FF" #color10
+	printf "<span foreground='%s'>%s</span>" "$color" "$message"
+
+elif [ "$count" = "1" ]; then
+	message="update"
+	color="#A43261" #color1
+	printf "<span foreground='%s'>%s %s</span>" "$color" "$count" "$message"
+
+else
+	message="updates"
+	color="#A43261" #color1
+	printf "<span foreground='%s'>%s %s</span>" "$color" "$count" "$message"
+fi

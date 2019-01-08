@@ -1,0 +1,26 @@
+Install the i3blocks package 
+	- pacman -S i3blocks
+
+Create the configuration file
+	- Create the i3blocks directory in .config
+	- mkdir ~/.config/i3blocks
+	- Make the config file
+	- Located in .config/i3blocks/
+	- vim ~/.config/i3blocks/config
+
+Create the .scripts directory to store the i3blocks scripts
+	- mkdir ~/.scripts/i3blocks/
+	- Store the bash scripts in this folder
+	- vim script_name
+	- Make the script executable
+	- chmod 744 script_name
+
+Block format in config file
+	- [block_name]
+	- command=/path/to/script
+	- interval=refresh_interval
+	- separator=true
+	- separator_block_width=30
+	- markup=pango
+	- Refer to the config file for the blocks used
+	- Refer to the ~/.scripts/i3blocks directory for the scripts

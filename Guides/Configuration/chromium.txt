@@ -1,0 +1,15 @@
+Install the chromium package
+	- pacman -S chromium
+	- Bind the keys in the i3 config file
+	- Refer to the file for the bindings
+
+Install the chromium-widevine package for netflix ability
+	- pakku -S chromium-widevine
+	- Reload chromium to have the plugin enabled
+
+Install the ffmpeg package
+	- pacman -S ffmpeg
+	- Should already be installed as it is a dependency but just in case
+	- Has screenshot abilities and plenty more 
+	- scrot is a simpler screenshot package
+	- ffmpeg can be used for screen recording

@@ -1,0 +1,9 @@
+Install ranger
+	- pacman -S ranger
+
+Copy the default config files into the ~/.config/ranger/ directory
+	- ranger --copy-config=all
+
+Set the hidden file option to true
+	- Set inside rc.conf
+	- set show_hidden true

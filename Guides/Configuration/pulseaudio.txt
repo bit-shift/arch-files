@@ -1,0 +1,15 @@
+Install the pulseaudio, pulseaudio-alsa, and pulsemixer packages
+	- pacman -S pulseaudio pulseaudio-alsa pulsemixer
+	- pulseaudio-alsa is used to work with the alsa config
+
+Run pulseaudio as a daemon
+	- pulseaudio --daemonize
+	
+Open pulsemixer to control volume
+	- puslsemixer
+	- Use keys in interactive mode to adjust volume
+
+Install the pamixer package 
+	- pacman -S pamixer
+	- Allows for easy control of volume and mute from the command line
+	- Refer to the i3 config file for the commands and bindings

@@ -1,0 +1,63 @@
+Add a new user to the system
+	- useradd -m -g wheel keegan
+	- Creates a new user named keegan of group wheel
+	- wheel group is a convention
+	- -m creates the home directory for the user
+	- -g is for the group
+	- passwd keegan creates a password for the user keegan
+	- In case of error use, useradd, userdel, groupadd, groupdel
+
+Establishing network connection
+	- Stop any conflicting services 
+	- systemctl --type=service
+	- systemctl stop netctl@interface.service
+	- nmcli device wifi list
+	- nmcli device wifi connect {SSID} password {password}
+
+Giving the new user root privileges - Sudo
+	- Sudo package is part of base-devel package installed in installation
+	- vim /etc/sudoers
+	- uncomment root ALL=(ALL) ALL
+	- uncomment %wheel ALL =(ALL) NOPASSWD: ALL
+	- No password required for sudo command
+	- Remove NOPASSWD: for the password to be required for every sudo command
+	- Can specify certain commands after the NOPASSWD: that will not require passwords
+	- Add the line Defaults !tty_tickets
+	- Dont have to put in passsword on a different terminal for sudo
+
+Installing and configuring an AUR helper
+	- Use pakku, a pacman wrapper for AUR
+	- git clone https://aur.archlinux.org/pakku.git ~/AUR/pakku
+	- cd pakku
+	- makepkg -si 
+
+Install microcode
+	- pacman -S intel-ucode
+	- grub-mkconfig -o /boot/grub/grub.cfg
+
+Install memtester86+ to test RAM
+	- pacman -S memtester86+
+	- Reconfigure bootloader ie grub
+	- grub-mkconfig -o /boot/grub/grub.cfg
+	- Reboot computer and select memtester86+ from grub menu
+
+Install the alsa-utils package
+	- pacman -S alsa-utils
+
+Run the alsamixer command to unmute the sound card
+	- alsamixer
+	- Select the correct sound card/module
+	- Use F6 and select the option that is the correct card
+	- Unmute all channels and raise to obtain a 0 dB gain
+
+Edit the file located at /etc/modprobe.d/50-alsa.conf
+	- sudo vim 50-alsa.conf
+	- Add the following line
+	- options snd-hda-intel index=1,0
+	- This is to fix the loading of the card/module 0 over 1 which is the correct one
+	- Reboot the computer
+
+Test the speakers, note this laptop has 2 channels
+	- speaker-test -c 2
+	- Should get some pink noise out of each speaker, left and right
+	- Reboot the computer

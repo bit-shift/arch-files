@@ -1,0 +1,14 @@
+---------- OVERALL ----------
+- Arch list of applications
+- Security/Encryption
+- Migrate files from Mac to Arch
+- System backup
+- Snippets
+- Syntastic
+- Shortcuts for vim and .bmdirs and the like
+
+---------- SMALL ----------
+- git setup and config
+
+---------- BIG ----------
+- Add uni email to neomutt
