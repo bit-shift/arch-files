@@ -23,12 +23,13 @@
 .viminf*
 .wget-hsts
 
-Mail
-Screenshots
-Git
 .config/chromium
 .config/pulse
 .config/spotify
+Git
+Mail
+Screenshots
+.ssh
 
 pkg/
 src/

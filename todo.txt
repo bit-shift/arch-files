@@ -9,6 +9,11 @@
 
 ---------- SMALL ----------
 - git setup and config
+	- git arch
+- ssh keys for git
+- multi accounts for git
+- git plugins for vim
+- git script
 
 ---------- BIG ----------
 - Add uni email to neomutt
