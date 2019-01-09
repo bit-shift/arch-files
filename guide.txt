@@ -5,3 +5,4 @@
 	- vlab
 - ssh key for github
 - xclip
+- git remote ssh keys
