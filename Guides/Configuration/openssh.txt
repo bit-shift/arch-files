@@ -1,0 +1,6 @@
+Install the openssh package
+	- pacman -S openssh
+	
+Vlab connection through ssh
+	- ssh z5197058@login.cse.unsw.edu.au -L 5916:vlab:5916
+	- Check alias in bashrc for shortcut

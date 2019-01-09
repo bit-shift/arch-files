@@ -1,8 +1,3 @@
-- git setup for the arch-files
-	- --allow-unrelated-histories option
-	- git repo for config
 - openssh
 	- vlab
-- ssh key for github
 - xclip
-- git remote ssh keys

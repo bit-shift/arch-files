@@ -23,3 +23,6 @@ Install the cava package
 	- cava -p /path/to/config/file
 	- Refer to i3 config for the bindings
 	- Refer to cava config for the settings
+
+Install the xclip package
+	- pacman -S xclip
