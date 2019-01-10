@@ -13,3 +13,6 @@ This directory contains files of issues encountered whilst setting up and config
 
 ## Packages
 Contains the list of packages that I have installed, both from the AUR, and the Official Repository. There are two further "packages" installed, both from Github, that are not found in this list, nor in any of these files, except for their guide text file in the _Guides/Configuration/_ directory.
+
+## .scripts
+I use the scripts contained in the _i3blocks_ directory, not the _lstatusbar_ directory. These scripts are the ones I wrote myself and use for my status bar, the scripts in _lstatusbar_ are the ones that Luke Smith uses.
