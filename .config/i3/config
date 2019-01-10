@@ -28,6 +28,7 @@ exec --no-startup-id feh --bg-scale ~/.config/wallpapers/icedrag.jpg
 bindsym $mod+Return		exec $term
 bindsym $mod+r			exec $term -hold -e bash -c "ranger && bash"
 bindsym $mod+p			exec $term -hold -e bash -c "htop && bash"
+bindsym $mod+Shift+p	exec $term -hold -e bash -c "glances && bash"
 bindsym $mod+e			exec $term -hold -e bash -c "neofetch && bash" 
 bindsym $mod+n			exec $term -hold -e bash -c "newsboat -C ~/.config/newsboat/config && bash"
 bindsym $mod+m			exec $term -hold -e bash -c "neomutt && bash"

@@ -40,3 +40,7 @@
 - Another freeze - not entirely sure what is causing these freezes yet
 	- I think that they are hardware related not software
 	- Will try run a boot with the kernel parameters tomorrow (10/01/19)
+
+- Two freezes within the space of 5 minutes whilst searching for broken symlinks
+	- Removed the broken symlinks and no issues
+	- Multiple ls of other directories might have caused it, I have no clue really

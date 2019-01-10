@@ -1,0 +1,15 @@
+Install the calcurse package
+	- pacman -S calcurse
+
+Change the colour scheme and layout
+	- Open calcurse with the command: calcurse
+	- Press Shift+c
+	- Follow the prompts in the bottom bar to set the colour and layout, as well as bindings and notification settings
+	- Note that SPC refers to the Space key
+
+Navigating the calcurse program
+	- TAB switches between each of the sections in the layout
+	- Uses vim keys to move around
+	- The key a starts a new appointment or todo
+	- Note that times are in 24h, but the prompts and help messages in the bottom bar are easy to follow
+	- Use the h key to bring up the help message

@@ -31,3 +31,12 @@ Install the xorg-xbacklight package
 	- pacman -S xorg-xbacklight
 	- Bind the keys to the F5 and F6 keys
 	- Refer to the i3 config file for the commands and bindings
+
+Install the ncdu package
+	- pacman -S ncdu
+	- ncurses disk usage analyser
+	- Check the .bashrc file for the alias
+
+Install the glances package
+	- pacman -S glances
+	- System monitor - very similar to htop but provides some extra detail and info

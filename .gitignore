@@ -23,6 +23,9 @@
 .viminf*
 .wget-hsts
 
+guide.txt
+todo.txt
+
 .config/chromium
 .config/pulse
 .config/spotify

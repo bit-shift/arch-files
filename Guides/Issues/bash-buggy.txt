@@ -1,0 +1,19 @@
+Occasionally bash becomes very buggy and forgets what mode its in
+	- Continues to display previous programs graphics or GUI
+	- Forgets formatting and how it should behave
+	- Biggest issue occurred with the vimura script that has already been deleted
+	- Potentially need to reinstall everything and start from scratch
+
+I think a big issue that needs to be addressed is the "buggyness" and freezes 
+	- Refer to the freeze issue in another text file in this directory
+	- I believe this can be rectified by reinstalling and starting it all from scratch
+	- I think a lot of the install and config has left little scraps that were issues and some parts are scrappy and hodge podge
+	- This is most likely from the trying to resolve issues and fix stuff with config and install for my system
+	- As a result their might be a fair amount of garbage or broken files/config that is messing stuff up
+	- A fresh install would resolve that for sure
+	- So I think that the best thing is to power through this current install and config
+	- Once I test this for the trimester and get it to a working state for uni, I will then look to upgrade
+	- Transfer all files to github and to an external hard drive and upgrade laptop
+	- Resell this laptop and the Macbook Pro
+
+Potentially also install a disk sweeper to remove lint and garbage to make sure there are no issue files on the system
