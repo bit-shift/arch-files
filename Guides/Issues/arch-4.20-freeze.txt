@@ -36,3 +36,7 @@
 - No longer solved so reopened the log
 
 - Another freeze occurred (idk how to spell occurred) when messing around with mpd, mpc, ncmpcpp
+
+- Another freeze - not entirely sure what is causing these freezes yet
+	- I think that they are hardware related not software
+	- Will try run a boot with the kernel parameters tomorrow (10/01/19)

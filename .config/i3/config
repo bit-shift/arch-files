@@ -3,7 +3,7 @@
 # Email: keegan.gyoery@gmail.com
 
 # #------ Unused Keys ------# #
-# b+ d+ f\+ g+ m\+ p\+ q\+ t\+ u+ v+ w\+ x z+
+# b+ d+ f\+ g+ m\+ p\+ q\+ t\+ u+ v\+ w\+ x z+
 # [\+ ]\+ /+ <\+ >\+ [F5-F12]+ [F1-F3]\+ ;\+ '\+ arrow+ pgup+ pgdown+ capslock+ ctrl+ alt+ 
 # home+ end+ insert+
 
@@ -31,7 +31,8 @@ bindsym $mod+p			exec $term -hold -e bash -c "htop && bash"
 bindsym $mod+e			exec $term -hold -e bash -c "neofetch && bash" 
 bindsym $mod+n			exec $term -hold -e bash -c "newsboat -C ~/.config/newsboat/config && bash"
 bindsym $mod+m			exec $term -hold -e bash -c "neomutt && bash"
-bindsym $mod+c 			exec $term -hold -e bash -c "cava -p ~/.config/cava/config && bash"
+bindsym $mod+c			exec $term -hold -e bash -c "calcurse && bash"
+bindsym $mod+v 			exec $term -hold -e bash -c "cava -p ~/.config/cava/config && bash"
 
 bindsym $mod+q 			kill
 bindsym $mod+w			exec --no-startup-id $BROWSER
@@ -136,6 +137,10 @@ bindsym $mod+apostrophe				exec $play
 
 bindsym $mod+bracketleft			exec $back
 bindsym $mod+bracketright			exec $for
+
+# #------ Backlight Bindings ------# #
+bindsym $mod+F6						exec xbacklight -inc 10
+bindsym $mod+F5						exec xbacklight -dec 10
 
 # #------ Xresources Colours ------# #
 set_from_resource $darkgrey		color0	#000000

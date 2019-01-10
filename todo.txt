@@ -8,12 +8,10 @@
 - Shortcuts for vim and .bmdirs and the like
 
 ---------- SMALL ----------
-- git setup and config
-	- git arch
-- ssh keys for git
 - multi accounts for git
 - git plugins for vim
 - git script
+- calcurse setup
 
 ---------- BIG ----------
 - Add uni email to neomutt

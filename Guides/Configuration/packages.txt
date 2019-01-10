@@ -26,3 +26,8 @@ Install the cava package
 
 Install the xclip package
 	- pacman -S xclip
+
+Install the xorg-xbacklight package
+	- pacman -S xorg-xbacklight
+	- Bind the keys to the F5 and F6 keys
+	- Refer to the i3 config file for the commands and bindings

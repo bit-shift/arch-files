@@ -1,0 +1,12 @@
+shadow.service unit run by systemd failed on reboot, startup, and wake up from suspend
+	- Trying to load mopidy and mpd groups
+	- Results in a unit failure and a degraded system
+	- Reloading failed units resolved the issues
+	- susyr is my alias - refer to .bashrc for full command
+
+Resolving the issue 
+	- Remove the mopidy and mpd group from the /etc/group and /etc/gshadow files
+	- sudo vim /etc/group
+	- sudo vim /etc/gshadow
+	- Remove all occurrences of mopidy and mpd as their own group and parts of other groups like the audio group
+	- Issue resolved, and marked as solved

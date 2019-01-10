@@ -5,13 +5,13 @@ Install the git package
 Create a github account online 
 	- Easy to sort out 
 
-Install openssh package in order to use ssh
+Install openssh package in order to use SSH
 	- pacman -S openssh
 
 Create an SSH key pair
 	- ssh-keygen -t rsa -b 4096 -C "keegan.gyoery@gmail.com"
 	- Press enter for file in which to save the key - default
-	- Enter a password for the SSH key
+	- Press enter again for no password on the SSH key
 
 Add the SSH key to the ssh-agent
 	- eval "$(ssh-agent -s)"
@@ -27,7 +27,7 @@ Copy the SSH key to the clipboard
 Add a new SSH key to the github account
 	- Go to settings and then SSH Keys
 	- Add new SSH key
-	- Paste the ssh key into the input field
+	- Paste the SSH key into the input field
 	- Title is Arch Linux
 	- Add SSH key and enter password
 
