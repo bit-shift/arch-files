@@ -11,6 +11,7 @@ Plugin 'joshdick/onedark.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'lervag/vimtex'
+Plugin 'tpope/vim-fugitive'
 call vundle#end()
 filetype plugin indent on
 
@@ -51,6 +52,13 @@ map <C-l> <C-w>l
 colorscheme onedark
 let g:lightline = {
 	\ 'colorscheme': 'onedark',
+	\ 'active': {
+	\ 	'left': [ [ 'mode', 'paste' ], 
+	\			[ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+	\ },
+	\ 'component_function': {
+	\	'gitbranch': 'fugitive#head'
+	\ },
 	\ }
 
 " Load the status bar

@@ -1,0 +1,16 @@
+Install the udisks2 package
+	- pacman -S udisks2
+
+Check the device name via lsblk
+	- lsblk -f
+
+Mount the USB at /run/media/keegan/device_name/
+	- udisksctl mount -b /dev/sdXX
+
+Unmount the USB
+	- udisksctl unmount -b /dev/sdXX
+
+Use udisksctl --help for more options
+	- Can change the mount point for easier access
+
+Need to remove ._ and .DS_Store files after copying files from mac

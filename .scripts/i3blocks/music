@@ -1,0 +1,7 @@
+#!/bin/bash
+
+! pgrep -x "spotify" > /dev/null && exit 0
+
+song=$(playerctl metadata | grep -o "title.*'>," | grep -o "<'.*'>" | grep -o "[A-Za-z].*[A-Za-z]")
+
+printf "<span>S: %s</span>" "$song"

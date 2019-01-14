@@ -3,7 +3,7 @@
 touch hold.txt
 pakku -Qe > hold.txt
 
-diffo=$(diff hold.txt ~/Packages/package-list.txt)
+diffo=$(diff hold.txt ~/Guides/package-list.txt)
 message="Pkg List"
 
 if [ "$diffo" = "" ]; then

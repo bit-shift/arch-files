@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PATH="$PATH:$HOME:$HOME/.vim/:$HOME/.local/bin/"
+export PATH="$PATH:$HOME:$HOME/.vim/:$HOME/.local/bin/:$HOME/.scripts/i3blocks/"
 export EDITOR="vim"
 export TERMINAL="urxvt"
 export BROWSER="chromium"

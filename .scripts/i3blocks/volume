@@ -1,0 +1,12 @@
+#!/bin/bash
+
+mute=$(pamixer --get-mute)
+volume=$(pamixer --get-volume)
+color="#3BD6FF" #color10
+
+if [ "$mute" = "true" ]; then
+	volume=M
+	color="#A43261" #color1
+fi
+
+printf "<span foreground='%s'>V: %s</span>" "$color" "$volume"

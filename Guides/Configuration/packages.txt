@@ -40,3 +40,6 @@ Install the ncdu package
 Install the glances package
 	- pacman -S glances
 	- System monitor - very similar to htop but provides some extra detail and info
+
+Install the curl package
+	- pacman -S curl
