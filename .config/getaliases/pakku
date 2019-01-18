@@ -1,0 +1,9 @@
+
+# ---------- Pakku ---------- #
+
+pa - sudo pakku
+paup - sudo pakku -Syu
+paupn - sudo pakku -Syu --noconfirm
+papkg - sudo pakku -Qe > ~/Guides/package-list.txt
+parph - sudo pakku -Rns $(sudo pakku -Qtdq)
+

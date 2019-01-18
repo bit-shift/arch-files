@@ -1,0 +1,19 @@
+
+# ---------- Newsboat ---------- #
+
+Newsboat is the RSS Feed manager, console based
+
+	h - Quit
+	Enter - Open
+	n - Next Unread
+	r - Reload
+	R - Reload All
+	A - Mark Read
+	C - Mark All Read
+	/ - Search
+	? - Help
+	h/j/k/l - Move left/down/up/right
+	s - Save
+	o - Open in Browser
+	e - Enqueue
+

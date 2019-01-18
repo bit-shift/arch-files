@@ -1,0 +1,9 @@
+
+# ---------- Pacman ---------- #
+
+p - sudo pacman
+pup - sudo pacman -Syu
+pupn - sudo pacman -Syu --noconfirm
+pkg - sudo pacman -Qe > ~/Guides/package-list.txt
+porph - sudo pacman -Rns $(sudo pacman -Qtdq)
+

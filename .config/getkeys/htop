@@ -1,0 +1,16 @@
+
+# ---------- htop ---------- #
+
+htop is the process viewer/manager
+
+	up/down - Move up/down a process
+	F1 - Help
+	F2 - Setup
+	F3 - Search
+	F4 - Filter
+	F5 - Toggle Tree and Sort view
+	F6 - Sort by
+	F9 - Kill
+	F10 - Quit
+	ESC - Cancel
+

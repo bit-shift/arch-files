@@ -1,0 +1,15 @@
+
+# ---------- System Control ---------- #
+
+netfresh - sudo systemctl restart NetworkManager
+susy - sudo systemctl
+susye - sudo systemctl enable
+susyd - sudo systemctl disable
+susysa - sudo systemctl start
+susyso - sudo systemctl stop
+susyr - sudo systemctl reset-failed
+systat - systemctl status
+syslst - systemctl list-unit-files
+sysfai - systemctl --failed --all
+sysser - systemctl --type=service
+

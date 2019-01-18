@@ -13,3 +13,5 @@ Navigating the calcurse program
 	- The key a starts a new appointment or todo
 	- Note that times are in 24h, but the prompts and help messages in the bottom bar are easy to follow
 	- Use the h key to bring up the help message
+
+Refer to the conf and keys files in ~/.calcurse for config options 

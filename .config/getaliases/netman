@@ -1,0 +1,9 @@
+
+# ---------- NetworkManager ---------- #
+
+wifil - nmcli device wifi list
+wific - nmcli device wifi connect
+wifis - nmcli device
+apple - nmcli device wifi connect Apple password nageeK24
+iprimus - nmcli device wifi connect iPRIMUS-1972 password A6XKJ6Q5U8
+

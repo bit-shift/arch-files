@@ -1,0 +1,25 @@
+
+# ---------- Neomutt ---------- #
+
+Neomutt is the email client, console based
+Contains all emails except for the university email
+
+	q - Quit
+	d - Delete email
+	u - Undelete email
+	s - Save email
+	m - New email
+	r - Reply
+	? - Help
+	Enter - Open email
+	i - Exit email
+	minus - Previous page
+	Space - Next page
+	v - View Attachment
+	j - Next email
+	k/j - Move up/down an email
+	F9 - Google Main Account
+	F10 - iCloud Account
+	F11 - Google 3 Account
+	F12 - Google 4 Account
+

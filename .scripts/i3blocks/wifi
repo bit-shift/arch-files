@@ -3,7 +3,7 @@
 device=$(nmcli device | awk '/wlp4s0/ {print $1}')
 type=$(nmcli device | awk '/wlp4s0/ {print $2}')
 state=$(nmcli device | awk '/wlp4s0/ {print $3}')
-conn=$(nmcli device | awk '/wlp4s0/ {print $4}')
+conn=$(nmcli device | awk '/wlp4s0/' | awk '{for(i=4;i<NF;++i)printf "%s ", $i} {printf "%s", $NF}')
 
 if [ "$state" = "connected" ]; then
 	color="#3BD6FF" #color10

@@ -1,0 +1,8 @@
+
+# ---------- System Maintenance ---------- #
+
+pkgca - sudo pacman -Sc --noconfirm
+pakgca - sudo pakku -Sc --noconfirm
+symbrk - find -xtype l -print
+diskur - ncdu /
+

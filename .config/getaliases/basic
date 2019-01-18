@@ -1,0 +1,11 @@
+
+# ---------- Basic Aliases ---------- #
+
+s - sudo
+v - vim
+sv - sudo vim
+r - ranger
+sr - sudo ranger
+h - htop
+sh - sudo htop
+

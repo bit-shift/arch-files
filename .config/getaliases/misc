@@ -1,0 +1,9 @@
+
+# ---------- Miscellaneous ---------- #
+
+ls - ls --color=auto
+grep - grep --color=auto
+diff - diff --color=auto
+news - newsboat -C ~/.config/newsboat/config
+vlab - ssh z5197058@login.cse.unsw.edu.au -L 5916:vlab:5916
+

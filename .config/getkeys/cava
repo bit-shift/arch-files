@@ -1,0 +1,14 @@
+
+# ---------- CAVA ---------- #
+
+CAVA is an audio visualiser
+
+	Up - Increase sensitivity
+	Down - Decrease sensitivity
+	Left - Decrease number of bars
+	Right - Increase number of bars
+	r - Reload config
+	c - Cycle foreground colour
+	b - Cycle background colour
+	q - Quit
+
