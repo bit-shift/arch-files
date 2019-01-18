@@ -12,6 +12,8 @@
 .bash_history
 .bash_logout
 .cache
+.calcurse/.calcurse.pid
+.calcurse/apts
 .dmrc
 .esd_auth
 .fehbg

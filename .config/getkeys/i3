@@ -1,0 +1,84 @@
+
+# ---------- i3 ---------- #
+
+i3-gaps is the window manager
+A full readme will be available as a PDF later
+This is the full set of key bindings 
+(Assume each key is used with the mod key - windows key)
+
+	Enter - Terminal
+	r - ranger
+	p - htop
+	Shift+p - glances
+	e - neofetch
+	n - newsboat
+	m - neomutt
+	c - calcurse
+	v - cava
+	q - kill container
+	w - chromium ($BROWSER)
+
+	Shift+c - reload config file
+	Shift+r - restart i3
+	Shift+e - exit i3
+	
+	Shift+Backspace - reboot
+	Shift+Delete - shutdown
+	Shift+n - restart NetworkManager
+	Shift+backslash - lock screen and hibernate
+	Shift+x - lock screen
+
+	Print - screenshot whole screen
+	Shift+Print - screenshot focused window
+
+	i - inner gaps +5
+	Shift+i - inner gaps -5
+	o - outer gaps +5
+	Shift+o - outer gaps -5
+	grave - gaps to normal
+	Shift+grave - gaps to 0
+
+	h - focus left
+	j - focus down
+	k - focus up
+	l - focus right
+	Shift+h - move left
+	Shift+j - move down 
+	Shift+k - move up
+	Shift+l - move right
+
+	a - focus child
+	Shift+a - focus parent
+
+	Shift+space - floating toggle
+	space - focus mod toggle
+	t - split toggle
+	s - layout toggle
+	f - fullscreen
+
+	Shift+s - spotify
+	plus - volume +1
+	F3 - volume +5
+	Shift+plus - volume +10
+	minus - volume -1
+	F2 - volume -5
+	Shift+minus - volume -10
+	
+	F1 - mute toggle
+	F4 - mute
+	Shift+F4 - unmute
+	
+	comma - previous song
+	period - next song
+	slash - pause
+	semicolon - pause
+	apostrophe - pause toggle
+
+	F6 - backlight +10
+	F5 - backlight -10
+
+	y - workspace next
+	Shift+y - workspace previous
+	[1-0] - workspace 1-10
+	Shift+[1-0] - move container to workspace 1-10
+

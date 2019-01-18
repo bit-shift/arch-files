@@ -1,0 +1,12 @@
+
+# ---------- CALCURSE ---------- #
+
+Calcurse is the calendar and schedule manager
+Open with Mod+c
+
+	TAB 	-	Switch Panes
+	h/j/k/l -	Move left/down/up/right
+	a   	- 	Add new appointment/todo
+
+All other important bindings are listed in the bottom status bar
+
