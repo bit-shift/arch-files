@@ -1,5 +1,14 @@
 #!/bin/bash
 
+case $BLOCK_BUTTON in
+	1) $TERMINAL -hold -e bash -c "systemctl status && bash";;
+	2) $TERMINAL -hold -e bash -c "systemctl --failed --all && bash";;
+	3) pgrep -x dunst && notify-send -u low "<b>Systemctl Module</b>" "Left click - show status
+Middle click - show failed units
+Right click - show usage message
+";;
+esac
+
 state=$(sudo systemctl is-system-running)
 state_p=$(sudo systemctl status | sed -n 2p | cut -d':' -f2 | cut -d' ' -f2)
 

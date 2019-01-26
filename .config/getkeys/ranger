@@ -2,3 +2,20 @@
 # ---------- Ranger ---------- #
 
 Ranger is the file manager/browser, console based
+
+	h/j/k/l - Move left/down/up/right
+	h/l - Move up/down a directory level
+	: - Enter command
+	q - Quit
+	gn - Open a new tab at home
+	Tab - Cycle through windows
+	Alt+n - Switch to the n-th window
+	Enter - Open a file with Ranger's choice of program
+	r - Open a file with your subsequent choice of program
+	yy - Copy a file
+	yd/yn/yp - Copy directory/filename/filepath as text to clipboard
+	pp - Paste the file in the current directory
+	dd - Copies file and deletes it
+	Space - Mark multiple files for copying or moving
+	t - Mark file
+	

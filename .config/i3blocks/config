@@ -19,6 +19,13 @@ markup=pango
 # separator_block_width=30
 # markup=pango
 
+[download_speed]
+command=$HOME/.scripts/i3blocks/speed
+interval=1800
+separator=true
+separator_block_width=30
+markup=pango
+
 [pkg_update]
 command=$HOME/.scripts/i3blocks/pkgupdate
 interval=once
@@ -40,12 +47,12 @@ markup=pango
 # separator_block_width=30
 # markup=pango
 
-[disk_home]
-command=$HOME/.scripts/i3blocks/disk /home home 
-interval=once
-separator=true
-separator_block_width=30
-markup=pango
+# [disk_home]
+# command=$HOME/.scripts/i3blocks/disk /home home 
+# interval=once
+# separator=true
+# separator_block_width=30
+# markup=pango
 
 [volume]
 command=$HOME/.scripts/i3blocks/volume

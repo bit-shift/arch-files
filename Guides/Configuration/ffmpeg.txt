@@ -1,0 +1,6 @@
+Install the ffmpeg package
+	- pacman -S ffmpeg
+	- Should be a part of the base or base-devel groups - not entirely sure
+
+Convert .avi to .mp4
+	- ffmpeg -i inputfile.avi outputfile.mp4

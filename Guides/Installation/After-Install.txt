@@ -61,3 +61,21 @@ Test the speakers, note this laptop has 2 channels
 	- speaker-test -c 2
 	- Should get some pink noise out of each speaker, left and right
 	- Reboot the computer
+
+Set the keymap for the Virtual Console and X11 
+	- localectl status
+	- localectl set-x11-keymap us
+	- localectl set-keymap us
+
+Swap Escape and Caps Lock keys
+	- In tty, run the keymap script in ~/.scripts/tools/
+	- Refer to ~/.profile for command
+	- In X11, run the following command
+	- setxkbmap -option caps:swapescape
+	- Run the command in ~/.xinitrc, refer to ~/.xinitrc
+
+Set the number of tty's available on login 
+	- Switch tty by Ctrl+Alt+F*, where * is the tty number, ie 1-6
+	- Edit .profile to startx on any tty 1-5
+	- Refer to .profile for regex - ensure to remove pgrep check
+	- Leave tty6 for root/basic terminal work

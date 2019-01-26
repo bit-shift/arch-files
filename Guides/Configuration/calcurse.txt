@@ -15,3 +15,14 @@ Navigating the calcurse program
 	- Use the h key to bring up the help message
 
 Refer to the conf and keys files in ~/.calcurse for config options 
+
+Add the UNSW online calendar 
+	- Get the link for my timetable from UNSW (myUNSW Utilities)
+	- Replace the webcal with http for wget
+	- Refer to ~/.calcurse/UNSW/unswcal script for details of downloading the calendar
+	- Use this script to refresh the calendar link file
+	- Refer to i3 config file for key binding for refresh
+	- Use the -i flag to specify imported calendar for calcurse
+	- ONLY IMPORTANT THE CALENDAR ONCE
+	- If it screws up, then run rm ~/.calcurse/apts to remove all appointments
+	- Refer again to i3 config file for bindings

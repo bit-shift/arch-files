@@ -1,0 +1,11 @@
+#!/bin/bash
+
+error=$(speedtest --no-upload --simple 2>&1 | grep -o 'ERROR')
+speedmbps=$(speedtest --no-upload --simple | awk '/Download/' | grep -o '[0-9].*')
+
+if [ "$error" != "" ]; then
+	color="#FF0025" #red
+	printf "<span foreground='%s'>D: --</span>" "$color"
+else 
+	printf "<span>D: %s</span>" "$speedmbps"
+fi

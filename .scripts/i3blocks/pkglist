@@ -1,5 +1,14 @@
 #!/bin/bash
 
+case $BLOCK_BUTTON in
+	1) sudo pakku -Qe > ~/Guides/package-list.txt;;
+	2) $TERMINAL -hold -e bash -c "sudo pakku -Qe | less && bash";;
+	3) pgrep -x dunst >/dev/null && notify-send -u low "<b>Package List Module</b>" "Left click - update package list
+Middle click - show installed packages in a terminal
+Right click - show usage message
+";;
+esac
+
 touch hold.txt
 pakku -Qe > hold.txt
 

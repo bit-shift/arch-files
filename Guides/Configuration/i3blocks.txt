@@ -24,3 +24,7 @@ Block format in config file
 	- markup=pango
 	- Refer to the config file for the blocks used
 	- Refer to the ~/.scripts/i3blocks directory for the scripts
+
+Enable clicking on the block modules in the i3blocks status bar
+	- Refer to the scripts for the case logic
+	- Uses the $BLOCK_BUTTON variable

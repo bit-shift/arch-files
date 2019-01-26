@@ -2,3 +2,24 @@
 # ---------- Zathura ---------- #
 
 Zathura is the PDF viewer
+
+	J, PgDn - Go to the next page
+	K, PgUp - Go to the previous page
+	h/j/k/l - Scroll left/down/up/right
+	gg - Go to the first page
+	G - Go to the last page
+	nG - Go to the n-th page
+	H/L - Go to top/bottom of current page
+	a - Best fit mode
+	s - width mode
+	/,? - Search for text
+	n/N - Next/prevous search result
+	: - Enter command
+	r - Reload
+	R - Rotate 90 degress
+	d - Toggle dual page view
+	F5 - Presentation mode
+	F11 - Fullscreen mode
+	+/-/= - Zoom in/out/original size
+	q - Quit
+

@@ -52,3 +52,6 @@
 - Uptime 5 days and counting since last freeze/power off - may have just been a power off or reboot not necessarily a freeze
 	- Upgraded again to linux 4.20.3 at 1800 on 18/01/19
 	- Still no issues
+
+- No issues for over a week on 4.20.3 
+	- Marking as solved

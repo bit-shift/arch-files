@@ -17,3 +17,6 @@ To restore the USB to usable condition - ie non bootable
 	- sudo mkfs -t vfat /dev/sdX1
 
 USB should now be usable, and no longer a bootable drive 
+
+Mount/Unmount USB
+	- Refer to ~/Guides/Configuration/udisks.txt for details

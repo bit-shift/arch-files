@@ -43,3 +43,13 @@ Install the glances package
 
 Install the curl package
 	- pacman -S curl
+
+Install the genius package
+	- pacman -S genius 
+
+Install the unzip package
+	- pacman -S unzip
+
+Install the speedtest package 
+	- pacman -S speedtest
+	- speedtest --no-upload --simple

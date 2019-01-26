@@ -1,5 +1,12 @@
 #!/bin/bash
 
+case $BLOCK_BUTTON in
+	1) $TERMINAL -hold -e bash -c "nmtui && bash";;
+	3) pgrep -x dunst >/dev/null && notify-send -u low "<b>Wifi Module</b>" "Left click - open nmtui
+Right click - show usage message
+";;
+esac
+
 device=$(nmcli device | awk '/wlp4s0/ {print $1}')
 type=$(nmcli device | awk '/wlp4s0/ {print $2}')
 state=$(nmcli device | awk '/wlp4s0/ {print $3}')

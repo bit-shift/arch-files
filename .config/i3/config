@@ -3,8 +3,9 @@
 # Email: keegan.gyoery@gmail.com
 
 # #------ Unused Keys ------# #
-# b+ d+ f\+ g+ m\+ p\+ q\+ t\+ u+ v\+ w\+ x z+
-# [\+ ]\+ /+ <\+ >\+ [F5-F12]+ [F1-F3]\+ ;\+ '\+ arrow+ pgup+ pgdown+ capslock+ ctrl+ alt+ 
+# b+ d f\+ m\+ p\+ q\+ u\+ w\+ x z+
+# [\+ ]\+ /+ <\+ >\+ [F7,F9-F12]+ [F1-F3,F5-F6]\+ ;\+ '\+ 
+# arrow+ pgup+ pgdown+ capslock+ ctrl+ alt+ 
 # home+ end+ insert+
 
 # #------ Basic Definitions ------# #
@@ -20,8 +21,18 @@ set $reboot				sudo -A reboot
 set $netrefresh			sudo -A systemctl restart NetworkManager
 set $hibernate 			sudo -A systemctl suspend 
 
-# #----- External Scripts ------# #
-exec --no-startup-id feh --bg-scale ~/.config/wallpapers/icedrag.jpg
+# #------ Genius Window ------# #
+for_window [title="genius"] floating enable
+for_window [title="genius"] move scratchpad
+for_window [title="genius"] sticky enable
+for_window [title="genius"] scratchpad show
+for_window [title="genius"] resize set 1200 800
+for_window [title="genius"] move position center
+for_window [title="genius"] move up 250px
+
+# #------ External Scripts ------# #
+exec_always --no-startup-id feh --bg-scale ~/.config/wallpapers/icedrag.jpg
+exec_always --no-startup-id dunst
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # #------ Basic Bindings ------# #
@@ -32,15 +43,17 @@ bindsym $mod+Shift+p	exec $term -hold -e bash -c "glances && bash"
 bindsym $mod+e			exec $term -hold -e bash -c "neofetch && bash" 
 bindsym $mod+n			exec $term -hold -e bash -c "newsboat -C ~/.config/newsboat/config && bash"
 bindsym $mod+m			exec $term -hold -e bash -c "neomutt && bash"
+bindsym $mod+Ctrl+c 	exec /home/keegan/.calcurse/UNSW/unswcal
 bindsym $mod+c			exec $term -hold -e bash -c "calcurse && bash"
-bindsym $mod+v 			exec $term -hold -e bash -c "cava -p ~/.config/cava/config && bash"
+bindsym $mod+v			exec $term -hold -e bash -c "vlc -I ncurses ~/TV/ && bash"
+bindsym $mod+Shift+v 	exec $term -hold -e bash -c "cava -p ~/.config/cava/config && bash"
 
 bindsym $mod+q 			kill
 bindsym $mod+w			exec --no-startup-id $BROWSER
 
 bindsym $mod+Shift+c 	reload
 bindsym $mod+Shift+r 	restart
-bindsym $mod+Shift+e 	exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e 	exec i3-msg exit
 
 bindsym $mod+Shift+BackSpace	exec --no-startup-id $reboot
 bindsym $mod+Shift+Delete		exec --no-startup-id $shutdown
@@ -51,6 +64,11 @@ bindsym $mod+Shift+x			exec --no-startup-id betterlockscreen -l -t "keegan@rogue
 
 bindsym $mod+Print				exec scrot -z -e 'mv $f ~/Screenshots/'
 bindsym $mod+Shift+Print 		exec scrot -u -z -e 'mv $f ~/Screenshots/'
+
+bindsym $mod+g 					exec $term -hold -e bash -c "genius && bash"
+bindsym $mod+Shift+g			exec $term -T "genius" -hold -e bash -c "genius && bash" 
+
+bindsym $mod+Shift+d			exec --no-startup-id killall dunst
 
 # #------ Gap Resizing Bindings ------# #
 bindsym $mod+i				gaps inner current plus 5
@@ -72,6 +90,16 @@ bindsym $mod+Shift+j 		move down
 bindsym $mod+Shift+k 		move up
 bindsym $mod+Shift+l 		move right
 
+bindsym $mod+Ctrl+h			resize shrink width 1 px or 1 ppt
+bindsym $mod+Ctrl+j			resize shrink height 1 px or 1 ppt
+bindsym $mod+Ctrl+k			resize grow height 1 px or 1 ppt
+bindsym $mod+Ctrl+l			resize grow width 1 px or 1 ppt
+
+bindsym $mod+Shift+Ctrl+h	resize shrink width 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+j	resize shrink height 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+k	resize grow height 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+l	resize grow width 10 px or 10 ppt
+
 bindsym $mod+a 				focus child
 bindsym $mod+Shift+a 		focus parent
 
@@ -80,7 +108,7 @@ bindsym $mod+Shift+space	floating toggle
 bindsym $mod+space			focus mode_toggle
 
 bindsym $mod+t 				split toggle
-bindsym $mod+s				layout toggle
+bindsym $mod+Shift+t		layout toggle
 
 bindsym $mod+f 				fullscreen toggle
 
@@ -116,7 +144,7 @@ set $mute			--no-startup-id pamixer --allow-boost -m
 set $unmute			--no-startup-id pamixer --allow-boost -u
 
 # #------ Music Bindings ------# #
-bindsym $mod+Shift+s				exec $music
+bindsym $mod+s						exec $music
 
 bindsym $mod+plus 					exec $lilinc
 bindsym $mod+F3						exec $inc
@@ -142,6 +170,10 @@ bindsym $mod+bracketright			exec $for
 # #------ Backlight Bindings ------# #
 bindsym $mod+F6						exec xbacklight -inc 10
 bindsym $mod+F5						exec xbacklight -dec 10
+
+# #------ Wifi Bindings ------# #
+bindsym $mod+F8						exec nmcli radio wifi off
+bindsym $mod+Shift+F8 				exec nmcli radio wifi on
 
 # #------ Xresources Colours ------# #
 set_from_resource $darkgrey		color0	#000000

@@ -13,6 +13,7 @@
 .bash_logout
 .cache
 .calcurse/.calcurse.pid
+.calcurse/notes
 .calcurse/apts
 .dmrc
 .esd_auth
@@ -21,6 +22,7 @@
 .local
 .lyris
 .pki
+.test
 .vim
 .viminf*
 .wget-hsts
@@ -39,7 +41,9 @@ PDFS
 Programming
 Screenshots
 University
+TV
 .ssh
+.tmux
 
 pkg/
 src/

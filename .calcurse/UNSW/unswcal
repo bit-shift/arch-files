@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm ~/.calcurse/UNSW/T12019.ics
+wget http://my.unsw.edu.au/cal/pttd/9BYKcnggsb.ics -P ~/.calcurse/UNSW/
+
+mv ~/.calcurse/UNSW/9BYKcnggsb.ics ~/.calcurse/UNSW/T12019.ics
