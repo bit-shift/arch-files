@@ -11,4 +11,4 @@ export FILE="ranger"
 
 [[ "$(tty)" =~ ^/dev/tty[1-5]$ ]] && startx
 
-sudo -n loadkeys ~/.scripts/tools/escswap 2>/dev/null 1>/dev/null
+sudo -n loadkeys ~/.scripts/tools/escswap &>/dev/null 

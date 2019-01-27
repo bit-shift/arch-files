@@ -14,3 +14,7 @@ Use udisksctl --help for more options
 	- Can change the mount point for easier access
 
 Need to remove ._ and .DS_Store files after copying files from mac
+	- Run the cleanmac command after copying files to desired location
+	- Ensure that no directories contain spaces in their names 
+	- Otherwise the script will not catch the files
+	- Also, stderr is redirected to /dev/null, and so the errors will not show

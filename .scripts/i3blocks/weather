@@ -2,6 +2,13 @@
 
 pgrep -x "spotify" > /dev/null && exit 0
 
+case $BLOCK_BUTTON in
+	1) $TERMINAL -hold -e bash -c "wget wttr.in/Sydney &>/dev/null && cat Sydney && rm Sydney && bash";;
+	3) pgrep -x dunst >/dev/null && notify-send -u low "<b>Weather Module</b>" "Left click - show full weather report
+Right click - show usage message
+";;
+esac
+
 wget wttr.in/Sydney
 
 weather=$(cat Sydney | sed -n 3p | sed 's/\x1b\[[0-9;]*m//g' | egrep -o '[A-Z].*')

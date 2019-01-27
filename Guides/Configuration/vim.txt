@@ -20,7 +20,7 @@ Set up Vundle as the Plugin manager
 
 Installing Plugins 
 	- Plugin 'Plugin-name'
-	- vim
+	- :source %
 	- :PluginInstall
 	- Vundle Plugin must be the first Plugin
 

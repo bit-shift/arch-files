@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ "$1" = "-de" ]; then
+	find ~ -name '.DS.Store' -or -name '._*' | xargs rm
+elif [ "$1" = "-d" ]; then
+	find ~ -name '.DS.Store' -or -name '._*' | xargs rm 2>/dev/null
+elif [ "$1" = "-s" ]; then
+	find ~ -name '.DS.Store' -or -name '._*'
+elif [ "$1" = "-sd" ]; then
+	find ~ -name '.DS.Store' -or -name '._*'
+	find ~ -name '.DS.Store' -or -name '._*' | xargs rm 2>/dev/null
+elif [ "$1" = "-sde" ]; then
+	find ~ -name '.DS.Store' -or -name '._*'
+	find ~ -name '.DS.Store' -or -name '._*' | xargs rm
+else
+	printf "Usage: cleanmac [option]\n\nd - Delete, no errors shown\ne - Errors shown\ns - Show all files matching\n* - Brings up this message\n"
+fi

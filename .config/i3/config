@@ -3,7 +3,7 @@
 # Email: keegan.gyoery@gmail.com
 
 # #------ Unused Keys ------# #
-# b+ d f\+ m\+ p\+ q\+ u\+ w\+ x z+
+# b+ d f\+ m\+ p\+ q\+ u\+ w\+ z
 # [\+ ]\+ /+ <\+ >\+ [F7,F9-F12]+ [F1-F3,F5-F6]\+ ;\+ '\+ 
 # arrow+ pgup+ pgdown+ capslock+ ctrl+ alt+ 
 # home+ end+ insert+
@@ -22,13 +22,13 @@ set $netrefresh			sudo -A systemctl restart NetworkManager
 set $hibernate 			sudo -A systemctl suspend 
 
 # #------ Genius Window ------# #
-for_window [title="genius"] floating enable
-for_window [title="genius"] move scratchpad
-for_window [title="genius"] sticky enable
-for_window [title="genius"] scratchpad show
-for_window [title="genius"] resize set 1200 800
-for_window [title="genius"] move position center
-for_window [title="genius"] move up 250px
+for_window [title="float_*"] floating enable
+for_window [title="float_*"] move scratchpad
+for_window [title="float_*"] sticky enable
+for_window [title="float_*"] scratchpad show
+for_window [title="float_*"] resize set 1200 800
+for_window [title="float_*"] move position center
+for_window [title="float_*"] move up 250px
 
 # #------ External Scripts ------# #
 exec_always --no-startup-id feh --bg-scale ~/.config/wallpapers/icedrag.jpg
@@ -60,13 +60,17 @@ bindsym $mod+Shift+Delete		exec --no-startup-id $shutdown
 bindsym	$mod+Shift+n			exec --no-startup-id $netrefresh
 bindsym $mod+Shift+backslash	exec --no-startup-id betterlockscreen -l -t "keegan@rogue" & sleep 0.5 && $hibernate
 
-bindsym $mod+Shift+x			exec --no-startup-id betterlockscreen -l -t "keegan@rogue"
+bindsym $mod+Shift+z			exec --no-startup-id betterlockscreen -l -t "keegan@rogue"
 
 bindsym $mod+Print				exec scrot -z -e 'mv $f ~/Screenshots/'
 bindsym $mod+Shift+Print 		exec scrot -u -z -e 'mv $f ~/Screenshots/'
 
 bindsym $mod+g 					exec $term -hold -e bash -c "genius && bash"
-bindsym $mod+Shift+g			exec $term -T "genius" -hold -e bash -c "genius && bash" 
+bindsym $mod+Shift+g			exec $term -T "float_genius" -hold -e bash -c "genius && bash" 
+
+bindsym $mod+x					exec $term -hold -e bash -c "tmux a || tmux && bash"
+bindsym $mod+Shift+x			exec $term -T "float_tmux" -hold -e bash -c "tmux a || tmux && bash"
+bindsym $mod+Ctrl+x 			exec tmux kill-server
 
 bindsym $mod+Shift+d			exec --no-startup-id killall dunst
 
