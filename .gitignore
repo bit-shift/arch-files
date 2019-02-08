@@ -15,6 +15,7 @@
 .calcurse/.calcurse.pid
 .calcurse/notes
 .calcurse/apts
+.calcurse/UNSW/T12019.ics
 .dmrc
 .esd_auth
 .fehbg
@@ -31,6 +32,7 @@ guide.txt
 todo.txt
 
 .config/chromium
+.config/dconf
 .config/pulse
 .config/spotify
 Downloads
@@ -43,6 +45,7 @@ Screenshots
 University
 TV
 .mutt
+.rtorrent
 .ssh
 .tmux
 

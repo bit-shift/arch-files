@@ -4,6 +4,8 @@ Download the required packages for i3-gaps
 Download the terminal emulator urxvt
 	- pacman -S rxvt-unicode
 	- See Xorg.txt for info on customisation
+	- Changed to rxvt-unicode-pixbuf
+	- pakku -S rxvt-unicode-pixbuf
 
 Run the X server for the first time executing i3
 	- Use the files from Bash.txt and Xorg.txt

@@ -7,6 +7,8 @@ export BROWSER="chromium"
 export READER="zathura"
 export FILE="ranger"
 
+export MAILCAPS="~/.config/rtv/mailcap"
+
 [ -f ~/.bashrc ] && source "$HOME/.bashrc"
 
 [[ "$(tty)" =~ ^/dev/tty[1-5]$ ]] && startx

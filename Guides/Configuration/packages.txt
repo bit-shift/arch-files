@@ -46,6 +46,8 @@ Install the curl package
 
 Install the genius package
 	- pacman -S genius 
+	- Refer to the i3 config file for key bindings
+	- Floating calc + sticky
 
 Install the unzip package
 	- pacman -S unzip
@@ -53,3 +55,4 @@ Install the unzip package
 Install the speedtest package 
 	- pacman -S speedtest
 	- speedtest --no-upload --simple
+	- Refer to i3blocks scripts for usage

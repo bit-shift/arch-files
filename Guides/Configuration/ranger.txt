@@ -7,3 +7,10 @@ Copy the default config files into the ~/.config/ranger/ directory
 Set the hidden file option to true
 	- Set inside rc.conf
 	- set show_hidden true
+
+Set the image preview options
+	- Need to have rxvt-unicode-pixbuf installed
+	- Refer to i3.txt for details
+	- Set inside rc.conf
+	- set preview_images true
+	- set preview_images_method urxvt

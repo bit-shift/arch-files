@@ -2,15 +2,14 @@
 
 case $BLOCK_BUTTON in
 	1) $TERMINAL -hold -e bash -c "sudo pakku -Syu --noconfirm && bash";;
-	2) $TERMINAL -hold -e bash -c "sudo pakku -Qu | less && bash";;
+	2) $TERMINAL -hold -e bash -c "sudo pakku -Syu && bash";;
 	3) pgrep -x dunst >/dev/null && notify-send -u low "<b>System Update Module</b>" "Left click - update system
 Middle click - show packages that have updates
 Right click - show usage message
 ";;
 esac
 
-sudo pakku -Syw > /dev/null
-count=$(sudo pakku -Qu | wc -l)
+count=$(sudo checkupdates | wc -l)
 
 if [ "$count" = "0" ]; then
 	message="Updated"

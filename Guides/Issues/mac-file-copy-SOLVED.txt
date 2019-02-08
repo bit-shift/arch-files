@@ -5,3 +5,9 @@ Copying files from Mac via USB introduces heaps of .DS_Script and ._* files
 Will write a c program to recursively search all directories and remove these files
 	- Will run whenever a USB is mounted 
 	- Will ideally work in conjunction with the USB mounting scripts
+
+Wrote a hack job bash script to sort it out
+	- Refer to ~/.scripts/tools/cleanmac
+	- Run with -h for help list of commands 
+	- Run once copied over to the home directory
+	- Too dangerous to run in the root directory areas

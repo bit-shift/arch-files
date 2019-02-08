@@ -1,0 +1,9 @@
+Install the vlc package
+	- pacman -S vlc 
+
+Use the ncurses interface 
+	- vlc -I ncurses
+	- Brings up the ncurses ui for the selected video/directory
+
+Refer to ~/.bashrc for the alias used
+	- Opens vlc with ncurses interface 

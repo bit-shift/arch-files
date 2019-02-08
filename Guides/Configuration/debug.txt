@@ -1,0 +1,7 @@
+Install the gdb and valgrind packages
+	- pacman -S gdb valgrind
+
+The valgrind files from vlab for suppressions
+	- /usr/lib/valgrind/*.supp
+	- Will transfer over 
+	- Need to setup properly but will wait for OS161 install

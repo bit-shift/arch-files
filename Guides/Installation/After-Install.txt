@@ -79,3 +79,10 @@ Set the number of tty's available on login
 	- Edit .profile to startx on any tty 1-5
 	- Refer to .profile for regex - ensure to remove pgrep check
 	- Leave tty6 for root/basic terminal work
+
+Install the pacman-contrib package
+	- pacman -S pacman-contrib
+	- Used in scripting for i3blocks and other stuff
+	- Edit the script checkupdates with root privileges
+	- Change the pacman commands to pakku commands
+	- Use pakku as it is a wrapper for pacman so exactly the same stuff should happen

@@ -1,0 +1,14 @@
+
+# ---------- File Aliases ---------- #
+
+cfv - vim ~/.vimrc
+cfi - vim ~/.config/i3/config
+cfib - vim ~/.config/i3blocks/config
+cfb - vim ~/.bashrc
+cfp - vim ~/.profile
+cfu - vim ~/.Xresources
+cft - vim ~/.tmux.conf
+cfx - vim ~/.xinitrc
+guide - vim ~/guide.txt
+todo - vim ~/todo.txt
+

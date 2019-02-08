@@ -6,7 +6,7 @@ A full readme will be available as a PDF later
 This is the full set of key bindings 
 (Assume each key is used with the mod key - windows key)
 
-	Enter - Terminal
+	Enter - terminal
 	r - ranger
 	p - htop
 	Shift+p - glances
@@ -14,7 +14,9 @@ This is the full set of key bindings
 	n - newsboat
 	m - neomutt
 	c - calcurse
-	v - cava
+	Ctrl+c - refresh UNSW calendar
+	v - vlc ncurses in TV directory
+	Shift+v - cava
 	q - kill container
 	w - chromium ($BROWSER)
 
@@ -26,10 +28,17 @@ This is the full set of key bindings
 	Shift+Delete - shutdown
 	Shift+n - restart NetworkManager
 	Shift+backslash - lock screen and hibernate
-	Shift+x - lock screen
+	Shift+z - lock screen
 
 	Print - screenshot whole screen
 	Shift+Print - screenshot focused window
+
+	g - genius
+	Shift+g - floating sticky genius
+	x - tmux 
+	Shift+x - floating sticky tmux
+	Ctrl+x - tmux kill-server
+	Shift+d - killall dunst
 
 	i - inner gaps +5
 	Shift+i - inner gaps -5
@@ -47,16 +56,25 @@ This is the full set of key bindings
 	Shift+k - move up
 	Shift+l - move right
 
+	Ctrl+h - shrink width 1
+	Ctrl+j - shrink height 1
+	Ctrl+k - grow height 1
+	Ctrl+l - grow width 1
+	Shift+Ctrl+h - shrink width 10
+	Shift+Ctrl+j - shrink height 10
+	Shift+Ctrl+k - grow height 10
+	Shift+Ctrl+l - grow width 10
+
 	a - focus child
 	Shift+a - focus parent
 
 	Shift+space - floating toggle
 	space - focus mod toggle
 	t - split toggle
-	s - layout toggle
+	Shift+t - layout toggle
 	f - fullscreen
 
-	Shift+s - spotify
+	s - spotify
 	plus - volume +1
 	F3 - volume +5
 	Shift+plus - volume +10
@@ -76,6 +94,9 @@ This is the full set of key bindings
 
 	F6 - backlight +10
 	F5 - backlight -10
+
+	F8 - wifi off
+	Shift+F8 wifi on
 
 	y - workspace next
 	Shift+y - workspace previous

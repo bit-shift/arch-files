@@ -13,6 +13,7 @@
 for_window [class="^.*"] border pixel 2
 gaps inner 15
 gaps outer 0
+new_window pixel
 
 set $mod Mod4
 set $term 				--no-startup-id $TERMINAL
@@ -33,6 +34,8 @@ for_window [title="float_*"] move up 250px
 # #------ External Scripts ------# #
 exec_always --no-startup-id feh --bg-scale ~/.config/wallpapers/icedrag.jpg
 exec_always --no-startup-id dunst
+# exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
+# exec_always --no-startup-id compton --config /dev/null -I 0.04 -O 0.04 -D 10 -f
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # #------ Basic Bindings ------# #
@@ -43,12 +46,13 @@ bindsym $mod+Shift+p	exec $term -hold -e bash -c "glances && bash"
 bindsym $mod+e			exec $term -hold -e bash -c "neofetch && bash" 
 bindsym $mod+n			exec $term -hold -e bash -c "newsboat -C ~/.config/newsboat/config && bash"
 bindsym $mod+m			exec $term -hold -e bash -c "neomutt && bash"
-bindsym $mod+Ctrl+c 	exec /home/keegan/.calcurse/UNSW/unswcal
 bindsym $mod+c			exec $term -hold -e bash -c "calcurse && bash"
+bindsym $mod+Ctrl+c 	exec --no-startup-id /home/keegan/.calcurse/UNSW/unswcal
 bindsym $mod+v			exec $term -hold -e bash -c "vlc -I ncurses ~/TV/ && bash"
 bindsym $mod+Shift+v 	exec $term -hold -e bash -c "cava -p ~/.config/cava/config && bash"
 
 bindsym $mod+q 			kill
+
 bindsym $mod+w			exec --no-startup-id $BROWSER
 
 bindsym $mod+Shift+c 	reload
@@ -60,17 +64,18 @@ bindsym $mod+Shift+Delete		exec --no-startup-id $shutdown
 bindsym	$mod+Shift+n			exec --no-startup-id $netrefresh
 bindsym $mod+Shift+backslash	exec --no-startup-id betterlockscreen -l -t "keegan@rogue" & sleep 0.5 && $hibernate
 
+bindsym $mod+z					exec $term -hold -e bash -c "rtv --no-flash && bash"
 bindsym $mod+Shift+z			exec --no-startup-id betterlockscreen -l -t "keegan@rogue"
 
-bindsym $mod+Print				exec scrot -z -e 'mv $f ~/Screenshots/'
-bindsym $mod+Shift+Print 		exec scrot -u -z -e 'mv $f ~/Screenshots/'
+bindsym $mod+Print				exec --no-startup-id scrot -z -e 'mv $f ~/Screenshots/'
+bindsym $mod+Shift+Print 		exec --no-startup-id scrot -u -z -e 'mv $f ~/Screenshots/'
 
 bindsym $mod+g 					exec $term -hold -e bash -c "genius && bash"
 bindsym $mod+Shift+g			exec $term -T "float_genius" -hold -e bash -c "genius && bash" 
 
 bindsym $mod+x					exec $term -hold -e bash -c "tmux a || tmux && bash"
 bindsym $mod+Shift+x			exec $term -T "float_tmux" -hold -e bash -c "tmux a || tmux && bash"
-bindsym $mod+Ctrl+x 			exec tmux kill-server
+bindsym $mod+Ctrl+x 			exec --no-startup-id tmux kill-server
 
 bindsym $mod+Shift+d			exec --no-startup-id killall dunst
 

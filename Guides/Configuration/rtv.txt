@@ -1,0 +1,21 @@
+Install the rtv package
+	- pacman -S rtv
+
+Copy the config file to ~/.config/rtv/rtv.cfg
+	- rtv --copy-config
+	- Edit the file 
+	- Refer to the config file for the settings used
+
+Setup mailcaps 
+	- rtv --copy-mailcap
+	- Move the file created at ~/.mailcap
+	- mv ~/.mailcap ~/.config/rtv/mailcap
+	- Export the MAILCAPS variable in ~/.profile
+	- Provide the config file path
+	- Edit the mailcap file
+	- Refer to the config file for the settings used
+
+Login to reddit after running rtv
+	- Press u to login
+
+Refer to ~/.bashrc for the alias, run with --no-flash

@@ -64,7 +64,7 @@ Mount the filesystems in the appropriate places
 
 Run pacstrap to set up all of the base install packages
 	- pacstrap /mnt base base-devel gvim 
-	- Builds the arch system with base-devel package group and vim and dialog packages
+	- Builds the arch system with base-devel package group and vim packages
 	- vim for obvious reasons
 	- dialog used for GUI wifi list if necessary - if using netctl
 	- If using NetworkManager, will not be necessary to have dialog

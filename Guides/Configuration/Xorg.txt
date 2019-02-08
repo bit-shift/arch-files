@@ -31,3 +31,17 @@ Create the symlink for .Xdefaults
 	- Old software uses .Xdefaults, but good to be safe
 
 Refer to the i3.txt for installation of xorg-xdpyinfo and xorg-xrandr
+
+Install the xorg-xprop package
+	- pacman -S xorg-xprop
+	- Used for getting window PIDs when I was trying to send SIGQUIT
+	- Not necessary as I am not using compton or any other composite manager
+
+Installed xorg packages are as follows
+	- xorg-server
+	- xorg-xbacklight
+	- xorg-xdpyinfo
+	- xorg-xev
+	- xorg-xinit
+	- xorg-xprop
+	- xorg-xrandr

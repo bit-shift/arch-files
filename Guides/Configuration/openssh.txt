@@ -4,3 +4,41 @@ Install the openssh package
 Vlab connection through ssh
 	- ssh z5197058@login.cse.unsw.edu.au -L 5916:vlab:5916
 	- Check alias in bashrc for shortcut
+
+Start and enable the sshd.socket unit for systemctl
+	- sudo systemctl enable sshd.socket
+	- sudo systemctl start sshd.socket
+	- This systemctl unit only runs the ssh daemon when a connection comes to a port
+	- It doesn't continuously run in the background
+
+Install the termius app on iphone
+	- Use the app store to download
+
+Edit the sshd config file
+	- sudo vim /etc/ssh/sshd_config
+	- Refer to the file for the specific config
+
+Forward port 22 from router to computer
+	- Refer to back of router for config website
+	- Back of router also has login details
+	- Go through the process and forward port 22 from router to port 22 at computer
+	- Follow https://portforward.com instructions for router
+	- Should use a different port to 22
+	- Will need to edit /etc/ssh/sshd_config and socket file
+	- sudo systemctl edit sshd.socket
+	- Follow the wiki for the syntax and add the other port to listen to for ssh
+	- Currently using port 22 but need to change for security
+	- Reboot router and computer
+
+Check the port is open with canyouseeme website
+	- Checks if local computer is visible to internet via forwaded port
+	- Should be working
+
+Get public ip address of router
+	- curl https://ipinfo.io/ip
+	
+Connect to local computer using termius with the command below
+	- ssh keegan@router_ip_addr -p [port_number]
+
+Need to set up firewall 
+	- Follow the firewall guide now
