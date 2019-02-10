@@ -31,12 +31,9 @@
 guide.txt
 todo.txt
 
-.config/chromium
-.config/dconf
-.config/pulse
-.config/spotify
 Downloads
 Git
+Guides
 LaTeX
 Mail
 PDFS
@@ -44,7 +41,14 @@ Programming
 Screenshots
 University
 TV
+.config/chromium
+.config/dconf
+.config/gopass
+.config/pulse
+.config/spotify
+.gnupg
 .mutt
+.password-store
 .rtorrent
 .ssh
 .tmux

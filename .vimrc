@@ -15,6 +15,11 @@ Plugin 'tpope/vim-fugitive'
 call vundle#end()
 filetype plugin indent on
 
+aug gopass
+	au!
+	au BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile
+aug END
+
 " YouCompleteMe fallback path
 let g:ycm_global_ycm_extra_conf = '/home/keegan/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0

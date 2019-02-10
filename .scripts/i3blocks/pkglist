@@ -1,7 +1,7 @@
 #!/bin/bash
 
 case $BLOCK_BUTTON in
-	1) sudo pakku -Qe > ~/Guides/package-list.txt;;
+	1) sudo pakku -Qe > ~/package-list.txt;;
 	2) $TERMINAL -hold -e bash -c "sudo pakku -Qe | less && bash";;
 	3) pgrep -x dunst >/dev/null && notify-send -u low "<b>Package List Module</b>" "Left click - update package list
 Middle click - show installed packages in a terminal
@@ -12,7 +12,7 @@ esac
 touch hold.txt
 pakku -Qe > hold.txt
 
-diffo=$(diff hold.txt ~/Guides/package-list.txt)
+diffo=$(diff hold.txt ~/package-list.txt)
 message="Pkg List"
 
 if [ "$diffo" = "" ]; then
