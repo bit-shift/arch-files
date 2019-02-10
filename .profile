@@ -6,6 +6,7 @@ export TERMINAL="urxvt"
 export BROWSER="chromium"
 export READER="zathura"
 export FILE="ranger"
+export GPG_TTY=$(tty)
 
 export MAILCAPS="~/.config/rtv/mailcap"
 
