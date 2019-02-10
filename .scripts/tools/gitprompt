@@ -1,0 +1,10 @@
+#!/bin/bash
+
+err=$(git branch 2>&1 | egrep -o 'fatal')
+
+if [ "$err" == "" ]; then
+	branch=$(git branch 2>/dev/null | sed 's/\x1b\[[0-9;]*m//g' | egrep -o '[A-Za-z]+')
+	echo "$branch"
+else 
+	echo "!"
+fi
