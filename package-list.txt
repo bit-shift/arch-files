@@ -16,7 +16,7 @@ clang 7.0.1-1
 cmake 3.13.4-1
 cmus 2.7.1-9
 coreutils 8.30-1
-cryptsetup 2.0.6-1
+cryptsetup 2.1.0-1
 device-mapper 2.02.183-2
 dhcpcd 7.0.8-1
 diffutils 3.7-1
@@ -72,7 +72,7 @@ neofetch 6.0.0-1
 neomutt 20180716-6
 netctl 1.19-1
 networkmanager 1.14.5dev+17+gba83251bb-2
-newsboat 2.14-1
+newsboat 2.14.1-1
 openssh 7.9p1-1
 pacman 5.1.2-2
 pacman-contrib 1.1.0-1
@@ -93,7 +93,6 @@ python-setuptools 1:40.8.0-1
 ranger 1.9.2-1
 reiserfsprogs 3.6.27-2
 rng-tools 6.6-2
-rtorrent 0.9.7-2
 rtv 1.24.0-2
 rxvt-unicode-pixbuf 9.22-2
 s-nail 14.9.11-2
@@ -104,8 +103,8 @@ speedtest-cli 2.0.2-2
 spotify 1.0.98.78-1
 sudo 1.8.27-1
 sysfsutils 2.1.0-10
-systemd 240.34-3
-systemd-sysvcompat 240.34-3
+systemd 240.93-1
+systemd-sysvcompat 240.93-1
 tar 1.31-2
 texinfo 6.5-2
 texlive-bibtexextra 2018.49283-1
