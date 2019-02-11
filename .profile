@@ -8,7 +8,7 @@ export READER="zathura"
 export FILE="ranger"
 export GPG_TTY=$(tty)
 
-export MAILCAPS="~/.config/rtv/mailcap"
+#export MAILCAPS="~/.config/rtv/mailcap"
 
 [ -f ~/.bashrc ] && source "$HOME/.bashrc"
 
