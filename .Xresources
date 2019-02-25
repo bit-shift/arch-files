@@ -1,4 +1,9 @@
 ! !------ URxvt ------! !
+URxvt.iso14755: 	false
+URxvt.iso14755_52: 	false
+
+! URxvt.perl-ext-common: resize-font
+
 *.scrollBar: 		false
 
 *.pointerBlank:		true
@@ -6,9 +11,6 @@
 
 *.internalBorder:	10
 *.borderLess: 		false
-
-URxvt.iso14755: 	false
-URxvt.iso14755_52: 	false
 
 ! !------ Cursor ------! !
 *.cursorBlink:		true

@@ -60,7 +60,7 @@ alias sysser="systemctl --type=service"
 alias symbrk="find / -xtype l -print"
 alias diskur="ncdu /"
 
-alias vlab="ssh z5197058@login.cse.unsw.edu.au -L 5916:vlab:5916"
+alias vlab="ssh z5197058@login.cse.unsw.edu.au"
 alias vlabf="sftp z5197058@login.cse.unsw.edu.au"
 
 alias vlcn"=vlc -I ncurses"
