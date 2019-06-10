@@ -1,0 +1,76 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper]{article}
+
+% Install the required packages for the document 
+\usepackage{envmath}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage[mathcal]{euscript}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{harpoon}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{asyalign}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{xhfill}
+\usepackage{accents}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{csquotes}
+\usepackage{wrapfig}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{minipage-marginpar}
+\usepackage{calc}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+
+% Begin the text of the document
+\begin{document}
+
+\newlength{\strutheight}
+\settoheight{\strutheight}{\strut}
+
+\pagenumbering{arabic}
+\begin{enumerate}
+	\item Differentiate the following using the chain rule.
+		\begin{enumerate}
+			\item $\ds{e^{1-x^2}}$
+			\item $\ds{e^{3x^3-7x+1}}$
+		\end{enumerate}
+		Solutions:\\
+		\begin{enumerate}
+			\item Let $\ds{y = e^{1-x^2}}$, and $\ds{u = 1-x^2}$. We now have $\ds{y = e^{u}}$. Using the formula for the chain rule, $\ds{\frac{dy}{dx} & = \frac{dy}{du}\cdot\frac{du}{dx}}$, we need to get expressions for $\ds{\frac{dy}{du}}$ and $\ds{\frac{du}{dx}}$. 
+			\begin{align*}
+				\frac{dy}{du} & = e^u\\
+				\frac{du}{dx} & = -2x\\
+			\end{align*}
+		\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

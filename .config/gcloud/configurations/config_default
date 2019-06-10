@@ -1,0 +1,8 @@
+[core]
+account = keegan@streamplate.com
+project = streamplate-220709
+
+[compute]
+zone = australia-southeast1-a
+region = australia-southeast1
+

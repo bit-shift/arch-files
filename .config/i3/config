@@ -1,26 +1,45 @@
 # Keegan Gyoery i3-gaps config file
-# Modified Luke Smith's voidrice dotfile
 # Email: keegan.gyoery@gmail.com
 
 # #------ Unused Keys ------# #
-# b+ d f\+ m\+ p\+ q\+ u\+ w\+ z
+# b+ d f\+ m\+ q u\+ w\+
 # [\+ ]\+ /+ <\+ >\+ [F7,F9-F12]+ [F1-F3,F5-F6]\+ ;\+ '\+ 
 # arrow+ pgup+ pgdown+ capslock+ ctrl+ alt+ 
 # home+ end+ insert+
 
-# #------ Basic Definitions ------# #
-# Needed for i3-gaps
+# #------ i3-gaps Settings ------# #
 for_window [class="^.*"] border pixel 2
 gaps inner 15
 gaps outer 0
 new_window pixel
 
+# #------ Basic Definitions ------# #
 set $mod Mod4
-set $term 				--no-startup-id $TERMINAL
-set $shutdown 			sudo -A shutdown -h now
-set $reboot				sudo -A reboot
-set $netrefresh			sudo -A systemctl restart NetworkManager
-set $hibernate 			sudo -A systemctl suspend 
+set $term 						--no-startup-id $TERMINAL
+set $shutdown 					sudo -A shutdown -h now
+set $reboot						sudo -A reboot
+set $netrefresh					sudo -A systemctl restart NetworkManager
+set $hibernate 					sudo -A systemctl suspend 
+
+# #------ Spotify Definitions playerctl ------# #
+set $pause 						playerctl --player=spotify play-pause
+set $trupause 					playerctl --player=spotify pause
+set $play 						playerctl --player=spotify play
+set $next 						playerctl --player=spotify next
+set $prev 						playerctl --player=spotify previous
+set $back 						playerctl --player=spotify position 15-
+set $for 						playerctl --player=spotify position 15+
+
+# #------ PulseAudio/Pamixer Definitions ------# #
+set $lilinc 					--no-startup-id pamixer --allow-boost -i 1
+set $inc 						--no-startup-id pamixer --allow-boost -i 5
+set $biginc						--no-startup-id pamixer --allow-boost -i 10
+set $lildec						--no-startup-id pamixer --allow-boost -d 1
+set $dec 						--no-startup-id pamixer --allow-boost -d 5
+set $bigdec						--no-startup-id pamixer --allow-boost -d 10
+set $mute_t						--no-startup-id pamixer --allow-boost -t
+set $mute						--no-startup-id pamixer --allow-boost -m
+set $unmute						--no-startup-id pamixer --allow-boost -u
 
 # #------ Genius Window ------# #
 for_window [title="float_*"] floating enable
@@ -32,43 +51,44 @@ for_window [title="float_*"] move position center
 for_window [title="float_*"] move up 250px
 
 # #------ External Scripts ------# #
-exec_always --no-startup-id feh --bg-scale ~/.config/wallpapers/icedrag.jpg
+exec_always --no-startup-id feh --bg-scale ~/.config/wallpapers/sterling.jpg
 exec_always --no-startup-id dunst
 # exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
 # exec_always --no-startup-id compton --config /dev/null -I 0.04 -O 0.04 -D 10 -f
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # #------ Basic Bindings ------# #
-bindsym $mod+Return		exec $term
-bindsym $mod+r			exec $term -hold -e bash -c "ranger && bash"
-bindsym $mod+p			exec $term -hold -e bash -c "htop && bash"
-bindsym $mod+Shift+p	exec $term -hold -e bash -c "glances && bash"
-bindsym $mod+e			exec $term -hold -e bash -c "neofetch && bash" 
-bindsym $mod+n			exec $term -hold -e bash -c "newsboat -C ~/.config/newsboat/config && bash"
-bindsym $mod+m			exec $term -hold -e bash -c "neomutt && bash"
-bindsym $mod+c			exec $term -hold -e bash -c "calcurse && bash"
-bindsym $mod+Ctrl+c 	exec --no-startup-id /home/keegan/.calcurse/UNSW/unswcal
-bindsym $mod+v			exec $term -hold -e bash -c "vlc -I ncurses ~/TV/ && bash"
-bindsym $mod+Shift+v 	exec $term -hold -e bash -c "cava -p ~/.config/cava/config && bash"
+bindsym $mod+Return				exec $term
+bindsym $mod+w					exec --no-startup-id $BROWSER
+bindsym $mod+s					exec --no-startup-id spotify
+bindsym $mod+Shift+q 			kill
 
-bindsym $mod+q 			kill
-
-bindsym $mod+w			exec --no-startup-id $BROWSER
-
-bindsym $mod+Shift+c 	reload
-bindsym $mod+Shift+r 	restart
-bindsym $mod+Shift+e 	exec i3-msg exit
+bindsym $mod+Shift+c 			reload
+bindsym $mod+Shift+r 			restart
+bindsym $mod+Shift+e 			exec i3-msg exit
 
 bindsym $mod+Shift+BackSpace	exec --no-startup-id $reboot
 bindsym $mod+Shift+Delete		exec --no-startup-id $shutdown
 bindsym	$mod+Shift+n			exec --no-startup-id $netrefresh
+bindsym $mod+Shift+z			exec --no-startup-id betterlockscreen -l -t "keegan@rogue"
 bindsym $mod+Shift+backslash	exec --no-startup-id betterlockscreen -l -t "keegan@rogue" & sleep 0.5 && $hibernate
 
+bindsym $mod+r					exec $term -hold -e bash -c "ranger && bash"
+bindsym $mod+e					exec $term -hold -e bash -c "neofetch && bash" 
+bindsym $mod+n					exec $term -hold -e bash -c "newsboat -C ~/.config/newsboat/config && bash"
+bindsym $mod+m					exec $term -hold -e bash -c "neomutt && bash"
+bindsym $mod+v					exec $term -hold -e bash -c "vlc -I ncurses ~/TV/ && bash"
+bindsym $mod+Shift+v 			exec $term -hold -e bash -c "cava -p ~/.config/cava/config && bash"
 bindsym $mod+z					exec $term -hold -e bash -c "rtv --no-flash && bash"
-bindsym $mod+Shift+z			exec --no-startup-id betterlockscreen -l -t "keegan@rogue"
 
 bindsym $mod+Print				exec --no-startup-id scrot -z -e 'mv $f ~/Screenshots/'
 bindsym $mod+Shift+Print 		exec --no-startup-id scrot -u -z -e 'mv $f ~/Screenshots/'
+
+bindsym $mod+p					exec $term -hold -e bash -c "htop && bash"
+bindsym $mod+Shift+p			exec $term -hold -e bash -c "glances && bash"
+
+bindsym $mod+c					exec $term -hold -e bash -c "calcurse && bash"
+bindsym $mod+Ctrl+c 			exec --no-startup-id /home/keegan/.calcurse/UNSW/unswcal
 
 bindsym $mod+g 					exec $term -hold -e bash -c "genius && bash"
 bindsym $mod+Shift+g			exec $term -T "float_genius" -hold -e bash -c "genius && bash" 
@@ -80,46 +100,46 @@ bindsym $mod+Ctrl+x 			exec --no-startup-id tmux kill-server
 bindsym $mod+Shift+d			exec --no-startup-id killall dunst
 
 # #------ Gap Resizing Bindings ------# #
-bindsym $mod+i				gaps inner current plus 5
-bindsym $mod+Shift+i 		gaps inner current minus 5
-bindsym $mod+o			 	gaps outer current plus 5
-bindsym $mod+Shift+o	 	gaps outer current minus 5
+bindsym $mod+i					gaps inner current plus 5
+bindsym $mod+Shift+i 			gaps inner current minus 5
+bindsym $mod+o			 		gaps outer current plus 5
+bindsym $mod+Shift+o	 		gaps outer current minus 5
 
-bindsym $mod+grave			gaps outer current set 0; gaps inner current set 15
-bindsym $mod+Shift+grave 	gaps outer current set 0; gaps inner current set 0
+bindsym $mod+grave				gaps outer current set 0; gaps inner current set 15
+bindsym $mod+Shift+grave 		gaps outer current set 0; gaps inner current set 0
 
 # #------ Focus and Move Bindings ------# #
-bindsym $mod+h 				focus left
-bindsym $mod+j 				focus down
-bindsym $mod+k 				focus up
-bindsym $mod+l 				focus right
+bindsym $mod+h 					focus left
+bindsym $mod+j 					focus down
+bindsym $mod+k 					focus up
+bindsym $mod+l 					focus right
 
-bindsym $mod+Shift+h 		move left
-bindsym $mod+Shift+j 		move down
-bindsym $mod+Shift+k 		move up
-bindsym $mod+Shift+l 		move right
+bindsym $mod+Shift+h 			move left
+bindsym $mod+Shift+j 			move down
+bindsym $mod+Shift+k 			move up
+bindsym $mod+Shift+l 			move right
 
-bindsym $mod+Ctrl+h			resize shrink width 1 px or 1 ppt
-bindsym $mod+Ctrl+j			resize shrink height 1 px or 1 ppt
-bindsym $mod+Ctrl+k			resize grow height 1 px or 1 ppt
-bindsym $mod+Ctrl+l			resize grow width 1 px or 1 ppt
+bindsym $mod+Ctrl+h				resize shrink width 1 px or 1 ppt
+bindsym $mod+Ctrl+j				resize shrink height 1 px or 1 ppt
+bindsym $mod+Ctrl+k				resize grow height 1 px or 1 ppt
+bindsym $mod+Ctrl+l				resize grow width 1 px or 1 ppt
 
-bindsym $mod+Shift+Ctrl+h	resize shrink width 10 px or 10 ppt
-bindsym $mod+Shift+Ctrl+j	resize shrink height 10 px or 10 ppt
-bindsym $mod+Shift+Ctrl+k	resize grow height 10 px or 10 ppt
-bindsym $mod+Shift+Ctrl+l	resize grow width 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+h		resize shrink width 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+j		resize shrink height 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+k		resize grow height 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+l		resize grow width 10 px or 10 ppt
 
-bindsym $mod+a 				focus child
-bindsym $mod+Shift+a 		focus parent
+bindsym $mod+a 					focus child
+bindsym $mod+Shift+a 			focus parent
 
 # #------ Toggle Bindings ------# #
-bindsym $mod+Shift+space	floating toggle
-bindsym $mod+space			focus mode_toggle
+bindsym $mod+Shift+space		floating toggle
+bindsym $mod+space				focus mode_toggle
 
-bindsym $mod+t 				split toggle
-bindsym $mod+Shift+t		layout toggle
+bindsym $mod+t 					split toggle
+bindsym $mod+Shift+t			layout toggle
 
-bindsym $mod+f 				fullscreen toggle
+bindsym $mod+f 					fullscreen toggle
 
 # #------ Spotify Definitions D-Bus ------# #
 # set $music 			spotify
@@ -131,58 +151,35 @@ bindsym $mod+f 				fullscreen toggle
 # set $lilfor 		dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek
 # set $bigfor 		dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek(
 
-# #------ Spotify Definitions playerctl ------# #
-set $music 			spotify
-set $pause 			playerctl --player=spotify play-pause
-set $trupause 		playerctl --player=spotify pause
-set $play 			playerctl --player=spotify play
-set $next 			playerctl --player=spotify next
-set $prev 			playerctl --player=spotify previous
-set $back 			playerctl --player=spotify position 15-
-set $for 			playerctl --player=spotify position 15+
-
-# #------ PulseAudio/Pamixer Definitions ------# #
-set $lilinc 		--no-startup-id pamixer --allow-boost -i 1
-set $inc 			--no-startup-id pamixer --allow-boost -i 5
-set $biginc			--no-startup-id pamixer --allow-boost -i 10
-set $lildec			--no-startup-id pamixer --allow-boost -d 1
-set $dec 			--no-startup-id pamixer --allow-boost -d 5
-set $bigdec			--no-startup-id pamixer --allow-boost -d 10
-set $mute_t			--no-startup-id pamixer --allow-boost -t
-set $mute			--no-startup-id pamixer --allow-boost -m
-set $unmute			--no-startup-id pamixer --allow-boost -u
-
 # #------ Music Bindings ------# #
-bindsym $mod+s						exec $music
+bindsym $mod+plus 				exec $lilinc
+bindsym $mod+F3					exec $inc
+bindsym $mod+Shift+plus 		exec $biginc
 
-bindsym $mod+plus 					exec $lilinc
-bindsym $mod+F3						exec $inc
-bindsym $mod+Shift+plus 			exec $biginc
+bindsym $mod+minus 				exec $lildec
+bindsym $mod+F2					exec $dec
+bindsym $mod+Shift+minus 		exec $bigdec
 
-bindsym $mod+minus 					exec $lildec
-bindsym $mod+F2						exec $dec
-bindsym $mod+Shift+minus 			exec $bigdec
+bindsym $mod+F1					exec $mute_t
+bindsym $mod+F4					exec $mute
+bindsym $mod+Shift+F4 			exec $unmute
 
-bindsym $mod+F1						exec $mute_t
-bindsym $mod+F4						exec $mute
-bindsym $mod+Shift+F4 				exec $unmute
+bindsym $mod+comma 				exec $prev
+bindsym $mod+period				exec $next
+bindsym $mod+slash 				exec $pause
+bindsym $mod+semicolon 			exec $trupause
+bindsym $mod+apostrophe			exec $play
 
-bindsym $mod+comma 					exec $prev
-bindsym $mod+period					exec $next
-bindsym $mod+slash 					exec $pause
-bindsym $mod+semicolon 				exec $trupause
-bindsym $mod+apostrophe				exec $play
-
-bindsym $mod+bracketleft			exec $back
-bindsym $mod+bracketright			exec $for
+bindsym $mod+bracketleft		exec $back
+bindsym $mod+bracketright		exec $for
 
 # #------ Backlight Bindings ------# #
-bindsym $mod+F6						exec xbacklight -inc 10
-bindsym $mod+F5						exec xbacklight -dec 10
+bindsym $mod+F6					exec xbacklight -inc 10
+bindsym $mod+F5					exec xbacklight -dec 10
 
 # #------ Wifi Bindings ------# #
-bindsym $mod+F8						exec nmcli radio wifi off
-bindsym $mod+Shift+F8 				exec nmcli radio wifi on
+bindsym $mod+F8					exec nmcli radio wifi off
+bindsym $mod+Shift+F8 			exec nmcli radio wifi on
 
 # #------ Xresources Colours ------# #
 set_from_resource $darkgrey		color0	#000000
@@ -225,30 +222,30 @@ set $ws9 "9"
 set $ws10 "10"
 
 # #------ Workspace Bindings ------# #
-bindsym $mod+y			workspace next
-bindsym $mod+Shift+y	workspace prev
+bindsym $mod+y					workspace next
+bindsym $mod+Shift+y			workspace prev
 
-bindsym $mod+1 			workspace $ws1
-bindsym $mod+2 			workspace $ws2
-bindsym $mod+3 			workspace $ws3
-bindsym $mod+4 			workspace $ws4
-bindsym $mod+5 			workspace $ws5
-bindsym $mod+6 			workspace $ws6
-bindsym $mod+7 			workspace $ws7
-bindsym $mod+8 			workspace $ws8
-bindsym $mod+9 			workspace $ws9
-bindsym $mod+0			workspace $ws10
+bindsym $mod+1 					workspace $ws1
+bindsym $mod+2 					workspace $ws2
+bindsym $mod+3 					workspace $ws3
+bindsym $mod+4 					workspace $ws4
+bindsym $mod+5 					workspace $ws5
+bindsym $mod+6 					workspace $ws6
+bindsym $mod+7 					workspace $ws7
+bindsym $mod+8 					workspace $ws8
+bindsym $mod+9 					workspace $ws9
+bindsym $mod+0					workspace $ws10
 
-bindsym $mod+Shift+1 		move container to workspace $ws1
-bindsym $mod+Shift+2 		move container to workspace $ws2
-bindsym $mod+Shift+3 		move container to workspace $ws3
-bindsym $mod+Shift+4 		move container to workspace $ws4
-bindsym $mod+Shift+5 		move container to workspace $ws5
-bindsym $mod+Shift+6 		move container to workspace $ws6
-bindsym $mod+Shift+7 		move container to workspace $ws7
-bindsym $mod+Shift+8 		move container to workspace $ws8
-bindsym $mod+Shift+9 		move container to workspace $ws9
-bindsym $mod+Shift+0 		move container to workspace $ws10
+bindsym $mod+Shift+1 			move container to workspace $ws1
+bindsym $mod+Shift+2 			move container to workspace $ws2
+bindsym $mod+Shift+3 			move container to workspace $ws3
+bindsym $mod+Shift+4 			move container to workspace $ws4
+bindsym $mod+Shift+5 			move container to workspace $ws5
+bindsym $mod+Shift+6 			move container to workspace $ws6
+bindsym $mod+Shift+7 			move container to workspace $ws7
+bindsym $mod+Shift+8 			move container to workspace $ws8
+bindsym $mod+Shift+9 			move container to workspace $ws9
+bindsym $mod+Shift+0 			move container to workspace $ws10
 
 # #------ Status Bar ------# #
 bar {
