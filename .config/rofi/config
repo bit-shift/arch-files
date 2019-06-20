@@ -1,0 +1,4 @@
+rofi.combi-modi:	window,run
+rofi.theme:			solarized
+rofi.font:			Inconsolata 18
+rofi.modi:			combi
