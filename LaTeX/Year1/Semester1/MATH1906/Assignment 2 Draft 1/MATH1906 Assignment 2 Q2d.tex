@@ -1,0 +1,9 @@
+		\item In order to prove that $G(x)$ maps the Cantor set onto the interval $[0,1]$, we must examine how $G(x)$ behaves, and how that behaviour relates to the Cantor set. From the construction and thus definition of $G(x)$, any input provided is transformed into a binary value, which determines the location of a point.
+
+		\bigbreak
+
+		If we examine the location of a point in the Cantor set as being defined by a decimal in base 3. Thus using the definition of $x = 0.a_{1x}a_{2x}a_{3x}\dots$, if $a_{nx} = 0$, this is defined as the location of the left most endpoint of the interval that is currently specified. If $a_{nx} = 2$, the same result is defined, except it is the right most endpoint of the specific interval. Both these locations define intervals and subsequently points in the Cantor set, and will do so $iff$ $a_{nx} \neq 1$. If $a_{nx} = 1$, the location is defined as the midpoint of the specific interval and thus will be removed from the Cantor set as it is iterated. Thus a point in the Cantor set can be represented by an infinite sequence of $0$s and $2$s, and a point not in the Cantor set is distinguished by the inclusion of a $1$, as one of the location defining entries, $a_{nx}$.
+
+		\bigbreak
+
+		The function $G(x)$ behaves in sync with this concept, as for some $x$ with a sequence of $0$s and $2$s, $G(x)$ returns a binary value, by construction, that uniquely defines a point in the Cabntor set. If for some $x$, there is a one in the sequence, it is broken due to the definition of $N_x$, and $G(x)$ returns a constant binary value that defines the interval that was removed from the Cantor set at that particular iteration. Thus we know that $G(x)$ maps the Cantor set to some interval. In order to determine the interval that the Cantor set is mapped to by the function $G(x)$, we must examine the endpoints that are mapped.

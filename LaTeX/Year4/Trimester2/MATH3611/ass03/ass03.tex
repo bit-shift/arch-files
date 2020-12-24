@@ -1,0 +1,215 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+% Install the required packages for the document 
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{bm}
+\usepackage{xlop}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+% Page and style settings
+%\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\newenvironment{nscentre}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\begin{document}
+\setlength{\abovedisplayskip}{8pt}{%
+\setlength{\belowdisplayskip}{8pt}{%
+
+\begin{nscentre}
+	\textbf{MATH3611: Higher Analysis}\\
+	\textbf{Assignment 2}\\
+\end{nscentre}
+
+\text{Name: Keegan Gyoery}
+\hfill
+\text{zID: z5197058}
+
+\HRule
+
+\pagenumbering{arabic}
+	\begin{enumerate}[leftmargin=*]
+		\item
+		\begin{enumerate}[label=\roman*)]
+			\item Let $\ds{f:[-1,1] \rightarrow [0,1]}$, where $\ds{f(x) = |x|}$. Extend $\ds{f}$ to $\ds{\mathbb{R}}$ by $\ds{f(x+2) = f(x)}$, $\ds{\forall x \in \mathbb{R}}$. Consider the series
+				\begin{align*}
+					g(x) & = \sum_{n=0}^{\infty}\left(\frac{3}{4}\right)^n f\left(4^nx\right).
+				\end{align*}
+				Consider the $\ds{n}$-th term of the series,
+				\begin{align*}
+					g_n(x) & = \left(\frac{3}{4}\right)^n f\left(4^nx\right) \leq \left(\frac{3}{4}\right)^n.
+				\end{align*}
+				Let $\ds{M_n = \left(\frac{3}{4}\right)^n}$. Therefore $\ds{g_n(x) \leq M_n}$, $\ds{\forall n}$. Thus,
+				\begin{align*}
+					g(x) & = \sum_{n=0}^{\infty} g_n(x) \leq \sum_{n=0}^{\infty}M_n = 4.
+				\end{align*}
+				Thus, $\ds{g_n \rightarrow g}$ uniformly on $\ds{\mathbb{R}}$. From lectures, we proved that uniform convergence of a series of functions implies the limit function is continuous. Thus, $\ds{g(x)}$ is continuous.
+
+			\item For any $\ds{x}$, we have the results
+				\begin{align*}
+					\left|f(x+h) - f(x)\right| & = h, \hspace{5mm} \forall \: 0 \leq h \leq \tfrac{1}{2}, \text{ or} \\
+					\left|f(x-h) - f(x)\right| & = h, \hspace{5mm} \forall \: 0 \leq h \leq \tfrac{1}{2}.
+				\end{align*}
+				Therefore we also have the results
+				\begin{align*}
+					\left|f(4^nx+4^nh) - f(4^nx)\right| & = 4^nh, \hspace{5mm} \forall \: 0 \leq 4^nh \leq \tfrac{1}{2}, \text{ or} \\
+					\left|f(4^nx-4^nh) - f(4^nx)\right| & = 4^nh, \hspace{5mm} \forall \: 0 \leq 4^nh \leq \tfrac{1}{2}.
+				\end{align*}
+				Fix $\ds{k \in \mathbb{N}}$, let $\ds{h_k = \tfrac{1}{2}4^{-k}}$, and let $\ds{h=h_k}$, or $\ds{h=-h_k}$. The above results may be rewritten as  
+				\begin{align*}
+					\left|f(4^nx+4^nh_k) - f(4^nx)\right| & = 4^nh_k, \hspace{5mm} \forall \: 0 \leq 4^nh_k \leq \tfrac{1}{2}, \text{ or} \\
+					\left|f(4^nx-4^nh_k) - f(4^nx)\right| & = 4^nh_k, \hspace{5mm} \forall \: 0 \leq 4^nh_k \leq \tfrac{1}{2}.
+				\end{align*}
+				Combining these two results, we have
+				\begin{align*}
+					\left|f(4^nx+4^nh) - f(4^nx)\right| & = 4^n|h|, \hspace{5mm} \forall \: 0 \leq 4^nh_k \leq \tfrac{1}{2}.
+				\end{align*}
+				Clearly, $\ds{4^n h_k = \tfrac{1}{2}4^{n-k} \geq 0}$. Furthermore, when $\ds{n \leq k}$, $\ds{4^n h_k \leq \tfrac{1}{2}}$. Thus, 
+				\begin{align*}
+					\left|f(4^nx+4^nh_k) - f(4^nx)\right| & = 4^n|h|, \text{ when } n \leq k.
+				\end{align*}
+				If $\ds{n > k}$, we have $\ds{4^n h_k = \tfrac{1}{2}4^{n-k} = 2^{2n-2k-1} = 2^{m}}$, for some $\ds{m \in \mathbb{N}}$. Therefore, \\ $\ds{f(4^nx+4^nh_k) = f(4^nx+2^m) = f(4^nx)}$. Thus, 
+				\begin{align*}
+					\left|f(4^nx+4^nh_k) - f(4^nx)\right| & = 0, \text{ when } n > k.
+				\end{align*}
+				Clearly, the result follows,
+				\begin{align*}
+					\left|f(4^n(x+h)) - f(4^nx)\right| & = 
+					\begin{cases} 
+						0 & n > k \\
+						4^n|h| \hspace{5mm} & n \leq k
+					\end{cases}.
+				\end{align*}
+
+			\item Fix $\ds{k \in \mathbb{N}}$. 
+				\begin{align*}
+					\left|\frac{g(x+h) - g(x)}{h}\right| & = \left|\frac{\sum_{n=0}^{\infty} \left(\frac{3}{4}\right)^n f(4^n(x+h)) - \sum_{n=0}^{\infty} \left(\frac{3}{4}\right)^n f(4^nx)}{h}\right| \\
+														 & = \left|\frac{\sum_{n=0}^{\infty} \left(\frac{3}{4}\right)^n \left[f(4^n(x+h)) - f(4^nx)\right]}{h}\right| \\
+														 & = \left|\frac{\sum_{n=0}^{k} \left(\frac{3}{4}\right)^n \left[f(4^n(x+h)) - f(4^nx)\right]}{h}\right| \\
+														 & \geq \left|\frac{\left|\left(\frac{3}{4}\right)^k \left[f(4^k(x+h)) - f(4^kx)\right]\right| - \left|\sum_{n=0}^{k-1} \left(\frac{3}{4}\right)^n \left[f(4^n(x+h)) - f(4^nx)\right]\right|}{h}\right| \\
+														 & \geq \left|\frac{\left|\left(\frac{3}{4}\right)^k 4^k|h|\right| - \sum_{n=0}^{k-1}\left| \left(\frac{3}{4}\right)^n \left[f(4^n(x+h)) - f(4^nx)\right]\right|}{h}\right| \\
+														 & = \left|\frac{3^k |h| - \sum_{n=0}^{k-1} \left(\frac{3}{4}\right)^n 4^n|h|}{h}\right| \\
+														 & = \left|3^k - \sum_{n=0}^{k-1} 3^n\right| \\
+														 & = \left|3^k - \left(\frac{3^k-1}{2}\right)\right| \\
+														 & = \frac{3^k+1}{2} \\
+					\therefore \left|\frac{g(x+h) - g(x)}{h}\right| & \geq \frac{3^k+1}{2}.
+				\end{align*}
+
+			\item By the definition of the derivative we have 
+				\begin{align*}
+					g^{\prime}(x) & = \lim_{h\rightarrow 0} \frac{g(x+h) - g(x)}{h} \\
+								  & = \lim_{k\rightarrow \infty} \frac{g\left(x+\tfrac{1}{2}4^{-k}\right) - g(x)}{\tfrac{1}{2}4^{-k}}.
+				\end{align*}
+				From the above inequality result, we have either 
+				\begin{align*}
+					\lim_{k\rightarrow \infty} \frac{g\left(x+\tfrac{1}{2}4^{-k}\right) - g(x)}{\tfrac{1}{2}4^{-k}} & \geq \lim_{k \rightarrow \infty} \frac{3^k+1}{2}, \text{ or} \\
+					\lim_{k\rightarrow \infty} \frac{g\left(x+\tfrac{1}{2}4^{-k}\right) - g(x)}{\tfrac{1}{2}4^{-k}} & \leq -\lim_{k \rightarrow \infty} \frac{3^k+1}{2}.
+				\end{align*}
+				As in either case the RHS diverges as $\ds{k \rightarrow \infty}$, the limit on the LHS does not exist, and thus the derivative $\ds{g^{\prime}(x)}$ does not exist, and thus $\ds{g(x)}$ is not differentiable on $\ds{\mathbb{R}}$.
+
+
+		\end{enumerate}
+		\item
+		\begin{enumerate}[label=\roman*)]
+			\item Consider the set of intervals in $\ds{\mathbb{R}}$, $\ds{S = \{(a,b]\}_{a<b \in \mathbb{R}}}$. For $\ds{S}$ to be a base for a topology $\ds{\tau}$ on $\ds{\mathbb{R}}$, $\ds{S}$ must be a subset of $\ds{\tau}$, and the following two conditions must be met:
+				\begin{align*}
+					\bullet & \hspace{5mm} \mathbb{R} = \bigcup_{B\in S} B,\\
+					\bullet & \hspace{5mm} \forall B_1,B_2 \in S, \: \forall x \in B_1 \cap B_2, \: \exists B \in S \text{ s.t. } B\subseteq B_1\cap B_2, \text{ and } x\in B.
+				\end{align*}
+				Clearly, $\ds{\mathbb{R} = \bigcup_{a<b\in \mathbb{R}}(a,b]}$. For the second condition, let $\ds{B_1,B_2 \in S}$ such that $\ds{B_1 = (a,b]}$, and $\ds{B_2 = (c,d]}$. Consider the exhaustive cases for the intersection $\ds{B_1 \cap B_2}$: 
+				\bigbreak
+				\textbf{Case 1:} $\ds{B_1 \cap B_2 \neq \emptyset}$ \\
+				Choose $\ds{B = (\max\{a,c\},\min\{b,d\}] \in S}$. Clearly, $\ds{B = B_1 \cap B_2}$, so $\ds{B \subseteq B_1 \cap B_2}$. Therefore $\ds{\forall x \in B_1 \cap B_2}$, $\ds{B \subseteq B_1 \cap B_2}$, and $\ds{x \in B}$.
+				\bigbreak
+				\textbf{Case 2:} $\ds{B_1 \cap B_2 = \emptyset}$ \\
+				This is vacuously true since there is no $\ds{x \in \emptyset}$ for which it fails the second condition.
+				\bigbreak
+			Thus, $\ds{S}$ is a base for the topology $\ds{\tau}$.
+			\item  Let some function $\ds{f:\mathbb{R} \rightarrow \mathbb{R}}$, with topology $\ds{\tau}$ on both domain and codomain. $\ds{f}$ is continuous if for every $\ds{V \in \tau}$, $\ds{f^{-1}(V) \in \tau}$.
+				\begin{enumerate}[label =\alph*)]
+					\item Define $\ds{f(x) = x^2}$. Consider the interval $\ds{(-1, 1] \in \tau}$. Thus, $\ds{f^{-1}((-1,1]) = [-1,1] \notin \tau}$. Therefore, $\ds{f(x) = x^2}$ is not continuous on $\ds{\tau}$.
+					\item Define $\ds{g(x) = x^3}$. Consider the interval $\ds{(a,b] \in \tau}$. Thus, $\ds{g^{-1}((a,b]) = \left(\sqrt[3]{a}, \sqrt[3]{b}\right] \in \tau}$. Therefore $\ds{g(x) = x^3}$ is continuous on $\ds{\tau}$.
+					\item Define $\ds{h(x) = \begin{cases} x & x \leq 1 \\ x+1 \hspace{5mm} & x > 1 \\ \end{cases}}$. Consider the exhaustive cases for the pre-image of $\ds{(a,b] \in \tau}$:
+						\bigbreak
+						\textbf{Case 1:} $\ds{1 < a < b \implies h^{-1}((a,b]) = \left(\max\{a-1,1\},\max\{b-1,1\}\right] \in \tau}$. 
+						\bigbreak
+						\textbf{Case 2:} $\ds{ a < b \leq 2 \implies h^{-1}((a,b]) = \left(\min\{a,1\},\min\{b,1\}\right] \in \tau}$. 
+						\bigbreak
+						\textbf{Case 3:} $\ds{a \leq 1 \text{ and } b > 2 \implies h^{-1}((a,b]) = (a,b-1] \in \tau}$.
+						\bigbreak
+						Therefore $\ds{h(x)}$ is continuous on $\ds{\tau}$.
+
+				\end{enumerate}
+		\end{enumerate}
+		\item
+		\begin{enumerate}[label=\roman*)]
+			\item Construct the sequence $\ds{\{x_n\}_{n=1}^{\infty}}$ defined by
+				\begin{align*}
+					x_n & = 
+					\begin{cases}
+						\frac{1}{m} \hspace{5mm} & \text{if } n = m^3 \text{ for some } m \in \mathbb{N} \\
+						0 & \text{otherwise}
+					\end{cases}.
+				\end{align*}
+				Clearly, there are infinitely many $\ds{n}$ such that $\ds{n = m^3}$, and $\ds{\tfrac{1}{k} = \left(k^3\right)^{-\tfrac{1}{3}} = n^{-\tfrac{1}{3}}}$. Thus, $\ds{x_n = n^{-\tfrac{1}{3}}}$ for infinitely many $\ds{n}$. As $\ds{\{x_n\}_{n=1}^{\infty}}$ is a subsequence of the harmonic series, it converges in $\ds{\ell^2}$.
+
+			\item Consider the sequence $\ds{\left\{n^{\frac{1}{3}}\mathbf{e}_n\right\}_{n=1}^{\infty}}$, and the sequence defined above. Examining the inner product of the two sequences, we have
+				\begin{align*}
+					\left\langle \left\{n^{\frac{1}{3}}\mathbf{e}_n\right\}_{n=1}^{\infty}, \{x_n\}_{n=1}^{\infty} \right\rangle & = \sum_{m=1}^{\infty} 1.
+				\end{align*}
+				However, taking the inner product of $\ds{\mathbf{0}}$ and the sequence defined in the previous part, we obviously get $\ds{0}$. Thus, 
+				\begin{align*}
+					\left\langle \left\{n^{\frac{1}{3}}\mathbf{e}_n\right\}_{n=1}^{\infty}, \{x_n\}_{n=1}^{\infty} \right\rangle & neq \left\langle \mathbf{0}, \{x_n\}_{n=1}^{\infty} \right\rangle. 
+				\end{align*}
+				Hence, by definition, the sequence $\ds{\left\{n^{\frac{1}{3}}\mathbf{e}_n\right\}_{n=1}^{\infty}}$ does not converge weakly to $\ds{\mathbf{0}}$.
+
+			\item Unsure of how to complete this question.
+			\item From the previous part, we have for any sequence $\ds{\mathbf{x}_i \in \ell^2}$, the distance from $\ds{\mathbf{0}}$ is at most $\ds{\epsilon \cdot k^{-\frac{1}{3}}}$. Let the sequence $\ds{\mathbf{x}_i = \{\mathbf{e}_n\}_{n=1}^{\infty}}$. Examining distances, we have 
+				\begin{align*}
+					\left|\{\mathbf{e}_n\}_{n=1}^{\infty} - \mathbf{0}\right| & < \epsilon \cdot k^{-\frac{1}{3}}\\
+					\therefore \left|\left\{n^{\frac{1}{3}}\mathbf{e}_n\right\}_{n=1}^{\infty} - \mathbf{0}\right| & < \epsilon.
+				\end{align*}
+				Thus, $\ds{\mathbf{0}}$ is in the weak closure of the set $\ds{\left\{n^{\frac{1}{3}}\mathbf{e}_n\right\}_{n\in\mathbb{Z}^+}}$.
+		\end{enumerate}
+	\end{enumerate}
+\end{document}

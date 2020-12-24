@@ -1,0 +1,651 @@
+User:  PSEUDOSTUDENT, MATHS
+Automatic Magma log submission from teaching laboratory
+Date: 19-09-13  13:18 PM
+Loading "/users/ugrad/m2068/magma/MATH2068/MagmaProcedures.txt"
+(Magma functions defined for use in MATH2068/2988)
+Loading "L:\win\magma\MATH2068\MagmaProcedures.txt"
+(Magma functions defined for use in MATH2068/2988)
+seed:  1773512263 0
+> &*{2,3,3,3,5};
+30
+> /*
+> The set {2,3,3,3,5} has exactly three elements: it is the same
+> as the set {2,3,5}. The product 2*3*5 equals 30
+> */
+> &*[2,3,3,3,5];
+270
+> /*
+> The sequence [2,3,3,3,5] has five terms and their product is 2*3*3*3*5=270
+> */
+> &+[1..10];
+55
+> /*
+> 1+2+3+4+5+6+7+8+9+10 is 55, sure enough.
+> */
+> &+[1..10 by 3];,
+22
+> /*
+> You have presumably not seen the construction [1..10 by 3] before
+> but you should be able to guess what it means, especially when
+> you see that &+[1..10 by 3] gives 22. Clearly [1..10 by 3] is the
+> sequence [1,4,7,10]. Observe that 1+4+7+10 is 22.
+> */
+> &*[1..2^18] eq Factorial(2^18);
+true
+> /*
+> In last week's tutorial we learnt that in Magma Factorial(n) gives
+> the quantity that mathematicians denote by n! -- the product of the
+> numbers from 1 to n. It took a little while for magma to compute
+> &*[1..2^18] since there are a lot of integers between 1 and 2^18 = 262144,
+> and it takes a while to multiply them together. And then magma had
+> to compute Factorial(2^18), which is just the same calculation
+> again by a different name. It is perhaps reassuring that magma got
+> the same answer both times.
+> */
+> Log(2,Factorial(2^18));
+4340408.47694972693310273952663
+> /*
+> So there are 4340409 digits in the binary representation of 262144!.
+> That is a lot, and if you accidentally got magma to print out this
+> number then I suggest that you edit your log file and delete a few
+> thousand lines.
+> */
+> Log(10,Factorial(2^18));
+1306593.14499608352216420676867
+> /*
+> So there are actually 1306594 digits in the normal base 10 representation
+> of 262144!, and at 80 or so characters per line in your log file it
+> would occupy some 16500 lines.
+> */
+> Log(2,Factorial(2^17));
+2039136.90134958376523451884022
+> /*
+> So 2039137 bits in 131072!
+> In lectures it was explained that the number of bits in n! is O(n*log(n)). So
+> the above number may be roughly the same size as 131072*log(131072).
+> */
+> 131072*Log(2,131072);
+2228224.00000000000000000000000
+> /*
+> Reasonably close ...
+> */
+> pi:=Pi(RealField());
+> exp:=Exp(1);
+> pi;
+3.14159265358979323846264338328
+> exp;
+2.71828182845904523536028747135
+> m:=2^18;
+> m;
+262144
+> /*
+> I remembered that tut7data.txt defined a number n that we need later.
+> So it is very unfortunate that I told you to define n:=2^18 here.
+> To do the later question you would then have to reload tut7data.txt
+> to get the correct value back.
+> */
+> Log(2,Sqrt(2*pi*m)*((m/exp)^m));
+4340408.47694926831270043892607
+> /*
+> Very close to the number we had obtained above (but
+> much faster to compute).
+> */
+> m:=20000;
+> for i:=1 to 9 do
+for> time x:=Factorial(m);
+for> m:=2*m;
+for> end for;
+Time: 0.016
+Time: 0.063
+Time: 0.188
+Time: 0.500
+Time: 1.547
+Time: 3.203
+Time: 8.047
+Time: 20.250
+Time: 50.859
+> /*
+> I am surprised at how fast it is. I would have expected that
+> doubling m would multiply the number of bit operations in the
+> calculation by a factor of at least three, but it seems that
+> magma is doing better than that. But it would take a very
+> close examination of the program to understand exactly
+> what is happening here. For example, magma probably uses
+> long multiplication for products of moderately large numbers
+> and then switches to a more complicated algorithm for
+> products of very large numbers.
+> */
+> time Log(2,711^16000000);
+151579291.993910644597356227677
+Time: 17.750
+> time 16000000*Log(2,711);
+151579291.993910644597356227677
+Time: 0.000
+> /*
+> The second way was clearly much better. Magma did not have to calculate
+> the enormous number 711^16000000.
+> */
+> time x:=234567^262144;
+Time: 0.266
+> time x:=Factorial(262144);
+Time: 1.031
+> 262144*Log(10,234567);
+1407783.24976359415348832091438
+> /*
+> So this number has 1.4 million decimal digits, whereas Factorial(262144)
+> has only 1.3 million. But Factorial(262144) took four times as long
+> to compute. I would have expected the difference to be more dramatic,
+> actually. So I am going to do some more experimentation.
+> */
+> time x:=1234567^262144;
+Time: 0.422
+> time x:=61234567^262144;
+Time: 0.359
+> time x:=761234567^262144;
+Time: 0.375
+> time x:=8761234567^262144;
+Time: 0.625
+> time x:=9998761234567^262144;
+Time: 0.813
+> 262144*Log(10,9998761234567);
+3407857.89606777887497397957088
+> /*
+> Now I've got 3.4 million decimal digits and it is still only taking
+> 0.8 seconds.
+> */
+> time x:=1239998761234567^262144;
+Time: 0.797
+> /*
+> I think that when the time taken is so small you cannot make
+> any reliable deductions. Except that we can say that computing
+> a large power of a large number does not really take very long.
+> */
+> s:=82349;
+> IsPrime(s);
+true
+> time 711^16000000 mod s;
+30638
+Time: 17.766
+> time Modexp(711,16000000,s);
+30638
+Time: 0.000
+> /*
+> Same answer in no time at all!
+> The command 711^16000000 mod s causes magma to first work out 711^16000000
+> (which is a hefty calculation) and then reduce the answer mod s. With the
+> Modexp command magma will apply reduction mod s to all the numbers it has
+> to compute along the way. Every time it has to multiply two numbers it will
+> reduce the answer mod s. So it will only ever have to multiply numbers less
+> than 82349, and the largest number that it will ever encounter in the
+> calculation will be less than 82349 squared (about 6500000000). This is
+> obviously much better than dealing with numbers of the size of 711^16000000.
+> */
+> a:=Random(10^1000,10^2000);
+> b:=Random(10^1000,10^2000);
+> c:=Random(10^1000,10^2000);
+> time Modexp(a,b,c);
+3334350829600576490715108051604742595285408423538006342462052940144380950868534\
+2855423760067226818260759345130787303950941018502530833134991601542785172622793\
+5751467862697067603977140761994575776761896117810835137292944039068393395127661\
+0112335980548882901754657799734959051584338446913368839663950159744626869505236\
+0682034095541756530422153570847973497463702868366863954821788078282761797124309\
+5454494872217472735065133828593695333210129940001399238611603724549870323096028\
+2424820140239196976054485087800059448989026529606852185008969226970464439623715\
+1837192401594194268003886507269840160953917002680037545276599096985083761260865\
+6895199250341975978134239345664497378820894825174874397391966463414069796272006\
+7471526308168432561828789997456220175991406007277516096944570386915919245942095\
+8159610133572317869603016502488624533568389458671656173981717598823121849164015\
+0964581388670020488668912928129636087786157210315430855357811456874743963942450\
+2177416284605023439616939128975537018889638477919690670695237965943200501653199\
+7707171593536431862028044868975800099553602362392300376959270655859995214376658\
+0916238785651269200149111302200766057431873304919166319610148381640647030909000\
+3278695165205176364211988932105517385449386727852356945675829024375075752532432\
+3577365402437739967059080225377744352035525960823055054533020007106332785384818\
+4498615740988655713198021434284220482784512180402671752721380221801740885029236\
+0735566877481253963534916271424804513887279694477742308430219547245847179496446\
+7293131926685459775164847471194005354736966548812881440934332784223104307470447\
+3267795517002813777234181448264202951357383437448532931242952133640917258290560\
+2739330650001699955950592075384048010605690467209941301580315666129545374729633\
+5409614705980854389218279080487110988074220921276360407056978712144485981840394\
+2708069263288607284581925161668075624388125885238941897990457001059207350863190\
+1432314949633332170684315702261972051699390897835000363520783661776018224150377\
+0910335709317875494271808
+Time: 2.422
+> a:=Random(10^1000,10^2000);
+> b:=Random(10^1000,10^2000);
+> c:=Random(10^1000,10^2000);
+> time Modexp(a,b,c);
+4910048136194906545261725407090429376702481896979439883655925518921852535716062\
+1297544910957887683281913726123855271598520371890354344075471935960638473951676\
+1588096885997447415629960866872128857818506936052950149578465100456842603445215\
+9006570835739881443772161942623827730297657069860307562395495407977696016242267\
+4538767262766196930056522143659882649167448797357581091520537892692710368571605\
+6051089340690663182065345479343622774979609134860891163391036997956431584556482\
+4255263444090821910182679097882326864372713064615504582512299911963095956545681\
+7088808532664850335624192227806877831028470518214469192198464973534704871130869\
+8431539474463201935750332360990171164265995137659834340994543754416117013196681\
+9463560197877575931482521203416886002284073226345450959825339044261451162098179\
+8874977291255604497962998080243250068327444384297481358327608995244689750688291\
+5311895524134904614446843391285299668387072506289803502182524492271820923998808\
+2386607126911252092235642272553146882196999711190182591849047934083131267787337\
+7133920900027005058047332421541680583796927698265761668091781925214426711657783\
+0798318580763946699887429588631224918775222171045385751868218394601722460573628\
+2340998565254027105927644528961647367801754900113622877082713501872816812908289\
+7940245134108337808438943943374730776249256011583190071473944745809013282513025\
+4134972871990980527962041386038195687612589727419593598944267096927847128559578\
+4636776380584445657697126037129224796485836199688289877987762657388224953822619\
+1280847877391462147045125301448966396380057685919639771532725620849724181224761\
+5599327897831471794735540384183316204613309857617732511470826715353698724097702\
+1260386138304815252306981547067744767604428936750285848261156446508287271937927\
+2842786131542449268150781882555352369627467263855701600066931148994160138331577\
+2800578280078834351765329037166646933448914863318912676150233489990999369792737\
+8275709711134360219205286426504160730978987639368827676662581278212487749879836\
+2291563717110687846357822
+Time: 2.406
+> r:=RandomPrime(500);
+>
+> a:=1+Random(r-2);
+> r;
+1417367492983316846492638096158964970679411098224486609722325255067413964518357\
+818002194721487396291925330795682774988932257131877557836829981589864991
+> a;
+1008060817761552975472948466617823687878454517714935942183886108998918056680001\
+637349308606275274540259500421110460172970650575073183013088012008929997
+> Modexp(a,r-1,r);
+1
+> /*
+> Fermat would be pleased! His Little Theorem is verified again.
+> */
+> r:=RandomPrime(500);
+> a:=1+Random(r-2);
+> r;
+3040218715226926201544117657119510276507158990662340939775117354102719283825393\
+422002382848790034278127217318567323495517198789764896331072512337961743
+> a;
+8033232237014994920308884927092003770181360125174810523575798981678837837867560\
+38700668859470556083656785104689304946552551245663541370352446324909323
+> Modexp(a,r-1,r);
+1
+> r:=RandomPrime(500);
+> a:=1+Random(r-2);
+> Modexp(a,r-1,r);
+1
+> /*
+> Choosing the random prime number takes a while, but Modexp is fast.
+> */
+> load "tut7data.txt";
+Loading "L:\win\magma\MATH2068\tut7data.txt"
+> n;
+6813215019593689162256262687746214707974945958333467379165669358597184887980761\
+8343190418274279775327212090210292652036830204525417804521318443519828759444837\
+0982143504999375437834407684215888301321764642337434563421519730356793623082731\
+58872339956227
+> p;
+1355912482304679377887487758346147633900373074668649435290550629802420195514276\
+486836937958029578386351546627119214396469
+> q;
+5024819159429148456474096068163953014623539596360158556228485941542641945770546\
+8645716112398542382996392421480295251767252359709783
+> n eq p*q;
+true
+> e;
+2134499462169202637474616621275592514786106030431983629053705963076175337908260\
+1340297938718954279141473021992827236171779883173059771537986069540487083916947\
+3267862908125750230713912560274026217157493130498123186175344228482990556307911\
+12277490871149
+> /*
+> Let us calculate the decryption exponent d immediately, so that
+> we will be ready to decipher the solutions that are provided for
+> the later questions>
+> */
+> d:=InverseMod(e,(p-1)*(q-1));
+> d*e mod ((p-1)*(q-1));
+1
+> /*
+> Factorization(123456789) is a sequence of pairs, where each pair consists
+> of a prime divisor of 123456789 and the exponent that tells you the highest
+> power of that prime that is a divisor of 123456789. Let's see it:
+> */
+> Factorization(123456789);
+[ <3, 2>, <3607, 1>, <3803, 1> ]
+> /*
+> OK, 123456789 is 3^2 times 3607^1 times 3803^1, and Factorization(123456789)
+> consists of the three pairs <3,2>, <3607,1> and <3803,1>.
+> If t is a pair then t[1] is the 1st component of t and t[2] is the 2nd component.
+> So if t is <3,2> then t[1]^t[2] is 3^2.
+> So [t[1]^t[2] : t in Factorization(123456789)] is the sequence [3^2,3607^1,3803^1].
+> And &*[t[1]^t[2] : t in Factorization(123456789)] is the product of the three
+> terms of this sequence -- i.e. it is just 123456789.
+> */
+> &*[t[1]^t[2] : t in Factorization(123456789)];
+123456789
+> NaiveDecoding([Modexp(m,d,n): m in encipheredphi]);
+phivalue:=&*[(t[1]-1)*t[1]^(t[2]-1) : t in Factorization(123456789)];
+phivalue eq EulerPhi(123456789);
+/*
+Please check for other numbers besides 123456789.
+*/
+>
+> /*
+> The five lines above comprise the deciphered message, i.e. the plaintext
+> corresponding to the ciphertext called encipheredphi. It gives you
+> the magma code to use to calculate Euler phi of the number 123456789
+> and check that you get the same answer as the built in Magma
+> function EulerPhi gives. So, cutting and pasting ....
+> */
+> phivalue:=&*[(t[1]-1)*t[1]^(t[2]-1) : t in Factorization(123456789)];
+> phivalue eq EulerPhi(123456789);
+true
+> /*
+> OK, it appears to work, at least for the number 123456789.
+> Let us try a few other numbers.
+> */
+> phivalue:=&*[(t[1]-1)*t[1]^(t[2]-1) : t in Factorization(81)];
+> phivalue;
+54
+> /*
+> As we saw in lectures ...
+> */
+> phivalue:=&*[(t[1]-1)*t[1]^(t[2]-1) : t in Factorization(12)];
+> phivalue;
+4
+> phivalue:=&*[(t[1]-1)*t[1]^(t[2]-1) : t in Factorization(10800)];
+> phivalue eq EulerPhi(10800);
+true
+> /*
+> It certainly works. Let us see why.
+> Since 10800 is 2^4 times 3^3 times 5^2, magma will tell us that
+> Factorization(10800) is [<2,4>,<3,3>,<5,2>]. This is a sequence
+> with three terms, each of which is an ordered pair.
+> Let t be the first term of this sequence. That is, t = <2,4>.
+> This means that t[1] (the first component of t) is 2, and t[2] (the
+> second component of t) is 4.
+> So for this value of t, (t[1]-1)*t[1]^(t[2]-1) is equal to
+> 1*2^3.
+> Now let t be the second term in Factorization(10800), i.e. t = <3,3>.
+> Then t[1] and t[2] are both 3, and (t[1]-1)*t[1]^(t[2]-1) equals
+> 2*3^2.
+> Finally, let t be the third term of Factorization(10800), i.e. t = <5,2>.
+> Then t[1] is 5 and t[2] is 2; so (t[1]-1)*t[1]^(t[2]-1) is equal to
+> 4*5^1.
+> So the sequence [(t[1]-1)*t[1]^(t[2]-1) : t in Factorization(10800)]
+> is [1*2^3, 2*3^2, 4*5^1], that is, [8, 18, 20].
+> The three terms are EulerPhi(2^4), EulerPhi(3^3) and EulerPhi(5^2).
+> And &*[8, 18, 20] = 8*18*20 = EulerPhi(2^4)*EulerPhi(3^3)*EulerPhi(5^2),
+> which equals EulerPhi(2^4*3^3*5^2) since EulerPhi is multiplicative.
+> */
+> NaiveDecoding([Modexp(m,d,n): m in encipheredtau]);
+tauvalue:=&*[t[2]+1 : t in Factorization(123456789)];
+tauvalue eq NumberOfDivisors(123456789);
+> /*
+> All right, let us test this one.
+> */
+> tauvalue:=&*[t[2]+1 : t in Factorization(123456789)];
+> tauvalue;
+12
+> NumberOfDivisors(123456789);
+12
+> tauvalue:=&*[t[2]+1 : t in Factorization(19)];
+> tauvalue;
+2
+> NumberOfDivisors(19);
+2
+> NumberOfDivisors(32);
+6
+> &*[t[2]+1 : t in Factorization(32)];
+6
+> N:=Random(10^20);
+> NumberOfDivisors(N);
+384
+> Factorization(N);
+[ <2, 2>, <3, 1>, <13, 1>, <17, 1>, <127, 1>, <571, 1>, <947, 1>, <334983991, 1> ]
+> [t[2]+1 : t in Factorization(N)];
+[ 3, 2, 2, 2, 2, 2, 2, 2 ]
+> &*[t[2]+1 : t in Factorization(N)];
+384
+> /*
+> In the preceding example, the random number magma chose for us
+> was 61008083226325771068, whose factorization turns out to
+> be 2^3 * 3^1 * 13^1 * 17^1 * 127^ 1 * 571^1 * 947^1 * 334983991^1.
+> The number of divisors does not depend on the particular primes that
+> occur in the factorization: all that matters is their multiplicities.
+> To calculate the number of divisors you add on 1 to the exponents
+> appearing in the factorization (giving the numbers  3,2,2,2,2,2,2,2
+> in this case) and find the product of the resulting sequence of numbers.
+> /*
+> NaiveDecoding([Modexp(m,d,n): m in encipheredsigma]);
+sigmavalue:=&*[(t[1]^(t[2]+1)-1)/(t[1]-1) : t in Factorization(987654321)];
+sigmavalue eq SumOfDivisors(987654321);
+> /*
+> Testing this, by copying and pasting the above two lines
+> back into magma ...
+> */
+> sigmavalue:=&*[(t[1]^(t[2]+1)-1)/(t[1]-1) : t in Factorization(987654321)];
+> sigmavalue eq SumOfDivisors(987654321);
+true
+> &*[(t[1]^(t[2]+1)-1)/(t[1]-1) : t in Factorization(10)];
+18
+> SumOfDivisors(10);
+18
+> SumOfDivisors(28);
+56
+> &*[(t[1]^(t[2]+1)-1)/(t[1]-1) : t in Factorization(28)];
+56
+> SumOfDivisors(2^3*3^2*7^4);
+546195
+> [(t[1]^(t[2]+1)-1)/(t[1]-1) : t in Factorization(2^3*3^2*7^4)];
+[ 15, 13, 2801 ]
+> &*[15,13,2801];
+546195
+> /*
+> The sum of the divisors of p^n is (p^(n+1)-1)/(p-1).
+> So the sum of the divisors of 2^3 is (2^4-1)/(2-1) = 15/1 =15,
+> the sum of the divisors of 3^2 is (3^3-1)/(3-1) = 26/2 = 13
+> and the sum of the divisors of 7^4 is (7^5-1)/(7-1) = 16806/6 = 2801.
+> By the multiplicative property of the sum of divisors function the
+> sum of the divisors of 2^3 * 3^2 * 7^4 must be 15*13*2801.
+> */
+> NaiveDecoding([Modexp(m,d,n): m in encipheredmu]);
+muvalue:=&*[-1*Floor(1/t[2]): t in Factorization(11111111111111)];
+muvalue eq MoebiusMu(11111111111111);
+/*
+If x is a real number, Floor(x) is the integer part of x, which
+means the largest integer less than or equal to x.
+*/
+>
+> /*
+> OK, let us try this one ...
+> */
+> muvalue:=&*[-1*Floor(1/t[2]): t in Factorization(11111111111111)];
+> muvalue eq MoebiusMu(11111111111111);
+true
+> Factorization(11111111111111);
+[ <11, 1>, <239, 1>, <4649, 1>, <909091, 1> ]
+> [-1*Floor(1/t[2]): t in Factorization(11111111111111)];
+[ -1, -1, -1, -1 ]
+> &*[-1*Floor(1/t[2]): t in Factorization(11111111111111)];
+1
+> MoebiusMu(11111111111111);
+1
+> /*
+> The value of the Moebius function does not depend on the
+> particular prime factors of n, but only on their multiplicities
+> (and how many prime factors there are). Specifically, if any of
+> the multiplicities are greater than 1 then MoebiusMu(n) will be 0,
+> while if all the multiplicities are 1 then MoebiusMu(n) will
+> be 1 if the number of prime factors is even, -1 if it is odd.
+> So if n is 11^1 * 239^1 * 4649^1 * 909091^1 then MoebiusMu(n)
+> will be 1 -- four prime factors, all with multiplicity 1.
+> Thus MoebiusMu(n) equals &*[-1,-1,-1,-1] for this n.
+> In general we need a sequence with one term for each of the
+> distinct primes in the factorization of n, and each of the terms
+> should be either -1 or 0 depending on whether the multiplicity
+> of the corresponding prime in the factorization of n is 1 or
+> more than 1. A convenient way to do this is to observe that
+> Floor(1/n) is 1 if n equals 1 and 0 if n is greater than 1.
+> */
+> [-1*Floor(1/t[2]): t in Factorization(2*3^3*5^2*7*11*13)];
+[ -1, 0, 0, -1, -1, -1 ]
+> &*[-1*Floor(1/t[2]): t in Factorization(2*3^3*5^2*7*11*13)];
+0
+> MoebiusMu(2*3^3*5^2*7*11*13);
+0
+> NaiveDecoding([Modexp(m,d,n): m in mersenne]);
+Mersenne numbers!
+> /*
+> In base 2 notation, 2^n-1 is a string of n 1's.
+> For example, 2^5-1 = 2^4 + 2^3 + 2^2 + 2^1 + 2^0; so in base 2
+> it is written as 11111.
+> Despite this, my answer was wrong. A Mersenne number is a number of the
+> form 2^p - 1 WHERE p IS PRIME. A base 2 repunit is any number of the
+> form 2^n - 1.
+> Now a repunit, in base 2 or in any other base, can only be prime if the
+> number of digits is prime. So the only base 2 repunits that could
+> conceivably be prime are the Mersenne numbers. And the base 2 repunits
+> that are prime are exactly the Mersenne primes.
+> */
+> NaiveDecoding([Modexp(m,d,n): m in base3repunits]);
+r:=1;
+N:=0;
+i:=1;
+while N lt 7 do
+  r:=3*r+1;
+  i:=i+1;
+  if IsPrime(i) then
+    if IsProbablyPrime(r) then
+      N:=N+1;
+      "The base 3 repunit whose base 3 representation has",i,"digits is prime. Here it
+is:";
+      r;
+    end if;
+  end if;
+end while;
+> /*
+> Copying and pasting, to test this code ...
+> */
+> r:=1;
+> N:=0;
+> i:=1;
+> while N lt 7 do
+while>   r:=3*r+1;
+while>   i:=i+1;
+while>   if IsPrime(i) then
+while|if>     if IsProbablyPrime(r) then
+while|if|if>       N:=N+1;
+while|if|if>       "The base 3 repunit whose base 3 representation has",i,"digits is pri\
+me. Here it
+while|if|if> is:";
+while|if|if>       r;
+while|if|if>     end if;
+while|if>   end if;
+while> end while;
+The base 3 repunit whose base 3 representation has 3 digits is prime. Here it
+is:
+13
+The base 3 repunit whose base 3 representation has 7 digits is prime. Here it
+is:
+1093
+The base 3 repunit whose base 3 representation has 13 digits is prime. Here it
+is:
+797161
+The base 3 repunit whose base 3 representation has 71 digits is prime. Here it
+is:
+3754733257489862401973357979128773
+The base 3 repunit whose base 3 representation has 103 digits is prime. Here it
+is:
+6957596529882152968992225251835887181478451547013
+The base 3 repunit whose base 3 representation has 541 digits is prime. Here it
+is:
+66308439547181843673169185149975450335546563790474079717256778420962351634164023840051028\
+85034630084417368521192210000003011029079481693984080146458143761582514901416066165280887\
+59064995410612765793960501606910585490086339893058591064091241255832207903808201
+The base 3 repunit whose base 3 representation has 1091 digits is prime. Here it
+is:
+17308478920290520561214081551955057184506477986582966242130879304040855943078281750655654\
+65877316796954389481170318472442241905892654388323782720732502237578480086224100629849484\
+07004907976010144446727825839493126338747635054243392729455736743049576570977803426383945\
+19597261348848875851233994488843015578069982923778120456915440994423370412559032927349367\
+94717885690746152667525928929590798694320443870675144426955467776443389120197038417789600\
+1619872662271102048498620697981918654970696571273721026402375168960030732173
+> NaiveDecoding([Modexp(m,d,n): m in amicable]);
+n:=1;
+f:=0;
+while f lt 50 do
+  n:=n+1;
+  m:=SumOfDivisors(n)-n;
+  if m ne n then
+    if SumOfDivisors(m) eq n+m then
+      f:=f+1;
+      "amicable pair found:",m,n;
+    end if;
+  end if;
+end while;
+> /*
+> Copying and pasting to test this ...
+> */
+> n:=1;
+> f:=0;
+> while f lt 50 do
+while>   n:=n+1;
+while>   m:=SumOfDivisors(n)-n;
+while>   if m ne n then
+while|if>     if SumOfDivisors(m) eq n+m then
+while|if|if>       f:=f+1;
+while|if|if>       "amicable pair found:",m,n;
+while|if|if>     end if;
+while|if>   end if;
+while> end while;
+amicable pair found: 284 220
+amicable pair found: 220 284
+amicable pair found: 1210 1184
+amicable pair found: 1184 1210
+amicable pair found: 2924 2620
+amicable pair found: 2620 2924
+amicable pair found: 5564 5020
+amicable pair found: 5020 5564
+amicable pair found: 6368 6232
+amicable pair found: 6232 6368
+amicable pair found: 10856 10744
+amicable pair found: 10744 10856
+amicable pair found: 14595 12285
+amicable pair found: 12285 14595
+amicable pair found: 18416 17296
+amicable pair found: 17296 18416
+amicable pair found: 76084 63020
+amicable pair found: 66992 66928
+amicable pair found: 66928 66992
+amicable pair found: 71145 67095
+amicable pair found: 87633 69615
+amicable pair found: 67095 71145
+amicable pair found: 63020 76084
+amicable pair found: 88730 79750
+amicable pair found: 69615 87633
+amicable pair found: 79750 88730
+amicable pair found: 124155 100485
+amicable pair found: 139815 122265
+amicable pair found: 123152 122368
+amicable pair found: 122368 123152
+amicable pair found: 100485 124155
+amicable pair found: 122265 139815
+amicable pair found: 153176 141664
+amicable pair found: 168730 142310
+amicable pair found: 141664 153176
+amicable pair found: 142310 168730
+amicable pair found: 176336 171856
+amicable pair found: 180848 176272
+amicable pair found: 171856 176336
+amicable pair found: 176272 180848
+amicable pair found: 203432 185368
+amicable pair found: 202444 196724
+amicable pair found: 196724 202444
+amicable pair found: 185368 203432
+amicable pair found: 365084 280540
+amicable pair found: 389924 308620
+amicable pair found: 430402 319550
+amicable pair found: 399592 356408
+amicable pair found: 280540 365084
+amicable pair found: 308620 389924
+> /*
+> I had to do "while f lt 50" rather than "while f lt 25" because
+> my method was going to find each amicable pair twice.
+> */

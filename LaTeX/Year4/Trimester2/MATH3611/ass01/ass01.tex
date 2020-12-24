@@ -1,0 +1,97 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+% Install the required packages for the document 
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{bm}
+\usepackage{xlop}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+% Page and style settings
+%\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\newenvironment{nscentre}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\begin{document}
+\setlength{\abovedisplayskip}{8pt}{%
+\setlength{\belowdisplayskip}{8pt}{%
+
+\begin{nscentre}
+	\textbf{MATH3611: Higher Analysis}\\
+	\textbf{Assignment 1}\\
+\end{nscentre}
+
+\text{Name: Keegan Gyoery}
+\hfill
+\text{zID: z5197058}
+
+\HRule
+
+\pagenumbering{arabic}
+	\begin{enumerate}[leftmargin=*]
+		\item \textbf{Claim:} The set $\ds{S}$ of all eventually constant sequences of natural numbers is countable.
+			\bigbreak
+			\textbf{Proof:} Define an eventually constant sequence of natural numbers as $\ds{\{x_k\}_{k=0}^{\infty}}$, where $\ds{x_k \in \mathbb{N}}$, and $\ds{x_k = x_{k+1} \: \forall k \geq K \in \mathbb{N}}$. Now, let $\ds{S_n \subset S}$ be the set of all eventually constant sequences of natural numbers that become constant once $\ds{K = n}$. Thus, $\ds{S_n = \{\{x_k\}_{k=0}^{\infty} \:|\: x_k = x_{k+1} \: \forall k \geq n \}}$. Consider the sequence $\ds{s \in S_n}$ where $\ds{s = (s_0,s_1,s_2,\dots,s_{n-1},s_n,s_n,\dots)}$, and consider the function $\ds{f:S_n \rightarrow \mathbb{N}^{n+1}}$ defined by
+			\begin{align*}
+				f(s) & = (s_0,s_1,s_2,\dots,s_{n-1},s_n).
+			\end{align*}
+			To see that $\ds{f}$ is injective, consider $\ds{s,t \in S}$ such that $\ds{s = (s_0,s_1,s_2,\dots,s_{l-1},s_l,s_l,\dots)}$, and $\ds{t = (t_0,t_1,t_2,\dots,t_{m-1},t_m,t_m,\dots)}$. Suppose that $\ds{f(s) = f(t)}$. Clearly, the sequences must become eventually constant at $\ds{l = m = n}$. Furthermore, $\ds{s_i = t_i}$, $\ds{\forall i \in \mathbb{N}}$ and $\ds{i \leq n}$. Thus $\ds{s=t}$, and so $\ds{f:S_n \xhookrightarrow{} \mathbb{N}^{n+1}}$.
+			\bigbreak
+			In lectures it was shown inductively that the set $\ds{\mathbb{N}^{n+1}}$ was countable. Thus, $\ds{|S_n| \leq |\mathbb{N}^{n+1}| \leq |\mathbb{N}|}$. The set $\ds{S}$ is then simply the union of all countable sets $\ds{S_n}$, where $\ds{n \in \mathbb{N}}$, that is
+			\begin{align*}
+				S & = \bigcup_{n \in \mathbb{N}} S_n.
+			\end{align*}
+			From lectures, a countable union of countable sets is countable, and so $\ds{S}$ is countable.
+		\bigbreak
+		\item \textbf{Claim:} The set $\ds{T}$ of all sequences of rational numbers which converge to $\ds{3}$ is uncountable.
+			\bigbreak
+			\textbf{Proof:} Define the set $\ds{B}$ of infinite binary strings, $\ds{B = \{b_1b_2\dots b_i\dots \:|\: b_i \in \{0,1\}\}}$. Furthermore, define $\ds{T_b = \Big\{\Big\{3+\frac{b_i}{i}\Big\}_{i=1}^{\infty} \:\Big|\: b_i \in \{0,1\}, i \in \mathbb{Z}^{+}\Big\}}$, which is a proper subset of $\ds{T}$ as $\ds{\lim_{i \to \infty} \left(3 + \frac{b_i}{i}\right) = 3}$, and is right hand convergence. Thus $\ds{T_b \subset T}$. Consider the infinite binary string $\ds{b \in B}$ where $\ds{b = b_1b_2 \dots b_i \dots}$, and consider the function $\ds{f:B \rightarrow T_b}$ defined by
+			\begin{align*}
+				f(b) & = \Big\{3+\frac{b_i}{i}\Big\}_{i=1}^{\infty}.
+			\end{align*}
+			To see that $\ds{f}$ is injective, consider $\ds{c,d \in T_b}$ such that $\ds{c = c_1c_2 \dots c_i \dots}$, and $\ds{d = d_1d_2 \dots d_i \dots}$. Suppose that $\ds{f(c) = f(d)}$. Thus $\ds{3+\nicefrac{c_i}{i} = 3 + \nicefrac{d_i}{i}}$ and so $\ds{c_i = d_i \:\forall i \in \mathbb{N}}$. Thus $\ds{c = d}$, and so $\ds{f:B \xhookrightarrow{} T_b}$.
+			\bigbreak
+			In lectures, we proved that there exists a bijection $\ds{g:B \rightarrow \mathbb{P}(\mathbb{N})}$. Thus, $\ds{|B| = |\mathbb{P}(\mathbb{N})|}$. Furthermore, we also proved that $\ds{|\mathbb{P}(\mathbb{N})| > |\mathbb{N}|}$, and thus $\ds{B}$ is uncountable. As we have the injection $\ds{f:B \xhookrightarrow{} T_b}$, clearly $\ds{|B| \leq |T_b|}$. Finally, as $\ds{T_b \subset T}$, we have $\ds{|T_b| < |T|}$. Hence, $\ds{|T| > |\mathbb{N}|}$ and so the set $\ds{T}$ is uncountable.
+			 
+	\end{enumerate}
+\end{document}

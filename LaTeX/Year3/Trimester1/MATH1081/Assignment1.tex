@@ -1,0 +1,162 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+% Install the required packages for the document 
+\usepackage{envmath}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage[mathcal]{euscript}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{subdepth}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{harpoon}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{asyalign}
+\usepackage{physics}
+\usepackage{xhfill}
+\usepackage{accents}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{csquotes}
+\usepackage{wrapfig}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{minipage-marginpar}
+\usepackage{calc}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows}
+
+% Page and style settings
+\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\begin{document}
+
+\begin{center}
+	\LARGE \textbf{MATH1081 - Assignment 1}
+	\vspace{2mm}
+	\hrule width \hsize \kern 1mm \hrule width \hsize height 2pt 
+\end{center}
+
+\pagenumbering{arabic}
+
+\begin{enumerate}[leftmargin=*]
+	\item Prove that $\ds{\{15m-7:m \in \mathbb{Z}\}}$ is a proper subset of $\ds{\{5n+3:n \in \mathbb{Z}\}}$.
+
+		\textbf{Proof:} We are required to prove that $\ds{\{15m-7:m \in \mathbb{Z}\}}$ is a proper subset of $\ds{\{5n+3:n \in \mathbb{Z}\}}$. Let $\ds{S = \{15m-7:m \in \mathbb{Z}\}}$, and $\ds{T = \{5n+3:n \in \mathbb{Z}\}}$. Consider the set $\ds{S}$, which can be manipulated as follows.
+		\begin{align*}
+			S & = \{15m-7:m \in \mathbb{Z}\} \\
+			  & = \{15m-10+3:m \in \mathbb{Z}\} \\
+			S & = \{5(3m-2)+3:m \in \mathbb{Z}\} \\
+		\end{align*}
+		Let $\ds{x \in S}$. Because $\ds{m}$ is an integer, so too is $\ds{3m-2}$. Thus, let $\ds{n = 3m-2}$. Therefore, $\ds{x \in T}$, because $\ds{x \in S}$. Therefore $\ds{S \subseteq T}$.
+		\bigbreak
+		Assume that $\ds{T \subseteq S}$. By definition, every element of $\ds{T}$ must also be an element of $\ds{S}$. Select $\ds{n = 0}$. This gives the element $\ds{y = 3}$, where $\ds{y \in T}$, clearly. In order for $\ds{y \in S}$, we must satisfy $\ds{15m-7 = 3}$, where $\ds{m\in \mathbb{Z}}$. Therefore, $\ds{m = \frac{4}{5}}$, which is clearly not an integer. Thus, $\ds{y \notin S}$, and hence our assumption that $\ds{T \subseteq S}$ is incorrect. Hence, $\ds{T \nsubseteq S}$, and so $\ds{S \neq T}$.
+		\bigbreak
+		A proper subset of a set $\ds{A}$, is a set $\ds{B}$, where $\ds{B \subseteq A}$, and $\ds{A \neq B}$. Thus, as $\ds{S \subseteq T}$, and $\ds{S \neq T}$, then clearly, $\ds{S}$ is a proper subset of $\ds{T}$.\\
+		\qed
+
+	\item A relation $\ds{\preceq}$ is defined on $\ds{\mathbb{R}}$ by 
+		\begin{align*}
+			x & \preceq y \text{ if and only if } y=x+k \text{ for some integer } k \geq 0.
+		\end{align*}
+		Prove that $\ds{\preceq}$ is a partial order.
+
+		\textbf{Proof:} We are required to prove that a relation $\ds{\preceq}$ defined on $\ds{\mathbb{R}}$ by $\ds{x \preceq y}$ if and only if $\ds{y = x+k}$, for some integer $\ds{k \geq 0}$. In order to prove $\ds{\preceq}$ is a partial order, we must prove that $\ds{\preceq}$ is reflexive, anti-symmetric, and transitive. As a result, the proof will be completed by proving these properties hold for $\ds{\preceq}$. Select $\ds{k=0}$. Therefore $\ds{k \in \mathbb{Z}}$ and $\ds{k \geq 0}$.
+		\bigbreak
+		\underline{Reflexive:} A partial order defined on a set $\ds{S}$ is reflexive if $\ds{\forall x \in S}$, $\ds{x \preceq x}$. Let $\ds{a \in \mathbb{R}}$. For all real numbers, $\ds{a=a}$, which can be written as $\ds{a=a+0}$, which is also equivalent to $\ds{a=a+k}$, based on the selection of $\ds{k}$. Thus, $\ds{a \preceq a}$. Therefore, $\ds{\preceq}$ is reflexive.
+		\bigbreak
+		\underline{Anti-Symmetric:} A partial order defined on a set $\ds{S}$ is anti-symmetric if $\ds{\forall x,y \in S}$, $\ds{x \preceq y}$ and $\ds{y \preceq x}$ implies $\ds{x=y}$. Let $\ds{a,b \in \mathbb{R}}$, $\ds{a \preceq b}$, and $\ds{b \preceq a}$. We can rewrite these statements as $\ds{b=a+k}$, and $\ds{a=b+k}$. Based on the selection of $\ds{k}$, the previous statements become $\ds{b=a}$, and $\ds{a=b}$. Thus, $\ds{a \preceq b}$ and $\ds{b \preceq a}$ implies $\ds{a=b}$. Therefore, $\ds{\preceq}$ is anti-symmetric.
+		\bigbreak
+		\underline{Transitive:} A partial order defined on a set $\ds{S}$ is transitive if $\ds{\forall x,y,z \in S}$, $\ds{x \preceq y}$, and $\ds{y \preceq z}$ implies $\ds{x \preceq z}$. Let $\ds{a,b,c \in \mathbb{R}}$, $\ds{a \preceq b}$, and $\ds{b \preceq c}$. These statements can be written as $\ds{b=a+k}$, and $\ds{c=b+k}$. With the selection of $\ds{k}$, $\ds{b=a}$, and $\ds{c=b}$. Therefore $\ds{c=a}$, which can be written as $\ds{c=a+k}$, from the selection of $\ds{k}$. Thus, $\ds{a \preceq c}$, and so $\ds{a \preceq b}$, and $\ds{b \preceq c}$ imply $\ds{a \preceq c}$. Therefore, $\ds{\preceq}$ is transitive.
+		\bigbreak
+		As $\ds{\preceq}$ is reflexive, anti-symmetric, and transitive, $\ds{\preceq}$ is a partial order.\qed
+
+	\pagebreak
+
+	\item Prove that for an integer $\ds{k \geq 0}$ 
+		\begin{align*}
+			(4(k+1)-1)5^{k+1}-(4k-1)5^k & = (16k+16)5^k.
+		\end{align*}
+		Hence simplify 
+		\begin{align*}
+			\sum^{n-1}_{k=0} (k+1)5^k.
+		\end{align*}
+		
+		\textbf{Proof:} Let $\ds{k \in \mathbb{Z}}$, such that $\ds{k \geq 0}$. Let $\ds{P(k)}$ be the predicate 
+		\begin{align*}
+			(4(k+1)-1)5^{k+1}-(4k-1)5^k & = (16k+16)5^k.
+		\end{align*}
+		Consider the LHS of $\ds{P(k)}$.
+		\begin{align*}
+			\text{LHS} & = (4(k+1)-1)5^{k+1}-(4k-1)5^k\\
+					   & = 5^k \big[(4(k+1)-1)5-(4k-1)\big]\\
+					   & = 5^k \big[(4k+4-1)5-4k-1\big]\\
+					   & = 5^k \big[20k+15-4k+1\big]\\
+					   & = 5^k \big[16k+16\big]\\
+					   & = (16k+16)5^k\\
+					   & = \text{RHS of } P(k)\\
+		\end{align*}
+		This clearly verifies that $\ds{P(k)}$ is true $\ds{\forall k \in \mathbb{Z}}$ such that $\ds{k \geq 0}$.
+		\bigbreak
+		Consider again the predicate $\ds{P(k)}$, which we have previously proved true, and thus we shall label it now the statement $\ds{S(k)}$, after swapping the LHS and RHS. 
+		\begin{align*}
+			\sum_{k=0}^{n-1}\Big[(16k+16)5^k\Big] & = \sum_{k=0}^{n-1} \Big[(4(k+1)-1)5^{k+1}-(4k-1)5^k\Big] \hspace{5mm} \text{[Summing from $\ds{0}$ to $\ds{n-1}$]}\\
+			16\sum_{k=0}^{n-1}\Big[(k+1)5^k\Big] & = \sum_{k=0}^{n-1} \Big[(4(k+1)-1)5^{k+1}-(4k-1)5^k\Big]\\
+			\text{RHS} & = \sum_{k=0}^{n-1} \Big[(4(k+1)-1)5^{k+1}-(4k-1)5^k\Big]\\
+					   & = \sum_{k=0}^{n-1} \Big[(4(k+1)-1)5^{k+1}\Big] - \sum_{k=0}^{n-1}\Big[(4k-1)5^k\Big] \hspace{5mm} \text{[Splitting the summation by term]}\\
+					   & = \sum_{k=1}^{n} \Big[(4k-1)5^{k}\Big] - \sum_{k=0}^{n-1}\Big[(4k-1)5^k\Big] \hspace{5mm} \text{[Changing the summation index]}\\
+					   & = (4n-1)5^{n} + \sum_{k=1}^{n-1} \Big[(4k-1)5^{k}\Big] - \sum_{k=1}^{n-1}\Big[(4k-1)5^k\Big] - (4(0)-1)5^{0}\\
+					   & = (4n-1)5^{n} + 1\\
+		\end{align*}
+		The statement $\ds{S(k)}$ now becomes $\ds{16\sum_{k=0}^{n-1}\Big[(k+1)5^k\Big] = (4n-1)5^{n} + 1}$, and thus the simplification of $\ds{\sum^{n-1}_{k=0} (k+1)5^k}$ is 
+		\begin{align*}
+			\sum_{k=0}^{n-1}\Big[(k+1)5^k\Big] & = \frac{1}{16}\Big[(4n-1)5^{n} + 1\Big]\\
+		\end{align*}
+		This completes the proof.\qed
+
+
+
+
+\end{enumerate}
+
+\end{document}

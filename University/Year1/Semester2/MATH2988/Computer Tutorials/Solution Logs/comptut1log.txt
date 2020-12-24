@@ -1,0 +1,210 @@
+User: (PSEUDOSTUDENT, MATHS)
+Automatic Magma log submission from teaching laboratory
+Date: 29-07-13  08:55 AM
+Loading "/users/ugrad/m2068/magma/MATH2068/MagmaProcedures.txt"
+(Magma functions defined for use in MATH2068/2988)
+Log file: Mon29Jul.log
+Loading "L:\win\magma\MATH2068\MagmaProcedures.txt"
+(Magma functions defined for use in MATH2068/2988)
+>/*
+> This is a magma log file with comments added.
+> A slash followed by an asterisk indicates the start of a comment,
+> asterisk followed by slash is the end of the comment.
+>*/
+> 1+1;
+2
+> print 4*3, 10+20, 5^3;
+12 30 125
+> 4*3, 10+20, 5^3;
+12 30 125
+> Factorial(50);
+30414093201713378043612608166064768844377641568960512000000000000
+> x1:=Factorial(50);
+> x1;
+30414093201713378043612608166064768844377641568960512000000000000
+> Log(100);
+4.60517018598809136803598290937
+> loyal:="God save the Queen";
+> loyal[3],loyal[5..6],loyal[14..18];
+d sa Queen
+> Factorization(60);
+[ <2, 2>, <3, 1>, <5, 1> ]
+> /* This tells us the prime factors of 60 and the number of
+> times each of them occurs: 2 occurs twice, 3 and 5 occur
+> once each. That is, 60 is 2 squared times 3 times 5. */
+> 2^2*3*5;
+60
+> Factorization(768);
+[ <2, 8>, <3, 1> ]
+> 2^8*3;
+768
+> Factorization(100000020000001);
+[ <11, 2>, <909091, 2> ]
+> 11*909091;
+10000001
+> 10000001^2;
+100000020000001
+> Factorization(2^11-1);
+[ <23, 1>, <89, 1> ]
+> 23*89;
+2047
+> 2^11;
+2048
+> Factorization(2^(2^5)+1);
+[ <641, 1>, <6700417, 1> ]
+> 641*6700417;
+4294967297
+> 2^5;
+32
+> 2^32;
+4294967296
+> GCD(1152,1296);
+144
+> 1152/144;
+8
+> 1296/144;
+9
+> a:=Random(100000000);
+> b:=Random(100000000);
+> a;
+77665346
+> b;
+40788561
+> GCD(a,b);
+11
+>/* 
+> You would only expect two randomly chosen numbers to both
+> have a factor of 11 about once in every 121 attempts.
+>*/
+> a:=Random(100000000);
+> b:=Random(100000000);
+> a;
+23019101
+> b;
+82142062
+> GCD(a,b);
+1
+>/* 
+> That is more like what one would expect!
+>*/
+> a:=Random(100000000);
+> b:=Random(100000000);
+> a;
+10271036
+> b;
+98858680
+> GCD(a,b);
+4
+>/*
+> I guess that today I'm just lucky. 
+>*/
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> GCD(a,b);
+1
+>/*
+> I am not going to print out the numbers a and b. Since
+> they have probably got 10000 digits each they would take
+> up a lot of space just to write them down. But notice how
+> quickly Magma computed the GCD. The algorithm for finding
+> the greatest common divisor of two numbers is Very Fast.
+>*/
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> GCD(a,b);
+1
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> GCD(a,b);
+1
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> GCD(a,b);
+1
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> GCD(a,b);
+1
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> GCD(a,b);
+1
+>/*
+> My luck has run out, it seems!
+> It is actually possible to get Magma to tell you how
+> long a computation takes. You just precede the command
+> by the word "time".
+>*/
+> time GCD(a,b);
+1
+Time: 0.000
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> time GCD(a,b);
+1
+Time: 0.016
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> time GCD(a,b);
+1
+Time: 0.000
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> time GCD(a,b);
+1
+Time: 0.000
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> time GCD(a,b);
+1
+Time: 0.000
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> time GCD(a,b);
+4
+Time: 0.000
+>/*
+> At last, a gcd that is greater than 1!
+>*/
+> MATH2068GCD:=function(a,b)
+function> while b ne 0 do
+function|while> r:= a mod b;
+function|while> a:=b;
+function|while> b:=r;
+function|while> end while;
+function> return a;
+function> end function;
+> time MATH2068GCD(a,b);
+4
+Time: 0.109
+>/*
+> The inbuilt GCD function is essentially a program written
+> in the C programming language and is part of the "kernel" of
+> magma. Our own function MATH2068GCD, defined above, is much
+> slower since it is not part of the kernel. But it is still
+> very fast, considering that a and b above are 10000 digit
+> integers. The Euclidean Algorithm is very efficient.
+>*/
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> time MATH2068GCD(a,b);
+1
+Time: 0.094
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> time MATH2068GCD(a,b);
+2
+Time: 0.109
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> time MATH2068GCD(a,b);
+1
+Time: 0.109
+> a:=Random(10^10000);
+> b:=Random(10^10000);
+> time MATH2068GCD(a,b);
+1434
+Time: 0.109
+> exit;
+
+Total time: 1.046 seconds, Total memory usage: 9.20MB

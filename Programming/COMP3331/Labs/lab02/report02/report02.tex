@@ -1,0 +1,53 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{caption}
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\usepackage{enumitem}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\begin{document}
+
+\begin{center}
+	\LARGE \textbf{Lab 02 Report}
+	\HRule\\
+\end{center}
+
+\pagenumbering{arabic}
+
+%\noindent \code{Lines in this font represent terminal commands and terminal output.}\\
+%Lines beginning with \code{\$} are the terminal commands that were run.\\
+%Lines in this font are the answers to the questions.
+
+\section{EXERCISE 3}
+\begin{enumerate}[leftmargin=*]
+	\item The status code returned to the client browser from the server is 200, and the phrase returned is OK.
+	\item The HTML file that the browser is retrieving from the server was last modified on Tuesday the 23rd of September, 2003 at 05:29:00 GMT. This information is stored in the Last Modified field. The response also contains a Date header, with the date and time of Tuesday the 23rd of September, 2003 at 05:29:50 GMT, 50 seconds later than the Last Modified time. This header gives the date and time that the HTTP Response originated. This is refers to the date and time of the HTTP response, not when the actual web page was modified, which is referred to be the Last Modified header.
+	\item The connection between the server and the client browser is persistent. This can be inferred from the Connection header, with the information \code{Keep-Alive\textbackslash{r}\textbackslash{n}}.
+	\item 73 bytes of information are being sent by the server to the client browser, which is shown in the Content Length header.
+	\item The date contained in the HTTP Response Packet is the following HTML.\\
+		\code{<html>\textbackslash{n}\\
+			Congratulations. You've downloaded the file lab2-1.html!\textbackslash{n}\\
+		</html>\textbackslash{n}\\}
+\end{enumerate}
+
+\section{EXERCISE 4}
+\begin{enumerate}[leftmargin=*]
+	\item There is not If Modified Since header in the first HTTP GET Request from the browser to the server.
+	\item The Last Modified header in the response indicates the web page was last modified on Tuesday the 23rd of September, 2003 at 05:35:50 GMT.
+	\item There are If Modified Since and If None Match header in the second HTTP GET Request. The If Modified Since header contains the date and time Tuesday the 23rd of September, 2003 at 05:35:00 GMT. The If None Match contains the string \code{"1bfef-173-8f4ae900"}.
+	\item The HTTP status code returned in the second response from the server is 304 and the phrase is Not Modified. The server did not explicitly return the contents of this web page or HTML file, as it had done so already in the first response. As the second response included the If Modified Since header, the server checks if the webpage has been modified since the time provided in the second HTTP GET Request. If the web page has not been modified, which in this case it has not, the server instructs the client to use the If None Match string, which contain the ETag of the HTML File, provided by the server in the first response, to allow the client to get the web page from te cache, rather than using the server to get the web page.
+	\item The value of the ETag in the 2nd response is \code{"1bfef-172-8f4ae900"}. This is the same as the ETag value in the first response. This has not changed because the web page has not been modified, and so has not been updated to a different memory location in the cache. The same value means that the client can access the version placed in the cache from the initial response, as the page has not changed.
+\end{enumerate}
+\end{document}

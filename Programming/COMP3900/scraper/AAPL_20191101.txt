@@ -1,0 +1,2 @@
+<ticker>,<per>,<date>,<open>,<high>,<low>,<close>,<vol>
+AAPL,D,20191101,249.54,255.93,249.16,255.82,37781300

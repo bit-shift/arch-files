@@ -1,0 +1,397 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper]{article}
+
+% Install the required packages for the document 
+\usepackage{envmath}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage[mathcal]{euscript}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{subdepth}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{harpoon}
+\usepackage[title]{appendix}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{asyalign}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{xhfill}
+\usepackage{accents}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{csquotes}
+\usepackage{wrapfig}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{minipage-marginpar}
+\usepackage{calc}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows}
+
+% Page and style settings
+\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+
+% Begin the text of the document
+\begin{document}
+
+\newlength{\strutheight}
+\settoheight{\strutheight}{\strut}
+
+% Begin the Title Page
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+\textsc{\LARGE University of New South Wales}\\[1.5cm] % Name of your university/college
+\textsc{\Large MATH 2221}\\[0.5cm] % Major heading such as course name
+\textsc{\large Higher Theory and Applications of Differential Equations}\\[0.5cm] % Minor heading such as course title
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Assignment 2}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+
+
+\begin{center} \large
+% Your name
+\end{center}
+
+
+\vspace{4cm}
+
+{\today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+\pagenumbering{arabic}
+
+\begin{enumerate}
+	\item Consider the following ODEs
+	\begin{align*}
+		\frac{du}{dx} & = |u| \:, x\in\mathbb{R} \dots (1) \text{ and }
+		\frac{dv}{dt} = v^{1/2} \:, t\in [0,\infty] \dots (2)\\
+	\end{align*}
+	\begin{enumerate}
+		\item Show that these permit solutions of the form $\ds{u = Ae^x}$ and $\ds{v = Bt^2}$ respectively.
+		\bigbreak 
+		Let $\ds{u = Ae^x}$, then, considering $\ds{(1)}$,
+		\begin{align*}
+			\text{LHS} & = \frac{du}{dx} = Ae^x\\
+			\text{RHS} & = |u| = |A|e^x \hspace{5mm} \text{as } e^x > 0,\: \forall x\in\mathbb{R}\\
+		\end{align*}
+		Thus, $\ds{(1)}$ permits solutions of the form $\ds{u}$ for $\ds{A\geq0}$.
+		\bigbreak
+		Let $\ds{v = Bt^2}$, then, considering $\ds{(2)}$,
+		\begin{align*}
+			\text{LHS} = \frac{dv}{dt} & = 2Bt\\
+			\text{RHS} = v^{1/2} & = \sqrt{B}|t|\\
+			& = \sqrt{B}t \hspace{5mm} \text{as } t\in[0,\infty]\\
+		\end{align*}
+		Thus, $\ds{(2)}$ permits solutions of the form $\ds{v}$, when $\ds{2B = \sqrt{B}}$, that is, $\ds{B = 0}$ or $\ds{B = \frac{1}{4}}$.
+		\bigbreak
+
+		\item Solve these for the cases $\ds{u(0) = 0}$ and $\ds{v(0) = 0}$.
+		\bigbreak
+		Considering $\ds{(1)}$ and $\ds{u(0) = 0}$, we require $\ds{Ae^0 = 0}$, that is, $\ds{A=0}$. So the solution is $\ds{u = 0}$.
+		\bigbreak
+		Considering $\ds{(2)}$ and $\ds{v(0) = 0}$, we require $\ds{B(0)^2 = 0}$, which is satisfied $\ds{\forall B\in\mathbb{R}}$. So the solutions are $\ds{v = 0}$ and $\ds{v = \frac{1}{4}t^2}$.
+		\bigbreak
+
+		\item Is the solution unique in either case? Explain your answer.
+		\bigbreak
+		Considering the solution to $\ds{(1)}$ and $\ds{u(0) = 0}$, we get $\ds{u=0}$ as the only satisfactory solution, and thus it is unique.
+		\bigbreak
+		Considering the solution to $\ds{(2)}$ and $\ds{v(0) = 0}$, we get $\ds{v=0}$ and $\ds{v = \frac{1}{4}t^2}$ as the satisfactory solutions, and as there is more than one satisfactory solution, the solution is not unique.
+
+	\end{enumerate}
+
+	\pagebreak
+	\item Consider the function
+	\begin{align*}
+		f(x) & = 1-x \text{ for } 0<x<1\\
+	\end{align*}
+	\begin{enumerate}
+		\item Find both the Fourier Sine and Fourier–Bessel series describing $\ds{f}$.
+		\bigbreak
+		To find the Fourier Sine series for $\ds{f}$, $\ds{f}$ must first be an odd function. Thus, we define $\ds{g}$,
+		\begin{align*}
+			g(x) & = 
+			\begin{cases}
+				f(x) \hspace{5mm} & 0<x<1\\
+				-f(-x) \hspace{5mm} & -1<x\leq 0\\
+			\end{cases}\\
+			& = 
+			\begin{cases}
+				1-x \hspace{5mm} & 0<x<1\\
+				-1-x \hspace{5mm} & -1<x\leq 0\\
+			\end{cases}\\
+		\end{align*}
+		where $\ds{g}$ is an odd function (the odd extension of $\ds{f}$), on $\ds{-1<x<1}$. As a result, $\ds{g}$ admits a Fourier series of the form $\ds{\sum^{\infty}_{n=1}B_n\sin\left(\frac{n\pi x}{L}\right)}$. Thus, using the formulas for Fourier coeffecients, for functions of $\ds{2L}$-periodicity, with $\ds{L=1}$,
+		\begin{align*}
+			B_n & = \frac{2}{L}\int^{L}_{0}g(x)\sin\left(\frac{n\pi x}{L}\right)dx\\
+			& = \frac{2}{1}\int^{1}_{0}g(x)\sin\left(\frac{n\pi x}{1}\right)dx\\
+			& = 2\int^{1}_{0}(1-x)\sin\left(n\pi x\right)dx\\
+			& = 2\left[(1-x)\left(\frac{-1}{n\pi}\cos(n\pi x) \right)\bigg|^1_0 - \int^{1}_{0}\frac{\cos\left(n\pi x\right)}{n\pi}dx\right]\\
+			& = 2\left[(1-x)\left(\frac{-1}{n\pi}\cos(n\pi x) \right)\bigg|^1_0 - \frac{1}{n^2\pi^2}\sin\left(n\pi x\right)\bigg|^1_0\right]\\
+			& = 2\left[\frac{1}{n\pi} - 0\right]\\
+			& = \frac{2}{n\pi}\\
+			\therefore g(x) & = \sum^{\infty}_{n=1}\frac{2}{n\pi}\sin\left(n\pi x\right)\\
+			\therefore f(x) & = \sum^{\infty}_{n=1}\frac{2}{n\pi}\sin\left(n\pi x\right)\\
+		\end{align*}
+		as $\ds{f(x) = g(x)}$ on the interval $\ds{0<x<1}$.
+
+		\pagebreak
+
+		Now, we determine the Fourier Bessel series for $\ds{f}$ using the general Fourier Bessel form, $\ds{\sum^{\infty}_{n=1}A_nJ_\nu(k_nx)}$. Firstly, the interval of definition is $\ds{0<x<1}$, and thus $\ds{l = 1}$. Secondly, $\ds{k_n}$ is defined as the $\ds{n}$-th solution to $\ds{J_{\nu}(k_n)=0}$. Lastly, to uniformly fit the Fourier Bessel series to the function $\ds{f = 1-x}$, we require, at $\ds{x=0}$, the Fourier Bessel series to be equal to 1, as $\ds{f(0) = 1}$. Therefore, $\ds{\nu = 0}$ is the only $\ds{\nu}$ that satisifies the restriction. Thus, the general Fourier Bessel form used is instead $\ds{\sum^{\infty}_{n=1}A_nJ_0(k_nx)}$. Using the formula for Fourier Bessel coefficients to derive $\ds{A_n}$,
+		\begin{align*}
+			A_n & = \frac{2}{l^2J_{\nu+1}(k_nl)^2}\int^{l}_{0}f(x)J_{\nu}(k_nx)xdx\\
+			& = \frac{2}{J_{1}(k_n)^2}\int^{1}_{0}x(1-x)J_{0}(k_nx)dx\\
+			& = \frac{2}{J_{1}(k_n)^2}\left[\int^{1}_{0}xJ_{0}(k_nx)dx - \int^{1}_{0}x^2J_{0}(k_nx)dx\right]\\
+			& = \frac{2}{J_{1}(k_n)^2}\left[\frac{1}{k_n}\int^{1}_{0}(k_nx)J_{0}(k_nx)dx - \frac{1}{k_n}\int^{1}_{0}x(k_nx)J_{0}(k_nx)dx\right]\\
+			& = \frac{2}{J_{1}(k_n)^2}\left[\frac{1}{k_n}(k_nx)J_{1}(k_nx) \Big|^1_0 - \left(\frac{x}{k_n}(k_nx)J_1(k_nx) \Big|^1_0 - \frac{1}{k_n}\int^{1}_{0}(k_nx)J_{1}(k_nx)dx\right)\right]\\
+			& = \frac{2}{J_{1}(k_n)^2}\left[xJ_{1}(k_nx) \Big|^1_0 - \left(x^2J_1(k_nx) \Big|^1_0 - \int^{1}_{0}xJ_{1}(k_nx)dx\right)\right]\\
+			& = \frac{2}{J_{1}(k_n)^2}\left[J_{1}(k_n) - J_1(k_n) + \int^{1}_{0}xJ_{1}(k_nx)dx\right]\\
+			& = \frac{2}{J_{1}(k_n)^2}\left[\int^{1}_{0}xJ_{1}(k_nx)dx\right]\\
+			& = \frac{2}{J_{1}(k_n)^2}\left[\int^{1}_{0}x\sum^{\infty}_{m=0} \frac{(-1)^m}{m!\Gamma(m+1+1)}\left(\frac{k_nx}{2}\right)^{2m+1} dx\right]\\
+			& = \frac{2}{J_{1}(k_n)^2}\left[\int^{1}_{0}\sum^{\infty}_{m=0} \frac{(-1)^m}{m!(m+1)!}\left(\frac{k_n}{2}\right)^{2m+1}x^{2m+2} dx\right]\\
+			& = \frac{2}{J_{1}(k_n)^2}\left[\sum^{\infty}_{m=0}\int^{1}_{0} \frac{(-1)^m}{m!(m+1)!}\left(\frac{k_n}{2}\right)^{2m+1}x^{2m+2} dx\right]\\
+			& = \frac{2}{J_{1}(k_n)^2}\left[\sum^{\infty}_{m=0} \frac{(-1)^m}{m!(m+1)!}\left(\frac{k_n}{2}\right)^{2m+1}\int^{1}_{0}x^{2m+2} dx\right]\\
+			& = \frac{2}{J_{1}(k_n)^2}\left[\sum^{\infty}_{m=0} \frac{(-1)^m}{m!(m+1)!}\left(\frac{k_n}{2}\right)^{2m+1}\left(\frac{x^{2m+3}}{2m+3} \right)\Bigg|^1_0 \right]\\
+			& = \frac{2}{J_{1}(k_n)^2}\sum^{\infty}_{m=0} \frac{(-1)^m}{m!(m+1)!}\left(\frac{1}{2m+3} \right)\left(\frac{k_n}{2}\right)^{2m+1}\\
+		\end{align*}
+		we get $\ds{f(x) = \sum^{\infty}_{n=1}A_nJ_0(k_nx)}$, where $\ds{A_n}$ is given by the above calculations.
+
+		\pagebreak
+
+		\item Which has the smallest mean square error when the first 3 terms of each series are used?
+		\bigbreak
+		To answer this question, the formula $\ds{\norm{e_n}^2 = \sum^{\infty}_{n=N+1}A_n^2\norm{\phi_n}^2}$ will be used. 
+		\bigbreak
+		Considering now the Fourier Sine series for $\ds{f}$, where $\ds{\phi_n = \sin{n\pi x}}$, and $\ds{\norm{\phi_n}^2 = \frac{1}{2}}$. The mean square error for the first three terms of the Fourier Sine series is then as follows.
+		\begin{align*}
+			\norm{e_n}^2 & = \sum^{\infty}_{n=N+1}A_n^2\norm{\phi_n}^2\\
+			& = \sum^{\infty}_{n=3+1}\left(\frac{2}{n\pi}\right)^2\cdot\frac{1}{2}\\
+			& = \frac{2}{\pi^2}\sum^{\infty}_{n=4}\frac{1}{n^2}\\
+			& = \frac{2}{\pi^2}\left[\sum^{\infty}_{n=1}\frac{1}{n^2} - \sum^{3}_{n=1}\frac{1}{n^2}\right]\\
+			& = \frac{2}{\pi^2}\left[\frac{\pi^2}{6} - \left(1+\frac{1}{4}+\frac{1}{9}\right)\right]\\
+			& = \frac{1}{3} - \frac{2}{\pi^2}\left(1+\frac{1}{4}+\frac{1}{9}\right)\\
+			& \approx 0.0575\\
+		\end{align*}
+		\bigbreak
+		Considering now the Fourier Bessel series for $\ds{f}$, where $\ds{\phi_n = J_0{k_n x}}$, and $\ds{\norm{\phi_n}^2 = J_1(k_n)^2}$. From WolphramAlpha, we get $\ds{k_1 \approx 2.4048}$, $\ds{k_2 \approx 5.5201}$, and $\ds{k_3 \approx 8.6531}$. From WolframAlpha, we get $\ds{A_1 \approx 0.943296057}$, $\ds{A_2 \approx 0.189572523}$, and $\ds{A_3 \approx 0.229550582}$.
+
+		The mean square error for the first three terms of the Fourier Bessel series is then as follows.
+		\begin{align*}
+			\norm{e_n}^2 & = \sum^{\infty}_{n=N+1}A_n^2\norm{\phi_n}^2\\
+			& = \norm{f}^2 - \sum^{N}_{n=1}A_n^2\norm{\phi_n}^2\\
+			& = \int^1_0(1-x)^2dx - \sum^{N}_{n=1}\left(\frac{\langle f,\phi_n \rangle}{\norm{\phi_n}^2} \right)^2\norm{\phi_n}^2\\
+			\therefore \norm{e_3}^2 & = -\frac{(1-x)^3}{3}\bigg|^1_0 - \sum^{3}_{n=1}\frac{\langle f,\phi_n \rangle^2}{\norm{\phi_n}^2}\\
+			& = \frac{1}{3} - 2\left(0.0239820615 + 0.004160952 + 0.003883353 \right)\\
+			& \approx 0.2693\\
+		\end{align*}
+
+		\pagebreak
+
+		\item In either case, as each additional term, $\ds{n}$, is added and as $\ds{n \rightarrow \infty}$, can a point $\ds{0 < a_n < 1}$ always be found such that the series $\ds{Sf}$ differs from $\ds{f}$ by more than 1/2 (i.e. $\ds{|Sf(a_n) - f(a_n)| > 1/2}$)? Explain your answer.
+		\bigbreak
+		Consider first the Fourier Sine series for $\ds{f}$. Set up the sequence $\ds{=\frac{1}{N}}$, which will be used as we take $\ds{N\rightarrow\infty}$. As a result, the Fourier Sine series can be written as $\ds{\sum^{N}_{n=1}\frac{2}{n\pi}\sin\left(\frac{n\pi}{N}\right)}$. 
+		\begin{align*}
+			L_1 & = \lim_{N\rightarrow\infty}{\sum^{N}_{n=1}\frac{2}{n\pi}\sin\left(\frac{n\pi}{N}\right)}\\
+			& = \lim_{N\rightarrow\infty}{\sum^{N}_{n=1}\frac{2N}{n\pi N}\sin\left(\frac{n\pi}{N}\right)}\\
+			& = \lim_{N\rightarrow\infty}{\frac{2}{N}\sum^{N}_{n=1}\frac{N}{n\pi}\sin\left(\frac{n\pi}{N}\right)}\\
+			& = \lim_{N\rightarrow\infty}{\frac{2}{N}\sum^{N}_{n=1}\frac{\sin\left(\frac{n\pi}{N}\right)}{\frac{n\pi}{N}}}\\
+			& = \lim_{N\rightarrow\infty}{\frac{2}{N}\sum^{N}_{n=1}1}\\
+			& = \lim_{N\rightarrow\infty}{\frac{2}{N}N}\\
+			& = \lim_{N\rightarrow\infty}{2}\\
+			\therefore L_1 & = 2 \hspace{5mm} \text{when } \frac{n}{N} \notin \mathbb{Z}\\
+			\therefore L_1 & = 0 \hspace{5mm} \text{when } \frac{n}{N} \in \mathbb{Z}\\
+		\end{align*}
+		Applying the same sequence to $\ds{f=1-x}$ we get the following result.
+		\begin{align*}
+			L_2 & = \lim_{N\rightarrow\infty}{1-\frac{1}{N}}\\
+			& = 1-0\\
+			\therefore L_2 & = 1\\
+		\end{align*}
+		Consider now $\ds{a_n \in (0,1)}$ such that $\ds{|a_n - 0| < \delta}$, for $\ds{\delta > 0}$. As $\ds{\delta}$ approaches 0, $\ds{a_n}$ also approaches 0, and is not an integer, as it can never reach 0 as a consequence of the strict inequalities establishing the domain of $\ds{a_n}$. As a result, $\ds{Sf_n(a_n)\rightarrow2}$, and thus $\ds{|Sf_n(a_n) - f(a_n)| = |2 - 1| > 1/2}$. This confirms that such an $\ds{a_n}$ exists to satisfy the constraints.
+		\bigbreak 
+		Consider now the Fourier Bessel series for $\ds{f}$. Due to the selection of $\ds{\nu = 0}$, the Fourier Bessel series uniformly converges to $\ds{f}$ for all $\ds{x}$ and for all $\ds{n \geq N}$. By the uniform convergence theorem,
+		\begin{align*}
+			|Sf(x) - f(x)| < \epsilon \hspace{5mm} 0<x<1\\
+		\end{align*} 
+		select $\ds{\epsilon > 0}$, then for some positive integer $\ds{M}$, for all $\ds{n>M}$ we get,
+		\begin{align*}
+			|Sf(x) - f(x)| < \frac{1}{2} \hspace{5mm} 0<x<1\\
+		\end{align*} 
+		which suggests there is not an $\ds{a_n}$ that exists such that $\ds{|Sf(a_n) -f(a_n)| > 1/2}$, whenever $\ds{n>M}$, but not for all $\ds{n}$.
+	\end{enumerate}
+
+	\pagebreak
+	\item You are working in collaboration with glaciologists who are storing ice cores. The cores are long and thin and perfectly insulated save a small amount of heating at a rate $\ds{\alpha}$ at one end. The glaciologist hope to balance this warming with cooling at a rate $\ds{\beta}$ at the other end. You have determined that the ice core obeys the following boundary value problem
+	\begin{align*}
+		u_t - u_{xx} = 0\dots(*)\:,\:u_x(0) = \beta\:,\:u_x(l) = \alpha\\
+	\end{align*}
+	where $\ds{u}$ is temperature, $\ds{t}$ is time and $\ds{l}$ is the length of the core.\\
+	\bigbreak
+	For this question, the method of separation of variables will need to be used, as such, the solution $\ds{u(x,t) = X(x)T(t)}$. Therefore, the above conditions can be rewritten as 
+	\begin{align*}
+		u_t & = u_{xx}\\
+		\therefore XT^{\prime} & = TX^{\prime\prime}\\
+		\therefore \frac{T^{\prime}}{T} & = \frac{X^{\prime\prime}}{X}\dots (**)\\
+		u_x(0) & = \beta \iff TX^{\prime}(0) = \beta\\
+		u_x(l) & = \alpha \iff TX^{\prime}(l) = \alpha\\
+	\end{align*}
+	\begin{enumerate}
+		\item What should $\ds{\beta}$ be such that the ice core’s temperature remains stable $\ds{(u_t = 0)}$?
+		\bigbreak
+		If $\ds{u_t = 0}$, then $\ds{XT^{\prime} = 0}$, and thus $\ds{T = C}$, for $\ds{C}$ constant.\\
+		Further, $\ds{u_t - u_{xx} = 0}$ becomes $\ds{u_{xx} = 0}$.\\
+		Therefore, $\ds{TX^{\prime\prime} = 0}$, and thus, $\ds{X = Ax + B}$, for $\ds{A,\:B}$ constants.\\
+		Therefore, $\ds{u = X(x)T(t) = (Ax+B)C \dots(1)}$.\\
+		Applying the boundary conditions to $\ds{(1)}$, from $\ds{u_x(0) = TX^{\prime}(0) = CX^{\prime}(0) = \beta}$, we get $\ds{\beta = A}$.\\
+		From $\ds{u_x(l) = TX^{\prime}(l) = CX^{\prime}(l) = \alpha}$, we get $\ds{\alpha = A}$.\\ 
+		As a result, $\ds{\beta = \alpha}$ in order to keep the temperature of the ice core stable, that is, the rate of heating should equal the rate of cooling.
+		\bigbreak
+
+		\item Assuming $\ds{\alpha = 1}$, $\ds{l = 10}$ and the average temperature of the core is -15, what is the solution for $\ds{u}$ in the stable case?
+		\bigbreak
+		To find the solution for $\ds{u = (Ax+B)C}$ for the average temperature of the core as -15, firstly we must apply any given conditions. As $\ds{\alpha = A = 1}$, $\ds{u = (x+B)C}$. Furthermore, with $\ds{u_x(0) = 1}$, we get $\ds{C = 1}$. Thus, $\ds{u = x+B}$. These results are also a consequence of the stable temperature condition. Now, using the simple average value integral formula,\\ 
+		$\ds{u_{\text{avg}}(x,t) = \frac{1}{b-a} \int^b_au(x,t)dx}$ we get,
+		\begin{align*}
+			f_{\text{avg}}(x) & = \frac{1}{b-a} \int^b_af(x)dx\\
+			& = \frac{1}{10-0} \int^{10}_0(x+B)dx\\
+			\therefore -15 & = \frac{1}{10} \int^{10}_0(x+B)dx\\
+			-150 & = \left[\frac{x^2}{2} + Bx\right]\Bigg|^{10}_0\\
+			& = \left[\frac{100}{2} + 10B - 0\right]\\
+			\therefore 10B & = -200\\
+			\therefore B & = -20\\
+		\end{align*}
+		In the stable case, $\ds{u = x-20}$.
+		\bigbreak
+
+		\item If the cooling mechanism were to fail $\ds{(\beta = 0)}$ how long would it take before the ice core started to melt (i.e. when would $\ds{u}$ rise above 0 at any point)?
+		\bigbreak
+		Firstly, to arrive at the solution, we need to solve equation $\ds{(*)}$. Using the separation of variables method and equation $\ds{(**)}$, we start with $\ds{\frac{T^{\prime}}{T} = \frac{X^{\prime\prime}}{X}}$, which becomes $\ds{\frac{T^{\prime}}{T} = -\lambda = \frac{X^{\prime\prime}}{X}}$, and can be broken into $\ds{\frac{T^{\prime}}{T} = -\lambda \dots(1*)}$ and $\ds{\frac{X^{\prime\prime}}{X} = -\lambda \dots(2*)}$, for $\ds{\lambda \geq 0}$.
+		\bigbreak
+		In the following equations, solutions will be of the form $\ds{Ce^{kx}}$ or $\ds{Ce^{kt}}$. This provides the justification for the use of the characteristic polynomial. Considering first equation $\ds{(1*)}$, 
+		\begin{align*}
+			\frac{T^{\prime}}{T} & = -\lambda\\
+			T^{\prime} + \lambda T & = 0\\
+			k + \lambda & = 0 \hspace{5mm} \text{considering the characteristic polynomial}\\
+			k & = -\lambda\\
+			\therefore T(t) & = Ae^{-\lambda t}\\
+		\end{align*}
+		Considering now equation $\ds{(2*)}$. Set $\ds{\lambda = w^2}$. Further, from the boundary conditions, $\ds{u_x(0) = 0}$, so $\ds{X^{\prime}(0) = 0}$. Also, $\ds{u_x(10) = \alpha = 1}$, so $\ds{X^{\prime}(10) = 1}$, as $\ds{T(t) = C = 1}$. Consider a solution of the form $\ds{u = U + V}$. $\ds{U}$ solves the inhomogeneous boundary problem, $\ds{u_t-u_{xx} = 0}$, $\ds{u_x(0) = 0}$, and $\ds{u_x(l) = \alpha}$. $\ds{V}$ solves the homogeneous boundary value problem, $\ds{u_t-u_{xx} = 0}$, $\ds{u_x(0) = 0}$, and $\ds{u_x(l) = 0}$. 
+		\bigbreak
+		In order to solve this equation, 3 cases must be considered; $\ds{\lambda > 0}$, $\ds{\lambda = 0}$, and $\ds{\lambda < 0}$. Considering the first case of the homogeneous problem, $\ds{\lambda > 0}$, 
+		\begin{align*}
+			\frac{X^{\prime\prime}}{X} & = -w^2\\
+			X^{\prime\prime} + w^2X & = 0\\
+			k^2 + w^2 & = 0 \hspace{5mm} \text{considering the characteristic polynomial}\\
+			\therefore k & = \pm iw\\
+			X(x) & = C_1e^{iwx} + C_2e^{-iwx}\\
+			\therefore X(x) & = D_1\cos(wx) + D_2\sin(wx) \hspace{5mm} \text{using the complex trigonometric identities}\\
+			X^{\prime}(x) & = -wD_1\sin(wx) + wD_2\cos(wx)\\
+			\therefore 0 & = wD_2 \implies D_2 = 0 \hspace{5mm} \text{from } X^{\prime}(0) = 0\\
+			\therefore X(x) & = D_1\cos(wx)\\
+			\therefore 0 & = -wD_1\sin(10w)\hspace{5mm} \text{from } X^{\prime}(10) = 0\\
+			\therefore 10w & = n\pi \hspace{5mm} n\in\mathbb{Z}\\
+			\therefore w & = \frac{n\pi}{10} \hspace{5mm} n\in\mathbb{Z}\\
+			\therefore X(x) & = D_1\cos\left(\frac{n\pi x}{10}x\right)\\
+		\end{align*}
+		Considering the case $\ds{\lambda = 0}$, 
+		\begin{align*}
+			\frac{X^{\prime\prime}}{X} & = 0\\
+			X^{\prime\prime} & = 0\\
+			\therefore X(x) & = Ax+B\\
+			\therefore 0 & = A \hspace{5mm} \text{from } X^{\prime}(0) = 0\\
+			\therefore X(x) & = B\\
+		\end{align*}
+		Considering the case $\ds{\lambda < 0}$,
+		\begin{align*}
+			\frac{X^{\prime\prime}}{X} & = w^2\\
+			X^{\prime\prime} - w^2X & = 0\\
+			k^2 - w^2 & = 0 \hspace{5mm} \text{considering the characteristic polynomial}\\
+			\therefore k & = \pm w\\
+			X(x) & = C_1e^{wx} + C_2e^{-wx}\\
+			\therefore X(x) & = D_1\cosh(wx) + D_2\sinh(wx) \hspace{5mm} \text{using the complex hyperbolic trigonometric identities}\\
+			X^{\prime}(x) & = wD_1\sinh(wx) + wD_2\cosh(wx)\\
+			\therefore 0 & = wD_2 \implies D_2 = 0 \hspace{5mm} \text{from } X^{\prime}(0) = 0\\
+			\therefore X(x) & = D_1\cosh(wx)\\
+			\therefore 0 & = wD_1\sinh(10w) \hspace{5mm} \text{from } X^{\prime}(10) = 0\\
+			\therefore D_1 & = 0 \hspace{5mm} \text{as } w>0 \implies sinh(10w)>0\\
+			\therefore X(x) & = 0\\
+		\end{align*}
+		By definition, the homogeneous solution $\ds{V = \sum^{\infty}_{n=1} V_n}$, where $\ds{V_n(x,t) = X_n(x)T_n(t)}$.\\
+		Using the results for the three cases on $\ds{\lambda}$, $\ds{V_n(x,t) = \left[0 + B +  D_n\cos\left(\frac{n\pi x}{10}x\right)\right]e^{-\left(\frac{n\pi}{10}\right)^2 t}}$.\\ 
+		Thus, $\ds{V(x,t) = \frac{D_0}{2} + \sum^{\infty}_{n=1}D_n\cos\left(\frac{n\pi x}{10}\right)e^{-\left(\frac{n\pi}{10}\right)^2 t}}$\\
+		From lectures, $\ds{U}$ is given by $\ds{U = \frac{\alpha}{l}\left(t+\frac{x^2}{2}\right) = \frac{1}{10}\left(t+\frac{x^2}{2}\right)}$.\\ 
+		From this, $\ds{u(x,t) = U+V = \frac{1}{10}\left(t+\frac{x^2}{2}\right) + \frac{D_0}{2} +  \sum^{\infty}_{n=1}D_n\cos\left(\frac{n\pi x}{10}\right)e^{-\left(\frac{n\pi}{10}\right)^2 t}}$.\\
+		Applying the initial condition $\ds{u(x,0) = x-20}$, we get the result,
+		\begin{align*}
+			x - \frac{x^2}{20} - 20 = \frac{D_0}{2} + \sum^{\infty}_{n=1}D_n\cos\left(\frac{n\pi x}{10}\right)\\
+		\end{align*}
+
+		\pagebreak
+
+		Treating this as a Fourier Cosine series for the function $\ds{f(x) = x - \frac{x^2}{20} - 20}$, we solve for the coefficients using the appropriate formulas.
+		\begin{align*}
+			D_0 & = \frac{2}{10}\int^{10}_0\left(x - \frac{x^2}{20} - 20\right)dx\\
+			& = \frac{1}{5}\left(\frac{x^2}{2} - \frac{x^3}{60} - 20x\right)\Bigg|^{10}_0\\
+			& = -\frac{100}{3}\\
+			D_n & = \frac{2}{10}\int^{10}_0\left(x - \frac{x^2}{20} - 20\right)\cos\left(\frac{n\pi x}{10}\right)dx\\
+			& = \frac{1}{5}\left[\left(x - \frac{x^2}{20} - 20\right)\frac{10}{n\pi}\sin\left(\frac{n\pi x}{10}\right) \Bigg|^{10}_0 - \frac{10}{n\pi}\int^{10}_0\left(1 - \frac{x}{10}\right)\sin\left(\frac{n\pi x}{10}\right)dx \right]\\
+			& = -\frac{1}{5}\left[\frac{10}{n\pi}\int^{10}_0\left(1 - \frac{x}{10}\right)\sin\left(\frac{n\pi x}{10}\right)dx \right]\\
+			& = -\frac{2}{n\pi}\left[\frac{10}{n\pi}\left(\frac{x}{10} - 1\right)\cos\left(\frac{n\pi x}{10}\right) \Bigg|^{10}_{0} + \frac{1}{n\pi}\int^{10}_0\cos\left(\frac{n\pi x}{10}\right)dx \right]\\
+			& = -\frac{20}{n^2\pi^2}\\
+		\end{align*}
+		Therefore $\ds{u(x,t) = \frac{1}{10}\left(t+\frac{x^2}{2}\right) - \frac{100}{6} - \sum^{\infty}_{n=1}\frac{20}{n^2\pi^2}\cos\left(\frac{n\pi x}{10}\right)e^{-\left(\frac{n\pi}{10}\right)^2 t}}$.
+		\bigbreak
+		Now in order to solve for when the temperature is first greater than 0, we look at the warmest part of the rod, that is $\ds{x=10}$, where the heating is occuring, and solve for $\ds{t}$ such that $\ds{u(10,t) > 0}$. Using desmos to graph the function,
+		\begin{align*}
+		u(10,t) = \frac{1}{10}\left(t + 50\right) - \frac{100}{6} - \sum^{\infty}_{n=1}\frac{20}{n^2\pi^2}(-1)^ne^{-\left(\frac{n\pi}{10}\right)^2 t}\\
+		\end{align*}
+		we get $\ds{t = \frac{350}{3}}$, as the time for when the temperature of one part of the rod rises above 0, that is, the rod begins to melt.
+
+	\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

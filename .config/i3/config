@@ -2,7 +2,7 @@
 # Email: keegan.gyoery@gmail.com
 
 # #------ Unused Keys ------# #
-# b+ d f\+ m\+ q u\+ w\+
+# b+ f\+ m\+ q u\+ w\+
 # [\+ ]\+ /+ <\+ >\+ [F7,F9-F12]+ [F1-F3,F5-F6]\+ ;\+ '\+ 
 # arrow+ pgup+ pgdown+ capslock+ ctrl+ alt+ 
 # home+ end+ insert+
@@ -51,7 +51,7 @@ for_window [title="float_*"] move position center
 for_window [title="float_*"] move up 250px
 
 # #------ External Scripts ------# #
-exec_always --no-startup-id feh --bg-scale ~/.config/wallpapers/sterling.jpg
+exec_always --no-startup-id feh --bg-scale ~/.config/wallpapers/milkyway.jpg
 exec_always --no-startup-id dunst
 # exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
 # exec_always --no-startup-id compton --config /dev/null -I 0.04 -O 0.04 -D 10 -f
@@ -62,6 +62,7 @@ bindsym $mod+Return				exec $term
 bindsym $mod+w					exec --no-startup-id $BROWSER
 bindsym $mod+s					exec --no-startup-id spotify
 bindsym $mod+Shift+q 			kill
+bindsym $mod+d					exec --no-startup-id rofi -show combi
 
 bindsym $mod+Shift+c 			reload
 bindsym $mod+Shift+r 			restart
@@ -73,6 +74,7 @@ bindsym	$mod+Shift+n			exec --no-startup-id $netrefresh
 bindsym $mod+Shift+z			exec --no-startup-id betterlockscreen -l -t "keegan@rogue"
 bindsym $mod+Shift+backslash	exec --no-startup-id betterlockscreen -l -t "keegan@rogue" & sleep 0.5 && $hibernate
 
+bindsym $mod+b					exec $term -e nmtui
 bindsym $mod+r					exec $term -hold -e bash -c "ranger && bash"
 bindsym $mod+e					exec $term -hold -e bash -c "neofetch && bash" 
 bindsym $mod+n					exec $term -hold -e bash -c "newsboat -C ~/.config/newsboat/config && bash"
@@ -148,8 +150,8 @@ bindsym $mod+f 					fullscreen toggle
 # set $play 			dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play
 # set $next 			dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 # set $prev 			dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
-# set $lilfor 		dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek
-# set $bigfor 		dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek(
+# set $lilfor 			dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek
+# set $bigfor 			dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek(
 
 # #------ Music Bindings ------# #
 bindsym $mod+plus 				exec $lilinc
@@ -205,7 +207,7 @@ client.focused		$lightgrey	$darkgrey	$white		$lightgrey		$lightgrey
 client.unfocused	$grey		$darkgrey	$white		$grey			$grey	
 
 # #------ Fonts ------# #
-font pango:Inconsolata 18
+# font pango:Inconsolata 18
 # font pango:DejaVu Sans Mono 8
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 

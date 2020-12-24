@@ -12,6 +12,7 @@ export GPG_TTY=$(tty)
 
 [ -f ~/.bashrc ] && source "$HOME/.bashrc"
 
+# Switch tty with Ctrl+Alt+F# -- 1-5 is i3, after 5 is just console
 [[ "$(tty)" =~ ^/dev/tty[1-5]$ ]] && startx
 
 sudo -n loadkeys ~/.scripts/tools/escswap &>/dev/null 

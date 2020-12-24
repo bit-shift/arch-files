@@ -1,0 +1,7 @@
+#1/usr/bin/expect -f
+set timeout -1
+spawn ./hello
+expect "Name: \r"
+send -- "Keegan\r"
+expect "Hello, Keegan\r"
+expect eof

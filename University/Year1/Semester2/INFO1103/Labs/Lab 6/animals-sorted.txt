@@ -1,0 +1,8 @@
+cow
+dog
+feline
+giraffe
+lion
+meerkat
+snake
+tiger

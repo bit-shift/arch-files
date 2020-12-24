@@ -1,0 +1,210 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+% Install the required packages for the document 
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{bm}
+\usepackage{xlop}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+% Page and style settings
+%\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\newenvironment{nscentre}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\begin{document}
+\setlength{\abovedisplayskip}{8pt}{%
+\setlength{\belowdisplayskip}{8pt}{%
+
+
+\text{LSA}
+\hfill
+\text{University of Michigan}
+
+\begin{nscentre}
+	\textbf{ASTRO201: Introduction to Astrophysics}\\
+	\textbf{Homework 2}\\
+\end{nscentre}
+
+\text{Name: Keegan Gyoery}
+\hfill
+\text{UM-ID: 31799451}
+
+\pagenumbering{arabic}
+	\begin{enumerate}[leftmargin=*]
+		\item \begin{enumerate}[label=\alph*)]
+			\item Using the formula for the energy of level $\ds{n}$,
+				\begin{align*}
+					E_n & = \frac{-13.6}{n^2} \\
+					E_1 & = -13.6 \:\text{eV}, \\
+					E_2 & = -3.4 \:\text{eV}, \\
+					E_3 & = -1.5 \:\text{eV}, \\
+					E_4 & = -0.85 \:\text{eV}, \\
+					E_5 & = -0.54 \:\text{eV}.
+				\end{align*}
+			\item Using the previous part, the energies of the first $\ds{3}$ transitions are
+				\begin{align*}
+					E_2 - E_3 & = -1.9 \:\text{eV}, \\
+					E_2 - E_4 & = -2.55 \\
+							  & = -2.6 \:\text{eV}, \\
+					E_2 - E_5 & = -2.856 \\
+							  & = -2.9 \:\text{eV}.
+				\end{align*}
+			\item Rearranging the formula relating energy and wavelength, with $\ds{E_m > E_n}$, 
+				\begin{align*}
+					E_m - E_n & = \frac{hc}{\lambda} \\
+					\therefore \lambda & = \frac{hc}{E_m - E_n}. \\
+					\lambda & = \frac{hc}{E_3 - E_2} \\
+							& = \frac{4.135667696 \times 10^{-15} \times 3 \times 10^{17}}{1.9} \\
+					\therefore \lambda & = 653 \: \text{nm}, \\
+					\lambda & = \frac{hc}{E_4 - E_2} \\
+							& = \frac{4.135667696 \times 10^{-15} \times 3 \times 10^{17}}{2.55} \\
+							& = 486.549 \\
+					\therefore \lambda & = 490 \: \text{nm}, \\
+					\lambda & = \frac{hc}{E_5 - E_2} \\
+							& = \frac{4.135667696 \times 10^{-15} \times 3 \times 10^{17}}{2.856} \\
+							& = 434.4188756 \\
+					\therefore \lambda & = 430 \: \text{nm}.
+				\end{align*}
+			\item These Balmer series transitions fall under the Visible Light part of the spectrum.
+		\end{enumerate}
+		\item \begin{enumerate}[label=\alph*)]
+			\item From the previous part, the $\ds{n=4}$ energy level has an energy of $\ds{-0.85\:}$eV, and so a hydrogen atom with its electron in the $\ds{n=4}$ level requires $\ds{0.85\:}$eV to ionise the atom.
+			\item Using the formula relating temperature and energy of particles,
+				\begin{align*}
+					\kappa T & = h \nu \\
+							 & = E_m - E_n \\
+					\therefore T & = \frac{E_m - E_n}{\kappa} \\
+					T & = \frac{E_{\infty} - E_4}{\kappa} \\
+					  & = \frac{0 - (-0.85)}{8.617333262145\times10^{-5}} \\
+					  & = 9863.84 \\
+					\therefore T & = 9900\: \text{K}
+				\end{align*}
+		\end{enumerate}
+		\item \begin{enumerate}[label=\alph*)]
+			\item Note the conversions $\ds{100\:\text{AU} = 1.496\times 10^{13}\: \text{m}}$, and $\ds{745\:\text{yrs} = 2.349 \times 10^{10}\: \text{s}}$. Using the formula for the sum of masses in an edge-on binary system, 
+				\begin{align*}
+					\frac{4\pi^2 R^3}{G} & = (m_1+m_2)P^2 \\
+					\therefore m_1 + m_2 & = \frac{4\pi^2 R^3}{G\times P^2} \\
+										 & = \frac{4\pi^2 \left(1.496\times 10^{13}\right)^3}{6.674\times 10^{-11}\times \left(2.349\times 10^{10}\right)^2} \\
+										 & = 3.589238201\times 10^30\:\text{kg} \\
+										 & = 1.804544093\:\text{M}_{\odot} \\
+					\therefore m_1 + m_2 & = 1.8 \:\text{M}_{\odot}
+				\end{align*}
+			\item As we have been given the maximum Doppler shift of a $\ds{500\:}$nm spectral line, this occurs when the angle of either star relative to the centre of their orbit is $\ds{0}$. Thus, the formula used is
+				\begin{align*}
+					\frac{\Delta \lambda}{\lambda} & = \frac{v}{c} \cos({0}) \\
+					\therefore v & = \frac{c\Delta \lambda}{\lambda}, \\
+					v_1 & = \frac{c\Delta \lambda}{\lambda} \\
+						& = \frac{3\times 10^{10} \times 4.05\times 10^{-10}}{500\times 10^{-7}} \\
+						& = 243000\:\text{cm/s} \\
+						& = 0.5123\:\text{AU/yr} \\
+					\therefore v_1 & = 0.51\:\text{AU/yr}, 	
+				\end{align*}
+				\pagebreak
+
+				\begin{align*}
+					v_2 & = \frac{c\Delta \lambda}{\lambda} \\
+						& = \frac{3\times 10^{10} \times 2.59\times 10^{-10}}{500\times 10^{-7}} \\
+						& = 155400\:\text{cm/s} \\
+						& = 0.3276\:\text{AU/yr} \\
+					\therefore v_2 & = 0.33\:\text{AU/yr}, 	
+				\end{align*}
+			\item Combining the formulas relating each star's mass, radius and velocity in an edge-on binary system,
+				\begin{align*}
+					m_1r_1 & = m_2r_2 \\
+					\frac{r_1}{r_2} & = \frac{v_1}{v_2} \\
+					\therefore \frac{m_2}{m_1} & = \frac{v_1}{v_2} \\
+											   & = \frac{0.5123}{0.3276} \\
+											   & = 1.563797314 \\
+					\therefore \frac{m_2}{m_1} & = 1.6.
+				\end{align*}
+				Thus, the ratio of Star 1's mass to Star 2's mass is $\ds{1 : 1.6}$.
+			\item Using the two equations found in the previous parts, and solving simultaneously,
+				\begin{align*}
+					m_1 + m_2 & = 1.804544093 \dots (A) \\
+					\frac{m_2}{m_1} & = 1.563797314 \dots (B) \\
+					(B) & \Rightarrow \: m_2 = 1.563797314 m_1 \dots (C) \\
+					(C) \rightarrow (B) & \Rightarrow \: 2.563797314 m_1 = 1.804544093 \\
+					\therefore m_1 & = 0.703855988 \\
+								   & = 0.70 \:\text{M}_{\odot} \\
+					\therefore m_2 & = 1.100688105 \\
+								   & = 1.1 \:\text{M}_{\odot} \\
+				\end{align*}
+		\end{enumerate}
+		\pagebreak
+		\item \begin{enumerate}[label=\alph*)]
+			\item Converting the apparent magnitudes to luminosities, we have,
+				\begin{align*}
+					\frac{L_{binary}}{L_0} & = \frac{L_{+2.4}}{L_0} + \frac{L_{+5.2}}{L_0} \\
+										   & = 10^{\nicefrac{-2.4}{2.5}} + 10^{\nicefrac{-5.2}{2.5}} \\
+										   & = 0.109647819 + 0.008317637 \\
+										   & = 0.117965456 \\
+					m_{binary} & = -2.5\log{\left(\frac{L_{binary}}{L_0}\right)} \\
+							   & = -2.5\log{0.117965456} \\
+							   & = 2.320612873 \\
+					\therefore m_{binary} & = 2.3 
+				\end{align*}
+			\item For Star A, using the Appendix, we have an apparent magnitude of $\ds{+5.20}$, and an absolute magnitude of $\ds{+7.4}$. Thus,
+				\begin{align*}
+					m_V - M_V & = -2.2 \\
+					\therefore 5\log_{10}d_{pc} - 5 & = -2.2 \\
+					\log_{10}d_{pc} & = 0.56 \\
+					d_{pc} & = 10^{0.56} \\
+						   & = 3.63 \\
+					\therefore d_{pc} & = 3.6\:\text{parsecs}.
+				\end{align*}
+			For Star B, using the Appendix, we have an apparent magnitude of $\ds{+2.4}$, and an absolute magnitude of $\ds{+4.6}$. Thus,
+				\begin{align*}
+					m_V - M_V & = -2.2 \\
+					\therefore 5\log_{10}d_{pc} - 5 & = -2.2 \\
+					\log_{10}d_{pc} & = 0.56 \\
+					d_{pc} & = 10^{0.56} \\
+						   & = 3.63 \\
+					\therefore d_{pc} & = 3.6\:\text{parsecs}.
+				\end{align*}
+				Thus, both stars are $\ds{3.6\:}$parsecs away, and so likely are in a binary system.
+
+		\end{enumerate}
+	\end{enumerate}
+\end{document}

@@ -1,0 +1,40 @@
+Input Size  Initial Order	Has Dups	Number of Runs	AvgTime for usel    AvgTime for sort
+--------------------------------------------------------------------------------------------
+5000	    random	        no	        5               0.035	            0.009
+5000	    sorted	        no	        5	            0.048	            0.008
+5000	    reverse	        no	        5	            0.005	            0.009
+5000	    random	        yes	        5	            0.035               0.010
+5000	    sorted	        yes	        5	            0.050	            0.009
+5000	    reverse	        yes	        5	            0.005	            0.009
+10000	    random	        no	        5	            0.134	            0.017
+10000	    sorted	        no	        5	            0.165	            0.016
+10000	    reverse	        no	        5	            0.008	            0.015
+10000	    random	        yes	        5	            0.129	            0.017
+10000	    sorted	        yes	        5	            0.171	            0.014
+10000	    reverse	        yes	        5	            0.006	            0.016
+20000	    random	        no	        5	            0.573	            0.027
+20000	    sorted	        no	        5	            0.621	            0.023
+20000	    reverse	        no	        5	            0.011	            0.023
+20000	    random	        yes	        5	            0.578	            0.025
+20000	    sorted	        yes	        5	            0.648	            0.028
+20000	    reverse	        yes	        5	            0.012	            0.028
+50000	    random	        no	        5	            5.778	            0.078
+50000	    sorted	        no	        5	            3.944	            0.051
+50000	    reverse	        no	        5	            0.022	            0.051
+50000	    random	        yes	        5	            5.856               0.080
+50000	    sorted	        yes	        5	            4.016	            0.062
+50000	    reverse	        yes	        5	            0.033 	            0.056
+100000	    random	        no	        5	            29.22	            0.184
+100000	    sorted	        no	        5	            15.67	            0.101
+100000	    reverse	        no	        5	            0.044	            0.116
+100000	    random	        yes	        5	            28.72	            0.159
+100000	    sorted	        yes	        5	            15.61	            0.121
+100000	    reverse	        yes	        5	            0.046	            0.127
+--------------------------------------------------------------------------------------------
+
+The sort command in terminal is faster for sorting randomly ordered and ordered sequences of numbers, both with and without duplicates.
+
+The usel program is far faster at sorting reverse ordered lists, due to the fact that each node is added at the start of the linked list, and does not have to traverse any of the list, based on the control logic that I implemented. The usel program is slower at ordered sequences as each node must be appended to the linked list, which involves traversing the entire list, and then entering the append function. A certain control logic can be implemented in order to speed this up by adding
+an extra check at the beginning of the sorted insert function to see if the node will be inserted at the end of the linked list. This would avoid traversing the entire list, and would speed the usel program up significantly.
+
+After doing the lab, I changed the control logic of the usel program in order to make the process of appending new nodes far faster. However I have not updated all the timing details. The usel program now records a similar time to its reverse order time for when it sorts an ordered sequence. Thus, it now only performs slower in a randomly ordered sequence.

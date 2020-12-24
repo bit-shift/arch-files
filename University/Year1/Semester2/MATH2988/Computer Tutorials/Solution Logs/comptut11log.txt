@@ -1,0 +1,303 @@
+User:     PSEUDOSTUDENT, MATHS
+Automatic Magma log submission from teaching laboratory
+Loading "/users/ugrad/m2068/magma/MATH2068/MagmaProcedures.txt"
+(Magma functions defined for use in MATH2068/2988)
+
+> PrimesUpTo(1000);
+[ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
+73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157,
+163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241,
+251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347,
+349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439,
+443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547,
+557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643,
+647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751,
+757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859,
+863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977,
+983, 991, 997 ]
+> #PrimesUpTo(1000);
+168
+> for i in [1..10] do
+for> "The number of primes less than",i*1000,"is",#PrimesUpTo(i*1000);
+for> end for;
+The number of primes less than 1000 is 168
+The number of primes less than 2000 is 303
+The number of primes less than 3000 is 430
+The number of primes less than 4000 is 550
+The number of primes less than 5000 is 669
+The number of primes less than 6000 is 783
+The number of primes less than 7000 is 900
+The number of primes less than 8000 is 1007
+The number of primes less than 9000 is 1117
+The number of primes less than 10000 is 1229
+> #PrimesUpTo(1000)*Log(1000)/1000;
+1.16050288686899902474506769316
+> /*
+> That is reasonably close to 1. According to the Prime Number Theorem
+> it is possible to make the answer arbitrarily close to 1 if we
+> replace 1000 by some sufficiently large number. But you do really need
+> to use enormous numbers ....
+> */
+> #PrimesUpTo(2000)*Log(2000)/2000;
+1.15153672262062547776288778256
+> #PrimesUpTo(3000)*Log(3000)/3000;
+1.14757935136320203322772147614
+> for i in [1..8] do
+for> "When n =",10^i,"the value of Pi(n)*ln(n)/n is",#PrimesUpTo(10^i)*Log(10^\
+i)/10^i;
+for> end for;
+When n = 10 the value of Pi(n)*ln(n)/n is 0.921034037197618273607196581873
+When n = 100 the value of Pi(n)*ln(n)/n is 1.15129254649702284200899572734
+When n = 1000 the value of Pi(n)*ln(n)/n is 1.16050288686899902474506769316
+When n = 10000 the value of Pi(n)*ln(n)/n is 1.13195083171587285826324459912
+When n = 100000 the value of Pi(n)*ln(n)/n is 1.10431981059994431005502870167
+When n = 1000000 the value of Pi(n)*ln(n)/n is 1.08448994777907958862426575926
+When n = 10000000 the value of Pi(n)*ln(n)/n is 1.07117478896182292064729492007
+When n = 100000000 the value of Pi(n)*ln(n)/n is 1.06129923175648075811311015652
+> safeprimes:= function(N)
+function> SP:={}; p:=3;
+function> while p le N do
+function|while> if IsPrime((p-1) div 2) then
+function|while|if> Include(~SP,p);
+function|while|if> end if;
+function|while> p:=NextPrime(p);
+function|while> end while;
+function> return SP;
+function> end function;
+> safeprimes(1000);
+{ 5, 7, 11, 23, 47, 59, 83, 107, 167, 179, 227, 263, 347, 359, 383, 467, 479,
+503, 563, 587, 719, 839, 863, 887, 983 }
+> /*
+> For example, 983 is prime and (983-1)/2 = 491 is also prime;
+> so 983 is a safe prime.
+> */
+> for i in [2..10] do
+for> "The number of safe primes less than",i*1000,"is",#safeprimes(i*1000);
+for> end for;
+The number of safe primes less than 2000 is 37
+The number of safe primes less than 3000 is 50
+The number of safe primes less than 4000 is 60
+The number of safe primes less than 5000 is 72
+The number of safe primes less than 6000 is 83
+The number of safe primes less than 7000 is 91
+The number of safe primes less than 8000 is 101
+The number of safe primes less than 9000 is 110
+The number of safe primes less than 10000 is 115
+> #PrimesUpTo(10000000);
+664579
+> #safeprimes(10000000);
+30657
+> for i in [1..10] do
+for> i*1000*(1/Log(i*1000))*(1/Log(i*1000/2));
+for> end for;
+23.2942809922057436653517233979
+38.0914840235445736153903243034
+51.2362184944720591708406411599
+63.4494996450652928943178527997
+75.0312376655233046942013989963
+86.1431398178331847883782887007
+96.8851449663931676720957532645
+107.324556818455943910036673338
+117.509477394852063683529749672
+127.475822181930986440403606364
+> for i in [1..10] do
+for> i*1000*(1/Log(i*1000))*(1/Log(i*1000/2)),#safeprimes(i*1000);
+for> end for;
+23.2942809922057436653517233979 25
+38.0914840235445736153903243034 37
+51.2362184944720591708406411599 50
+63.4494996450652928943178527997 60
+75.0312376655233046942013989963 72
+86.1431398178331847883782887007 83
+96.8851449663931676720957532645 91
+107.324556818455943910036673338 101
+117.509477394852063683529749672 110
+127.475822181930986440403606364 115
+> /*
+> So for n=1000 the estimate n(1/ln(n))(1/ln(n/2)) is too small but
+> for n=2000, 3000, ... , 10000 it is too large.
+> */
+> C:=RealField()!(&*[p*(p-2)/(p-1)^2 : p in PrimesUpTo(10000) | p gt 2 ]);
+> C;
+0.660168296505503361995760236662
+> for i in [1..10] do
+for> C*i*1000*(1/Log(i*1000/2))^2,#safeprimes(i*1000);
+for> end for;
+17.0933494365324152205540419479 25
+27.6701028260376237364672612475 37
+37.0304164640688848056607282451 50
+45.7071704629546718227682792534 60
+53.9214890835538056890753668001 72
+61.7923718730290512978638577591 83
+69.3932493325529658332547675368 91
+76.7735089546955771361607247834 101
+83.9684087289116927142361058996 110
+91.0042485090009432695941170367 115
+> /*
+> Actually, my original estimate was better for numbers
+> of this size. But the Cn/(ln(n/2))^2 estimate is much
+> better for much bigger numbers.
+> */
+> n:=10^300;
+> t:=C*(1/Log(n/2))^2;
+> t;
+1.38628583627580210489813405592E-6
+> 1-t;
+0.999998613714163724197895101866
+> /*
+> If I randomly choose k numbers less than n then the probability
+> that at least one of them is a safe prime is 1-(1-t)^k. For this to
+> be greater than 0.5 I need (1-t)^k < 0.5, and so I need
+> k*Log(1-t) < Log(0.5). Bearing in mind that Log(1-t) is negative,
+> I need k > Log(0.5)/Log(1-t).
+> */
+> Log(0.5)/Log(1-t);
+500002.728132809881233820059365
+> /*
+> So k = 500003 or more should do!
+> */
+> F:=FiniteField(97);
+> a:=F!50; b:=F!77;
+> a*b;
+67
+> 50*77 mod 97;
+67
+> a+b;
+30
+> (50 + 77) mod 97;
+30
+> a^111;
+33
+> Modexp(50,111,97);
+33
+> b^(-1);
+63
+> InverseMod(77,97);
+63
+> P<x>:=PolynomialRing(F);
+> f5:=(x-1)*(x-2)*(x-3)*(x-4)/((5-1)*(5-2)*(5-3)*(5-4));
+> f4:=(x-1)*(x-2)*(x-3)*(x-5)/((4-1)*(4-2)*(4-3)*(4-5));
+> f3:=(x-1)*(x-2)*(x-4)*(x-5)/((3-1)*(3-2)*(3-4)*(3-5));
+> f2:=(x-1)*(x-3)*(x-4)*(x-5)/((2-1)*(2-3)*(2-4)*(2-5));
+> f1:=(x-2)*(x-3)*(x-4)*(x-5)/((1-2)*(1-3)*(1-4)*(1-5));
+> Evaluate(f5,1);
+0
+> Evaluate(f5,2);
+0
+> Evaluate(f5,3);
+0
+> Evaluate(f5,4);
+0
+> Evaluate(f5,5);
+1
+> [ [ Evaluate(fi,xj) : xj in [1..5] ] : fi in [f1,f2,f3,f4,f5] ];
+[
+    [ 1, 0, 0, 0, 0 ],
+    [ 0, 1, 0, 0, 0 ],
+    [ 0, 0, 1, 0, 0 ],
+    [ 0, 0, 0, 1, 0 ],
+    [ 0, 0, 0, 0, 1 ]
+]
+> a1:=73; a2:=50; a3:=36; a4:=82; a5:=17;
+> f:=a1*f1+a2*f2+a3*f3+a4*f4+a5*f5;
+> f;
+15*x^4 + 4*x^3 + 42*x^2 + 83*x + 26
+> /*
+> a1*f1+a2*f2+a3*f3+a4*f4+a5*f5 will take the value a1 when
+> x is 1, since f1 takes the value 1 at x = 1 and all the other fj
+> vanish at x = 1. Similarly a1*f1+a2*f2+a3*f3+a4*f4+a5*f5 will take
+> the value a2 at x = 2, a3 at x = 3, and so on.
+> */
+> Evaluate(f,1);
+73
+> Evaluate(f,2);
+50
+> Evaluate(f,3);
+36
+> Evaluate(f,4);
+82
+> Evaluate(f,5);
+17
+> g:=33+Random(F)*x+Random(F)*x^2+Random(F)*x^3+Random(F)*x^4;
+> a1:=Evaluate(g,1);
+> a2:=Evaluate(g,2);
+> a3:=Evaluate(g,3);
+> a4:=Evaluate(g,4);
+> a5:=Evaluate(g,5);
+> g;
+45*x^4 + 71*x^3 + 26*x^2 + 65*x + 33
+> a1;
+46
+> a2;
+3
+> a3;
+10
+> a4;
+89
+> a5;
+81
+> a1*f1+a2*f2+a3*f3+a4*f4+a5*f5;
+45*x^4 + 71*x^3 + 26*x^2 + 65*x + 33
+> a1*f1+a2*f2+a3*f3+a4*f4+a5*f5 eq g;
+true
+> g:=33+Random(F)*x+Random(F)*x^2+Random(F)*x^3+Random(F)*x^4;
+> a1:=Evaluate(g,1);
+> a2:=Evaluate(g,2);
+> a3:=Evaluate(g,3);
+> a4:=Evaluate(g,4);
+> a5:=Evaluate(g,5);
+> g;
+26*x^4 + 37*x^3 + 27*x^2 + 41*x + 33
+> a1*f1+a2*f2+a3*f3+a4*f4+a5*f5 eq g;
+true
+> g:=33+Random(F)*x+Random(F)*x^2+Random(F)*x^3+Random(F)*x^4;
+> a1:=Evaluate(g,1);
+> a2:=Evaluate(g,2);
+> a3:=Evaluate(g,3);
+> a4:=Evaluate(g,4);
+> a5:=Evaluate(g,5);
+> g;
+7*x^4 + 12*x^3 + 67*x^2 + 2*x + 33
+> a1*f1+a2*f2+a3*f3+a4*f4+a5*f5 eq g;
+true
+> FF:=FiniteField(447555834974539);
+> P<x>:=PolynomialRing(FF);
+> /*
+> Note error in question sheet: F should have been FF
+> */
+> f4:=(x-1)*(x-3)/((4-1)*(4-3));
+> f3:=(x-1)*(x-4)/((3-1)*(3-4));
+> f1:=(x-3)*(x-4)/((1-3)*(1-4));
+> /*
+> So now [f4,f3,f1] is a Lagrange basis for the space of
+> polynomials of degree 2 over FF, relative to the set {1,3,4}
+> -- which just means that f4 vanishes at 3 and 1 and takes the
+> value 1 at 4, f3 vanishes at 1 and 4 and takes the value 1 at 3,
+> and f1 vanishes at 3 and 4 and takes the value 1 at 1.
+> */
+> f:=196231291191342*f1+195412581909834*f3+163633523397347*f4;
+> /*
+> This is the unique quadratic polynomial over FF that takes the
+> values 196231291191342, 195412581909834 and 163633523397347 at
+> 1, 3 and 4 respectively. The constant term of f must be the
+> Secret Number.
+> */
+> f:=196231291191342*f1+195412581909834*f3+163633523397347*f4;
+> f;
+138728710367602*x^2 + 339787473837916*x + 165270941960363
+> Evaluate(f,0);
+165270941960363
+> /*
+> So that's the number ...
+> */
+> m4:=FF!((0-1)*(0-3)/((4-1)*(4-3)));
+> m3:=FF!((0-1)*(0-4)/((3-1)*(3-4)));
+> m1:=FF!((0-3)*(0-4)/((1-3)*(1-4)));
+> 196231291191342*m1+195412581909834*m3+163633523397347*m4;
+165270941960363
+> /*
+> same as before ...
+> */
+> exit;
+
+Total time: 4.843 seconds, Total memory usage: 48.79MB

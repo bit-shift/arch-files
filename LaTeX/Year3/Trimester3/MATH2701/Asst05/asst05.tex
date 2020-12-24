@@ -1,0 +1,186 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+% Install the required packages for the document 
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{bm}
+\usepackage{xlop}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+% Page and style settings
+%\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\newenvironment{nscentre}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\begin{document}
+\setlength{\abovedisplayskip}{8pt}{%
+\setlength{\belowdisplayskip}{8pt}{%
+
+
+\text{School of Mathematics}
+\hfill
+\text{University of New South Wales}
+
+\begin{nscentre}
+	\textbf{MATH2701: Abstract Algebra and Fundamental Analysis}\\
+	\textbf{Test}\\
+\end{nscentre}
+
+\text{Name: Keegan Gyoery}
+\hfill
+\text{zID: z5197058}
+
+\pagenumbering{arabic}
+	\begin{enumerate}[leftmargin=*]
+		\item For functions $\ds{f(x), g(x)}$, $\ds{f(x) = \Theta (g(x))}$ as $\ds{x \rightarrow \infty}$ if $\ds{f(x) = O(g(x))}$ and $\ds{g(x) = O(f(x))}$ as $\ds{x \rightarrow \infty}$. Thus, we break this proof into two parts, firstly proving $$\sum_{n=N}^{\infty} \frac{1}{n^3} = O\left(\frac{1}{N^2}\right)\dots(A),$$ and secondly proving $$\frac{1}{N^2} = O \left(\sum_{n=N}^{\infty} \frac{1}{n^3}\right)\dots(B).$$ In order to prove result $\ds{(A)}$, we must show there exists some $\ds{M_2 \neq 0}$, and $\ds{N_2}$, such that for all $\ds{N > N_2}$, $$\left|\sum_{n=N}^{\infty} \frac{1}{n^3}\right| \leq M_2\left|\frac{1}{N^2}\right|.$$ Working with Riemann Sums, its clear that for $\ds{N > 1}$, we have 
+			\begin{align*}
+				\sum_{n=N}^{\infty} \frac{1}{n^3} & \leq \int_{N-1}^{\infty} \frac{1}{x^3}dx\\
+												  & = \lim_{k \to \infty} \int_{N-1}^k \frac{1}{x^3}dx\\
+												  & = \lim_{k \to \infty} \left[\frac{-1}{2x^2}\right]^{k}_{N-1}\\
+												  & = \lim_{k \to \infty} \left[\frac{-1}{2k^2} + \frac{-1}{2(N-1)^2}\right]\\
+												  & = \frac{1}{2(N-1)^2}\\
+												  & \leq \frac{10}{N^2} \text{ for } N>1\\
+				\therefore \left|\sum_{n=N}^{\infty} \frac{1}{n^3}\right| & \leq 10 \left|\frac{1}{N^2}\right| \text{ as } N>1.
+			\end{align*}
+			Clearly, $\ds{M_2 = 10}$, $\ds{N_2 = 1}$, and so $$\sum_{n=N}^{\infty} \frac{1}{n^3} = O\left(\frac{1}{N^2}\right).$$ To prove result $\ds{(B)}$, it is equivalent to showing there exists some $\ds{M_1 \neq 0}$, and $\ds{N_1}$, such that for all $\ds{N > N_1}$, $$\left|\sum_{n=N}^{\infty} \frac{1}{n^3}\right| \geq M_1\left|\frac{1}{N^2}\right|.$$ Working with Riemann Sums again, its clear that for $\ds{N > 1}$, we have 
+			\begin{align*}
+				\sum_{n=N}^{\infty} \frac{1}{n^3} & \geq \int_{N}^{\infty} \frac{1}{x^3}dx\\
+												  & = \lim_{k \to \infty} \int_{N}^k \frac{1}{x^3}dx\\
+												  & = \lim_{k \to \infty} \left[\frac{-1}{2x^2}\right]^{k}_{N-1}\\
+												  & = \lim_{k \to \infty} \left[\frac{-1}{2k^2} + \frac{-1}{2N^2}\right]\\
+												  & = \frac{1}{2N^2}\\
+				\therefore \left|\sum_{n=N}^{\infty} \frac{1}{n^3}\right| & \geq \frac{1}{2}\left|\frac{1}{N^2}\right| \text{ as } N>1.
+			\end{align*}
+			Clearly, $\ds{M_1 = \frac{1}{2}}$, $\ds{N_1 = 1}$, and so $$\frac{1}{N^2} = O\left(\sum_{n=N}^{\infty} \frac{1}{n^3}\right).$$ Thus, $$\sum_{n=N}^{\infty} \frac{1}{n^3} = \Theta \left(\frac{1}{N^2}\right).$$
+
+		\item We shall prove that $\ds{\norm{\cdot}_X}$ is the dual norm of $\ds{\norm{\cdot}_Y}$. By definition, for fixed $\ds{\bf{x} \in \mathbb{R}^n}$, the dual norm of $\ds{\norm{\cdot}_Y}$ is $$\norm{\bf{x}}_X = \sup_{\bf{y} \in \mathbb{R}^n} \frac{|\bf{x}\cdot\bf{y}|}{\norm{\bf{y}}_Y}.$$ Thus, it suffices to show that $\ds{\norm{\bf{x}}_X}$ is an upper bound for $\ds{\frac{|\bf{x}\cdot\bf{y}|}{\norm{\bf{y}}_Y}}$ and that equality is attained for some $\ds{\bf{y} \in \mathbb{R}^n}$. By the first property of the norms provided, 
+			\begin{align*}
+				|\bf{x}\cdot\bf{y}| & \leq \norm{\bf{x}}_X\norm{\bf{y}}_Y\\
+				\therefore \norm{\bf{x}}_X & \geq \frac{|\bf{x}\cdot\bf{y}|}{\norm{\bf{y}}_Y}.
+			\end{align*}
+			Thus, $\ds{\norm{\bf{x}}_X}$ is an upper bound for $\ds{\frac{|\bf{x}\cdot\bf{y}|}{\norm{\bf{y}}_Y}}$. By the second property, there exists a $\ds{\bf{y} \in \mathbb{R}^n}$ such that for all $\ds{\bf{x} \in \mathbb{R}^n}$,
+			\begin{align*}
+				|\bf{x}\cdot\bf{y}| & = \norm{\bf{x}}_X\norm{\bf{y}}_Y\\
+				\therefore \norm{\bf{x}}_X & = \frac{|\bf{x}\cdot\bf{y}|}{\norm{\bf{y}}_Y}.
+			\end{align*}
+			Thus, $\ds{\norm{\bf{x}}_X}$ is a least upper bound for $\ds{\frac{|\bf{x}\cdot\bf{y}|}{\norm{\bf{y}}_Y}}$, and so $\ds{\norm{\bf{x}}_X}$ is the dual norm of $\ds{\norm{\bf{y}}_Y}$. Recall that the dual norm of a dual norm is the original norm, so $\ds{\norm{\cdot}_Y^* = \norm{\cdot}_X}$ implies that $\ds{\norm{\cdot}_X^* = \norm{\cdot}_Y}$. If $\ds{\frac{1}{p} + \frac{1}{q} = 1}$, then we can apply Hoelders Inequality, and its clear that $\ds{\norm{\cdot}_p}$ and $\ds{\norm{\cdot}_q}$ satisfy the properties of the norms $\ds{\norm{\cdot}_X}$ and $\ds{\norm{\cdot}_Y}$. Thus, $\ds{\norm{\cdot}_p}$ and $\ds{\norm{\cdot}_q}$ are the dual norms of each other.
+
+
+		\item Consider $\ds{{\bf{y}} = (u,v,w) \in K^{\circ}}$. By definition, $\ds{ux+vy+wz \leq 1}$, for all $\ds{{\bf{x}} = (x,y,z) \in K}$. From Cauchy-Schwarz,
+			\begin{align*}
+				ux+vy+wz & \leq (u^2+v^2)^{\nicefrac{1}{2}}(x^2+y^2)^{\nicefrac{1}{2}} +wz\\
+						 & \leq \sqrt{u^2 + v^2} + wz.
+			\end{align*}
+			Examining the condition for equality in the Cauchy-Schwarz inequality, we make the claim that $\ds{\sqrt{u^2+v^2} \leq 1 - cz}$. As $\ds{|z| \leq 1}$, the previous result yields $$\sqrt{u^2+v^2} \leq 1 - w \text{ and } \sqrt{u^2+v^2} \leq 1 + w.$$ Clearly, our polar body is given by $$K^{\circ} = \{(u,v,w) \in \mathbb{R}^3 \:|\: u^2 + v^2 \leq \min\{(1-w)^2, (1+w^2)\}\}.$$ As K is a cylinder with radius $\ds{1}$ and height $\ds{2}$, $\ds{\text{vol}(K) = 2\pi}$. Considering $\ds{K^{\circ}}$ as concentric circles of radius either $\ds{(1-w)^2}$ or radius $\ds{(1+w^2)}$, we have $$\text{vol}(K^{\circ}) = \int_{-1}^0 \pi(1+w)^2 dw + \int_0^1 \pi(1-w)^2 dw = \frac{2\pi}{3}.$$ Thus, $\ds{M(K) = \text{vol}(K)\text{vol}(K^{\circ}) = \frac{4\pi^2}{3}}$.
+
+		\item Suppose $\ds{\beta \in \mathbb{R}}$ is an upper bound for $\ds{S}$. Since $\ds{S}$ is non-empty, there exists an $\ds{s \in S}$ which is itself not empty. Since $\ds{s \subset \alpha}$, $\ds{\alpha}$ is non-empty. Further since $\ds{\alpha \subset \beta}$, (as $\ds{s \subset \beta}$ for every $\ds{s \in S}$), $\ds{\alpha \neq \mathbb{Q}}$. To show that $\ds{\alpha}$ satisfies all properties of a cut, we fix $\ds{p \in \alpha}$. Then we must have $\ds{p \in s_0}$ for some $\ds{s_0 \in S}$ and so for some $\ds{q < p}$ we have $\ds{q \in s_0}$ and consequently $\ds{q \in \alpha}$. Subsequently, if $\ds{r \in s}$ is chosen so that $\ds{p < r}$, which is possible since $\ds{s_0}$ has no largest element, then $\ds{r \in \alpha}$. Hence $\ds{\alpha \in \mathbb{R}}$. It is also clear that $\ds{\alpha}$ is an upper bound of $\ds{S}$ since $\ds{s \leq \alpha}$ for every $\ds{s \in S}$. Suppose $\ds{\delta < \alpha}$, that is there exists $\ds{p \in \alpha}$ with $\ds{p \notin \delta}$. Since $\ds{p \in \alpha}$, $\ds{p \in s_0}$ for some $\ds{s_0 \in S}$. Hence $\ds{\delta < s_0}$ and so $\ds{\delta}$ can’t be an upper bound of $\ds{S}$. This shows that the cut $\ds{\alpha}$ is the least upper bound of the set $\ds{S}$.
+		\item To find the first four digits to the left of the decimal point of $\ds{(\dots 333.3)^2}$, we perform the long multiplication $\ds{(\dots 333333)\times(\dots 333333)}$, adding the decimal point back in at the end.
+			\begin{center}
+				\begin{tabular}{c@{\,}c@{\,}c@{\,}c@{\,}c@{\,}c@{\,}c@{\,}c}
+					& \dots & 3 & 3 & 3 & 3 & 3 & 3\\
+					$\times$ & \dots & 3 & 3 & 3 & 3 & 3 & 3\\
+					\hline
+					& \dots & 1 & 1 & 1 & 1 & 0 & 4\\
+					+ & \dots & 1 & 1 & 1 & 0 & 4 & 0\\
+					+ & \dots & 1 & 1 & 0 & 4 & 0 & 0\\
+					+ & \dots & 1 & 0 & 4 & 0 & 0 & 0\\
+					+ & \dots & 0 & 4 & 0 & 0 & 0 & 0\\
+					+ & \dots & 4 & 0 & 0 & 0 & 0 & 0\\
+					\hline
+					& \dots & 4 & 3 & 2 & 0 & 4 & 4\\
+					= & \dots & 4 & 3 & 2 & 0 & .4 & 4\\
+				\end{tabular}
+			\end{center}
+			Thus, the first four digits to the left of the decimal point are $\ds{4}$, $\ds{3}$, $\ds{2}$, and $\ds{0}$.
+
+		\item
+			\begin{enumerate}
+				\item We can write $\ds{k!}$ as a product, which can be rewritten to involve $\ds{p}$, $$k! = 1\times2\times \dots \times(k-1) \times k = 1 \times 2 \times \dots \times p \times \dots \times 2p \times \dots \times ap \times k,$$ for some $\ds{a \in \mathbb{Z}}$. Clearly, this gives the $\ds{p}$-adic absolute value of $\ds{k!}$ as $\ds{|k!|_p = p^{-a}}$. As $\ds{a \in \mathbb{Z}}$, we can write $\ds{a = \left \lfloor{\frac{k}{p}}\right \rfloor}$. Note that,
+					\begin{align*}
+						\left \lfloor{\frac{k}{p}}\right \rfloor & = \left \lfloor{\frac{k}{p-1} - \frac{k}{p(p-1)}}\right \rfloor\\
+																 & \geq \left \lfloor{\frac{k}{p-1}}\right \rfloor - \left \lfloor{\frac{k}{p(p-1)}}\right \rfloor\\
+																 & = \frac{k}{p-1} + c - \left \lfloor{\frac{k}{p(p-1)}}\right \rfloor \text{ for some } c \in [0,1)\\
+												   \therefore -a & \leq -\frac{k}{p-1} - c + \left \lfloor{\frac{k}{p(p-1)}}\right \rfloor\\
+												   \therefore -a & = - \frac{k}{p-1} + O(logk)\\
+											   \therefore |k!|_p & = p^{\left(-\frac{k}{p-1} + O(logk)\right)}.
+					\end{align*}
+
+				\item For $\ds{x \in \mathbb{Q}}$ we have $\ds{x = \frac{p^l b}{c}}$, with $\ds{l \in \mathbb{Z}}$, and $\ds{p \nmid bc}$. Using the results provided in the question, and the previous part, we have,
+					\begin{align*}
+						\left|\frac{x^k}{k!}\right|_p & = \frac{\left|\frac{p^{kl}b^k}{c^k}\right|_p}{|k!|_p}\\
+													  & = \frac{p^{-kl}}{p^{-\frac{k}{p-1} + O(logk)}}\\
+													  & = p^{-kl + \frac{k}{p-1} - O(logk)}.
+					\end{align*}
+					Consider first the case where $\ds{p = 2}$. The above result gives, 
+					\begin{align*}
+						\left|\frac{x^k}{k!}\right|_2 & = 2^{-kl + \frac{k}{2-1} - O(logk)}\\
+													  & = 2^{-kl + k - O(logk)}\\
+													  & = 2^{-k(l-1) - O(logk)}.\\
+					\end{align*}
+					Taking the limit of the LHS as $\ds{k \rightarrow \infty}$, 
+					\begin{align*}
+						\lim_{k \to \infty} \left|\frac{x^k}{k!}\right|_2 & = \lim_{k \to \infty} 2^{-k(l-1) - O(logk)},
+					\end{align*}
+					which is equal to 0 when $\ds{(l-1) \geq 0}$, or equivalently $\ds{l \geq 1}$. Examining the second case, where $\ds{p \geq 3}$, we have, 
+					\begin{align*}
+						\left|\frac{x^k}{k!}\right|_p & = p^{-kl + \frac{k}{p-1} - O(logk)}\\
+													  & = p^{-k\left(l-\frac{1}{p-1}\right) - O(logk)}.\\
+					\end{align*}
+					Taking the limit of the LHS as $\ds{k \rightarrow \infty}$, 
+					\begin{align*}
+						\lim_{k \to \infty} \left|\frac{x^k}{k!}\right|_p & = \lim_{k \to \infty} p^{-k\left(l-\frac{1}{p-1}\right) - O(logk)},\\
+					\end{align*}
+					which is equal to 0 when $\ds{\left(l-\frac{1}{p-1}\right) \geq 0}$. As $\ds{p \geq 3}$, 
+					\begin{align*}
+						\left(l-\frac{1}{p-1}\right) & \geq \left(l-\frac{1}{3-1}\right)\\
+													 & = \left(l-\frac{1}{2}\right).\\
+					\end{align*}
+					The condition for the limit to be equal to 0 now becomes $\ds{\left(l-\frac{1}{2}\right) \geq 0}$, or equivalently $\ds{l \geq 1}$, as $\ds{l \in \mathbb{Z}}$. Thus, $$\lim_{k \to \infty} \left|\frac{x^k}{k!}\right|_p = 0$$ iff $\ds{l \geq 1}$ for $\ds{p \geq 3}$ and $\ds{l \geq 2}$ for $\ds{p = 2}$.
+
+					
+
+
+
+			\end{enumerate}
+	\end{enumerate}
+\end{document}

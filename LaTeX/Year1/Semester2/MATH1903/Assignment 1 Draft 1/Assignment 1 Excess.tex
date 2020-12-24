@@ -1,0 +1,88 @@
+In order to do so we must consider two non-trivial cases centered on the sign of $a$. For the first case, $\displaystyle{a>0}$.
+
+		\begin{align*}
+		A(x) & = \int_{a}^{x}f(t)dt\\
+		& = \int_{-a}^{-x}f(-u)(-du) \hspace{5mm} \text{Substituting $t = -u$}\\
+		& = \int_{-a}^{0}f(-u)(-du) + \int_{0}^{-x}f(-u)(-du)\\
+		& = \int_{-a}^{0}\big[-f(-u)\big]du + \int_{0}^{-x}\big[-f(-u)\big]du\\
+		& = \int_{-a}^{0}\big[-f(-u)\big]du + \int_{0}^{-x}f(u)du \hspace{5mm} \text{As $\displaystyle{f(u)}$ is odd}\\
+		& = \int_{a}^{0}\big[-f(t)\big](-dt) + \int_{0}^{-x}f(u)du \hspace{5mm} \text{Substituting $t = -u$}\\
+		& = \int_{a}^{0}f(t)dt + \int_{0}^{-x}f(u)du\\
+		& = \int_{a}^{0}f(t)dt + \int_{0}^{-x}f(t)dt \hspace{5mm} \text{Dummy variable switch}\\
+		\therefore A(-x) & = \int_{a}^{0}f(t)dt + \int_{0}^{x}f(t)dt\\
+		& = \int_{a}^{x}f(t)dt\\
+		& = A(x)\\
+		\therefore A(-x) & = A(x)\\
+		\end{align*}
+
+		For the second case, $\displaystyle{a<0}$.
+
+		\begin{align*}
+		A(x) & = \int_{a}^{x}f(t)dt\\
+		& = \int_{a}^{0}f(t)dt + \int_{0}^{x}f(t)dt\\
+		& = \int_{a}^{0}f(t)dt + \int_{0}^{-x}f(-u)(-du) \hspace{5mm} \text{Substituting $t = -u$}\\
+		& = \int_{a}^{0}f(t)dt + \int_{0}^{-x}\big[-f(-u)\big]du\\
+		& = \int_{a}^{0}f(t)dt + \int_{0}^{-x}f(u)du \hspace{5mm} \text{As $\displaystyle{f(u)}$ is odd}\\
+		& = \int_{a}^{0}f(t)dt + \int_{0}^{-x}f(t)dt \hspace{5mm} \text{Dummy variable switch}\\
+		\therefore A(-x) & = \int_{a}^{0}f(t)dt + \int_{0}^{x}f(t)dt\\
+		& = \int_{a}^{x}f(t)dt\\
+		& = A(x)\\
+		\therefore A(-x) & = A(x)\\
+		\end{align*}
+
+		The final trivial case occurs when $\displaystyle{a=0}$.
+
+		\begin{align*}
+		A(x) & = \int_{0}^{x}f(t)dt\\
+		& = \int_{0}^{-x}f(-u)(-du) \hspace{5mm} \text{Substituting $t = -u$}\\
+		& = \int_{0}^{-x}\big[-f(-u)\big]du\\
+		& = \int_{0}^{-x}f(u)du \hspace{5mm} \text{As $\displaystyle{f(u)}$ is odd}\\
+		& = \int_{0}^{-x}f(t)dt \hspace{5mm} \text{Dummy variable switch}\\
+		\therefore A(-x) & = \int_{0}^{x}f(t)dt\\
+		& = \int_{0}^{x}f(t)dt\\
+		& = A(x)\\
+		\therefore A(-x) & = A(x)\\
+		\end{align*}
+
+		Thus it can be seen that $A$ is even if and only if $f$ is odd. 
+
+
+		\begin{align*}
+		A(x) & = \int_{a}^{x}f(t)dt\\
+		& = & = \int_{-a}^{-x}f(-u)(-du) \hspace{5mm} \text{Substituting $t = -u$}\\
+		& = \int_{-a}^{0}f(-u)(-du) + \int_{0}^{-x}f(-u)(-du)\\
+		& = \int_{-a}^{0}\big[-f(-u)\big]du + \int_{0}^{-x}\big[-f(-u)\big]du\\
+		& = \int_{-a}^{0}\big[-f(-u)\big]du - \int_{0}^{-x}f(u)du \hspace{5mm} \text{As $\displaystyle{f(u)}$ is even}\\
+		& = \int_{a}^{0}\big[-f(t)\big](-dt) - \int_{0}^{-x}f(u)du \hspace{5mm} \text{Substituting $t = -u$}\\
+		& = \int_{a}^{0}f(t)dt - \int_{0}^{-x}f(u)du\\
+		& = \int_{a}^{0}f(t)dt - \int_{0}^{-x}f(t)dt \hspace{5mm} \text{Dummy variable switch}\\
+		\therefore A(-x) & = \int_{a}^{0}f(t)dt - \int_{0}^{x}f(t)dt\\
+		& = A(0) - A(a) - [A(x) - A(0)]
+		& = A(x)\\
+		\therefore A(-x) & = A(x)\\
+		\end{align*}
+
+		FINISH No idea for this part at all
+
+
+
+
+
+
+
+		\begin{align*}
+		A(x) & = \int_{a}^{x}f(t)dt\\
+		A(-x) & = \int_{a}^{-x}f(t)dt\\
+		A(x) & = A(-x) \hspace{5mm} \text{As $\displaystyle{A}$ is even}\\
+		\therefore \int_{a}^{x}f(t)dt & = \int_{a}^{-x}f(t)dt\\
+		\int_{0}^{x}f(t)dt + \int_{a}^{0}f(t)dt & = \int_{0}^{-x}f(t)dt + \int_{a}^{0}f(t)dt\\
+		\int_{0}^{x}f(t)dt & = \int_{0}^{-x}f(t)dt\\
+		\int_{0}^{x}f(t)dt - \int_{0}^{-x}f(t)dt & = 0\\
+		\int_{0}^{x}f(t)dt + \int_{-x}^{0}f(t)dt & = 0\\
+		\int_{-x}^{x}f(t)dt & = 0\\
+		\end{align*}
+
+
+
+
+		That is, if $\displaystyle{A}$ is even, then $\displaystyle{f}$ is odd. Furthermore, we have to prove that if $\displaystyle{f}$ is odd, then $\displaystyle{A}$ is even. The first part of the proof is then as follows.

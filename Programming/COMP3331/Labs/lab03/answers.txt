@@ -1,0 +1,39 @@
+----------
+Exercise 3
+----------
+Q1. dig www.cecs.anu.edu.au
+	IP addr = 150.203.161.98
+	DNS Query is of type A
+
+Q2. Canonical name is rproxy.cecs.anu.edu.au
+	IP addr = 150.203.161.98
+
+Q3. Authority section gives local authoritative name servers
+	Additional section gives IP addr of authoritative name servers
+	AAAA gives IPv6 address mapping
+
+Q4. dig -x 127.0.0.1 gives beethoven.orchestra.cse.unsw.EDU.AU
+	which has IP addr 129.94.208.3
+	dig localhost gives localhost as server 
+	which has IP addr 127.0.0.1
+
+Q5. dig cecs.anu.edu.au
+	servers are the three listed in the authority
+	ns2.cecs.anu.edu.au - 150.203.161.36
+	ns3.cecs.anu.edu.au - 150.203.161.50
+	ns4.cecs.anu.edu.au - 150.203.161.38
+
+Q6. engplws008.ad.unsw.edu.au
+	engplws008.eng.unsw.edu.au
+
+Q7. aa means authoritative - inside authoritative server
+	permissions and authentication
+	dig @129.94.242.33 yahoo.com MX
+	
+Q8. Same as above but go to cecs
+
+Q9. dig @ns1.yahoo.com yahoo.com MX
+
+Q10. dig . NS and follow through with @
+
+Q11. Yes to both multi interface cards 

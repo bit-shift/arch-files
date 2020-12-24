@@ -1,0 +1,173 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+% Install the required packages for the document 
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{bm}
+\usepackage{xlop}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+% Page and style settings
+%\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\newenvironment{nscentre}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\begin{document}
+\setlength{\abovedisplayskip}{8pt}{%
+\setlength{\belowdisplayskip}{8pt}{%
+
+
+\text{LSA}
+\hfill
+\text{University of Michigan}
+
+\begin{nscentre}
+	\textbf{ASTRO201: Introduction to Astrophysics}\\
+	\textbf{Homework 1}\\
+\end{nscentre}
+
+\text{Name: Keegan Gyoery}
+\hfill
+\text{UM-ID: 31799451}
+
+\pagenumbering{arabic}
+	\begin{enumerate}[leftmargin=*]
+		\item \begin{enumerate}[label=\alph*)]
+			\item Using the formula for the difference in apparent and absolute magnitudes, 
+				\begin{align*}
+					m_V - M_V & = 5\times \log_{10}{d_{pc}} - 5 \\
+					m_V & = 5\times \log_{10}{d_{pc}} - 5 + M_V \\
+						& = 5\times \log_{10}{\left(4.84\times 10^{-6}\right)} - 5 + 4.83 \\
+						& = -26.75 \\
+					\therefore m_V & = -27.
+				\end{align*}
+				Thus, the apparent magnitude of the Sun in the V band is $\ds{-27}$.
+			\item Again, using the formula for the difference in apparent and absolute magnitudes, and with the apparent magnitude in the V band set to $\ds{+6}$,
+				\begin{align*}
+					m_V - M_V & = 5\times \log_{10}{d_{pc}} - 5 \\
+					\frac{m_V - M_V + 5}{5} & = \log_{10}{d_{pc}} \\
+					\therefore \log{d_{pc}} & = \frac{m_V - M_V + 5}{5} \\
+											& = \frac{6 - 4.83 + 5}{5} \\
+											& = 1.234 \\
+					\therefore d_{pc} & = 10^{1.234} \\
+									  & = 17.14 \\
+					\therefore d_{pc} & = 17.
+				\end{align*}
+				Thus, for the Sun to have an apparent magnitude of $\ds{+6}$, it must be at a distance of $\ds{17}$ parsecs, or $\ds{5.3 \times 10^{19}}$ cm.  
+		\end{enumerate}
+		\item \begin{enumerate}[label=\alph*)]
+			\item Using the formula for optical depth, with $\ds{n = 110}$/cm, $\ds{l = 5\times 10^9}$ cm, and $\ds{\sigma_{\lambda} = 7\times 10^{-25}}$ $\ds{\text{cm}^2}$, 
+				\begin{align*}
+					\tau_{\lambda} & = nl\sigma_{\lambda} \\
+					\therefore \tau_{\lambda} & = 110 \times 5 \times 10^9 \times 7 \times 10^{-25} \\
+											  & = 3.85 \times 10^{-13} \\
+					\therefore \tau_{\lambda} & = 3.9\times 10^{-13}.
+				\end{align*}
+				Thus, the optical depth of the Sun's corona is $\ds{3.9\times 10^{-13}}$.
+			\item Using the formula for radiative transport, in the case of absorption,
+				\begin{align*}
+					I & = I_0 e^{-\tau} \\
+					  & = I_0 e^{-3.85 \times 10^{-13}} \\
+					  & = I_0. \\
+				\end{align*}
+				Clearly, the solar radiation passes through the Sun's corona without attenuation, as $\ds{I=I_0}$, and so is attenuated $\ds{0\%}$.
+		\end{enumerate}
+		\item \begin{enumerate}[label=\alph*)]
+			\item Using the formula for energy flux and luminosity, where $\ds{R = D}$, 
+				\begin{align*}
+					F & = \frac{L}{4\pi D^2} \\
+					  & = \frac{4 \pi R^2}{4\pi D^2} \sigma_{\Sigma B} T^4 \\
+					  & = \frac{4 \pi R^2}{4\pi R^2} \sigma_{\Sigma B} T^4 \\
+					  & = \sigma_{\Sigma B} T^4 \\
+					  & = 5.7 \times 10^{-5} \times (5770)^4 \\
+					  & = 6.32 \times 10^{10} \\
+					\therefore F & = 6.3 \times 10^{10}.
+				\end{align*}
+				Thus, the surface brightness of the Sun is $\ds{6.3 \times 10^{10}}$ ergs/$\ds{\text{cm}^2}$/s.
+			\item Again, using the formula for energy flux and luminosity, where the radius of the Sun is $\ds{696340}$ km, and the distance to the Sun is $\ds{149.6\times 10^6}$ km, 
+				\begin{align*}
+					F & = \frac{L}{4\pi D^2} \\
+					  & = \frac{4 \pi R^2}{4\pi D^2} \sigma_{\Sigma B} T^4 \\
+					  & = \frac{696340^2}{\left(149.6\times 10^6\right)^2} \times 5.7 \times 10^{-5} \times (5770)^4 \\
+					  & = 1.37 \times 10^6 \\
+					\therefore F  & = 1.4 \times 10^6.
+				\end{align*}
+				Thus, the flux energy from the Sun received at Earth is $\ds{1.4 \times 10^6}$ ergs/$\ds{\text{cm}^2}$/s.
+			\item The textbook quotes the temperature of a sunspot to be $\ds{3800}$ K. Using the formula relating peak wavelength and temperature, 
+				\begin{align*}
+					\lambda_{\text{max}} T & = 2.90 \times 10^6 \\
+					\therefore \lambda_{\text{max}} & = \frac{2.90 \times 10^6}{T} \\
+													& = \frac{2.90 \times 10^6}{3800} \\
+													& = 763.16 \\
+					\therefore \lambda_{\text{max}} & = 760.
+				\end{align*}
+				Thus, the peak wavelength of a sunspot is $\ds{760}$ nm.
+				\pagebreak
+			\item Using the formula for intensity of a black body, where temperature is $\ds{5770}$ K for the Sun, $\ds{3800}$ K for the sunspot, and wavelength is $\ds{550}$ nm, the intensities of the Sun and sunspot at $\ds{550}$ nm are
+				\begin{align*}
+					I_{\lambda}(\lambda,T) & = \left(\frac{2hc^2}{\lambda^5}\right)\frac{1}{e^{\nicefrac{hc}{\lambda kT}} - 1} \\
+					\therefore I_{\lambda}(550,5770) & = \left(\frac{2\times 6.6262\times 10^{-27} \times \left(2.9979\times 10^{17}\right)^2}{550^5}\right) \\
+										  & \times \frac{1}{e^{\nicefrac{6.6262\times 10^{-27}\times 2.9979\times 10^{17}}{550\times  1.3806 \times 10^{-16} \times 5770}} - 1} \\
+										  & = 2.56 \times 10^{-7}, \\
+					\therefore I_{\lambda}(550,5770) & = 2.6 \times 10^{-7}, \\
+					\therefore I_{\lambda}(550,3800) & = \left(\frac{2\times 6.6262\times 10^{-27} \times \left(2.9979\times 10^{17}\right)^2}{550^5}\right) \\
+										  & \times \frac{1}{e^{\nicefrac{6.6262\times 10^{-27}\times 2.9979\times 10^{17}}{550\times  1.3806 \times 10^{-16} \times 3800}} - 1} \\
+										  & = 2.4 \times 10^{-8}.
+				\end{align*}
+				Thus, the ratio of intensity of the sunspot to the Sun is $\ds{1:11}$.
+		\end{enumerate}
+		\item \begin{enumerate}[label=\alph*)]
+			\item As Eta Carinae is significantly hotter than the Sun, it will appear bluer than the Sun.
+			\item Using the formula relating peak wavelength and temperature,
+				\begin{align*}
+					\lambda_{\text{max}} T & = 2.90 \times 10^6 \\
+					\therefore \lambda_{\text{max}} & = \frac{2.90 \times 10^6}{T} \\
+													& = \frac{2.90 \times 10^6}{38000} \\
+													& = 76.32 \\
+					\therefore \lambda_{\text{max}} & = 76
+				\end{align*}
+				Thus, the peak wavelength of Eta Carinae is $\ds{76}$ nm, which is in the ultraviolet range on the spectrum.
+
+		\end{enumerate}
+	\end{enumerate}
+\end{document}

@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage{thrmappendix}
+\usepackage{graphicx}
+\usepackage{listingsutf8}
+\usepackage[export]{adjustbox}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[a4paper, total={7in, 9in}]{geometry}
+\usepackage{tkz-euclide}
+\usepackage{gensymb}
+\usepackage{tabu}
+\usetkzobj{all}
+
+\begin{document}
+
+\section{Measurement}
+
+\subsection{Further Areas and Volumes}
+
+\subsubsection{Percentage error}
+
+When measuring anything, there is a degree of error accompanied with the measurement that is equal to the smallest unit used in the measurement. For example, a ruler measuring in centimetres has an 'accuracy' of $\pm 0.5cm$. 
+
+\subsubsection{Various formulae for areas and volumes}
+
+There are multiple shapes and composite volumes you'll need to be able to calculate in the HSC, but most revolve around the areas of spheres, cylinders, cones and rectangles: \\
+
+\textbf{SURFACE AREAS}
+
+\begin{align*}
+A_{sphere} &= 4 \pi r^2 \\
+A_{cylinder\text{ (closed)}} &= 2 \pi r^2 + 2 \pi rh \\
+\end{align*} 
+
+\textbf{VOLUMES}
+
+\begin{align*}
+V_{sphere} &= \frac{4}{3}\pi r^3 \\
+V_{cylinder} &= \pi r^2 h \\
+V_{cone} &= \frac{1}{3}\pi r^2 h \\ 
+&= V_{pyramid} \\
+\end{align*}
+
+\subsubsection{Simpson's rule}
+
+Most of the time (in the real world), shapes are not perfect and do not take the form of polygons that we readily have area/volume formulae for. In this case, there are numerous methods of \textit{approximating} the area/volume. One of those is \textbf{Simpson's rule}. \\
+
+If we know the height/depth of the shape taken at multiple \underline{uniformly spaced intervals}, we can easily determine a roughly correct value for the area/volume of that shape. \\
+
+In finding the area of a shape with three values for height:
+
+\begin{align*}
+A \approx \frac{h}{3}(d_f+4d_m+d_l) 
+\end{align*}
+
+\subsubsection{Annulus}
+
+The annulus is simply two circles of \textit{different} radius sharing a common centre. These are called \underline{concentric circles}. To determine the area of an annulus simply use: 
+
+\begin{align*}
+A = \pi(R^2-r^2)
+\end{align*}
+
+\subsection{Applications of Trigonometry}
+
+In year 11, you focused on looking at and analysing the right-angled triangle, with little/no consideration for non-right-angled triangles. In the HSC course, we extend our formulae to include non-right-angled triangles. \\
+
+The General Maths 2 HSC course will require you to apply the formulae/content you learn about this to various topics, such as bearings, elevation/depression and surveys. 
+
+\subsubsection{Area}
+
+If we know the length of two sides of a triangle, as well as the \textbf{angle formed by \underline{those two sides}}, we can determine the area of that triangle. \\
+
+\begin{align*}
+A_{triangle} = \frac{1}{2}ab \sin C 
+\end{align*}
+
+\subsubsection{Finding sides and angles in a triangle}
+
+With right-angled triangles, it is very simple to find all sides and angles given a bit of information. With non-right-angled triangles, it can come across as less straightforward, but it's important to commit the following to memory - doing so gives you easy marks in an exam. \\
+
+\textbf{SINE RULE}
+
+\begin{align*}
+\frac{\sin A}{a} = \frac{\sin B}{b} = \frac{\sin C}{c} 
+\end{align*}
+
+This rule is very common - it's essential that you know which angles/sides to use. Just remember that A/a, B/b, C/c correspond to \underline{opposite} sides and angles. \\
+
+\textbf{COSINE RULE}
+
+\begin{align*}
+c^2 = a^2 + b^2 -2ab\cos C
+\end{align*}
+
+Again, ensure you know which side corresponds to which. As well as this - remember that you
+
+\subsection{Spherical Geometry}
+
+Spherical geometry applies what we know about trigonometry to problems involving the Earth (effectively a sphere), using latitude/longitude. 
+
+\subsubsection{Arc length and great/small circles}
+
+Arc length describes the length of a specific portion of the circumference of a circle. We calculate the arc length based on the angle made at the centre of the circle made by the two radii at each end of the arc.
+
+\begin{align*}
+l = \frac{\theta}{360}2 \pi r 
+\end{align*}
+
+\begin{itemize}
+	\item \textbf{Great circle:} A circle drawn on a sphere whose radius is equal to that of the sphere. 
+	\item \textbf{Small circle:} All other circles drawn on a sphere. 
+\end{itemize}
+
+On a sphere, we can draw infinitely many circles on the surface, each of different size. In the context of the earth, those circles are referred to as the lines of \textbf{latitude} and \textbf{longitude.} 
+
+\begin{itemize}
+	\item Lines of latitude: Parallel horizontal circles going from the north pole to the south pole
+	\item Lines of longitude: Perpendicular to latitudinal lines, each intersecting with each other at the poles.
+\end{itemize}
+
+Which circles corresponding to latitudinal and longitudinal lines are great/small?
+
+\subsection{Time zones}
+
+When we calculate time zones, we use the fact that one degree of longitude is equal to rougly 4 minutes time difference. \\
+
+In calculating the time in different parts of the world, given latitudinal/longitudinal coordinates, calculate the time difference using the shortest distance between the two locations
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

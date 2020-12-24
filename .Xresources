@@ -2,7 +2,7 @@
 URxvt.iso14755: 	false
 URxvt.iso14755_52: 	false
 
-! URxvt.perl-ext-common: resize-font
+URxvt.perl-ext-common: resize-font
 
 *.scrollBar: 		false
 
@@ -18,7 +18,8 @@ URxvt.iso14755_52: 	false
 
 ! !------ Fonts ------! !
 *.font:			xft:Inconsolata:size=18
-*.boldFont:		xft:Inconsolata:size=18
+!*.boldFont:		xft:Inconsolata:size=18
+!rofi.font: InconsolataForPowerline Nerd Font 11
 
 ! !------ Colours ------! !
 !*.background: 		#0f0f0f

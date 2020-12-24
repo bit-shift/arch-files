@@ -1,0 +1,162 @@
+\documentclass[a4paper]{article}
+
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{bm}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\parskip=8pt
+\parindent=0pt
+\textwidth=6.25in
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\textheight=10in
+\topmargin=-0.75in
+\baselineskip=11pt
+
+\begin{document}
+\pagenumbering{arabic}
+\begin{center}
+  \vspace{-3mm}
+	\textbf{\large {MATH2701 - Algebra and Analysis \\
+	Short Assignment 3 \\
+	Jack English - z5208352}}
+\end{center}
+\vspace{-5mm}
+
+\begin{enumerate}[leftmargin=\labelsep]
+	\item[\textbf{(1)}]
+		First we generalise Young's Inequality. Taking $1 < p_1, p_2, ... , p_k < \infty$, we apply Jensen's Inequality using the convex function $-\ln{x}$,
+		\begin{align*}
+			-\ln\left(\frac{a_1^{p_1}}{p_1} + \frac{a_2^{p_2}}{p_2} + ... + \frac{a_k^{p_k}}{p_k}\right) & \leq -\frac{1}{p_1}\ln\left(a_1^{p_1}\right) -\frac{1}{p_2}\ln\left(a_2^{p_2}\right) -...- \frac{1}{p_k}\ln\left(a_k^{p_k}\right) \\
+			& = -\ln(a_1a_2 ... a_k).
+		\end{align*}
+		Given that $-\ln{x}$ is decreasing, we have,
+		$$a_1a_2 ... a_k \leq \frac{a_1^{p_1}}{p_1} + \frac{a_2^{p_2}}{p_2} + ... + \frac{a_k^{p_k}}{p_k} \hspace{4mm} (1)$$
+		Note that,
+		$$\left|\sum_{i = 1}^n x_{1,i}x_{2,i} ... x_{k,i}\right| \leq \sum_{i = 1}^n |x_{1,i}||x_{2,i}|...|x_{k,i}|$$
+		So without loss of generality, we can assume all $x_{i,j}$ are positive. Note we can easily omit any 0 terms without changing the sum.
+		Now we define $A_n = a_n^{p_n}$, and using the initial inequality we have,
+		$$A_1^{1 / p_1}A_2^{1 / p_2} ... A_k^{1 / p_k} \leq \frac{1}{p_1}A_1 + \frac{1}{p_2}A_2 + ... + \frac{1}{p_k}A_k.$$
+		We also define,
+		$$X_j = \sum_{i = 1}^n x_{j,i}^{p_j},$$
+		and,
+		$$A_{j,i} = \frac{x_{j,i}^{p_j}}{X_j} \implies \sum_{i = 1}^n A_{j,i} = 1.$$
+		Now we have,
+		\begin{align*}
+			\left|\sum_{i = 1}^n x_{1,i}x_{2,i}...x_{k,i}\right| & = \sum_{i = 1}^n X_1^{1 / p_1}A_{1,i}^{1 / p_1} X_2^{1 / p_2}A_{2,i}^{1 / p_2}... X_k^{1 / p_k}A_{k,i}^{1 / p_k} \\
+			& = X_1^{1 / p_1}...X_k^{1 / p_k}\sum_{i = 1}^n A_{1,i}^{1 / p_1} ...A_{k,i}^{1 / p_k}  \\
+			& \leq \left(\frac{1}{p_1} \sum_{i = 1}^n A_{1,i} + ... + \frac{1}{p_k} \sum_{i = 1}^n A_{k,i} \right) \prod_{l = 1}^k X_l^{1 / p_l} \hspace{4mm} \text{using } (1) \\
+			& = \left(\frac{1}{p_1} + ... + \frac{1}{p_k}\right) \prod_{l = 1}^k \left(\sum_{i = 1}^n x_{l,i}\right)^{1 / p_l} \\
+			& = \prod_{l = 1}^k \norm{\bm{x_l}}_{p_l} \\
+			\therefore \left|\sum_{i = 1}^n x_{1,i}x_{2,i}...x_{k,i}\right| & \leq \prod_{l = 1}^k \norm{\bm{x_l}}_{p_l}
+		\end{align*}
+	\item[\textbf{(2)}]
+	\item[(a)]
+		Given orthonormal vectors $\bm{x_1}, \bm{x_2}, ..., \bm{x_n}$ and $d_1, d_2, ..., d_n$ positive numbers, we have the set,
+		$$E = \left\{ \bm{x} = \sum_{k = 1}^n c_k \bm{x_k} : \frac{c_1^2}{d_1^2} + \frac{c_2^2}{d_2^2} + ... + \frac{c_n^2}{d_n^2} \leq 1 \right\}.$$
+		Consider two points $\bm{x}, \bm{y} \in E$ where,
+		$$\bm{x} = \sum_{k = 1}^n a_k \bm{x_k} \text{ and } \bm{y} = \sum_{k = 1}^n b_k \bm{x_k}.$$
+		For convenience we will label the following vectors,
+		$$\bm{a} = \left(\frac{a_1}{d_1}, \frac{a_2}{d_2}, ... , \frac{a_n}{d_n}\right) \text{ and } \bm{b} = \left(\frac{b_1}{d_1}, \frac{b_2}{d_n}, ... , \frac{b_n}{d_n}\right).$$
+		Note that given $\bm{x}, \bm{y} \in E$, we have $\bm{a} \cdot \bm{a} = \norm{\bm{a}}^2 \leq 1$ and $\bm{b} \cdot \bm{b} = \norm{\bm{b}}^2 \leq 1.$
+		Now we consider the vectors $\bm{w} = \lambda \bm{x} + (1 - \lambda) \bm{y}$ for any $\lambda \in [0,1].$
+		$$\therefore \bm{w} = \sum_{k = 1}^n (\lambda a_k + (1 - \lambda) b_k)\bm{x_k}.$$
+		Let $v_k = (\lambda a_k + (1 - \lambda) b_k).$ Now we have $\displaystyle \bm{w} = \sum_{k = 1}^n v_k\bm{x_k}.$ Consider the following,
+		\begin{align*}
+			\frac{v_1^2}{d_1^2} + \frac{v_2^2}{d_2^2} + ... + \frac{v_n^2}{d_n^2} & = \sum_{k = 1}^n \frac{(\lambda a_k + (1 - \lambda) b_k)^2}{d_k^2} \\
+			& = \sum_{k = 1}^n \left(\lambda^2 \frac{a_k^2}{d_k^2} + (1 - \lambda)^2 \frac{b_k^2}{d_k^2} + 2\lambda(1 - \lambda) \frac{a_kb_k}{d_k^2}\right) \\
+			& = \lambda^2 (\bm{a} \cdot \bm{a}) + (1 - \lambda)^2 (\bm{b} \cdot \bm{b}) + 2\lambda(1 - \lambda) (\bm{a} \cdot \bm{b}) \\
+			& \leq \lambda^2 + (1 - \lambda)^2 + 2\lambda(1 - \lambda) \norm{\bm{a}} \norm{\bm{b}} \hspace{5mm} \text{Cauchy-Schwarz} \\
+			& \leq \lambda^2 + (1 - \lambda)^2 + 2\lambda(1 - \lambda) \\
+			& = 1
+		\end{align*}
+		Hence $w \in E$, and thus ellipsoids are convex. \\ [2mm]
+		It is quite clear to see that if $\bm{x} \in E$, then so is $-\bm{x}$ as obviously,
+		$$\frac{c_1^2}{d_1^2} + \frac{c_2^2}{d_2^2} + ... + \frac{c_n^2}{d_n^2} =  \frac{(-c_1)^2}{d_1^2} + \frac{(-c_2)^2}{d_2^2} + ... + \frac{(-c_n)^2}{d_n^2}.$$
+		Therefore $E$ is centrally symmetric. \\ [2mm]
+		We also know that $E$ contains its boundary. The boundary is,
+		$$\partial E = \left\{ \bm{x} = \sum_{k = 1}^n c_k \bm{x_k} : \frac{c_1^2}{d_1^2} + \frac{c_2^2}{d_2^2} + ... + \frac{c_n^2}{d_n^2} = 1 \right\},$$
+		which is clearly a subset of $E$. Hence $E$ is closed. \\ [2mm]
+		Finally we also know that $E$ is bounded above and below. Specifically it is bounded above by the ball $B_C$ where $C = \max\{d_k\}$. To check, consider $\bm{x} \in E$ where $\norm{\bm{x}} > C$. Then we have
+		\begin{align*}
+			c_1^2 + ... + c_n^2 & > C^2 \\
+			\frac{c_1^2}{C^2} + ... + \frac{c_n^2}{C^2} & > 1.
+		\end{align*}
+		But we also have,
+		$$\frac{c_1^2}{C^2} + ... + \frac{c_n^2}{C^2} \leq \frac{c_1^2}{d_1^2} + ... + \frac{c_n^2}{d_n^2} \leq 1.$$
+		By contradiction, no such $\bm{x}$ exists and hence $E$ is bounded above by the ball $B_C$. \\ [2mm]
+		Thus $E$ is a convex body.
+
+	\item[(b)]
+		Let $\displaystyle \bm{y} = \sum_{k = 1}^n a_k\bm{x_k}$ and consider $\bm{x} \cdot \bm{y} \leq 1$ for all $\bm{x} = \sum_{k = 1}^n c_k \bm{x_k} \in E$.
+		\begin{align*}
+			\bm{x} \cdot \bm{y} & = \sum_{k = 1}^n a_kc_k \\
+			& = \sum_{k = 1}^n (d_ka_k)\left(\frac{c_k}{d_k}\right) \\
+			& \leq \left(\sum_{k = 1}^n (d_ka_k)^2\right)^{\frac{1}{2}} \left(\sum_{k = 1}^n \left(\frac{c_k}{d_k}\right)^2\right)^\frac{1}{2} \hspace{5mm} \text{Cauchy-Schwarz} \\
+			& \leq \left(\sum_{k = 1}^n d_k^2a_k^2\right)^{\frac{1}{2}}
+		\end{align*}
+		Considering the condition for equality in Cauchy-Schwarz, we have,
+		$$K^{\circ} = \left\{ \bm{x} = \sum_{k = 1}^n c_k \bm{x_k} : \frac{c_1^2}{d_1^{-2}} + \frac{c_2^2}{d_2^{-2}} + ... + \frac{c_n^2}{d_n^{-2}} \leq 1 \right\},$$
+		which is an ellipsoid with corresponding set of positive numbers $d_1^{-1}, d_2^{-1}, ..., d_n^{-1}$.
+	\item[\textbf{(3)}]
+		The set,
+		$K = \{(x,y) \in \mathbb{R}^2 : \max\{|x - y|, |x|, |y|\} \leq 1\}$
+		is contained within the boundary in the following diagram.
+		\begin{center}
+			\includegraphics[scale=0.5]{k.png}
+		\end{center}
+		We consider some $\bm{u} = (x_1, y_1) \in K$ and $\bm{v} = (x_2, y_2)$, where $\bm{u} \cdot \bm{v} \leq 1$.
+		$$\implies x_1x_2 + y_1y_2 \leq 1.$$
+		Moving along the boundary of $K$, we get the following inequalities relating $x_2, y_2$.
+		\begin{align*}
+			-1 \leq x_2 & + y_2 \leq 1 \\
+			-1 \leq & x_2 \leq 1 \\
+			-1 \leq & y_2 \leq 1
+		\end{align*}
+		Hence we can write,
+		$$K^{\circ} = \{(x,y) \in \mathbb{R}^2 : \max\{|x + y|, |x|, |y|\} \leq 1\}.$$
+		This is simply a rotation of $K$, with boundary as shown below.
+		\begin{center}
+			\includegraphics[scale=0.5]{kpolar.png}
+		\end{center}
+		Now we can compute the Mahler volume,
+		$$M(K) = \text{vol}(K) \text{vol}(K^{\circ}) = 3 \times 3 = 9.$$
+	\item[\textbf{(4)}]
+	\item[(a)]
+		First note that if $\displaystyle M = \max_{a \leq x \leq b} |f(x)|$, then we also have $\displaystyle M^p = \max_{a \leq x \leq b} |f(x)|^p$. Therefore,
+		\begin{align*}
+			\norm{f}_p & = \left(\int_a^b |f(x)|^p dx\right)^{\frac{1}{p}} \\
+			& \leq \left(M^p \int_a^b dx\right)^{\frac{1}{p}} \\
+			& = M(b - a)^{\frac{1}{p}}.
+		\end{align*}
+		This gives us the right hand side of the inequality,
+		$$\norm{f}_p \leq (b - a)^{\frac{1}{p}}M.$$
+	\item[(b)]
+		Taking the limit of the inequality in part (a),
+		\begin{align*}
+			\lim_{p \rightarrow \infty} c^{\frac{1}{p}} (M - \varepsilon) \leq & \lim_{p \rightarrow \infty} \norm{f}_p \leq \lim_{p \rightarrow \infty} (b - a)^{\frac{1}{p}} M \\
+			M - \varepsilon \leq & \lim_{p \rightarrow \infty} \norm{f}_p \leq M \\
+			- \varepsilon \leq & \lim_{p \rightarrow \infty} \norm{f}_p - M \leq 0 \\
+			& \left|\lim_{p \rightarrow \infty} \norm{f}_p - M\right| \leq \varepsilon
+		\end{align*}
+		Suppose $\displaystyle \left|\lim_{p \rightarrow \infty} \norm{f}_p - M\right| = k \neq 0$. Then consider $\varepsilon = \frac{k}{2} < k$. This contradicts the inequality above, and hence by contradiction, $\displaystyle \left|\lim_{p \rightarrow \infty} \norm{f}_p - M\right| = 0.$
+		$$\therefore \lim_{p \rightarrow \infty} \norm{f}_p = M.$$
+
+
+
+\end{enumerate}
+
+
+
+
+\end{document}

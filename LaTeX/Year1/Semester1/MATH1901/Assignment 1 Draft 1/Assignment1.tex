@@ -1,0 +1,103 @@
+\documentclass[a4paper]{article}
+% you can copy and paste these page settings from here to the next % to make the pdf look a little nicer
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usepackage{asyalign}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}{}
+\usetikzlibrary{arrows}
+
+% page and style settings
+\parskip=5pt
+\parindent=0pt
+\textwidth=6.25in
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\textheight=10in
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+
+% the following four lines force that lines break after 80 characters in the R-output
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% HEADER FOR PDF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% (Ignore this section) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+{\large \textbf{MATH 1901 - Differential Calculus} }\\
+\end{center}
+\vspace{-1mm}
+\begin{tabular*}{1.0\linewidth}{@{\extracolsep{\fill}}lr@{}}
+  \hline\noalign{\smallskip}
+Semester 1, \the\year & Name = \texttt{Keegan Gyoery} \\ 
+Tutor = \texttt{Daniel Daners} & SID = \texttt{470413467} \\
+\hline
+\end{tabular*}
+\begin{center}
+ \large \textbf{Assignment 1}\\
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END HEADER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% QUESTIONS START HERE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bold heading Question 1
+\textbf{Question 1}
+
+% Begin List 
+\begin{enumerate}[label=(\alph*)]
+
+% First Question
+\item Consider the equation\\
+
+% Equation we are required to prove
+$x^{n+1}-(n+1)x+n = (x-1)[1+x+x^2+...+x^n-(n+1)$\\
+We are required to prove this result for the conditions:\\
+
+% Conditions for the above equation to hold
+$x\geq1, x\in\mathbb{R}, n\in\mathbb{N}$\\
+
+
+% Proving the result RHS
+$RHS = (x-1)[1+x+x^2+...+x^n-(n+1)]$\\
+
+% Setting up the equation as a GP
+It can be seen that $1+x+x^2+...+x^n$ is a GP, with first term = $1$, ratio = $x$ , and $(n+1)$ terms\\
+
+% Solving the equation
+$\therefore 1+x+x^2+...+x^n = \frac{(x^{n+1}-1)}{x-1}$\\
+
+% Begin align and solving the equation
+\begin{align*}
+RHS &= 5\\
+&= 7\\
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+
+\end{document}

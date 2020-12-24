@@ -1,0 +1,121 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper]{article}
+
+% Install the required packages for the document 
+\usepackage{envmath}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage[mathcal]{euscript}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{harpoon}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{asyalign}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{xhfill}
+\usepackage{accents}
+\usepackage{cite}
+\usepackage{url}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns} \usetikzlibrary{arrows} % Page and style settings \parskip=8pt \parindent=0pt % Right margin \textwidth=6.25in % Left margin \oddsidemargin=0pt \evensidemargin=0pt % Bottom margin \textheight=10in % Top margin \topmargin=-0.75in \baselineskip=11pt % end of page and other style settings \renewcommand{\familydefault}{\sfdefault} \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)} % Begin the text of the document \begin{document} % Begin the Title Page \begin{titlepage} \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here \center % Center everything on the page \textsc{\LARGE University of Sydney}\\[1.5cm] % Name of your university/college \textsc{\Large MATH 2988}\\[0.5cm] % Major heading such as course name \textsc{\large Number Theory and Cryptography}\\[0.5cm] % Minor heading such as course title \HRule \\[0.4cm] { \huge \bfseries Assignment 2}\\[0.4cm] % Title of your document \HRule \\[1.5cm] \begin{minipage}{0.4\textwidth} \begin{flushleft} \large \emph{Author:} Keegan Gyoery % Your name \\ \emph{SID:} 470413467 \end{flushleft} \end{minipage} ~ \begin{minipage}{0.4\textwidth} \begin{flushright} \large \emph{Lecturer:} Dmitry Badziahin % Tutor's Name \\ \emph{Tutorial:} Carslaw Tutorial Room 451 Thursday 12pm \end{flushright} \end{minipage}\\[4cm] {\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise \vfill % Fill the rest of the page with whitespace \end{titlepage} \pagenumbering{arabic} %%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%% \begin{enumerate}[label=\textbf{\arabic*.}] \item \begin{enumerate} \item We are required to find an integer $\displaystyle{x \in \{0,\dots,196\}}$, which is a solution to the equation \begin{align*} x^{131} & \equiv 12 \pmod{197}\\ \end{align*} In order to solve the congruence relation, we need to find some $\displaystyle{u \in \mathbb{Z}^{+}}$ such that $\displaystyle{131u \equiv 1 \pmod{196}}$. By finding such a $\displaystyle{u}$, we are able to reduce the congruence relation to a linear realtionship.  \begin{align*} 131u & \equiv 1 \pmod{196}\\ 131^{-1}\cdot131u & \equiv 131^{-1} \pmod{196}\\ u & \equiv 131^{-1} \pmod{196}\\ \end{align*} We are now required to find the inverse of $\displaystyle{131 \pmod{196}}$. In order to do so we use the Extended Euclidean Algorithm.  \begin{center} \begin{tabular}{c c l l} 196 & 131 & 65 & 1 \\ $\displaystyle{\cdot}$ & $\displaystyle{\cdot}$ & 1 & 2 \\ 0 & 1 & $\displaystyle{1^{-}}$ & 3 \\ 1 & 0 & 1 & $\displaystyle{2^{-}}$ \\ \end{tabular} \end{center} As a result of the EEA, we have the result that $\displaystyle{3\cdot131 - 2 \cdot196 = 1}$. It is thus clear that $\displaystyle{131^{-1} \equiv 3 \pmod{196}}$.  \begin{align*} 131^{-1} & \equiv 3 \pmod{196}\\ \therefore u & \equiv 131^{-1} \pmod{196}\\ \therefore u & \equiv 3 \pmod{196}\\ \end{align*} Using these results, we are able to reduce the original congruence to a linear relation that is simple to solve.  \begin{align*} x^{131} & \equiv 12 \pmod{197}\\ \therefore x^{131u} & \equiv 12^{u} \pmod{197}\\ \therefore x^{131\cdot3} & \equiv 12^{3} \pmod{197}\\ \therefore x^{1} & \equiv 12^{3} \pmod{197}\\ \therefore x & \equiv 1728 \pmod{197}\\ \therefore x & \equiv 152 \pmod{197}\\ \end{align*} Thus the integer $\displaystyle{x = 152}$ solves the congruence relation $\displaystyle{x^{131} \equiv 12 \pmod{197}\\}$.  \pagebreak \item We are now required to show that for any prime $\displaystyle{p > 3}$ there exists $\displaystyle{n \in \{ 2,3,\dots,p-2\}}$ such that the polynomial equation \begin{align*} x^n & \equiv x+1 \pmod{p}\\ \end{align*} has an integer solution. Let $\displaystyle{a \in \mathbb{Z}+}$ be a primitve root modulo $\displaystyle{p}$. As a consequence of the definiton of a primitive root, we have the result that $\displaystyle{a \in \{2,3,\dots,p-2\}}$. Furthermore, for some $\displaystyle{i}$, where $\displaystyle{i \in \{0,1,2,\dots,p-2\}}$, $\displaystyle{a^i \Mod{p}}$ generates all residues modulo $\displaystyle{p}$. That is, $\displaystyle{a^i \in \{2,3,\dots,p-1\}}$. Furthermore, based on the definition of the set that $\displaystyle{a}$ resides in, we have the result that $\displaystyle{a + 1 \in \{3,4,\dots,p-1\}}$. Thus, we have the two sets as results.  \begin{align*} a^i \Mod{p} & \in \{2,3,\dots,p-1 \} \dots\dots\dots (A) \\ a + 1 & \in \{3,4,\dots,p-1\} \dots\dots\dots (B) \\ \end{align*} If $\displaystyle{p-1 \geq 3}$, then the sets $\displaystyle{(A)}$ and $\displaystyle{(B)}$ overlap. Thus, $\displaystyle{p > 3}$. As a result, for given $\displaystyle{a}$, we can select such an $\displaystyle{i \in \{0,1,2,\dots,p-2 \}}$ such that the following result holds true.  \begin{align*} a^i & \equiv a+1 \pmod{p}\\ \end{align*} We now must prove that the result does not hold for $\displaystyle{i = 0}$ and $\displaystyle{i = 1}$, in order to prove the required result. In the case where $\displaystyle{i = 0}$, we have the following results.  \begin{align*} a^i & \equiv a^0 \pmod{p} \\ & \equiv 1 \end{align*} Thus, we must examine the congruence relation $\displaystyle{1 \equiv a+1 \pmod{p}}$. For $\displaystyle{a+1}$ to be congruent to 1, $\displaystyle{a = 0}$. If $\displaystyle{a = 0}$, it does not exist in the set of values that $\displaystyle{a}$ can take, that is $\displaystyle{a \in \{2,3,\dots,p-2\}}$. Thus, $\displaystyle{i}$ cannot take the value $\displaystyle{i = 0}$.  \bigbreak In the case where $\displaystyle{i = 1}$, we have the following results.  \begin{align*} a^i & \equiv a^1 \pmod{p} \\ & \equiv a \end{align*} Thus, we must examine the congruence relation $\displaystyle{a \equiv a+1 \pmod{p}}$. There are no values of $\displaystyle{a}$ such that this result holds, as $\displaystyle{0 \not\equiv 1 \pmod{p}}$. Thus, $\displaystyle{i}$ cannot take the value $\displaystyle{i = 1}$.  \bigbreak As a result, we eliminate the values $\displaystyle{i=0}$, and $\displaystyle{i=1}$ from the set of values that $\displaystyle{i}$ can take. Thus the set $\displaystyle{i \in \{0,1,2,\dots,p-2\}}$ is reduced to the set $\displaystyle{i \in \{2,3,\dots,p-2\}}$. Thus, we have an integer solution to the congruence relation \begin{align*} a^i & \equiv a + 1 \pmod{p} \\ \end{align*} where $\displaystyle{a \in \mathbb{Z}+}$ is a primitive root, $\displaystyle{a \in \{2,3,\dots,p-2\}}$, and $\displaystyle{i \in \{2,3,\dots,p-2\}}$. Thus by a dummy variable swtich, we have the desired result, that \begin{align*} x^n & \equiv x + 1 \pmod{p} \\ \end{align*} has an integer solution, where $\displaystyle{n \in \{2,3,\dots,p-2\}}$, and $\displaystyle{p > 3}$.  \end{enumerate} \pagebreak \item \begin{enumerate} \item Let $\displaystyle{n \in \mathbb{Z}^+}$. We are required to show that for any factorisation of $\displaystyle{n^2 + 1}$ as a product of two positive integers, that is $\displaystyle{n^2 + 1 = a\cdot b}$ where $\displaystyle{a,b \in \mathbb{Z}^+}$, we have the following result.  \begin{align*} |b-a| & \geq \sqrt{4n-3} \\ \end{align*} In order to complete this proof, we represent $\displaystyle{n^2 + 1}$ as a difference of two squares, that is, $\displaystyle{n^2 + 1 = r^2 - s^2}$, where $\displaystyle{r,s \in \mathbb{Q}}$. Thus we have the following results.  \begin{align*} r^2 - s^2 & = n^2 + 1 \\ r^2 & = n^2 + 1 + s^2 \\ \therefore r^2 & > n^2 + 1 \quad \text{as} \quad s^2 > 0\\ r & > \sqrt{n^2 + 1} \\ r & > \sqrt{n^2} \quad \text{as} \quad n^2 + 1 > n^2\\ \therefore r & > n  \dots\dots\dots (1)\\ \end{align*} We now examine the factorisation of $\displaystyle{n^2 + 1 = r^2 - s^2}$ to get the following result.  \begin{align*} n^2 + 1 & = r^2 - s^2 \\ & = (r+s)(r-s) \\ \therefore a\cdot b & = (r+s)(r-s) \\ a & = r+s \quad \text{as} \quad a,r,s \in \mathbb{Z}\\ b & = r-s \quad \text{as} \quad b,r,s \in \mathbb{Z}\\ \therefore a + b & = r + s + r - s \\ & = 2r \\ \therefore r & = \frac{a+b}{2}\\ \therefore r & = \frac{k}{2} \quad \text{where} \quad k \in \mathbb{Z} \dots\dots (2)\\ \therefore a - b & = r + s - (r - s) \\ & = 2s\\ \therefore s & = \frac{a-b}{2}\\ \therefore s & = \frac{l}{2} \quad \text{where} \quad l \in \mathbb{Z} \dots\dots (3)\\ \end{align*} Thus, $\displaystyle{r}$ and $\displaystyle{s}$, are rational and in the form $\displaystyle{\frac{d}{2}}$, where $\displaystyle{d \in \mathbb{Z}}$. We also have the two results, $\displaystyle{(1)}$ and $\displaystyle{(2)}$, that allow us to arrive at the following result.  \begin{align*} r & > n \quad \text{from} \quad (1)\\ r & = \frac{k}{2} \quad \text{from} \quad (2)\\ \therefore r & \geq n + \frac{1}{2} \dots\dots\dots (4)\\ \end{align*} The result $\displaystyle{(3)}$ arises trivially from the fact that $\displaystyle{r}$ must be of the form $\displaystyle{\frac{k}{2}}$, where $\displaystyle{k \in \mathbb{Z}^+}$.  \bigbreak We now reconsider our representation of $\displaystyle{n^2 + 1 = r^2 - s^2}$. Thus we derive the following results.  \begin{align*} n^2 + 1 & = r^2 - s^2 \\ \therefore n^2 + 1 & \geq \left(n+\frac{1}{2}\right)^2 - s^2 \quad \text{from} \quad (4)\\ \therefore n^2 + 1 & \geq n^2 + n + \frac{1}{4} - s^2 \\ \therefore 1 & \geq n + \frac{1}{4} - s^2 \\ \therefore s^2 & \geq n + \frac{1}{4} - 1 \\ s^2 & \geq n - \frac{3}{4} \\ s^2 & \geq \frac{1}{4}\left(4n - 3\right)\\ \therefore s & \geq \frac{1}{2}\sqrt{4n - 3} \dots\dots\dots (5) \\ \end{align*} Using result $\displaystyle{(5)}$, and the absolute value of the difference between $\displaystyle{a}$ and $\displaystyle{b}$, we get the final, desired result.  \begin{align*} |b-a| & = |r - s - (r + s)| \\ & = |-2s| \\ & = 2s \\ s & \geq \frac{1}{2}\sqrt{4n - 3} \\ \therefore 2s & \geq \sqrt{4n - 3} \\ \therefore |b-a| & \geq \sqrt{4n - 3} \\ \end{align*} \pagebreak \item We are required to find a polynomial time algorithm, which, given $\displaystyle{n \in \mathbb{Z}^+}$, finds an integer $\displaystyle{m}$ such that $\displaystyle{|m^3-n|}$ is as minimal as possible.  \bigbreak Firstly, we need to explain what the algorithm does and how it finds the integer $\displaystyle{m}$. Furthermore, we have the fact that $\displaystyle{m \in [0,n]}$, as $\displaystyle{\sqrt[3]{n} \leq n}$. The algorithm works on the principle of a binary search, by halving the interval in which $\displaystyle{m}$ can reside, and thus narrowing the search for $\displaystyle{m}$ drastically at each iteration. In order to find $\displaystyle{m}$, the algorithm performs the following steps.  \bigbreak \begin{enumerate}[label=\text{\arabic*.}] \item Compute $\displaystyle{k = \lceil \log_{2}{n}\rceil}$, by successive multiplications of 2 and tracking the number of such multiplications, in order to set the maximum iterations the alogrithm must cycle through.  \item Establish the initial values of the interval in which $\displaystyle{m}$ resides. That is, set the upper bound (up) of the interval to $\displaystyle{n}$, and the lower bound (low) to $\displaystyle{0}$.  \item Set $\displaystyle{m = \frac{\text{up} + \text{low}}{2}}$.  \item Compute the value (val) $\displaystyle{m^3 - n}$.  \item Check if val is greater or less than 0. If val is greater than 0, set up equal to the current value of $\displaystyle{m}$. If val is less than 0, set low equal to the current value of $\displaystyle{m}$.  \item Repeat steps 3 to 5 $\displaystyle{k}$ times.  \item Set $\displaystyle{s = \left\lfloor \frac{\text{up} + \text{low}}{2}\right\rfloor}$.  \item Compute the value under as $\displaystyle{|s^3 - n|}$, and the value over as $\displaystyle{|(s+1)^3 - n|}$. These values $\displaystyle{s}$ and $\displaystyle{s+1}$ are the two possible values for $\displaystyle{m}$, such that $\displaystyle{|m^3 - n|}$ is minimised.  \item Check if over is greater than under, and if so, set $\displaystyle{m = s}$. If under is greater than over, set $\displaystyle{m = s+1}$.  \end{enumerate} \bigbreak The number of iterations that the algorithm must run through has been stated as $\displaystyle{k}$. This result comes from the following proof. Consider a $\displaystyle{k}$ bit number, $\displaystyle{n}$. Thus, in the maximum case, $\displaystyle{n=2^k}$. By our method of halving the interval, effectively a binary search, we must figure out the number of divisions of the interval, that is the number of iterations of the loop inside the algorithm, to produce an interval that contains only 1 integer. Thus, in order to satisfy this condition of an interval containing a single integer, we have the result, \begin{align*} \frac{n}{2^x} & = 1 \\ \end{align*} where $\displaystyle{x}$ is the number of divisions of the interval, that is iterations of the loop, required.  \begin{align*} \frac{n}{2^x} & = 1 \\ \frac{2^k}{2^x} & = 1 \\ \therefore 2^x & = 2^k \\ \therefore x & = k \\ \end{align*} As a result, the maximum number of iterations that the loop inside the algorithm must perform in order to narrow the interval down to contain a single integer is given by $\displaystyle{k}$, the number of bits of $\displaystyle{n}$.  \bigbreak Furthermore, $\displaystyle{s = \Big \lfloor \sqrt[3]{n} \Big \rfloor}$, and $\displaystyle{s+1 = \Big \lceil \sqrt[3]{n} \Big \rceil}$. Furthermore, we have the results \begin{align*} \Big \lfloor \sqrt[3]{n} \Big \rfloor^3 & \leq n \leq \Big \lceil \sqrt[3]{n} \Big \rceil^3 \\ \therefore s^3 & \leq n \leq (s+1)^3 \\ \end{align*} As a result, $\displaystyle{m}$ must be either $\displaystyle{s}$ or $\displaystyle{s + 1}$, as they are the closest integers to $\displaystyle{\sqrt[3]{n}}$. This justifies the final steps of the algorithm to choose between $\displaystyle{s}$ or $\displaystyle{s + 1}$. This ensures that the algorithm will always work.  \bigbreak \textbf{Complexity of Arithmetic Operations}\\ \begin{enumerate}[label=\text{(\alph*).}] \item Long multiplication of two numbers, with $\displaystyle{k}$ and $\displaystyle{l}$ bits each, requires at most $\displaystyle{kl}$ bit operations.  \item Long division of two numbers, with $\displaystyle{k}$ and $\displaystyle{l}$ bits each, requires at most $\displaystyle{kl}$ bit operations.  \item Addition of two numbers with $\displaystyle{k}$ and $\displaystyle{l}$ bits each, where $\displaystyle{k > l}$, requires at most $\displaystyle{k}$ bit operations.  \item Subtraction of two numbers with $\displaystyle{k}$ and $\displaystyle{l}$ bits each, where $\displaystyle{k > l}$, requires at most $\displaystyle{k}$ bit operations.  \item Comparisons for $\displaystyle{k}$ bit numbers, in condition checking statements, require at most $\displaystyle{k}$ bit operations, due to a maximum of $\displaystyle{k}$ bits having to be compared.  \item Squaring a $\displaystyle{k}$ bit number produces a $\displaystyle{2k}$ bit number, as $\displaystyle{\left(2^k\right)^2 = 2^{2k}}$. Squaring requires at most $\displaystyle{k^2}$ bit operations by point (a).  \item Thus, cubing a $\displaystyle{k}$ bit number requires multiplying the squared number, which has $\displaystyle{2k}$ bits, by itself, that is $\displaystyle{2k\cdot k = 2k^2}$ bit operations. Cubing produces a $\displaystyle{3k}$ bit number, as $\displaystyle{\left(2^k\right)^3 = 2^{3k}}$.  \end{enumerate} \bigbreak \textbf{Computational Complexity}\\ In order to determine the computational complexity of the algorithm, we must first determine the bit operations of each stage of the algorithm, based off the number of bits of the input number, $\displaystyle{n}$. Assuming that $\displaystyle{n}$ is a $\displaystyle{k}$ bit number, such that $\displaystyle{n = (b_{k-1}b_{k-2}\dots b_0)_2}$, where $\displaystyle{b_i \in \{0,1\}}$, the upper bound on $\displaystyle{n}$ is $\displaystyle{n < 2^k}$. Thus taking the worst case scenario, $\displaystyle{n = 2^k}$. Furthermore, we know that as $\displaystyle{m<n}$, the number of bits in the number of $\displaystyle{m}$ is less than $\displaystyle{k}$. In order to compute the computational complexity, we need to examine the bit operations at each step of the algorithm.  \bigbreak \begin{enumerate}[label=\text{\arabic*.}] \item At most $\displaystyle{k^2}$ bit operations to compute $\displaystyle{2\cdot 2 \dots }$, with $\displaystyle{k}$ multiplications. At most $\displaystyle{k}$ bit operations to compare the value of the variable log to the given input $\displaystyle{n}$, at each iteration of the loop. With $\displaystyle{k}$ iterations, it has a total of at most $\displaystyle{k^2}$ bit operations for the comaprisons \item No bit operations required.  \item At most $\displaystyle{k}$ bit operations for the addition of up and low, and at most $\displaystyle{k}$ bit operations for the division, as by point (b), the maximum bit operations is $\displaystyle{kl}$, where in this case, 2 is a single bit number, and thus $\displaystyle{l=1}$.  \item At most $\displaystyle{3k^2}$ bit operations for the cubing of $\displaystyle{m}$, and at most $\displaystyle{3k}$ bit operations for the subtraction $\displaystyle{m^3 - n}$.  \item At most $\displaystyle{2k}$ bit operations for the comparisons in the if statements, for the variable val.
+
+			\item $\displaystyle{k}$ repetitions.
+
+			\item At most $\displaystyle{k}$ bit operations for the addition of up and low, and at most $\displaystyle{k}$ bit operations for the division, as by point (b), the maximum bit operations is $\displaystyle{kl}$, where in this case, 2 is a single bit number, and thus $\displaystyle{l=1}$. Magma's inbuilt floor function is polynomial time, and adds no bit operations.
+
+			\item At most $\displaystyle{3k^2}$ bit operations for the cubing of $\displaystyle{s}$, and at most $\displaystyle{3k}$ bit operations for the subtraction $\displaystyle{s^3 - n}$. At most $\displaystyle{3k^2}$ bit operations for the cubing of $\displaystyle{s+1}$, and at most $\displaystyle{3k}$ bit operations for the subtraction $\displaystyle{(s+1)^3 - n}$.
+
+			\item At most $\displaystyle{2k}$ bit operations for the final comparisons.
+
+		\end{enumerate}
+
+		\bigbreak
+
+		From the bit operations calculated at each stage, we have the following function, $\displaystyle{f_c(k)}$, to model the computational complexity of the algorithm.
+		\begin{align*}
+		f_c(k) & = k^2 + k^2 + (k + k + 3k^2 + 3k + 2k)\cdot k + k + k + 3k^2 + 3k + 3k^2 + 3k + 2k \\
+		& = (3k^2 + 7k)\cdot k + 8k^2 + 10k \\
+		& = 3k^3 + 7k^2 + 8k^2 + 10k \\
+		& = 3k^3 + 15k^2 + 10k \\
+		\therefore f_c(k) & = 3k^3 + 15k^2 + 10k \\
+		\end{align*}
+
+		\pagebreak
+
+		In order to prove the algorithm is indeed polynomial time, we must show that $\displaystyle{f_c(k)}$ is $\displaystyle{O(k^{\alpha})}$, for some $\displaystyle{\alpha \in \mathbb{Z}}$. We first need to define $\displaystyle{O}$ notation. A function, $\displaystyle{f(k)}$ is $\displaystyle{O(k)}$ if
+		\begin{align*}
+		f(k) & \leq C\cdot g(k) \quad \forall \: k \geq N \\
+		\end{align*}
+		where $\displaystyle{C,N \in \mathbb{Z}^+}$. Thus, we need to find such an $\displaystyle{N}$, $\displaystyle{C}$, and $\displaystyle{g(k)}$. We thus look for an $\displaystyle{N}$, through the following inequalities.
+		\begin{align*}
+		3k^3 & \geq 15k^2 \\
+		3k & \geq 15 \\
+		\therefore k & \geq 5 \dots\dots\dots (A) \\
+		3k^3 & \geq 10k \\
+		3k^2 & \geq 8 \\
+		k^2 & \geq \frac{8}{3} \\
+		\therefore k & \geq \frac{2\sqrt{2}}{\sqrt{3}}\\
+		\therefore k & \geq 2 \dots\dots\dots (B) \\
+		\end{align*}
+		From these two results, $\displaystyle{(A)}$ and $\displaystyle{(B)}$, it is clear that $\displaystyle{k\geq 5}$, and thus we have the existence of an $\displaystyle{N}$, where $\displaystyle{N=5}$ in this case. Thus we have the following results.
+		\begin{align*}
+		f_c(k) & = 3k^3 + 15k^2 + 10k \\
+		\therefore f_c(k) & \leq 3k^3 + 3k^3 + 3k^3 \quad \forall \: k \geq 5 \\
+		& = 9k^3 \\
+		\therefore f_c(k) & \leq 9k^3 \\
+		\end{align*}
+		As a result, we have the existence of a $\displaystyle{C}$, where $\displaystyle{C=9}$, and a $\displaystyle{g(k)}$, where $\displaystyle{g(k) = k^3}$. As a result, we have that $\displaystyle{f_c(k)}$ is $\displaystyle{O(k^3)}$. Thus the algorithm is polynomial time. Upon inputting large values of $\displaystyle{n}$, the algorithm behaves like a polynomial time algorithm is expected to, thus backing up the proof. In the following section, the magma code for the algorithm is provided. 
+
+		\pagebreak
+
+		\textbf{Magma Code}\\
+		\mbox{\texttt{cube:=procedure(n)}}\\
+		\mbox{\qquad \texttt{log:=1;}}\\
+		\mbox{\qquad \texttt{k:=0;}}\\
+		\mbox{\qquad \texttt{while log lt n do}}\\
+		\mbox{\qquad \qquad \texttt{log:=log*2;}}\\
+		\mbox{\qquad \qquad \texttt{k:=k + 1;}}\\
+		\mbox{\qquad \texttt{end while;}}\\
+		\mbox{\qquad \texttt{up:=n;}}\\
+		\mbox{\qquad \texttt{low:=0;}}\\
+		\mbox{\qquad \texttt{for i:=1 to k do}}\\
+		\mbox{\qquad \qquad \texttt{m:=(up+low) div 2;}}\\
+		\mbox{\qquad \qquad \texttt{val:=m\^{}3 - n;}}\\
+		\mbox{\qquad \qquad \texttt{if val gt 0 then}}\\
+		\mbox{\qquad \qquad \qquad \texttt{up:=m;}}\\
+		\mbox{\qquad \qquad \texttt{end if;}}\\
+		\mbox{\qquad \qquad \texttt{if val lt 0 then}}\\
+		\mbox{\qquad \qquad \qquad \texttt{low:=m;}}\\
+		\mbox{\qquad \qquad \texttt{end if;}}\\
+		\mbox{\qquad \texttt{end for;}}\\
+		\mbox{\qquad \texttt{s:=Floor((up+low) div 2);}}\\
+		\mbox{\qquad \texttt{under:=AbsoluteValue(s\^{}3 - n);}}\\
+		\mbox{\qquad \texttt{over:=AbsoluteValue((s+1)\^{}3 - n);}}\\
+		\mbox{\qquad \texttt{if over - under gt 0 then}}\\
+		\mbox{\qquad \qquad \texttt{print s;}}\\
+		\mbox{\qquad \texttt{end if;}}\\
+		\mbox{\qquad \texttt{if over - under lt 0 then}}\\
+		\mbox{\qquad \qquad \texttt{print(s+1);}}\\
+		\mbox{\qquad \texttt{end if;}}\\
+		\mbox{\texttt{end procedure;}}\\
+
+
+	\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

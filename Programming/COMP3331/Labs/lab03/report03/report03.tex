@@ -1,0 +1,556 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{caption}
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\usepackage{enumitem}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\begin{document}
+
+\begin{center}
+	\LARGE \textbf{Lab 03 Report}
+	\HRule\\
+\end{center}
+
+\pagenumbering{arabic}
+
+\noindent \code{Lines in this font represent terminal commands and terminal output.}\\
+Lines beginning with \code{\$} are the terminal commands that were run.\\
+Lines in this font are the answers to the questions.
+
+\section{EXERCISE 3}
+\begin{enumerate}[leftmargin=*]
+	\item \code{\$ dig www.cecs.anu.edu.au A}
+
+	\code{; <<>> DiG 9.7.3 <<>> www.cecs.anu.edu.au A\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 32843\\
+	;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 10, ADDITIONAL: 13\\
+	\\
+	;; QUESTION SECTION:\\
+	;www.cecs.anu.edu.au.		IN	A\\
+	\\
+	;; ANSWER SECTION:\\
+	www.cecs.anu.edu.au.	1195	IN	CNAME	rproxy.cecs.anu.edu.au.\\
+	rproxy.cecs.anu.edu.au.	2916	IN	A	150.203.161.98\\
+	\\
+	;; AUTHORITY SECTION:\\
+	au.			1272	IN	NS	v.au.\\
+	au.			1272	IN	NS	c.au.\\
+	au.			1272	IN	NS	q.au.\\
+	au.			1272	IN	NS	s.au.\\
+	au.			1272	IN	NS	r.au.\\
+	au.			1272	IN	NS	u.au.\\
+	au.			1272	IN	NS	t.au.\\
+	au.			1272	IN	NS	d.au.\\
+	au.			1272	IN	NS	b.au.\\
+	au.			1272	IN	NS	a.au.\\
+	\\
+	;; ADDITIONAL SECTION:\\
+	a.au.			5839	IN	A	58.65.254.73\\
+	a.au.			30882	IN	AAAA	2407:6e00:254:306::73\\
+	b.au.			65200	IN	A	58.65.253.73\\
+	c.au.			58657	IN	A	162.159.24.179\\
+	d.au.			35026	IN	A	162.159.25.38\\
+	d.au.			30882	IN	AAAA	2400:cb00:2049:1::a29f:1926\\
+	q.au.			61354	IN	A	65.22.196.1\\
+	q.au.			36243	IN	AAAA	2a01:8840:be::1\\
+	r.au.			49219	IN	A	65.22.197.1\\
+	r.au.			38375	IN	AAAA	2a01:8840:bf::1\\
+	s.au.			637	IN	A	65.22.198.1\\
+	s.au.			23710	IN	AAAA	2a01:8840:c0::1\\
+	t.au.			34582	IN	A	65.22.199.1\\
+	\\
+	;; Query time: 0 msec\\
+	;; SERVER: 129.94.242.2\#53(129.94.242.2)\\
+	;; WHEN: Fri Mar 15 16:28:12 2019\\
+	;; MSG SIZE  rcvd: 502\\}
+
+	The IP address of \code{www.cecs.anu.edu.au} is 150.203.161.98. The type of DNS query sent is type A, which gives the address of the requested host, in IPv4 format. However, first a CNAME query must be sent to determine the canonical name of the requested host, and then the IP address can be found with the type A query.
+
+	\item \code{\$ dig www.cecs.anu.edu.au CNAME} 
+
+	\code{; <<>> DiG 9.7.3 <<>> www.cecs.anu.edu.au CNAME\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 3053\\
+	;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 3, ADDITIONAL: 5\\
+	\\
+	;; QUESTION SECTION:\\
+	;www.cecs.anu.edu.au.		IN	CNAME\\
+	\\
+	;; ANSWER SECTION:\\
+	www.cecs.anu.edu.au.	1204	IN	CNAME	rproxy.cecs.anu.edu.au.\\
+	\\
+	;; AUTHORITY SECTION:\\
+	cecs.anu.edu.au.	28379	IN	NS	ns4.cecs.anu.edu.au.\\
+	cecs.anu.edu.au.	28379	IN	NS	ns2.cecs.anu.edu.au.\\
+	cecs.anu.edu.au.	28379	IN	NS	ns3.cecs.anu.edu.au.\\
+	\\
+	;; ADDITIONAL SECTION:\\
+	ns2.cecs.anu.edu.au.	2464	IN	A	150.203.161.36\\
+	ns2.cecs.anu.edu.au.	841	IN	AAAA	2001:388:1034:2905::24\\
+	ns3.cecs.anu.edu.au.	2464	IN	A	150.203.161.50\\
+	ns3.cecs.anu.edu.au.	2471	IN	AAAA	2001:388:1034:2905::32\\
+	ns4.cecs.anu.edu.au.	2471	IN	A	150.203.161.38\\
+	\\
+	;; Query time: 0 msec\\
+	;; SERVER: 129.94.242.2\#53(129.94.242.2)\\
+	;; WHEN: Sun Mar 17 17:21:44 2019\\
+	;; MSG SIZE  rcvd: 216\\}
+		
+		The canonical name for the CECS ANU web server is \code{rproxy.cecs.anu.edu.au}, and it has the same IP address, 150.203.161.98. One reason for having an alias for the server is so that you can find the server using a convention such as www, rather than having to remember all of the prefixes for different web servers, such as rproxy and ns1, ns2, etc.
+
+	\pagebreak
+
+	\item The rest of the response provides the canonical names of the authoritative name servers for the host that you queried under the AUTHORITY section, and the IP addresses of those authoritative name servers under the ADDITIONAL section. The header information provides the flags for the response, indicating whether it was an authoritative response or not, and other information. The section below the ADDITIONAL section, provides information about the DNS server you queried, how long the response took, and other bookkeeping details.
+
+	\item \code{\$ dig drum03.cse.unsw.edu.au NS}
+
+	\code{; <<>> DiG 9.7.3 <<>> drum03.cse.unsw.edu.au NS\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 1534\\
+	;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 0\\
+	\\
+	;; QUESTION SECTION:\\
+	;drum03.cse.unsw.edu.au.		IN	NS\\
+	\\
+	;; AUTHORITY SECTION:\\
+	cse.unsw.edu.au.	900	IN	SOA	maestro.orchestra.cse.unsw.edu.au.\\
+	hostmaster.cse.unsw.edu.au. 2019031500 2000 300 1209600 900\\
+	\\
+	;; Query time: 0 msec\\
+	;; SERVER: 129.94.242.2\#53(129.94.242.2)\\
+	;; WHEN: Sun Mar 17 18:19:32 2019\\
+	;; MSG SIZE  rcvd: 105\\}
+
+	\code{\$ dig maestro.orchestra.cse.unsw.edu.au. A}
+
+	\code{; <<>> DiG 9.7.3 <<>> maestro.orchestra.cse.unsw.edu.au. A\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 50770\\
+	;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 1\\
+	\\
+	;; QUESTION SECTION:\\
+	;maestro.orchestra.cse.unsw.edu.au. IN	A\\
+	\\
+	;; ANSWER SECTION:\\
+	maestro.orchestra.cse.unsw.edu.au. 3600	IN A	129.94.242.33\\
+	\\
+	;; AUTHORITY SECTION:\\
+	orchestra.cse.unsw.edu.au. 3600	IN	NS	maestro.orchestra.cse.unsw.edu.au.\\
+	orchestra.cse.unsw.edu.au. 3600	IN	NS	beethoven.orchestra.cse.unsw.edu.au.\\
+	\\
+	;; ADDITIONAL SECTION:\\
+	beethoven.orchestra.cse.unsw.edu.au. 3600 IN A	129.94.242.2\\
+	\\
+	;; Query time: 0 msec\\
+	;; SERVER: 129.94.242.2\#53(129.94.242.2)\\
+	;; WHEN: Sun Mar 17 18:32:07 2019\\
+	;; MSG SIZE  rcvd: 121\\}
+
+	The IP address of the local name server for my machine is 129.94.242.2.
+
+	\item \code{\$ dig cecs.anu.edu.au NS +all}
+
+	\code{; <<>> DiG 9.7.3 <<>> cecs.anu.edu.au NS +all\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 45401\\
+	;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 6\\
+	\\
+	;; QUESTION SECTION:\\
+	;cecs.anu.edu.au.		IN	NS\\
+	\\
+	;; ANSWER SECTION:\\
+	cecs.anu.edu.au.	1163	IN	NS	ns2.cecs.anu.edu.au.\\
+	cecs.anu.edu.au.	1163	IN	NS	ns3.cecs.anu.edu.au.\\
+	cecs.anu.edu.au.	1163	IN	NS	ns4.cecs.anu.edu.au.\\
+	\\
+	;; ADDITIONAL SECTION:\\
+	ns2.cecs.anu.edu.au.	2637	IN	A	150.203.161.36\\
+	ns2.cecs.anu.edu.au.	2637	IN	AAAA	2001:388:1034:2905::24\\
+	ns3.cecs.anu.edu.au.	2637	IN	A	150.203.161.50\\
+	ns3.cecs.anu.edu.au.	2637	IN	AAAA	2001:388:1034:2905::32\\
+	ns4.cecs.anu.edu.au.	2670	IN	A	150.203.161.38\\
+	ns4.cecs.anu.edu.au.	1102	IN	AAAA	2001:388:1034:2905::26\\
+	\\
+	;; Query time: 0 msec\\
+	;; SERVER: 129.94.242.2\#53(129.94.242.2)\\
+	;; WHEN: Fri Mar 15 16:57:25 2019\\
+	;; MSG SIZE  rcvd: 219\\}
+
+	The DNS name servers for \code{cecs.anu.edu.au} are \code{ns2.cecs.anu.edu.au}, \code{ns3.cecs.anu.edu.au}, and \code{ns4.cecs.anu.edu.au}, with respective IP addresses, 150.203.161.36, 150.203.161.50, and 150.203.161.38. The type of DNS query sent is type NS, which gives the name servers for the queried host.
+
+	\pagebreak
+
+	\item \code{\$ dig -x 149.171.158.109}
+
+	\code{; <<>> DiG 9.7.3 <<>> -x 149.171.158.109\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 430\\
+	;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 3, ADDITIONAL: 6\\
+	\\
+	;; QUESTION SECTION:\\
+	;109.158.171.149.in-addr.arpa.	IN	PTR\\
+	\\
+	;; ANSWER SECTION:\\
+	109.158.171.149.in-addr.arpa. 2419 IN	PTR	engplws008.ad.unsw.edu.au.\\
+	109.158.171.149.in-addr.arpa. 2419 IN	PTR	engplws008.eng.unsw.edu.au.\\
+	\\
+	;; AUTHORITY SECTION:\\
+	158.171.149.in-addr.arpa. 9619	IN	NS	ns1.unsw.edu.au.\\
+	158.171.149.in-addr.arpa. 9619	IN	NS	ns3.unsw.edu.au.\\
+	158.171.149.in-addr.arpa. 9619	IN	NS	ns2.unsw.edu.au.\\
+	\\
+	;; ADDITIONAL SECTION:\\
+	ns1.unsw.edu.au.	1277	IN	A	129.94.0.192\\
+	ns1.unsw.edu.au.	5846	IN	AAAA	2001:388:c:35::1\\
+	ns2.unsw.edu.au.	1294	IN	A	129.94.0.193\\
+	ns2.unsw.edu.au.	10072	IN	AAAA	2001:388:c:35::2\\
+	ns3.unsw.edu.au.	1294	IN	A	192.155.82.178\\
+	ns3.unsw.edu.au.	907		IN	AAAA	2600:3c01::f03c:91ff:fe73:5f10\\
+	\\
+	;; Query time: 0 msec\\
+	;; SERVER: 129.94.242.2\#53(129.94.242.2)\\
+	;; WHEN: Fri Mar 15 16:59:38 2019\\
+	;; MSG SIZE  rcvd: 300\\}
+
+	The DNS names associated with the IP address 149.171.158.109 are \code{engplws008.ad.unsw.edu.au.}, and \code{engplws008.eng.unsw.edu.au.}. A DNS query of type PTR is sent to get this information as it is used to find the canonical name an IP address points to.
+
+	\pagebreak
+
+	\item \code{\$ dig @129.94.242.33 yahoo.com MX}
+
+	\code{; <<>> DiG 9.7.3 <<>> @129.94.242.33 yahoo.com MX\\
+	; (1 server found)\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 51181\\
+	;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 5, ADDITIONAL: 8\\
+`	\\
+	;; QUESTION SECTION:\\
+	;yahoo.com.			IN	MX\\
+	\\
+	;; ANSWER SECTION:\\
+	yahoo.com.		556	IN	MX	1 mta7.am0.yahoodns.net.\\
+	yahoo.com.		556	IN	MX	1 mta5.am0.yahoodns.net.\\
+	yahoo.com.		556	IN	MX	1 mta6.am0.yahoodns.net.\\
+	\\
+	;; AUTHORITY SECTION:\\
+	yahoo.com.		10976	IN	NS	ns5.yahoo.com.\\
+	yahoo.com.		10976	IN	NS	ns3.yahoo.com.\\
+	yahoo.com.		10976	IN	NS	ns1.yahoo.com.\\
+	yahoo.com.		10976	IN	NS	ns4.yahoo.com.\\
+	yahoo.com.		10976	IN	NS	ns2.yahoo.com.\\
+	\\
+	;; ADDITIONAL SECTION:\\
+	ns1.yahoo.com.		182663	IN	A	68.180.131.16\\
+	ns1.yahoo.com.		84566	IN	AAAA	2001:4998:130::1001\\
+	ns2.yahoo.com.		192552	IN	A	68.142.255.16\\
+	ns2.yahoo.com.		16822	IN	AAAA	2001:4998:140::1002\\
+	ns3.yahoo.com.		76956	IN	A	203.84.221.53\\
+	ns3.yahoo.com.		62895	IN	AAAA	2406:8600:b8:fe03::1003\\
+	ns4.yahoo.com.		21164	IN	A	98.138.11.157\\
+	ns5.yahoo.com.		85479	IN	A	119.160.253.83\\
+	\\
+	;; Query time: 0 msec\\
+	;; SERVER: 129.94.242.33\#53(129.94.242.33)\\
+	;; WHEN: Sun Mar 17 16:48:55 2019\\
+	;; MSG SIZE  rcvd: 360\\}
+
+	The flags in the header of the dig output do not contain 'aa', the Authoritative Answer flag, and so this is not an authoritative answer.
+
+	\pagebreak
+
+	\item \code{\$ dig @ns2.cecs.anu.edu.au. yahoo.com MX}
+
+	\code{; <<>> DiG 9.7.3 <<>> @ns2.cecs.anu.edu.au. yahoo.com MX\\
+	; (2 servers found)\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: REFUSED, id: 42445\\
+	;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0\\
+	;; WARNING: recursion requested but not available\\
+	\\
+	;; QUESTION SECTION:\\
+	;yahoo.com.			IN	MX\\
+	\\
+	;; Query time: 7 msec\\
+	;; SERVER: 150.203.161.36\#53(150.203.161.36)\\
+	;; WHEN: Sun Mar 17 16:52:20 2019\\
+	;; MSG SIZE  rcvd: 27\\}
+
+	Still not an Authoritative Answer, as no 'aa' flag is present, and the query was denied as we do not have permission to query the \code{ns2.cecs.anu.edu.au} DNS name server for the \code{yahoo.com} mail servers.
+
+	\item \code{\$ dig @ns1.yahoo.com. yahoo.com MX}
+
+	\code{; <<>> DiG 9.7.3 <<>> @ns1.yahoo.com. yahoo.com MX\\
+	; (2 servers found)\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 3401\\
+	;; flags: qr aa rd; QUERY: 1, ANSWER: 3, AUTHORITY: 5, ADDITIONAL: 8\\
+	;; WARNING: recursion requested but not available\\
+	\\
+	;; QUESTION SECTION:\\
+	;yahoo.com.			IN	MX\\
+	\\
+	;; ANSWER SECTION:\\
+	yahoo.com.		1800	IN	MX	1 mta5.am0.yahoodns.net.\\
+	yahoo.com.		1800	IN	MX	1 mta7.am0.yahoodns.net.\\
+	yahoo.com.		1800	IN	MX	1 mta6.am0.yahoodns.net.\\
+	\\
+	;; AUTHORITY SECTION:\\
+	yahoo.com.		172800	IN	NS	ns2.yahoo.com.\\
+	yahoo.com.		172800	IN	NS	ns4.yahoo.com.\\
+	yahoo.com.		172800	IN	NS	ns3.yahoo.com.\\
+	yahoo.com.		172800	IN	NS	ns5.yahoo.com.\\
+	yahoo.com.		172800	IN	NS	ns1.yahoo.com.\\
+	\\
+	;; ADDITIONAL SECTION:\\
+	ns1.yahoo.com.		86400	IN	AAAA	2001:4998:130::1001\\
+	ns2.yahoo.com.		86400	IN	AAAA	2001:4998:140::1002\\
+	ns3.yahoo.com.		86400	IN	AAAA	2406:8600:b8:fe03::1003\\
+	ns1.yahoo.com.		1209600	IN	A	68.180.131.16\\
+	ns2.yahoo.com.		1209600	IN	A	68.142.255.16\\
+	ns3.yahoo.com.		1209600	IN	A	203.84.221.53\\
+	ns4.yahoo.com.		1209600	IN	A	98.138.11.157\\
+	ns5.yahoo.com.		1209600	IN	A	119.160.253.83\\
+	\\
+	;; Query time: 163 msec\\
+	;; SERVER: 2001:4998:130::1001\#53(2001:4998:130::1001)\\
+	;; WHEN: Sun Mar 17 16:55:38 2019\\
+	;; MSG SIZE  rcvd: 360\\}
+
+	The DNS sent to obtain this information is type MX, which gives the mail servers of the queried host. This is an Authoritative Answer, as the mail servers were queried from a Local Authoritative Name Server for \code{yahoo.com}.
+
+	\item \code{\$ dig . NS}
+
+	\code{; <<>> DiG 9.7.3 <<>> . NS\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 47519\\
+	;; flags: qr rd ra; QUERY: 1, ANSWER: 13, AUTHORITY: 0, ADDITIONAL: 13\\
+	\\
+	;; QUESTION SECTION:\\
+	;.				IN	NS\\
+	\\
+	;; ANSWER SECTION:\\
+	.			461089	IN	NS	k.root-servers.net.\\
+	.			461089	IN	NS	h.root-servers.net.\\
+	.			461089	IN	NS	e.root-servers.net.\\
+	.			461089	IN	NS	b.root-servers.net.\\
+	.			461089	IN	NS	g.root-servers.net.\\
+	.			461089	IN	NS	a.root-servers.net.\\
+	.			461089	IN	NS	i.root-servers.net.\\
+	.			461089	IN	NS	f.root-servers.net.\\
+	.			461089	IN	NS	l.root-servers.net.\\
+	.			461089	IN	NS	m.root-servers.net.\\
+	.			461089	IN	NS	d.root-servers.net.\\
+	.			461089	IN	NS	c.root-servers.net.\\
+	.			461089	IN	NS	j.root-servers.net.\\
+	\\
+	;; ADDITIONAL SECTION:\\
+	a.root-servers.net.	172601	IN	A	198.41.0.4\\
+	a.root-servers.net.	187907	IN	AAAA	2001:503:ba3e::2:30\\
+	b.root-servers.net.	199744	IN	A	199.9.14.201\\
+	b.root-servers.net.	199745	IN	AAAA	2001:500:200::b\\
+	c.root-servers.net.	370443	IN	A	192.33.4.12\\
+	c.root-servers.net.	199384	IN	AAAA	2001:500:2::c\\
+	d.root-servers.net.	64088	IN	A	199.7.91.13\\
+	d.root-servers.net.	448167	IN	AAAA	2001:500:2d::d\\
+	e.root-servers.net.	350711	IN	A	192.203.230.10\\
+	f.root-servers.net.	272558	IN	A	192.5.5.241\\
+	f.root-servers.net.	47078	IN	AAAA	2001:500:2f::f\\
+	g.root-servers.net.	183060	IN	A	192.112.36.4\\
+	h.root-servers.net.	174973	IN	A	198.97.190.53\\
+	\\
+	;; Query time: 0 msec\\
+	;; SERVER: 129.94.242.2\#53(129.94.242.2)\\
+	;; WHEN: Sat Mar 16 10:17:16 2019\\
+	;; MSG SIZE  rcvd: 496\\}
+
+	\code{\$ dig @a.root-servers.net. au. NS +all}
+
+	\code{; <<>> DiG 9.7.3 <<>> @a.root-servers.net. au. NS +all\\
+	; (2 servers found)\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 49161\\
+	;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 10, ADDITIONAL: 16\\
+	;; WARNING: recursion requested but not available\\
+	\\
+	;; QUESTION SECTION:\\
+	;au.				IN	NS\\
+	\\
+	;; AUTHORITY SECTION:\\
+	au.			172800	IN	NS	a.au.\\
+	au.			172800	IN	NS	b.au.\\
+	au.			172800	IN	NS	c.au.\\
+	au.			172800	IN	NS	d.au.\\
+	au.			172800	IN	NS	q.au.\\
+	au.			172800	IN	NS	r.au.\\
+	au.			172800	IN	NS	s.au.\\
+	au.			172800	IN	NS	t.au.\\
+	au.			172800	IN	NS	u.au.\\
+	au.			172800	IN	NS	v.au.\\
+	\\
+	;; ADDITIONAL SECTION:\\
+	a.au.			172800	IN	A	58.65.254.73\\
+	b.au.			172800	IN	A	58.65.253.73\\
+	c.au.			172800	IN	A	162.159.24.179\\
+	d.au.			172800	IN	A	162.159.25.38\\
+	q.au.			172800	IN	A	65.22.196.1\\
+	r.au.			172800	IN	A	65.22.197.1\\
+	s.au.			172800	IN	A	65.22.198.1\\
+	t.au.			172800	IN	A	65.22.199.1\\
+	u.au.			172800	IN	A	211.29.133.32\\
+	v.au.			172800	IN	A	202.12.31.53\\
+	a.au.			172800	IN	AAAA	2407:6e00:254:306::73\\
+	b.au.			172800	IN	AAAA	2407:6e00:253:306::73\\
+	c.au.			172800	IN	AAAA	2400:cb00:2049:1::a29f:18b3\\
+	d.au.			172800	IN	AAAA	2400:cb00:2049:1::a29f:1926\\
+	q.au.			172800	IN	AAAA	2a01:8840:be::1\\
+	r.au.			172800	IN	AAAA	2a01:8840:bf::1\\
+	\\
+	;; Query time: 157 msec\\
+	;; SERVER: 2001:503:ba3e::2:30\#53(2001:503:ba3e::2:30)\\
+	;; WHEN: Sat Mar 16 10:19:06 2019\\
+	;; MSG SIZE  rcvd: 508\\}
+
+	\code{\$ dig @a.au edu.au. NS}
+	
+	\code{; <<>> DiG 9.7.3 <<>> @a.au. edu.au.\\
+	; (2 servers found)\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 8214\\
+	;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 4, ADDITIONAL: 8\\
+	;; WARNING: recursion requested but not available\\
+	\\
+	;; QUESTION SECTION:\\
+	;edu.au.				IN	A\\
+	\\
+	;; AUTHORITY SECTION:\\
+	edu.au.			86400	IN	NS	s.au.\\
+	edu.au.			86400	IN	NS	r.au.\\
+	edu.au.			86400	IN	NS	q.au.\\
+	edu.au.			86400	IN	NS	t.au.\\
+	\\
+	;; ADDITIONAL SECTION:\\
+	q.au.			86400	IN	A	65.22.196.1\\
+	r.au.			86400	IN	A	65.22.197.1\\
+	s.au.			86400	IN	A	65.22.198.1\\
+	t.au.			86400	IN	A	65.22.199.1\\
+	q.au.			86400	IN	AAAA	2a01:8840:be::1\\
+	r.au.			86400	IN	AAAA	2a01:8840:bf::1\\
+	s.au.			86400	IN	AAAA	2a01:8840:c0::1\\
+	t.au.			86400	IN	AAAA	2a01:8840:c1::1\\
+	\\
+	;; Query time: 153 msec\\
+	;; SERVER: 58.65.254.73\#53(58.65.254.73)\\
+	;; WHEN: Sat Mar 16 10:58:18 2019\\
+	;; MSG SIZE  rcvd: 264\\}
+
+	\code{\$ dig @q.au unsw.edu.au. NS}
+
+	\code{; <<>> DiG 9.7.3 <<>> @q.au. unsw.edu.au.\\
+	; (2 servers found)\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 34739\\
+	;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 3, ADDITIONAL: 5\\
+	;; WARNING: recursion requested but not available\\
+	\\
+	;; QUESTION SECTION:\\
+	;unsw.edu.au.			IN	A\\
+	\\
+	;; AUTHORITY SECTION:\\
+	unsw.edu.au.		900	IN	NS	ns3.unsw.edu.au.\\
+	unsw.edu.au.		900	IN	NS	ns1.unsw.edu.au.\\
+	unsw.edu.au.		900	IN	NS	ns2.unsw.edu.au.\\
+	\\
+	;; ADDITIONAL SECTION:\\
+	ns1.unsw.edu.au.	900	IN	A	129.94.0.192\\
+	ns2.unsw.edu.au.	900	IN	A	129.94.0.193\\
+	ns3.unsw.edu.au.	900	IN	A	192.155.82.178\\
+	ns1.unsw.edu.au.	900	IN	AAAA	2001:388:c:35::1\\
+	ns2.unsw.edu.au.	900	IN	AAAA	2001:388:c:35::2\\
+	\\
+	;; Query time: 6 msec\\
+	;; SERVER: 65.22.196.1\#53(65.22.196.1)\\
+	;; WHEN: Sat Mar 16 11:10:14 2019\\
+	;; MSG SIZE  rcvd: 187\\}
+
+	\code{\$ dig @ns1.unsw.edu.au. cse.unsw.edu.au NS}
+
+	\code{; <<>> DiG 9.7.3 <<>> @ns1.unsw.edu.au. cse.unsw.edu.au.\\
+	; (2 servers found)\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 10229\\
+	;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 2, ADDITIONAL: 4\\
+	;; WARNING: recursion requested but not available\\
+	\\
+	;; QUESTION SECTION:\\
+	;cse.unsw.edu.au.		IN	A\\
+	\\
+	;; AUTHORITY SECTION:\\
+	cse.unsw.edu.au.	10800	IN	NS	beethoven.orchestra.cse.unsw.edu.au.\\
+	cse.unsw.edu.au.	10800	IN	NS	maestro.orchestra.cse.unsw.edu.au.\\
+	\\
+	;; ADDITIONAL SECTION:\\
+	beethoven.orchestra.cse.unsw.edu.au. 10800 IN A	129.94.172.11\\
+	beethoven.orchestra.cse.unsw.edu.au. 10800 IN A	129.94.208.3\\
+	beethoven.orchestra.cse.unsw.edu.au. 10800 IN A	129.94.242.2\\
+	maestro.orchestra.cse.unsw.edu.au. 10800 IN A	129.94.242.33\\
+	\\
+	;; Query time: 3 msec\\
+	;; SERVER: 129.94.0.192\#53(129.94.0.192)\\
+	;; WHEN: Sat Mar 16 12:03:37 2019\\
+	;; MSG SIZE  rcvd: 153\\}
+
+	\code{\$ dig @maestro.orchestra.cse.unsw.edu.au. drum03.cse.unsw.edu.au.}
+
+	\code{\small; <<>> DiG 9.7.3 <<>> @maestro.orchestra.cse.unsw.edu.au. drum03.cse.unsw.edu.au. NS\\
+	; (1 server found)\\
+	;; global options: +cmd\\
+	;; Got answer:\\
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 5953\\
+	;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 0\\
+	\\
+	;; QUESTION SECTION:\\
+	;drum03.cse.unsw.edu.au.		IN	NS\\
+	\\
+	;; AUTHORITY SECTION:\\
+	cse.unsw.edu.au.	900	IN	SOA	maestro.orchestra.cse.unsw.edu.au.\\
+	hostmaster.cse.unsw.edu.au. 2019031500 2000 300 1209600 900\\
+	\\
+	;; Query time: 0 msec\\
+	;; SERVER: 129.94.242.33\#53(129.94.242.33)\\
+	;; WHEN: Sun Mar 17 18:19:19 2019\\
+	;; MSG SIZE  rcvd: 105\\}
+
+	The IP address of my machine is 129.94.209.33. We had to query 6 DNS name servers to find the IP address of my machine, \code{drum03}, using the NS query.
+
+	\item A machine can have multiple aliases, although only one canonical name. A machine can have multiple IP addresses if has multiple network interface cards installed.
+\end{enumerate}
+
+\end{document}

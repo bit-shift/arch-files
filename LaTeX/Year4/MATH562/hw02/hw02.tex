@@ -1,0 +1,256 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+% Install the required packages for the document 
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{bm}
+\usepackage{xlop}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+% Page and style settings
+%\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\newenvironment{nscentre}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\begin{document}
+\setlength{\abovedisplayskip}{8pt}{%
+\setlength{\belowdisplayskip}{8pt}{%
+
+
+\text{LSA}
+\hfill
+\text{University of Michigan}
+
+\begin{nscentre}
+	\textbf{MATH562: Continuous Optimisation}\\
+	\textbf{Homework 2}\\
+\end{nscentre}
+
+\text{Name: Keegan Gyoery}
+\hfill
+\text{UM-ID: 31799451}
+
+\pagenumbering{arabic}
+	\begin{enumerate}[leftmargin=*]
+		\item \begin{enumerate}[label=\alph*)]
+			\item Let $\ds{f(x) = x^2}$. Clearly, $\ds{\nabla f (x) = 2x}$, so $\ds{\nabla f(0) = 0}$. Obviously, $\ds{x = 0}$ satisfies the first order necessary condition. Considering the Hessian $\ds{(H)}$ of $\ds{f(x)}$, we have $\ds{Hf(x) = 2}$, so $\ds{Hf(0) = 2}$. For any $\ds{h \in \mathbb{R}}$, where $\ds{h \neq 0}$, $\ds{h^T(2)h = 2h^2 > 0}$. Thus, $\ds{Hf(0)}$ is positive definite and so also positive semi-definite. Again, $\ds{x=0}$ satisfies the second order necessary condition. Clearly, $\ds{x = 0}$ satisfies both second order sufficient conditions.
+
+			\item Let $\ds{f(x) = x^3}$. Clearly, $\ds{\nabla f (x) = 3x^2}$, so $\ds{\nabla f(0) = 0}$. Obviously, $\ds{x = 0}$ satisfies the first order necessary condition. Considering the Hessian $\ds{(H)}$ of $\ds{f(x)}$, we have $\ds{Hf(x) = 6x}$, so $\ds{Hf(0) = 0}$. For any $\ds{h \in \mathbb{R}}$, where $\ds{h \neq 0}$, $\ds{h^T(0)h = 0 \geq 0}$. Thus, $\ds{Hf(0)}$ is positive semi-definite. Again, $\ds{x=0}$ satisfies the second order necessary condition. Clearly, $\ds{x = 0}$ satisfies the 2nd second order sufficient condition, but not the 1st as $\ds{Hf(0)}$ is not positive definite.
+
+			\item Let $\ds{f(x) = x^4}$. Clearly, $\ds{\nabla f (x) = 4x^3}$, so $\ds{\nabla f(0) = 0}$. Obviously, $\ds{x = 0}$ satisfies the first order necessary condition. Considering the Hessian $\ds{(H)}$ of $\ds{f(x)}$, we have $\ds{Hf(x) = 12x^2}$, so $\ds{Hf(0) = 0}$. For any $\ds{h \in \mathbb{R}}$, where $\ds{h \neq 0}$, $\ds{h^T(0)h = 0 \geq 0}$. Thus, $\ds{Hf(0)}$ is positive semi-definite. Again, $\ds{x=0}$ satisfies the second order necessary condition. Clearly, $\ds{x = 0}$ satisfies the 2nd second order sufficient condition, but not the 1st as $\ds{Hf(0)}$ is not positive definite.
+		\end{enumerate}
+
+		\item Consider the problem
+			\begin{align*}
+				\min f(\mathbf{x}) & = x_1^2 + \frac{1}{x_1} + x_2 + \frac{1}{x_2}. 
+			\end{align*}
+			\begin{enumerate}[label=\alph*)]
+				\item The gradient and Hessian for the function $\ds{f(x)}$ are
+					\begin{align*}
+						\nabla f(\mathbf{x}) & = \left[2x_1 - \frac{1}{x_1^2},\: 1-\frac{1}{x_2^2}\right]^T, \\
+						Hf(\mathbf{x}) & = 
+						\begin{bmatrix}
+							2 + \frac{2}{x_1^3} & 0 \\
+							0 & \frac{2}{x_2^3} \\
+						\end{bmatrix}.
+					\end{align*}
+				\item The first order necessary condition for a point, $\ds{\bar{\mathbf{x}}}$, is that $\ds{\nabla f(\bar{\mathbf{x}}) = \mathbf{0}}$. The second order necessary condition for a point, $\ds{\bar{\mathbf{x}}}$, is again that $\ds{\nabla f(\bar{\mathbf{x}}) = \mathbf{0}}$, and that $\ds{Hf(\bar{\mathbf{x}})}$ is positive semi-definite. Setting the gradient to be $\ds{\mathbf{0}}$, 
+					\begin{align*}
+						\nabla f(\bar{\mathbf{x}}) & = \mathbf{0}\\
+						\therefore \left[2x_1 - \frac{1}{x_1^2},\: 1-\frac{1}{x_2^2}\right]^T & = (0, 0)^T \\
+						\therefore 2x_1 & = \frac{1}{x_1^2} \dots (A), \text{ and} \\
+						1 & = \frac{1}{x_2^2} \dots (B).\\
+						(A) & \Rightarrow x_1 = \frac{1}{\sqrt[3]{2}}, \\
+						(B) & \Rightarrow x_2 = \pm 1. \\
+					\end{align*}
+					Thus our candidates for the point $\ds{\bar{\mathbf{x}}}$ are $\ds{\left(\frac{1}{\sqrt[3]{2}}, 1\right)}$, and $\ds{\left(\frac{1}{\sqrt[3]{2}}, -1\right)}$. Clearly, both points satisfy the first order necessary condition. In order to show they satisfy the second order necessary condition, we must show that the Hessians at the two points are positive semi-definite. Examining the Hessian at the first point, 
+					\begin{align*}
+						Hf\left(\frac{1}{\sqrt[3]{2}}, 1\right) & = 
+						\begin{bmatrix}
+							3 & 0 \\
+							0 & 1 \\
+						\end{bmatrix}.
+					\end{align*}
+					Consider $\ds{\mathbf{h} = (h_1, h_2) \neq \mathbf{0}}$, and thus,
+					\begin{align*}
+						\mathbf{h}^T Hf\left(\frac{1}{\sqrt[3]{2}}, 1\right)\mathbf{h} & = \mathbf{h}^T
+						\begin{bmatrix}
+							3 & 0 \\
+							0 & 2 \\
+						\end{bmatrix}\mathbf{h} \\
+																					   & = 3h_1^2 + 2h_1^2 \\
+																					   & > 0 \: \forall \mathbf{h}
+					\end{align*}
+					Thus, $\ds{Hf\left(\frac{1}{\sqrt[3]{2}}, 1\right)}$ is positive semi-definite, so $\ds{\left(\frac{1}{\sqrt[3]{2}}, 1\right)}$ satisfies the second order necessary condition as well. Examining the Hessian at the second point, 
+					\begin{align*}
+						Hf\left(\frac{1}{\sqrt[3]{2}}, -1\right) & = 
+						\begin{bmatrix}
+							3 & 0 \\
+							0 & -2 \\
+						\end{bmatrix}.
+					\end{align*}
+					Consider $\ds{\mathbf{h} = (h_1, h_2) \neq \mathbf{0}}$, and thus,
+					\begin{align*}
+						\mathbf{h}^T Hf\left(\frac{1}{\sqrt[3]{2}}, 1\right)\mathbf{h} & = \mathbf{h}^T
+						\begin{bmatrix}
+							3 & 0 \\
+							0 & 1 \\
+						\end{bmatrix}\mathbf{h} \\
+																					   & = 3h_1^2 - 2h_1^2 \\
+																					   & \ngtr 0 \: \forall \mathbf{h}
+					\end{align*}
+					Thus, $\ds{Hf\left(\frac{1}{\sqrt[3]{2}}, -1\right)}$ is not positive semi-definite, so $\ds{\left(\frac{1}{\sqrt[3]{2}}, -1\right)}$ does not satisfy the second order necessary condition as well.
+				\item $\ds{Hf\left(\frac{1}{\sqrt[3]{2}}, 1\right)}$ is also positive definite, and thus satisfies both the second order sufficient conditions, and thus $\ds{\left(\frac{1}{\sqrt[3]{2}}, 1\right)}$ is a local minimum of $\ds{f(\mathbf{x})}$.
+			\end{enumerate}
+
+		\item Consider $\ds{S = \{\mathbf{x} : x_1 + x_2 + x_3 \leq 1, x_1 \geq 0, x_2 \geq 0, x_3 \geq 0 \}}$, and the point, $\ds{\hat{\mathbf{y}} = (1,2,3)}$. To find the point $\ds{\mathbf{\bar{x}} \in S}$ that minimises the distance to $\ds{\hat{\mathbf{y}}}$, the problem can be formulated as 
+			\begin{align*}
+				\min f(\mathbf{x}) & = \norm{\hat{\mathbf{y}} - \mathbf{x}}_2, \text{ subject to}\\
+				x_1 + x_2 + x_3 & \leq 1, \\
+				x_1 & \geq 0, \\
+				x_2 & \geq 0, \\
+				x_3 & \geq 0. \\
+			\end{align*}
+
+		\pagebreak
+		\item Consider the problem 
+			\begin{align*} 
+				\min f(\mathbf{x}) & = 5(x_1x_2 - 3)^2 + 4x_1x_2 + 2(x_1x_2 - 1)^3.
+			\end{align*}
+			\begin{enumerate}[label=\alph*)]
+				\item The gradient and Hessian of $\ds{f(\mathbf{x})}$ are
+					\begin{align*}
+						\nabla f(\mathbf{x}) & = \left[10x_2(x_1x_2-3) + 4x_2 + 6x_2(x_1x_2-1)^2, \: 10x_1(x_1x_2-3) + 4x_1 + 6x_1(x_1x_2-1)^2\right]^T, \\
+						Hf(\mathbf{x}) & = 
+						\begin{bmatrix}
+							10x_2^2 + 12x_2^2(x_1x_2-1) & A \\
+							A & 10x_1^2 + 12x_1^2(x_1x_2-1) \\
+						\end{bmatrix},
+					\end{align*}
+					where $\ds{A = 20x_1x_2-26+6(x_1x_2-1)^2+12x_1x_2(x_1x_2-1)}$. Evaluating the gradient and Hessian at $\ds{\mathbf{x} = (1,1)}$ gives
+					\begin{align*}
+						\nabla f(1,1) & = (-16, -16)^T, \\
+						Hf(1,1) & = 
+						\begin{bmatrix}
+							10 & -6 \\
+							-6 & 10 \\
+						\end{bmatrix}.
+					\end{align*}
+					
+				\item Given $\ds{\mathbf{x} = (1,0)}$, and $\ds{\mathbf{d} = (1,1)}$, 
+					\begin{align*}
+						a(\theta) & = f(\mathbf{x} + \theta\mathbf{d}) \\
+								  & = f(1+\theta, \theta) \\
+								  & = 5((1+\theta)\theta - 3)^2 + 4(1+\theta)\theta + 2((1+\theta)\theta - 1)^3 \\
+								  & = 5\left(\theta^2 + \theta - 3\right)^2 + 4\theta^2 + 4\theta + 2\left(\theta^2 + \theta - 1\right)^3 \\
+						\therefore a^{\prime}(\theta) & = 10(2\theta+1)\left(\theta^2 + \theta - 3\right) + 8\theta + 4 + 6 (2\theta+1)\left(\theta^2+\theta-1\right)^2 \\
+						\therefore a(0) & = 43 \text{ and } a^{\prime}(0)  = -20
+					\end{align*}
+
+				\item Starting with $\ds{\mathbf{x}^0 = (1,0)}$, and applying steepest descent method, we have 
+					\begin{align*}
+						\nabla f(\mathbf{x}^0) & = (0, -20)^T, \\
+						\therefore \mathbf{d}^0 & = (0, 20), \\
+						\therefore \mathbf{x}^0 + \theta\mathbf{d}^0 & = (1, 20\theta). \\
+						\therefore f\left(\mathbf{x}^0 + \theta\mathbf{d}^0\right) & = f(1,20\theta)\\
+																				   & = 5(20\theta -3)^2 + 80\theta + 2(20\theta - 1)^3. \\
+						\frac{df\left(\mathbf{x}^0 + \theta\mathbf{d}^0\right)}{d\theta} & = 200(20\theta-3) + 80 + 120(20\theta -1)^2 \\
+																						 & = 48000\theta^2 - 800\theta - 400.\\
+						\frac{df\left(\mathbf{x}^0 + \theta\mathbf{d}^0\right)}{d\theta} & = 0, \\
+						\therefore 400\theta^2 -2\theta -1 & = 0 \\
+						\therefore \theta & = \frac{2\pm\sqrt{1604}}{800} \\
+						\therefore \theta^0 & = \frac{2 + \sqrt{1604}}{800} \\
+										  & \approx 0.05256246. \\
+						\therefore \mathbf{x}^1 & = \mathbf{x}^0 + \theta^0\mathbf{d}^0 \\
+						\therefore \mathbf{x}^1 & = (1, 1.05124922) 
+					\end{align*}
+			\end{enumerate}
+
+		\item Consider the problem 
+			\begin{align*} 
+				\min f(\mathbf{x}) & = (x_1 - 2)^2 + (x_1 - 2x_2)^3.
+			\end{align*}
+			The gradient of $\ds{f(x)}$ is 
+			\begin{align*}
+				\nabla f(\mathbf{x}) = \left[2(x_1-2) + 3(x_1-2x_2)^2,\: -6(x_1-2x_2)^2\right]^T
+			\end{align*}
+			Starting with $\ds{\mathbf{x}^0 = (0,0)}$, and applying the first step of steepest descent, we have,
+			\begin{align*}
+				\nabla f(\mathbf{x}^0) & = (0, -4)^T, \\
+				\therefore \mathbf{d}^0 & = (0, 4), \\
+				\therefore \mathbf{x}^0 + \theta\mathbf{d}^0 & = (4\theta, 0). \\
+				\therefore f\left(\mathbf{x}^0 + \theta\mathbf{d}^0\right) & = f(4\theta, 0)\\
+																		   & = (4\theta-2)^2 + (4\theta)^3 \\
+																		   & = 64\theta^3 + 16\theta^2 - 16\theta + 4. \\
+				\frac{df\left(\mathbf{x}^0 + \theta\mathbf{d}^0\right)}{d\theta} & = 192\theta^2 + 32\theta -16. \\
+				\frac{df\left(\mathbf{x}^0 + \theta\mathbf{d}^0\right)}{d\theta} & = 0, \\
+				\therefore 12\theta^2 + 2\theta - 1 & = 0 \\
+				\therefore \theta & = \frac{-2\pm\sqrt{52}}{24} \\
+				\therefore \theta^0 & = \frac{-22 + \sqrt{52}}{24} \\
+								  & \approx 0.217129273. \\
+				\therefore \mathbf{x}^1 & = \mathbf{x}^0 + \theta^0\mathbf{d}^0 \\
+				\therefore \mathbf{x}^1 & = (0.868517091, 0) \\
+										& = (b, 0). \\
+			\end{align*}
+			Now, applying the second step of steepest descent, we have, 
+			\begin{align*}
+				\nabla f(\mathbf{x}^1) & = (0, -4.525931633)^T, \\
+				\therefore \mathbf{d}^1 & = (0, 4.525931633) \\
+										& = (0, a), \\
+				\therefore \mathbf{x}^1 + \theta\mathbf{d}^1 & = (b, a\theta). \\
+				\therefore f\left(\mathbf{x}^1 + \theta\mathbf{d}^1\right) & = f(b, a\theta)\\
+																		   & = (b-2)^2 + (b-2a\theta)^3 \\
+				\frac{df\left(\mathbf{x}^0 + \theta\mathbf{d}^0\right)}{d\theta} & = -6a(b-2a\theta)^2, \\
+				\frac{df\left(\mathbf{x}^0 + \theta\mathbf{d}^0\right)}{d\theta} & = 0, \\
+				-6a(b-2a\theta)^2 & = 0 \\
+				\therefore \theta^1 & = \frac{b}{2a} \\
+									& = 0.095948984. \\
+				\therefore \mathbf{x}^2 & = \mathbf{x}^1 + \theta^1\mathbf{d}^1 \\
+				\therefore \mathbf{x}^2 & = (b, 0) + \frac{b}{2a}(0, a) \\
+										& = \left(b, \frac{b}{2}\right) \\
+										& = (0.868517091, 0.4342585455). \\
+			\end{align*}
+
+
+	\end{enumerate}
+\end{document}

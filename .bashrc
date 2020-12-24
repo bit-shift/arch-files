@@ -23,6 +23,7 @@ alias sct="vim ~/.scripts/tools"
 
 alias sob="source ~/.bashrc"
 alias sop="source ~/.profile"
+alias sou="xrdb -merge ~/.Xresources"
 
 alias wifil="nmcli device wifi list"
 alias wific="nmcli device wifi connect"

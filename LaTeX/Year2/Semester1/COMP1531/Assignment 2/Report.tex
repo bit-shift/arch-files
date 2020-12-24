@@ -1,0 +1,183 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper]{article}
+
+% Install the required packages for the document 
+\usepackage{envmath}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage[mathcal]{euscript}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{subdepth}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{harpoon}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{asyalign}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{xhfill}
+\usepackage{accents}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{csquotes}
+\usepackage{wrapfig}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{minipage-marginpar}
+\usepackage{calc}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows}
+
+% Page and style settings
+\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+
+% Begin the text of the document
+\begin{document}
+
+\newlength{\strutheight}
+\settoheight{\strutheight}{\strut}
+
+% Begin the Title Page
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+\textsc{\LARGE University of New South Wales}\\[1.5cm] % Name of your university/college
+\textsc{\Large COMP 1531}\\[0.5cm] % Major heading such as course name
+\textsc{\large Software Engineering Fundamentals}\\[0.5cm] % Minor heading such as course title
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Project Report}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+
+
+\begin{center} \large
+Keegan Gyoery (z5197058) - 33\% contribution \\
+Connor O'Shea (NEEDED) - 33\% contribution\\ 
+Oliver Richards (NEEDED) - 34\% contribution\\
+\end{center}
+
+
+\vspace{4cm}
+
+{\today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+\pagenumbering{arabic}
+
+\tableofcontents
+
+\pagebreak
+
+\begin{table}[ht]
+\caption{Bill of Materials}
+
+% Begin centre environment for the table 
+\begin{center}
+
+	% Begin the table environment 
+	\begin{tabular}{|l|l|l|l|l|}
+	
+	\hline 
+	% Table content
+	\textbf{US Identifier} & \textbf{Description} & \textbf{Acceptance Criteria} & \textbf{Effort} & \textbf{Priority(0-10)} \\
+	\hline
+	US-1.1 & As a logged in attendee, I would like to view all open events, to find events I want to attend. & 140x19x2400mm & 4 & 8 \\
+	\hline
+	Aluminium \cite{bunnings} & 1 Sheet & 152.4x457.2mm & \$10.84 \\
+	\hline
+	Motor Servo \cite{servo} & 1 & & \$6.90 \\
+	\hline
+	Motor \cite{motor} & 1 & & \$15.99 \\
+	\hline
+	Battery \cite{hobby} & 1 & 7.2V, 3000mAh & \$19.49 \\
+	\hline
+	Pinion Gear \cite{hobby} & 1 & 18T, 32P & \$3.69 \\
+	\hline
+	Main Gear \cite{hobby} & 1 & 32P & \$3.99 \\
+	\hline
+	Hinges \cite{bunnings} & 4 & 75mm & \$9.26 \\
+	\hline
+	Wire \cite{bunnings} & 1m & 1000x1.3mm & \$1.85 \\
+	\hline
+	Magnet \cite{bunnings} & 3 & 25x12.5x3.5mm & \$9.90 \\
+	\hline
+	Infra Red Sensor \cite{irgate} & 3 & 0-300mm & \$19.80 \\
+	\hline
+	Load Cell \cite{load} & 2 & 0-10kg & \$21.56 \\
+	\hline
+	Load Cell Amplifier \cite{load} & 1 & & \$12.95 \\
+	\hline
+	Servo Motor Controller \cite{cont} & 1 & & \$8.75 \\
+	\hline
+	Eye and Eye Turnbuckle \cite{bunnings} & 6 & 133mm & \$12.00 \\
+	\hline
+	Eye Hook \cite{bunnings} & 6 & 14kg & \$5.49 \\
+	\hline
+	S Hook \cite{bunnings} & 2 & & \$2.19 \\
+	\hline
+	Threaded Rod \cite{bunnings} & 1 & M6x12000mm & \$3.50 \\
+	\hline
+	Hex Nut \cite{bunnings} & 4 & M6 & \$0.44 \\
+	\hline
+	Wire Cable \cite{bunnings} & 4m & 4000x4mm & \$7.80 \\
+	\hline
+	Steel Tube \cite{bunnings} & 1m & 1000x31.8x1.2mm & \$6.02 \\
+	\hline
+	Steel Pipe \cite{bunnings} & 1m & 1000x6.3mm & \$2.62 \\
+	\hline
+	HO Gauge Track \cite{hobby} & 12 & 2743.2mm & \$9.98 \\
+	\hline
+	HO Gauge Trucks \cite{hobby} & 6 & & \$40.20 \\
+	\hline
+	\multicolumn{1}{c}{} & & \multicolumn{1}{|c|}{\textbf{Total}} & \$267.85 \\
+	\cline{3-4}
+
+
+	\end{tabular}
+
+\end{center}
+
+\end{table}
+
+
+\end{document}

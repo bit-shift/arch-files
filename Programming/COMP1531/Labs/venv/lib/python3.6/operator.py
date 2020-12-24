@@ -1,0 +1,5 @@
+XSym
+0099
+22791962c8cc4db8ea31d963b697fdf7
+/usr/local/Cellar/python/3.6.4_4/Frameworks/Python.framework/Versions/3.6/lib/python3.6/operator.py
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            

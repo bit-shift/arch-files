@@ -1,0 +1,289 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+% Install the required packages for the document 
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{bm}
+\usepackage{xlop}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+% Page and style settings
+%\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\newenvironment{nscentre}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\begin{document}
+\setlength{\abovedisplayskip}{8pt}{%
+\setlength{\belowdisplayskip}{8pt}{%
+
+
+\text{LSA}
+\hfill
+\text{University of Michigan}
+
+\begin{nscentre}
+	\textbf{MATH562: Continuous Optimisation}\\
+	\textbf{Homework 5}\\
+\end{nscentre}
+
+\text{Name: Keegan Gyoery}
+\hfill
+\text{UM-ID: 31799451}
+
+\pagenumbering{arabic}
+	\begin{enumerate}[leftmargin=*]
+		\item Consider the function $\ds{f(\mathbf{x}) = (x_1-3)^2 + 3(x_2-2)^2}$.
+			\begin{enumerate}[label=\alph*)]
+				\item Let $\ds{\mathbf{x}^0 = (4,1)^T}$. Firstly, the gradient of $\ds{f(\mathbf{x})}$ is,
+					\begin{align*}
+						\nabla f(\mathbf{x}) & =
+						\begin{bmatrix}
+							2(x_1-3) \\
+							6(x_2-2) \\
+						\end{bmatrix}.
+					\end{align*}
+					Using the given $\ds{\mathbf{x}^0}$, the gradient of $\ds{f(\mathbf{x})}$ at $\ds{\mathbf{x}^0}$ is
+					\begin{align*}
+						\nabla f(\mathbf{x}^0) & =
+						\begin{bmatrix}
+							2 \\
+							-6 \\
+						\end{bmatrix}.
+					\end{align*}
+					Thus, the steepest descent direction is
+					\begin{align*}
+						\mathbf{d}^0 & =
+						\begin{bmatrix}
+							-2 \\
+							6 \\
+						\end{bmatrix},
+					\end{align*}
+					and so 
+					\begin{align*}
+						\mathbf{x}^0 + \theta \mathbf{d}^0 & =
+						\begin{bmatrix}
+							4 \\
+							1 \\
+						\end{bmatrix} + \theta
+						\begin{bmatrix}
+							-2 \\
+							6 \\
+						\end{bmatrix} =
+						\begin{bmatrix}
+							4 - 2\theta \\
+							1 + 6\theta \\
+						\end{bmatrix}.
+					\end{align*}
+					Thus, considering $\ds{f\left(\mathbf{x}^0 + \theta \mathbf{d}^0\right)}$, we have
+					\begin{align*}
+						f\left(\mathbf{x}^0 + \theta \mathbf{d}^0\right) & = (4-2\theta-3)^2 + 3(1+6\theta-2)^2 \\
+																		 & = (1-2\theta)^2 + 3(6\theta-1)^2 \\
+																		 & = 1 - 4\theta + 4\theta^2 + 108\theta^2 - 36\theta + 3 \\
+																		 & = 112\theta^2 - 40\theta + 4.
+					\end{align*}
+					Setting the derivative equal to 0,
+					\begin{align*}
+						\frac{df\left(\mathbf{x}^0 + \theta \mathbf{d}^0\right)}{d\theta} & = 0 \\
+						\therefore 224\theta - 40 & = 0\\
+						\therefore \theta_0 & = \frac{5}{23}.
+					\end{align*}
+					Thus, we get the vector $\ds{\mathbf{x}^1}$ as 
+					\begin{align*}
+						\mathbf{x}^1 & = \mathbf{x}^0 + \theta_0 \mathbf{d}^0 \\
+						\therefore \mathbf{x}^1 & =
+						\begin{bmatrix}
+							4 \\
+							1 \\
+						\end{bmatrix} + \frac{5}{23}
+						\begin{bmatrix}
+							-2 \\
+							6 \\
+						\end{bmatrix} =
+						\begin{bmatrix}
+							4 - \nicefrac{10}{23} \\
+							1 + \nicefrac{30}{23} \\
+						\end{bmatrix} = \frac{1}{23}
+						\begin{bmatrix}
+							82 \\
+							53 \\
+						\end{bmatrix}.
+					\end{align*}
+
+				\item To show that $\ds{\bar{\mathbf{d}} = (1,1)^T}$ is a descent direction, we need to show that the dot product of the gradient of $\ds{f}$ at $\ds{\mathbf{x}^0}$ and the descent direction $\ds{\bar{\mathbf{d}}}$ is less than 0. Considering the dot product, we have
+					\begin{align*}
+						\nabla f\left(\mathbf{x}^0\right)^T\bar{\mathbf{d}} & = [2\:\: 6]
+						\begin{bmatrix}
+							1 \\
+							1 \\
+						\end{bmatrix} \\
+						& = 2 - 6 \\
+						\therefore \nabla f\left(\mathbf{x}^0\right)^T\bar{\mathbf{d}} & = -4.
+					\end{align*}
+					Applying the descent method, with an exact line search, we first calculate 
+					\begin{align*}
+						\mathbf{x}^0 + \theta \bar{\mathbf{d}} & =
+						\begin{bmatrix}
+							4 \\
+							1 \\
+						\end{bmatrix} + \theta
+						\begin{bmatrix}
+							1 \\
+							1 \\
+						\end{bmatrix} =
+						\begin{bmatrix}
+							4 + \theta \\
+							1 + \theta \\
+						\end{bmatrix}.
+					\end{align*}
+					Thus, considering $\ds{f\left(\mathbf{x}^0 + \theta \bar{\mathbf{d}}\right)}$, we have
+					\begin{align*}
+						f\left(\mathbf{x}^0 + \theta \bar{\mathbf{d}}\right) & = (4+\theta-3)^2 + 3(1+\theta-2)^2 \\
+																		 & = (1+\theta)^2 + 3(\theta-1)^2 \\
+																		 & = 1 + 2\theta + \theta^2 + 3\theta^2 - 6\theta + 3 \\
+																		 & = 4\theta^2 - 4\theta + 4.
+					\end{align*}
+					Setting the derivative equal to 0,
+					\begin{align*}
+						\frac{df\left(\mathbf{x}^0 + \theta \mathbf{d}^0\right)}{d\theta} & = 0 \\
+						\therefore 8\theta - 4 & = 0\\
+						\therefore \theta_0 & = \frac{1}{2}.
+					\end{align*}
+					Thus, we get the vector $\ds{\mathbf{x}^1}$ as 
+					\begin{align*}
+						\mathbf{x}^1 & = \mathbf{x}^0 + \theta_0 \bar{\mathbf{d}} \\
+						\therefore \mathbf{x}^1 & =
+						\begin{bmatrix}
+							4 \\
+							1 \\
+						\end{bmatrix} + \frac{1}{2}
+						\begin{bmatrix}
+							1 \\
+							1 \\
+						\end{bmatrix} =
+						\begin{bmatrix}
+							4 + \nicefrac{1}{2} \\
+							1 + \nicefrac{1}{2} \\
+						\end{bmatrix} = \frac{1}{2}
+						\begin{bmatrix}
+							9 \\
+							3 \\
+						\end{bmatrix}.
+					\end{align*}
+
+				\item Setting $\ds{a(\theta) = f\left(\mathbf{x}^0 + \theta\bar{\mathbf{d}}\right)}$, we get the derivative of $\ds{a(\theta)}$ as,
+					\begin{align*}
+						a(\theta) & = f\left(\mathbf{x}^0 + \theta\bar{\mathbf{d}}\right) \\
+								  & = 4\theta^2 - 4\theta + 4 \\
+						\therefore a^{\prime}(\theta) & = 8\theta - 4 \\
+						\therefore a(0) & = 4 \\
+						\therefore a^{\prime}(0) & = -4.
+					\end{align*}
+					Using $\ds{\rho = \frac{1}{4}}$ and $\ds{\sigma = \frac{3}{4}}$, and applying Armijo's first condition, we have
+					\begin{align*}
+						a(0) + \rho\theta a^{\prime}(0) & \geq a(\theta) \\
+						\therefore 4 + \frac{1}{4}\theta(-4) & \geq 4\theta^2 - 4\theta + 4 \\
+						\therefore 4\theta^2 - 3\theta & \leq 0 \\
+						\therefore 0 \leq \theta & \leq \frac{3}{4} \dots (1).
+					\end{align*}
+					Applying Armijo's second condition, we have
+					\begin{align*}
+						a^{\prime}(\theta) & \geq  \sigma a^{\prime}(0) \\
+						\therefore 8\theta - 4 & \geq \frac{3}{4}(-4) \\
+						\therefore 8\theta - 1 & \geq 0 \\
+						\therefore \theta & \geq \frac{1}{8} \dots (2).
+					\end{align*}
+					Combining $\ds{(1)}$ and $\ds{(2)}$, we have the range $\ds{\frac{1}{8} \leq \theta \leq \frac{3}{4}}$ for Armijo's stopping conditions. The length of this interval is $\ds{\frac{5}{8}}$. So for three uniformly distributed points in the interval $\ds{[0,1]}$, the probability that one point is not in Armijo's interval is $\ds{\frac{3}{8}}$, and so the probability that all three points are not in Armijo's interval is $\ds{\frac{27}{512}}$.
+			\end{enumerate}
+
+		\item Consider the function $\ds{a(\theta) = 1 - \theta e^{-\theta}}$.
+			\begin{enumerate}[label=\alph*)]
+				\item We get the derivative of $\ds{a(\theta)}$ as,
+					\begin{align*}
+						a(\theta) & = 1 - \theta e^{-\theta} \\
+						\therefore a^{\prime}(\theta) & = \theta e^{-\theta} - e^{-\theta} \\
+						\therefore a(0) & = 1 \\
+						\therefore a^{\prime}(0) & = -1.
+					\end{align*}
+					Using $\ds{\rho = \frac{1}{4}}$ and $\ds{\sigma = \frac{3}{4}}$, and applying Armijo's first condition, we have
+					\begin{align*}
+						a(0) + \rho\theta a^{\prime}(0) & \geq a(\theta) \\
+						\therefore 1 + \frac{1}{4}\theta(-1) & \geq 1 - \theta e^{-\theta} \\
+						\therefore \theta\left(e^{-\theta} - \frac{1}{4}\right) & \geq 0 \\
+						\therefore 0 \leq \theta & \leq \ln{4} \dots (1).
+					\end{align*}
+					Applying Armijo's second condition, we have
+					\begin{align*}
+						a^{\prime}(\theta) & \geq  \sigma a^{\prime}(0) \\
+						\therefore \theta e^{-\theta} - e^{-\theta} & \geq \frac{3}{4}(-1) \\
+						\therefore e^{-\theta}(\theta - 1) & \geq -\frac{3}{4} \\
+						\therefore \theta & \geq 0.139 \dots (2).
+					\end{align*}
+					Combining $\ds{(1)}$ and $\ds{(2)}$, we have the range $\ds{0.139 \leq \theta \leq \ln{4}}$ for Armijo's stopping conditions.
+				\item Applying the bisection method to the interval found above, we set $\ds{\alpha_0 = 0}$, which violates condition 2, and $\ds{\beta_0 = 1}$. Take $\ds{\gamma_0 = \frac{\alpha_0 + \beta_0}{2} = 0.5}$. $\ds{\gamma_0 = 0.5}$ satisfies conditions 1 and 2, so $\ds{\theta = \gamma_0 = 0.5}$ is an acceptable value.
+
+
+			\end{enumerate}
+		\item Consider the function $\ds{a(\theta) = \theta^4 - 4\theta^3 + \theta^2 - 10\theta + 12}$. We get the derivative of $\ds{a(\theta)}$ as,
+			\begin{align*}
+				a(\theta) & = \theta^4 - 4\theta^3 + \theta^2 - 10\theta + 12 \\
+				\therefore a^{\prime}(\theta) & = 4\theta^3 - 12\theta^2 + 2\theta - 10 \\
+				\therefore a(0) & = 12 \\
+				\therefore a^{\prime}(0) & = -10.
+			\end{align*}
+			Using $\ds{\rho = \frac{1}{4}}$ and $\ds{\sigma = \frac{3}{4}}$, and applying Armijo's first condition, we have
+			\begin{align*}
+				a(0) + \rho\theta a^{\prime}(0) & \geq a(\theta) \\
+				\therefore 12 + \frac{1}{4}\theta(-10) & \geq \theta^4 - 4\theta^3 + \theta^2 - 10\theta + 12 \\
+				\therefore \theta\left(\theta^3 - 4\theta^2 + \theta - \frac{15}{2} \right) & \leq 0 \\
+				\therefore 0 \leq \theta & \leq 4.189 \dots (1).
+			\end{align*}
+			Applying Armijo's second condition, we have
+			\begin{align*}
+				a^{\prime}(\theta) & \geq  \sigma a^{\prime}(0) \\
+				\therefore 4\theta^3 - 12\theta^2 + 2\theta - 10 & \geq \frac{3}{4}(-10) \\
+				\therefore 4\theta^3 - 12\theta^2 + 2\theta - \frac{5}{2} & \geq 0 \\
+				\therefore \theta & \geq 2.9019 \dots (2).
+			\end{align*}
+			Combining $\ds{(1)}$ and $\ds{(2)}$, we have the range $\ds{2.9019 \leq \theta \leq 4.189}$ for Armijo's stopping conditions. Applying the bisection method to the interval found above, we set $\ds{\alpha_0 = 0}$, which violates condition 2, and $\ds{\beta_0 = 5}$, which violates condition 1. Take $\ds{\gamma_0 = \frac{\alpha_0 + \beta_0}{2} = 2.5}$. $\ds{\gamma_0 = 2.5}$ violates condition 2, so set $\ds{\alpha_1 = \gamma_0 = 2.5}$, and $\ds{\beta_1 = \beta_0 = 5}$. Now take $\ds{\gamma_1 = \frac{\alpha_1 + \beta_1}{2} = 3.75}$. Clearly, $\ds{\gamma_1 = 3.75}$ satisfies conditions 1 and 2, so $\ds{\theta = \gamma_1 = 3.75}$ is an acceptable value.
+	\end{enumerate}
+\end{document}

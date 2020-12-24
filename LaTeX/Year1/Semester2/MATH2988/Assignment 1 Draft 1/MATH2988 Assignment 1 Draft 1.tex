@@ -1,0 +1,319 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper]{article}
+
+% Install the required packages for the document 
+\usepackage{envmath}
+\usepackage{esvect}
+\usepackage{graphicx}
+%\usepackage{gensymb}
+\usepackage{cleveref}
+\usepackage{tikz}
+\usepackage[mathcal]{euscript}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{harpoon}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{asyalign}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{xhfill}
+\usepackage{accents}
+\usepackage{cite}
+\usepackage{url}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows}
+
+\DeclareMathOperator\lcm{lcm}
+\DeclareMathOperator\ord{ord}
+
+% Page and style settings
+\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+
+
+% Begin the text of the document
+\begin{document}
+
+% Begin the Title Page
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+\textsc{\LARGE University of Sydney}\\[1.5cm] % Name of your university/college
+\textsc{\Large MATH 2988}\\[0.5cm] % Major heading such as course name
+\textsc{\large Number Theory and Cryptography}\\[0.5cm] % Minor heading such as course title
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Assignment 1}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}
+Keegan Gyoery % Your name
+\\
+\emph{SID:}
+470413467
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Lecturer:} 
+Dzmitry Badziahin % Tutor's Name
+\\
+\emph{Tutorial:}
+Carslaw Tutorial Room 451
+Thursday 12pm
+\end{flushright}
+\end{minipage}\\[4cm]
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+\pagenumbering{arabic}
+
+\begin{enumerate}
+	\item 
+	\begin{enumerate}
+		\item We are required to find $\displaystyle{2015^{24195} \pmod{2017}}$. In order to compute this, we will use the fact that $\displaystyle{2017}$ is prime. The computation is thus as follows.
+
+		\begin{align*}
+		a^{\varphi(p)} &\equiv 1 \pmod{p}\\
+		\therefore a^{p-1} &\equiv 1 \pmod{p}\\
+		\therefore 2015^{2017-1} &\equiv 1 \pmod{2017}\\
+		\therefore 2015^{2016} &\equiv 1 \pmod{2017}\\
+		24195 & = 2016\times12 + 3\\
+		\therefore 2015^{24195} & = 2015^{2016\times12 + 3}\\
+		& = \left(2015^{2016}\right)^{12}\left(2015^{3}\right)\\
+		\therefore 2015^{24195} & \equiv \left(2015^{2016}\right)^{12}\left(2015^{3}\right) \pmod{2017}\\
+		& \equiv \left(2015^{3}\right) \pmod{2017} \hspace{5mm} \text{as } 2015^{2016} \equiv 1 \pmod{2017}\\
+		& \equiv (-2)^3 \pmod{2017}\\
+		& \equiv -8 \pmod{2017}\\
+		& \equiv 2009 \pmod{2017}\\
+		\therefore 2015^{24195} & \equiv 2009 \pmod{2017}\\
+		\end{align*}
+
+		\item For the next proof, let $\displaystyle{m}$, $\displaystyle{n \in \mathbb{Z^+}}$, and $\displaystyle{m}$, $\displaystyle{n}$ be coprime, that is $\displaystyle{\gcd(m,n) = 1}$. Furthermore, $\displaystyle{a \in \mathbb{Z}}$, and $\displaystyle{\gcd(a,mn) = 1}$. Thus we have $\displaystyle{\gcd(a,m) = 1}$ and $\displaystyle{\gcd(a,n) = 1}$. We are now required to prove that the following is true. 
+		\begin{align*}
+		a^{\lcm\left(\phi(m),\phi(n) \right)} \equiv 1 \pmod{mn}
+		\end{align*}
+		In order to complete this proof, we must first examine the result of $\displaystyle{\lcm\left(\phi(m),\phi(n) \right)}$. The $\displaystyle{\lcm\left(\phi(m),\phi(n) \right)}$ may be written as a multiple of either $\displaystyle{\phi(m)}$ or $\displaystyle{\phi(n)}$. Thus the following result is true.
+		\begin{align*}
+		\lcm\left(\phi(m),\phi(n) \right) & = k_1\phi(m)\\
+		& = k_2\phi(n) \hspace{5mm} k_1,\:k_2 \in \mathbb{Z}^+\\
+		\end{align*}
+		Using the Euler-Fermat Theorem, the result is derived in the proof that follows.
+		\begin{align*}
+		a^{\phi(m)} & \equiv 1 \pmod{m}\\
+		\therefore \left[{a^{\phi(m)}}\right]^{k_1} & \equiv 1 \pmod{m}\\
+		\therefore a^{k_1\phi(m)} & \equiv 1 \pmod{m} \hspace{5mm} \text{as } \gcd(a,m) = 1\\
+		\therefore a^{\lcm\left(\phi(m),\phi(n) \right)} & \equiv 1 \pmod{m} \dots\dots (1)\\
+		a^{\phi(n)} & \equiv 1 \pmod{n}\\
+		\therefore \left[{a^{\phi(n)}}\right]^{k_2} & \equiv 1 \pmod{n}\\
+		\therefore a^{k_2\phi(n)} & \equiv 1 \pmod{n} \hspace{5mm} \text{as } \gcd(a,n) = 1\\
+		\therefore a^{\lcm\left(\phi(m),\phi(n) \right)} & \equiv 1 \pmod{n} \dots\dots (2)\\
+		\therefore a^{\lcm\left(\phi(m),\phi(n) \right)} & \equiv 1 \pmod{mn} \hspace{5mm} \text{by the CRT on equations (1) and (2)}\\
+		\end{align*}
+		Thus the required result is proved. Note that CRT means Chinese Remainder Theorem.
+
+		\pagebreak
+
+		We are now required to show that for any $\displaystyle{a}$ coprime to $\displaystyle{10}$, the following result holds.
+		\begin{align*}
+		a^{20} & \equiv 1 \pmod{100}\\
+		\end{align*}
+		Thus we shall select $\displaystyle{m = 25}$ and $\displaystyle{n=4}$. Thus, by our selection of $\displaystyle{m}$ and $\displaystyle{n}$, the $\displaystyle{\gcd(m,n) = 1}$, and thus the derivation is as follows.
+		\begin{align*}
+		a^{\lcm\left(\phi(m),\phi(n) \right)} & \equiv 1 \pmod{nm}\\
+		\therefore a^{\lcm\left(\phi(25),\phi(4) \right)} & \equiv 1 \pmod{100}\\
+		\therefore a^{\lcm\left(\phi(5^2),\phi(2^2) \right)} & \equiv 1 \pmod{100}\\
+		\therefore a^{\lcm\left(5^2-5,2^2-2 \right)} & \equiv 1 \pmod{100}\\
+		\therefore a^{\lcm\left(20,2 \right)} & \equiv 1 \pmod{100}\\
+		\therefore a^{20} & \equiv 1 \pmod{100}\\
+		\end{align*} 
+
+		\bigbreak
+
+		\item We are now required to compute the last two digits of the numbers $\displaystyle{{7^{7}}^4}$ and $\displaystyle{{7^{7}}^{400}}$. In order to do this, we shall compute the above two numbers $\displaystyle{\pmod{100}}$. Furthermore, we have the result that, for $\displaystyle{a}$ coprime to $\displaystyle{10}$, $\displaystyle{a^{20} \equiv 1 \pmod{100}}$. As $\displaystyle{7}$ is coprime to $\displaystyle{10}$, the previous result holds. 
+
+		\bigbreak
+
+		Firstly we shall find the result of $\displaystyle{{7^{7}}^4 \pmod{100}}$. The computation is as follows.
+		\begin{align*}
+		7^4 & = 2401\\
+		& = 20\times120 + 1\\
+		\therefore 7^4 & = 20\times120 + 1\\
+		\therefore {7^7}^4 & = 7^{20\times120 + 1}\\
+		& = \left[7^{20\times120} \right]7\\
+		& = \left[\left(7^{20}\right)^{120} \right]7\\
+		\therefore \left[\left(7^{20}\right)^{120} \right]7 & \equiv 7 \pmod{100} \hspace{5mm} \text{as } 7^{20} \equiv 1 \pmod{100}\\
+		\therefore {7^7}^4 & \equiv 7 \pmod{100}\\
+		\end{align*}
+		As a result the last two digits of $\displaystyle{{7^{7}}^4}$ are $\displaystyle{07}$.
+
+		\bigbreak
+
+		Finally, we shall find the result of $\displaystyle{{7^{7}}^{400} \pmod{100}}$. The computation is as follows.
+		\begin{align*}
+		\therefore {7}^{400} & = {{7}^{20}}^{20}\\
+		\therefore {{7}^{20}}^{20} & \equiv 1 \pmod{100} \hspace{5mm} \text{as } 7^{20} \equiv 1 \pmod{100}\\
+		\therefore 7^{400} & = 100q + 1 \hspace{5mm} \text{for some } q \in \mathbb{Z}^+\\
+		\therefore {7^{7}}^{400} & = 7^{100q + 1}\\
+		& = \left[7^{100q}\right]7\\
+		& = \left[7^{20\times5q}\right]7\\
+		& = \left[\left(7^{20}\right)^{5q}\right]7\\
+		\therefore \left[\left(7^{20}\right)^{5q}\right]7 & \equiv 7 \pmod{100} \hspace{5mm} \text{as } 7^{20} \equiv 1 \pmod{100}\\
+		\therefore {7^{7}}^{400} & \equiv 7 \pmod{100}\\
+		\end{align*}
+		As a result the last two digits of $\displaystyle{{7^{7}}^{400}}$ are $\displaystyle{07}$.
+
+	\end{enumerate}
+
+	\pagebreak
+
+	\item 
+	\begin{enumerate}
+		\item For the following proof we are given that $\displaystyle{p = 737279}$ is prime, and that the following result holds.
+		\begin{align*}
+		2^{2p+1} & \equiv 2 \pmod{2p+1}\\
+		\end{align*}
+		As a result of the $\displaystyle{\gcd(2,2p+1) = 1}$, we have the following result.
+		\begin{align*}
+		2^{2p+1} & \equiv 2 \pmod{2p+1}\\
+		\therefore 2^{2p} & \equiv 1 \pmod{2p+1}\\
+		\end{align*}
+		Thus, $\displaystyle{\ord_{2p+1}2}$ must divide $\displaystyle{2p}$. Thus, as $\displaystyle{p}$ is prime, $\displaystyle{\ord_{2p+1}2}$ can equal $\displaystyle{1,\:2,\:p,\:2p}$. The first two options for the $\displaystyle{\ord_{2p+1}2}$ yeild the following results.
+		\begin{align*}
+		2^1 & \equiv 2 \pmod{2p+1}\\
+		2^2 & \equiv 4 \pmod{2p+1}\\
+		\end{align*}
+		Thus, $\displaystyle{\ord_{2p+1}2}$ can only equal $\displaystyle{p}$ or $\displaystyle{2p}$. Furthermore, we have the known result that $\displaystyle{\ord_{2p+1}2 \mid \phi(2p+1)}$. Thus, as $\displaystyle{0 < \phi(2p+1) < 2p+1}$, and $\displaystyle{\ord_{2p+1}2 \mid \phi(2p+1)}$, $\displaystyle{\phi(2p+1)}$ can either equal $\displaystyle{p}$ or $\displaystyle{2p}$. Assume that $\displaystyle{\phi(2p+1)=p}$. Thus, $\displaystyle{\phi(2p+1)}$ must be odd as $\displaystyle{p}$ is prime.
+
+		\bigbreak
+
+		\textbf{Proposition.} For $\displaystyle{n > 2}$, $\displaystyle{\phi(n)}$ must be even.
+
+		\bigbreak
+
+		\textbf{Proof.} By the definition of Euler's Phi Function, $\displaystyle{\phi(n)}$ is the size of the reduced set of residues modulo $\displaystyle{n}$. The reduced set of residues modulo $\displaystyle{n}$ is defined by $\displaystyle{\{a\in \mathbb{Z}\: |\: 0 \leq a < n \:,\: \gcd(a,n) = 1  \}}$. Let $\displaystyle{n \in \mathbb{Z}^+}$ and set $\displaystyle{n>2}$. Thus $\displaystyle{n}$ can be decomposed into its prime factors, which will contain either at least one odd prime factor, or be a power of $\displaystyle{2}$. 
+		\bigbreak
+		Considering the first case, where $\displaystyle{n}$ contains an odd factor, we can decompose $\displaystyle{n = q\cdot p^k}$, for some prime factor $\displaystyle{p \in \mathbb{Z}^+}$, and $\displaystyle{q,\:k \in \mathbb{Z}^+}$. Then,
+		\begin{align*}
+		\phi(n) & = \phi\left(q\cdot p^k \right)\\
+		& = \phi(q)\phi(p^k)\\
+		& = \left(p^k - p^{k-1}\right)\phi(q)\\
+		& = (p-1)\left(p^{k-1} \right)\phi(q)\\
+		\end{align*}
+		As $\displaystyle{p}$ is odd, the factor $\displaystyle{(p-1)}$ is even, thus making $\displaystyle{\phi(n)}$ even.
+
+		\bigbreak
+
+		Considering the second and final case, where $\displaystyle{n}$ is a power of $\displaystyle{2}$, and thus contains no odd prime factors, we can write $\displaystyle{n = 2^r}$, for some $\displaystyle{r \in \mathbb{Z}^+}$. Then,
+		\begin{align*}
+		\phi(n) & = \phi\left(2^r \right)\\
+		& = 2^r - 2^{r-1}\\
+		& = (2-1)\left(2^{r-1}\right)\\
+		& = 2^{r-1}\\
+		\end{align*}
+		Obviously, $\displaystyle{\phi(n)}$ contains a factor of 2, thus making $\displaystyle{\phi(n)}$ even. 
+
+		\bigbreak
+
+		Thus Euler's Phi Function, $\displaystyle{\phi(n)}$ is even $\displaystyle{\forall n \in \mathbb{Z}^+}$ and $\displaystyle{n > 2}$.
+
+		\bigbreak
+
+		As a result of this proof, we have contradicted our choice of $\displaystyle{\phi(2p+1) = p}$, as $\displaystyle{\phi(2p+1)}$ must be even, and $\displaystyle{p}$ is clearly odd. Thus, $\displaystyle{\phi(2p+1) = 2p}$. This result of Euler's Phi Function holding a value, $\displaystyle{2p}$, that is one less than the given value, $\displaystyle{2p+1}$, is a result that only holds when the given value is prime. Thus, $\displaystyle{2p+1}$ is clearly prime.
+
+		\pagebreak
+
+		\item For the following proof, let $\displaystyle{n = 2^{131}-1}$. We are now required to show that the following result is true.
+		\begin{align*}
+		2^{n-1} & \equiv 1 \pmod{n}\\
+		\end{align*}
+		Using the following proof, and the fact that $\displaystyle{131}$ is prime, we will derive the required result.
+		\begin{align*}
+		2^{130} & \equiv 1 \pmod{131} \hspace{5mm} \text{as $\displaystyle{131}$ prime}\\
+		\therefore 2^{130}-1 & \equiv 0 \pmod{131}\\
+		\therefore 2\left[2^{130}-1 \right] & \equiv 0 \pmod{131}\\
+		\therefore 2^{131}-2 & \equiv 0 \pmod{131}\\
+		\therefore n-1 & \equiv 0 \pmod{131}\\
+		\therefore 131  & \mid n-1\\
+		\therefore n-1 & = 131k \hspace{5mm} \text{for some $\displaystyle{k\in\mathbb{Z}^+}$}\\
+		2^{131} - 1 & \equiv 0 \pmod{2^{131}-1}\\
+		\therefore 2^{131} & \equiv 1 \pmod{2^{131}-1}\\
+		\therefore \left[{2^{131}}\right]^k & \equiv 1 \pmod{2^{131}-1}\\
+		\therefore 2^{131k} & \equiv 1 \pmod{2^{131}-1}\\
+		\therefore 2^{n-1} & \equiv 1 \pmod{n}\\
+		\end{align*}
+		Thus the required result is achieved.
+
+		\bigbreak
+
+		\item We are now required to show that $\displaystyle{263}$ divides $\displaystyle{n = 2^{131}-1}$, meaning that $\displaystyle{n}$ is not in fact prime. In order to achieve the final result, we shall start with the following known fact.
+		\begin{align*}
+		131 & = 2^7 + 2^1 + 2^0\\
+		\end{align*}
+		Using this result and the summing of squares, we are able to compute the following results.
+		\begin{align*}
+		131 & = 2^7 + 2^1 + 2^0\\
+		2^{131} & = 2^{\left[2^7 + 2^1 + 2^0\right]}\\
+		\therefore 2^{131} & = {{2^2}^7}{{2^2}^1}{2^2}^0\\
+		\therefore 2^{131} & \equiv {{2^2}^7}{{2^2}^1}{2^2}^0 \pmod{263}\\
+		\end{align*}
+		In order to compute the congruence of the RHS of the above congruence relation, we must compute the congruence of each of the terms in the RHS. To do so, we will use a table to easily compute the results. Furthermore, using the relation that $\displaystyle{a_{n+1} = {a_n}^2}$, to compute the congruences $\displaystyle{\pmod{263}}$. The computations are fairly simple and straightforward.
+		\begin{center}
+		\begin{tabular}{c|c c c c c c c c}
+		\text{n} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+		\hline
+		\text{$\displaystyle{{2^2}^n}$} & 2 & 4 & 16 & -7 & 49 & 34 & 104 & 33
+		\end{tabular}
+		\end{center}
+		Thus, using the above table for the successive squares congruences, we get the following results. 
+		\begin{align*}
+		\therefore 2^{131} & \equiv {{2^2}^7}{{2^2}^1}{2^2}^0 \pmod{263}\\
+		& \equiv 33\cdot4\cdot2 \pmod{263}\\
+		& \equiv 264 \pmod{263}\\
+		& \equiv 1 \pmod{263}\\
+		\therefore 2^{131} & \equiv 1 \pmod{263}\\
+		\therefore 2^{131} - 1 & \equiv 0 \pmod{263}\\
+		\therefore 263 & \mid 2^{131} - 1\\
+		\end{align*}
+		Thus $\displaystyle{263}$ divides $\displaystyle{n = 2^{131}-1}$, and thus $\displaystyle{n}$ is not prime.
+
+	\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

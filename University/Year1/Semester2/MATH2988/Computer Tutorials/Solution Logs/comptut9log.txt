@@ -1,0 +1,706 @@
+User:     PSEUDOSTUDENT, MATHS
+Automatic Magma log submission from teaching laboratory
+Date: 30-09-13  01:40 PM
+Loading "/users/ugrad/m2068/magma/MATH2068/MagmaProcedures.txt"
+(Magma functions defined for use in MATH2068/2988)
+Log file: Mon30Sep.log
+seed:  415423865 0
+> P<x>:=PolynomialRing(Integers());
+> f:=x^5-2*x^4-8*x^2-x-6; g:=x^2+1;
+> f;
+x^5 - 2*x^4 - 8*x^2 - x - 6
+> g;
+x^2 + 1
+> g^3;
+x^6 + 3*x^4 + 3*x^2 + 1
+> /*
+> I hope that you can see that magma calculated this correctly.
+> */
+> g^50;
+x^100 + 50*x^98 + 1225*x^96 + 19600*x^94 + 230300*x^92 + 2118760*x^90 +
+    15890700*x^88 + 99884400*x^86 + 536878650*x^84 + 2505433700*x^82 +
+    10272278170*x^80 + 37353738800*x^78 + 121399651100*x^76 + 354860518600*x^74
+    + 937845656300*x^72 + 2250829575120*x^70 + 4923689695575*x^68 +
+    9847379391150*x^66 + 18053528883775*x^64 + 30405943383200*x^62 +
+    47129212243960*x^60 + 67327446062800*x^58 + 88749815264600*x^56 +
+    108043253365600*x^54 + 121548660036300*x^52 + 126410606437752*x^50 +
+    121548660036300*x^48 + 108043253365600*x^46 + 88749815264600*x^44 +
+    67327446062800*x^42 + 47129212243960*x^40 + 30405943383200*x^38 +
+    18053528883775*x^36 + 9847379391150*x^34 + 4923689695575*x^32 +
+    2250829575120*x^30 + 937845656300*x^28 + 354860518600*x^26 +
+    121399651100*x^24 + 37353738800*x^22 + 10272278170*x^20 + 2505433700*x^18 +
+    536878650*x^16 + 99884400*x^14 + 15890700*x^12 + 2118760*x^10 + 230300*x^8 +
+    19600*x^6 + 1225*x^4 + 50*x^2 + 1
+> /*
+> The coefficients above are binomial coefficients, e.g. 1225 = 50*51/2.
+> */
+> g^6+f;
+x^12 + 6*x^10 + 15*x^8 + 20*x^6 + x^5 + 13*x^4 - 2*x^2 - x - 5
+> Evaluate(g,2);
+5
+> /*
+> i.e., in normal mathematical notation, g(x) = x^2 + 1 gives g(2) = 5.
+> */
+> Evaluate(g,3);
+10
+> /*
+> Evaluating x^2 + 1 at x = 3 gives 10.
+> */
+> Factorization(f);
+[
+    <x - 3, 1>,
+    <x^2 + 1, 1>,
+    <x^2 + x + 2, 1>
+]
+> /*
+> i.e. (x-3)^1, (x^2+1)^1 and (x^2+x+2)^1 are the factors of f.
+> Let us multiply the factors together and check that we get f back:
+> */
+> (x-3)*(x^2+1)*(x^2+x+1);
+x^5 - 2*x^4 - x^3 - 5*x^2 - 2*x - 3
+> g^10 mod f;
+71428567*x^4 + 71428584*x^3 + 214285712*x^2 + 71428584*x + 142857145
+> /*
+> Since f has degree 5 you can divide f into anything and get a remainder
+> that has degree at most 4. The above polynomial is the remainder when
+> g^10 is divided by f.
+> */
+> rem:=g^10 mod f;
+> /*
+> Now when I subtract rem from g^10 I should get something that is
+> divisible by f.
+> */
+> IsDivisibleBy(g^10-rem,f);
+true x^15 + 2*x^14 + 14*x^13 + 36*x^12 + 134*x^11 + 388*x^10 + 1210*x^9 +
+    3612*x^8 + 10888*x^7 + 32648*x^6 + 97982*x^5 + 293940*x^4 + 881834*x^3 +
+    2645500*x^2 + 7936510*x + 23809524
+> /*
+> You can see that the "IsDivisibleBy" function returned the answer "true",
+> meaning that g^10-rem is indeed divisible by f. And it also generously
+> told us the quotient that you get when you divide g^10-rem by f.
+> */
+> tt,q:=IsDivisibleBy(g^10-rem,f);
+> /*
+> The above command defines q to be the quotient (and defines tt to be true)
+> */
+> q*f+rem;
+x^20 + 10*x^18 + 45*x^16 + 120*x^14 + 210*x^12 + 252*x^10 + 210*x^8 + 120*x^6 +
+    45*x^4 + 10*x^2 + 1
+> q*f+rem eq g^10;
+true
+> PRho:=function(n,f,s);
+function> k:=0; a:=s; b:=s;
+function> repeat
+function|repeat> k:=k+1;
+function|repeat> a:=Evaluate(f,a) mod n;
+function|repeat> b:=Evaluate(f,b) mod n;
+function|repeat> b:=Evaluate(f,b) mod n;
+function|repeat> d:=GCD(b-a,n);
+function|repeat> "x[",k,"] is",a,",x[",2*k,"] is",b,"and gcd(",b,"-",a,",",n,"\
+) =",d;
+function|repeat> until d gt 1;
+function> if d eq n then
+function|if> return "Failure, no proper factor found:",d,"Number of steps:",k;
+function|if> else
+function|if> return "Factor found:",d,"Number of steps:",k;
+function|if> end if;
+function> end function;
+> PRho(1001,g,1);
+x[ 1 ] is 2 ,x[ 2 ] is 5 and gcd( 5 - 2 , 1001 ) = 1
+x[ 2 ] is 5 ,x[ 4 ] is 677 and gcd( 677 - 5 , 1001 ) = 7
+Factor found: 7 Number of steps: 2
+> PRho(89*97,g,1);
+x[ 1 ] is 2 ,x[ 2 ] is 5 and gcd( 5 - 2 , 8633 ) = 1
+x[ 2 ] is 5 ,x[ 4 ] is 677 and gcd( 677 - 5 , 8633 ) = 1
+x[ 3 ] is 26 ,x[ 6 ] is 5652 and gcd( 5652 - 26 , 8633 ) = 97
+Factor found: 97 Number of steps: 3
+> PRho(2^29-1,g,1);
+x[ 1 ] is 2 ,x[ 2 ] is 5 and gcd( 5 - 2 , 536870911 ) = 1
+x[ 2 ] is 5 ,x[ 4 ] is 677 and gcd( 677 - 5 , 536870911 ) = 1
+x[ 3 ] is 26 ,x[ 6 ] is 149862700 and gcd( 149862700 - 26 , 536870911 ) = 1
+x[ 4 ] is 677 ,x[ 8 ] is 280789481 and gcd( 280789481 - 677 , 536870911 ) = 1
+
+.... several similar lines deleted ...
+
+x[ 13 ] is 210447727 ,x[ 26 ] is 228672926 and gcd( 228672926 - 210447727 ,
+536870911 ) = 1
+x[ 14 ] is 193262984 ,x[ 28 ] is 320301341 and gcd( 320301341 - 193262984 ,
+536870911 ) = 486737
+Factor found: 486737 Number of steps: 14
+> PRho(2^32+1,g,1);
+x[ 1 ] is 2 ,x[ 2 ] is 5 and gcd( 5 - 2 , 4294967297 ) = 1
+x[ 2 ] is 5 ,x[ 4 ] is 677 and gcd( 677 - 5 , 4294967297 ) = 1
+x[ 3 ] is 26 ,x[ 6 ] is 3907958645 and gcd( 3907958645 - 26 , 4294967297 ) = 1
+x[ 4 ] is 677 ,x[ 8 ] is 1006546461 and gcd( 1006546461 - 677 , 4294967297 ) = 1
+x[ 5 ] is 458330 ,x[ 10 ] is 2356692557 and gcd( 2356692557 - 458330 ,
+4294967297 ) = 1
+x[ 6 ] is 3907958645 ,x[ 12 ] is 1121054750 and gcd( 1121054750 - 3907958645 ,
+4294967297 ) = 1
+
+.... several similar lines deleted ...
+
+x[ 20 ] is 2507115587 ,x[ 40 ] is 3878688991 and gcd( 3878688991 - 2507115587 ,
+4294967297 ) = 1
+x[ 21 ] is 2511884202 ,x[ 42 ] is 2300544363 and gcd( 2300544363 - 2511884202 ,
+4294967297 ) = 1
+x[ 22 ] is 697977719 ,x[ 44 ] is 3495316462 and gcd( 3495316462 - 697977719 ,
+4294967297 ) = 641
+Factor found: 641 Number of steps: 22
+> PRho(11111111111,g,1);
+x[ 1 ] is 2 ,x[ 2 ] is 5 and gcd( 5 - 2 , 11111111111 ) = 1
+x[ 2 ] is 5 ,x[ 4 ] is 677 and gcd( 677 - 5 , 11111111111 ) = 1
+x[ 3 ] is 26 ,x[ 6 ] is 10066388903 and gcd( 10066388903 - 26 , 11111111111 ) =
+1
+x[ 4 ] is 677 ,x[ 8 ] is 8489829266 and gcd( 8489829266 - 677 , 11111111111 ) =
+1
+x[ 5 ] is 458330 ,x[ 10 ] is 1568055199 and gcd( 1568055199 - 458330 ,
+11111111111 ) = 1
+
+.... lots of similar lines deleted ...
+
+x[ 160 ] is 980379985 ,x[ 320 ] is 8812076319 and gcd( 8812076319 - 980379985 ,
+11111111111 ) = 1
+x[ 161 ] is 3887100564 ,x[ 322 ] is 7841186224 and gcd( 7841186224 - 3887100564
+, 11111111111 ) = 1
+x[ 162 ] is 5911324716 ,x[ 324 ] is 7723670751 and gcd( 7723670751 - 5911324716
+, 11111111111 ) = 21649
+Factor found: 21649 Number of steps: 162
+> /*
+> So it finds factors OK. You should check that the magma code given really does
+> correspond to the Pollard Rho algorithm as defined in lectures.
+> */
+> load "tut8data.txt";
+Loading "L:\win\magma\MATH2068\tut8data.txt"
+> p:=RandomPrime(45); q:=RandomPrime(45);
+> time PRho(p*q,x^2+1,1);
+Factorization of 317501821283031843020523341 found after 5988876 iterations:
+[ 32147103211843, 9876529751087 ]
+Time: 29.797
+> p:=RandomPrime(45); q:=RandomPrime(45);
+> time PRho(p*q,x^2+1,1);
+Factorization of 271379220337202744044185793 found after 1480487 iterations:
+[ 9345136088003, 29039622085931 ]
+Time: 7.281
+> p:=RandomPrime(45); q:=RandomPrime(45);
+> time PRho(p*q,x^2+1,1);
+Factorization of 336785698420948142011364513 found after 2866974 iterations:
+[ 12881165785739, 26145591480067 ]
+Time: 14.469
+> p:=RandomPrime(45); q:=RandomPrime(45);
+> time PRho(p*q,x^2+1,1);
+Factorization of 537821852439433390638133211 found after 503393 iterations:
+[ 33449350912279, 16078693241309 ]
+Time: 2.609
+> /*
+> These really are very big numbers that we have been factorizing and it works
+> rather quickly. But trying to factorize a 200 digit number would be
+> a completely different story.
+> */
+> time PRho(p*q,x^2+3,1);
+Factorization of 537821852439433390638133211 found after 4512412 iterations:
+[ 33449350912279, 16078693241309 ]
+Time: 22.125
+> /*
+> As it happened, using the polynomial x^2+3 instead of x^2+1 meant that
+> more steps were needed. But it was equally possible that x^2+3 would have
+> turned out to be better than x^2+1. You can't tell which will be better.
+> */
+> time PRho(317501821283031843020523341,x^2+3,1);
+Factorization of 317501821283031843020523341 found after 3482426 iterations:
+[ 32147103211843, 9876529751087 ]
+Time: 17.141
+> /*
+> This is one of the ones we did earlier using x^2+1. It took 30 seconds
+> using x^2+1 and only 17 seconds using x^2+3.
+> */
+> time PRho(317501821283031843020523341,x^2+31,1);
+Factorization of 317501821283031843020523341 found after 3398455 iterations:
+[ 9876529751087, 32147103211843 ]
+Time: 16.828
+> /*
+> In this instance, x^2+31 was about the same as x^2+3. But you can't
+> know in advance which polynomial will work best.
+> */
+> time PRho(317501821283031843020523341,x^4+31,1);
+Factorization of 317501821283031843020523341 found after 2336594 iterations:
+[ 9876529751087, 32147103211843 ]
+Time: 13.578
+> /*
+> Although x^4+31 turned out to be fasterthan the others in this case, it is not
+> a good idea to use a polynomial of degree 4 in preference to one of degree 2.
+> It could take more steps or less steps -- you can't tell -- but calculating
+> x^4 probably takes twice as long as calculation x^2, so each iteration of the
+> algorithm will probably take twice as long using x^4+31 as it does using x^2+1.
+> */
+> p:=RandomPrime(28);
+> q:=RandomPrime(28);
+> n:=p*q;
+> time PRho(n,x^2+1,1);
+Factorization of 49074125312555381 found after 8088 iterations:
+[ 240203441, 204302341 ]
+Time: 0.031
+> time TrialDivision(n,2^28);
+[ <204302341, 1>, <240203441, 1> ]
+[]
+Time: 1.563
+> /*
+> Even on numbers this size, trial division is 50 time slower
+> than Pollard Rho. If some factorization took Pollard Rho 1 year
+> of computing time, trial division would take 50 years.
+>
+> Actually, it is worse than that. Both methods take longer as the
+> sizes of the numbers increase, but trial division slows down
+> more dramaticall than Pollard Rho.
+> */
+> p:=RandomPrime(28);
+> q:=RandomPrime(28);
+> n:=p*q;
+> time PRho(n,x^2+1,1);
+Factorization of 20941147995409049 found after 10820 iterations:
+[ 82309751, 254418799 ]
+Time: 0.031
+> time TrialDivision(n,2^28);
+[ <82309751, 1>, <254418799, 1> ]
+[]
+Time: 1.063
+> p:=RandomPrime(29);
+> q:=RandomPrime(29);
+> n:=p*q;
+> time PRho(n,x^2+1,1);
+Factorization of 11395278897422741 found after 5366 iterations:
+[ 54687473, 208370917 ]
+Time: 0.016
+> time TrialDivision(n,2^28);
+[ <54687473, 1>, <208370917, 1> ]
+[]
+Time: 0.813
+> p:=RandomPrime(30);
+> q:=RandomPrime(30);
+> n:=p*q;
+> time PRho(n,x^2+1,1);
+Factorization of 74516437222696097 found after 4496 iterations:
+[ 117065071, 636538607 ]
+Time: 0.031
+> time TrialDivision(n,2^30);
+[ <117065071, 1>, <636538607, 1> ]
+[]
+Time: 2.344
+> p:=RandomPrime(30);
+> q:=RandomPrime(30);
+> n:=p*q;
+> time PRho(n,x^2+1,1);
+Factorization of 566127544392017383 found after 8860 iterations:
+[ 549795073, 1029706471 ]
+Time: 0.031
+> time TrialDivision(n,2^30);
+[ <549795073, 1>, <1029706471, 1> ]
+[]
+Time: 5.500
+> p:=RandomPrime(31);
+> q:=RandomPrime(31);
+> n:=p*q;
+> time PRho(n,x^2+1,1);
+Factorization of 548798737788218473 found after 10193 iterations:
+[ 301175507, 1822189139 ]
+Time: 0.047
+> time TrialDivision(n,2^31);
+[ <301175507, 1>, <1822189139, 1> ]
+[]
+Time: 40.391
+> NNN;
+1234008580359152001404256714207198420062013131783042059832932824169051
+> PHI;
+1234008580359152001404256714206129903746706756074544959994994312268104
+> pplusq:=NNN-PHI+1;
+> D:=pplusq^2-4*NNN;
+> z,E := IsSquare(D);
+> a:=(pplusq+E) div 2;
+> b:=(pplusq-E) div 2;
+> a;
+1068516314151495278487873915123248779399
+> b;
+1154880430009225922815263121549
+> a*b;
+1234008580359152001404256714207198420062013131783042059832932824169051
+> a*b eq NNN;
+true
+> IsProbablyPrime(a);
+true
+> IsProbablyPrime(b);
+true
+> n:=73;
+> for i:=1 to 72 do
+for> i,"has order",Modorder(i,73),"modulo 73";
+for> end for;
+1 has order 1 modulo 73
+2 has order 9 modulo 73
+3 has order 12 modulo 73
+4 has order 9 modulo 73
+5 has order 72 modulo 73
+6 has order 36 modulo 73
+7 has order 24 modulo 73
+8 has order 3 modulo 73
+9 has order 6 modulo 73
+10 has order 8 modulo 73
+11 has order 72 modulo 73
+12 has order 36 modulo 73
+13 has order 72 modulo 73
+14 has order 72 modulo 73
+15 has order 72 modulo 73
+16 has order 9 modulo 73
+17 has order 24 modulo 73
+18 has order 18 modulo 73
+19 has order 36 modulo 73
+20 has order 72 modulo 73
+21 has order 24 modulo 73
+22 has order 8 modulo 73
+23 has order 36 modulo 73
+24 has order 12 modulo 73
+25 has order 36 modulo 73
+26 has order 72 modulo 73
+27 has order 4 modulo 73
+28 has order 72 modulo 73
+29 has order 72 modulo 73
+30 has order 24 modulo 73
+31 has order 72 modulo 73
+32 has order 9 modulo 73
+33 has order 72 modulo 73
+34 has order 72 modulo 73
+35 has order 36 modulo 73
+36 has order 18 modulo 73
+37 has order 9 modulo 73
+38 has order 36 modulo 73
+39 has order 72 modulo 73
+40 has order 72 modulo 73
+41 has order 18 modulo 73
+42 has order 72 modulo 73
+43 has order 24 modulo 73
+44 has order 72 modulo 73
+45 has order 72 modulo 73
+46 has order 4 modulo 73
+47 has order 72 modulo 73
+48 has order 36 modulo 73
+49 has order 12 modulo 73
+50 has order 36 modulo 73
+51 has order 8 modulo 73
+52 has order 24 modulo 73
+53 has order 72 modulo 73
+54 has order 36 modulo 73
+55 has order 9 modulo 73
+56 has order 24 modulo 73
+57 has order 18 modulo 73
+58 has order 72 modulo 73
+59 has order 72 modulo 73
+60 has order 72 modulo 73
+61 has order 36 modulo 73
+62 has order 72 modulo 73
+63 has order 8 modulo 73
+64 has order 3 modulo 73
+65 has order 6 modulo 73
+66 has order 24 modulo 73
+67 has order 36 modulo 73
+68 has order 72 modulo 73
+69 has order 18 modulo 73
+70 has order 12 modulo 73
+71 has order 18 modulo 73
+72 has order 2 modulo 73
+> /*
+> I see that
+> 1 occurs 1 time,
+> 2 occurs 1 time,
+> 3 occurs 2 times,
+> 4 occurs 2 times,
+> 6 occurs 2 times,
+> 8 occurs 4 times,
+> 9 occurs 6 times,
+> 12 occurs 4 times,
+> 18 occurs 6 times,
+> 24 occurs 8 times,
+> 36 occurs 12 times,
+> 72 occurs 24 times.
+>
+> It is easy to check, using the formula for the Euler phi function,
+> that the number of times d occurs is EulerPhi(d), in every case.
+> For example, EulerPhi(18)=18*(1/2)*(2/3)=6,
+> EulerPhi(24)=24*(1/2)*(2/3)=8
+> EulerPhi(8)=8*(1/2)=4
+> and so on.
+>
+> I suppose one could also get magma to tell one the values
+> of EulerPhi(d), for all d in the set of divisors of 72.
+> */
+> for d in { i : i in [1..72] | IsDivisibleBy(72,i) } do
+for> "phi(",d,") is",EulerPhi(d);
+for> end for;
+phi( 1 ) is 1
+phi( 18 ) is 6
+phi( 2 ) is 1
+phi( 36 ) is 12
+phi( 3 ) is 2
+phi( 4 ) is 2
+phi( 72 ) is 24
+phi( 6 ) is 2
+phi( 24 ) is 8
+phi( 8 ) is 4
+phi( 9 ) is 6
+phi( 12 ) is 4
+> for i:=1 to 7 do
+for> i,"has order",Modorder(i,7),"modulo 7";
+for> end for;
+1 has order 1 modulo 7
+2 has order 3 modulo 7
+3 has order 6 modulo 7
+4 has order 3 modulo 7
+5 has order 6 modulo 7
+6 has order 2 modulo 7
+7 has order 0 modulo 7
+> /*
+> 1 occurs 1 time -- correct, since EulerPhi(1) = 1
+> 2 occurs 1 time -- correct, since EulerPhi(2) = 1
+> 3 occurs 2 times -- correct, since EulerPhi(3) = 2
+> 6 occurs 2 times -- correct, since EulerPhi(6) = 2
+> */
+> for i:=1 to 12 do
+for> i,"has order",Modorder(i,13),"modulo 13";
+for> end for;
+1 has order 1 modulo 13
+2 has order 12 modulo 13
+3 has order 3 modulo 13
+4 has order 6 modulo 13
+5 has order 4 modulo 13
+6 has order 12 modulo 13
+7 has order 12 modulo 13
+8 has order 4 modulo 13
+9 has order 3 modulo 13
+10 has order 6 modulo 13
+11 has order 12 modulo 13
+12 has order 2 modulo 13
+> /*
+> 1 occurs 1 time -- correct,
+> 2 occurs 1 time -- correct,
+> 3 occurs 2 times -- correct,
+> 4 occurs 2 times -- correct,
+> 6 occurs 2 times -- correct,
+> 12 occurs 4 times -- correct.
+> */
+> n:=29;
+> for i:=1 to 28 do
+for> i,"has order",Modorder(i,29),"modulo 29";
+for> end for;
+1 has order 1 modulo 29
+2 has order 28 modulo 29
+3 has order 28 modulo 29
+4 has order 14 modulo 29
+5 has order 14 modulo 29
+6 has order 14 modulo 29
+7 has order 7 modulo 29
+8 has order 28 modulo 29
+9 has order 14 modulo 29
+10 has order 28 modulo 29
+11 has order 28 modulo 29
+12 has order 4 modulo 29
+13 has order 14 modulo 29
+14 has order 28 modulo 29
+15 has order 28 modulo 29
+16 has order 7 modulo 29
+17 has order 4 modulo 29
+18 has order 28 modulo 29
+19 has order 28 modulo 29
+20 has order 7 modulo 29
+21 has order 28 modulo 29
+22 has order 14 modulo 29
+23 has order 7 modulo 29
+24 has order 7 modulo 29
+25 has order 7 modulo 29
+26 has order 28 modulo 29
+27 has order 28 modulo 29
+28 has order 2 modulo 29
+> /*
+> 1 occurs EulerPhi(1) = 1 time,
+> 2 occurs EulerPhi(2) = 1 time,
+> 4 occurs EulerPhi(4) = 2 time2,
+> 7 occurs EulerPhi(7) = 6 times,
+> 14 occurs EulerPhi(14) = 6 times,
+> 28 occurs EulerPhi(28) = 12 times.
+> These are all correct. e.g. EulerPhi(28)=28*(1/2)*(6/7)=12.
+> */
+> F:=FiniteField(73);
+> a:=F!37; r:=F!5;
+> a+a;
+1
+> /*
+> 37 + 37 = 74 = 1 in residue arithmetic mod 73.
+> */
+> r^3;
+52
+> /*
+> 5^3 = 125 which becomes 52 in residue arithmetic mod 73.
+> */
+> r*a;
+39
+> /*
+> 37*5 = 185 = 2*73 + 39
+> */
+> a eq F!110;
+true
+> /*
+> Coercing an integer into FiniteField(73) involves first reducing modulo 73.
+> The fact that F!37 and F!110 are equal indicates that 110 is congruent
+> to 37 modulo 73.
+> */
+> for t:=1 to 72 do
+for> "The discrete log to the base 5 of",t,"modulo 73 is",Log(r,F!t);
+for> end for;
+The discrete log to the base 5 of 1 modulo 73 is 0
+The discrete log to the base 5 of 2 modulo 73 is 8
+The discrete log to the base 5 of 3 modulo 73 is 6
+The discrete log to the base 5 of 4 modulo 73 is 16
+The discrete log to the base 5 of 5 modulo 73 is 1
+The discrete log to the base 5 of 6 modulo 73 is 14
+The discrete log to the base 5 of 7 modulo 73 is 33
+The discrete log to the base 5 of 8 modulo 73 is 24
+The discrete log to the base 5 of 9 modulo 73 is 12
+The discrete log to the base 5 of 10 modulo 73 is 9
+The discrete log to the base 5 of 11 modulo 73 is 55
+The discrete log to the base 5 of 12 modulo 73 is 22
+The discrete log to the base 5 of 13 modulo 73 is 59
+The discrete log to the base 5 of 14 modulo 73 is 41
+The discrete log to the base 5 of 15 modulo 73 is 7
+The discrete log to the base 5 of 16 modulo 73 is 32
+The discrete log to the base 5 of 17 modulo 73 is 21
+The discrete log to the base 5 of 18 modulo 73 is 20
+The discrete log to the base 5 of 19 modulo 73 is 62
+The discrete log to the base 5 of 20 modulo 73 is 17
+The discrete log to the base 5 of 21 modulo 73 is 39
+The discrete log to the base 5 of 22 modulo 73 is 63
+The discrete log to the base 5 of 23 modulo 73 is 46
+The discrete log to the base 5 of 24 modulo 73 is 30
+The discrete log to the base 5 of 25 modulo 73 is 2
+The discrete log to the base 5 of 26 modulo 73 is 67
+The discrete log to the base 5 of 27 modulo 73 is 18
+The discrete log to the base 5 of 28 modulo 73 is 49
+The discrete log to the base 5 of 29 modulo 73 is 35
+The discrete log to the base 5 of 30 modulo 73 is 15
+The discrete log to the base 5 of 31 modulo 73 is 11
+The discrete log to the base 5 of 32 modulo 73 is 40
+The discrete log to the base 5 of 33 modulo 73 is 61
+The discrete log to the base 5 of 34 modulo 73 is 29
+The discrete log to the base 5 of 35 modulo 73 is 34
+The discrete log to the base 5 of 36 modulo 73 is 28
+The discrete log to the base 5 of 37 modulo 73 is 64
+The discrete log to the base 5 of 38 modulo 73 is 70
+The discrete log to the base 5 of 39 modulo 73 is 65
+The discrete log to the base 5 of 40 modulo 73 is 25
+The discrete log to the base 5 of 41 modulo 73 is 4
+The discrete log to the base 5 of 42 modulo 73 is 47
+The discrete log to the base 5 of 43 modulo 73 is 51
+The discrete log to the base 5 of 44 modulo 73 is 71
+The discrete log to the base 5 of 45 modulo 73 is 13
+The discrete log to the base 5 of 46 modulo 73 is 54
+The discrete log to the base 5 of 47 modulo 73 is 31
+The discrete log to the base 5 of 48 modulo 73 is 38
+The discrete log to the base 5 of 49 modulo 73 is 66
+The discrete log to the base 5 of 50 modulo 73 is 10
+The discrete log to the base 5 of 51 modulo 73 is 27
+The discrete log to the base 5 of 52 modulo 73 is 3
+The discrete log to the base 5 of 53 modulo 73 is 53
+The discrete log to the base 5 of 54 modulo 73 is 26
+The discrete log to the base 5 of 55 modulo 73 is 56
+The discrete log to the base 5 of 56 modulo 73 is 57
+The discrete log to the base 5 of 57 modulo 73 is 68
+The discrete log to the base 5 of 58 modulo 73 is 43
+The discrete log to the base 5 of 59 modulo 73 is 5
+The discrete log to the base 5 of 60 modulo 73 is 23
+The discrete log to the base 5 of 61 modulo 73 is 58
+The discrete log to the base 5 of 62 modulo 73 is 19
+The discrete log to the base 5 of 63 modulo 73 is 45
+The discrete log to the base 5 of 64 modulo 73 is 48
+The discrete log to the base 5 of 65 modulo 73 is 60
+The discrete log to the base 5 of 66 modulo 73 is 69
+The discrete log to the base 5 of 67 modulo 73 is 50
+The discrete log to the base 5 of 68 modulo 73 is 37
+The discrete log to the base 5 of 69 modulo 73 is 52
+The discrete log to the base 5 of 70 modulo 73 is 42
+The discrete log to the base 5 of 71 modulo 73 is 44
+The discrete log to the base 5 of 72 modulo 73 is 36
+> /*
+> Log(65) is 60; so r^60 should equal 65.
+> */
+> r^60;
+65
+> /*
+> Log(59) is 5; so r^5 should equal 59.
+> We already saw that 5^3 is 52; so 5^4 = 260 =3*73 +41;
+> so 5^5 = 5*41 = 205 =2*73 + 59.
+> */
+> */
+> r^5;
+59
+> r^43;
+58
+> F109:=FiniteField(109);
+> PrimitiveElement(F109);
+6
+> pr:=PrimitiveElement(F109);
+> pr;
+6
+> /*
+> In standard number theory terminology, 6 is a primitive
+> root modulo 109. So the order of 6 (modulo 109) is 108.
+> */
+> Order(pr);
+108
+> /*
+> As predicted!
+> */
+> Order(pr^6);
+18
+> Order(pr^102);
+18
+> /*
+> pr^k will have the same order as pr if
+> and only if k is coprime to 108 (the order of pr).
+> If gcd(k,108) is d, then the order of pr^k will be 108/d.
+> */
+> t:=F109!50;
+> Log(t);
+101
+> pr^101;
+50
+> /*
+> As it should be!
+> */
+> s:=F109!93;
+> t:=F109!24;
+> s*t;
+52
+> Log(s);
+66
+> Log(t);
+7
+> Log(s*t);
+73
+> /*
+> So Log(s*t) equal Log(s)+Log(t), as one would expect.
+> */
+> Log(s*s);
+24
+> Log(s)+Log(s);
+132
+> /*
+> Oops! Log(s*s) is NOT equal to Log(s)+Log(s)
+> Since Log(s) is 66, it follows that s = r^66.
+> So s*s = r^66 * r^66 = r^(66+66) = r^132.
+> But the point is that since r^108 = 1 it follows
+> that r^132 = r^108 * r^24 = r^24. So Magma says that
+> Log(s*s) is 24 rather than 108. Although it is not
+> necessarily true that Log(s*t) = Log(s)+Log(t), it must be
+> true that Log(s*t) and Log(s)+Log(t) are congruent
+> modulo p-1.
+> */
+> 132 mod 108;
+24
+> exit;
+
+Total time: 175.781 seconds, Total memory usage: 4.67MB
+

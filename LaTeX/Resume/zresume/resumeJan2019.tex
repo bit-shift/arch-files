@@ -1,0 +1,127 @@
+\documentclass[a4paper,11pt]{article} % Default font size and paper size
+
+
+\usepackage{xunicode,xltxtra,url,parskip} % Formatting packages
+\usepackage{geometry}
+\usepackage[usenames,dvipsnames]{xcolor} % Required for specifying custom colors
+
+\usepackage{fullpage} % Margin formatting of the A4 page, an alternative to layaureo can be \usepackage{fullpage}
+% To reduce the height of the top margin uncomment: \addtolength{\voffset}{-1.3cm}
+
+\usepackage{hyperref} % Required for adding links	and customizing them
+\definecolor{linkcolour}{rgb}{0,0.2,0.6} % Link color
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour} % Set link colors throughout the document
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf\raggedright}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep}
+
+\usepackage{multicol}
+\geometry{
+	a4paper,
+	left=20mm,
+	top=20mm,
+	right=20mm,
+	bottom=20mm
+}
+
+\begin{document}
+
+\pagestyle{empty} % Removes page numbering
+
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\par{\centering{\huge \textbf{Zachary Sanchez}\par} % Your name
+
+\begin{center}
+	0478 683 599 | \href{mailto:zac.sanchez1@gmail.com}{zac.sanchez1@gmail.com} | \url{linkedin.com/in/zachary-sanchez}
+\end{center}
+
+\section{CAREER PROFILE}
+
+\begin{itemize}[wide]
+	\item Third year, HD average Bachelor of Adv. Math (Hons) / Computer Science student
+	\item Experienced in modern software standards and practices 
+	\item Effective communicator as a UNSW lab assistant and high school tutor. 
+\end{itemize}
+
+\section{EDUCATION}
+
+{\raggedright
+\textbf{Bachelor of Adv. Math (Hons) / Comp Sci} \\
+\textbf{University of New South Wales} \hfill Mar 2017 - Expected 2021 \\
+\textsc{Majors: Applied Mathematics and Computer Science} \\
+}
+\begin{itemize}[wide]
+\item \textbf{WAM: 90.9}
+\item 5th in course MATH2221 | 2017 Simon Marais Mathematics Competition Top Quartile
+\item Dean's list Faculty of Science 2018 | Dean's list Faculty of Engineering 2018
+\end{itemize}
+{\raggedright
+\textbf{Higher School Certificate} \hfill 2016
+}
+\begin{itemize}[wide]
+	\item \textbf{ATAR: 99.85} | Cadet Officer | St. Vincent's De Paul  | 1st Football | 1st Chess
+\end{itemize}
+
+\section{RELEVANT EXPERIENCE AND PROJECTS}
+{\raggedright
+	\textbf{Intern: Aus Gov. Department of Defence: Science and Technology} \hfill Summer 2018-19
+\begin{itemize}[wide]
+	\item Developed the backend system for running jobs on a cluster computing network. 
+	\item Created user API for producing automatic reports of the data with visualisations and tables. 
+	\item Followed test-driven development and version control through \texttt{git}. 
+	\item \texttt{python}, \texttt{pytest}, \texttt{pandas}, \texttt{matplotlib}, \texttt{hadoop}, \texttt{pySpark}.
+\end{itemize}
+{\raggedright
+\textbf{Personal Projects} 
+}
+\begin{itemize}[wide]
+	\item \textbf{BitBetter:} Developed a web-based tool for generating statistical analyses of soccer games.
+	\item \textbf{AutoBetter:} CL tool for automatically placing bets on a popular betting website.
+\end{itemize}
+{\raggedright
+\textbf{University Projects}
+}
+\begin{itemize}[wide]
+	\item \textbf{COMP3411:} Implemented AI algorithms for a bot to intelligently play a stochastic 2D game. 
+	\item \textbf{COMP9444:} Developed neural networks in \texttt{tensorflow} to solve problems in sentiment analysis, image recognition and game playing.
+\end{itemize}
+{\raggedright
+\textbf{Tutor} \\
+\textbf{UNSW Computer Science and Engineering} \hfill Feb 2019 - Current
+\begin{itemize}[wide]
+	\item Lab assistant for COMP1511 (Intro to Programming).
+\end{itemize}
+\textbf{Talent 100 \url{https://talent-100.com.au/}} \hfill Dec 2017 - Current
+}
+\begin{itemize}[wide]
+\item Conduct engaging weekly lessons in maths and physics 95\% positive feedback
+\item Converted outdated materials into \LaTeX \thinspace format and created new material for 2019 syllabus.
+\end{itemize}
+%----------------------------------------------------------------------------------------
+%	EXTRACURRICULAR
+%----------------------------------------------------------------------------------------
+\section{EXTRACURRICULAR}
+\textsc{St Vincent's De Paul (Monthly Night patrol)} | \textsc{Football (Carlton Rovers FC)} 
+\section{INTERESTS}
+\begin{tabular}{@{}ll}
+	\textsc{Board Games}: \small{Casual and Competitive} & \textsc{Investing}: \small{Managing my stock portfolio}
+\end{tabular}
+\section{REFEREES}
+
+\begin{itemize}[wide]
+	\item Timothy Surendonk | Defence Science and Technology | Supervisor
+	\item Dr. Jan Zika | UNSW School of Maths and Statistics | MATH2221 Lecturer
+	\item David Sadler | Head of Mathematics | Talent 100
+\end{itemize}
+Contact details available on request
+%----------------------------------------------------------------------------------------
+
+\end{document}

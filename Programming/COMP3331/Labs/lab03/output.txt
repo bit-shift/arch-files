@@ -1,0 +1,92 @@
+
+; <<>> DiG 9.7.3 <<>> www.cecs.anu.edu.au CNAME
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 3053
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 3, ADDITIONAL: 5
+
+;; QUESTION SECTION:
+;www.cecs.anu.edu.au.		IN	CNAME
+
+;; ANSWER SECTION:
+www.cecs.anu.edu.au.	1204	IN	CNAME	rproxy.cecs.anu.edu.au.
+
+;; AUTHORITY SECTION:
+cecs.anu.edu.au.	28379	IN	NS	ns4.cecs.anu.edu.au.
+cecs.anu.edu.au.	28379	IN	NS	ns2.cecs.anu.edu.au.
+cecs.anu.edu.au.	28379	IN	NS	ns3.cecs.anu.edu.au.
+
+;; ADDITIONAL SECTION:
+ns2.cecs.anu.edu.au.	2464	IN	A	150.203.161.36
+ns2.cecs.anu.edu.au.	841	IN	AAAA	2001:388:1034:2905::24
+ns3.cecs.anu.edu.au.	2464	IN	A	150.203.161.50
+ns3.cecs.anu.edu.au.	2471	IN	AAAA	2001:388:1034:2905::32
+ns4.cecs.anu.edu.au.	2471	IN	A	150.203.161.38
+
+;; Query time: 0 msec
+;; SERVER: 129.94.242.2#53(129.94.242.2)
+;; WHEN: Sun Mar 17 17:21:44 2019
+;; MSG SIZE  rcvd: 216
+
+
+; <<>> DiG 9.7.3 <<>> @maestro.orchestra.cse.unsw.edu.au. drum03.cse.unsw.edu.au. NS
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 5953
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;drum03.cse.unsw.edu.au.		IN	NS
+
+;; AUTHORITY SECTION:
+cse.unsw.edu.au.	900	IN	SOA	maestro.orchestra.cse.unsw.edu.au. hostmaster.cse.unsw.edu.au. 2019031500 2000 300 1209600 900
+
+;; Query time: 0 msec
+;; SERVER: 129.94.242.33#53(129.94.242.33)
+;; WHEN: Sun Mar 17 18:19:19 2019
+;; MSG SIZE  rcvd: 105
+
+
+; <<>> DiG 9.7.3 <<>> drum03.cse.unsw.edu.au NS
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 1534
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;drum03.cse.unsw.edu.au.		IN	NS
+
+;; AUTHORITY SECTION:
+cse.unsw.edu.au.	900	IN	SOA	maestro.orchestra.cse.unsw.edu.au. hostmaster.cse.unsw.edu.au. 2019031500 2000 300 1209600 900
+
+;; Query time: 0 msec
+;; SERVER: 129.94.242.2#53(129.94.242.2)
+;; WHEN: Sun Mar 17 18:19:32 2019
+;; MSG SIZE  rcvd: 105
+
+
+; <<>> DiG 9.7.3 <<>> maestro.orchestra.cse.unsw.edu.au. A
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 50770
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 1
+
+;; QUESTION SECTION:
+;maestro.orchestra.cse.unsw.edu.au. IN	A
+
+;; ANSWER SECTION:
+maestro.orchestra.cse.unsw.edu.au. 3600	IN A	129.94.242.33
+
+;; AUTHORITY SECTION:
+orchestra.cse.unsw.edu.au. 3600	IN	NS	maestro.orchestra.cse.unsw.edu.au.
+orchestra.cse.unsw.edu.au. 3600	IN	NS	beethoven.orchestra.cse.unsw.edu.au.
+
+;; ADDITIONAL SECTION:
+beethoven.orchestra.cse.unsw.edu.au. 3600 IN A	129.94.242.2
+
+;; Query time: 0 msec
+;; SERVER: 129.94.242.2#53(129.94.242.2)
+;; WHEN: Sun Mar 17 18:32:07 2019
+;; MSG SIZE  rcvd: 121
+

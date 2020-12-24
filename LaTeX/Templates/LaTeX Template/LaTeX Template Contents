@@ -1,0 +1,10 @@
+\tableofcontents
+\section{Section}
+\label{sec}
+\subsection{Subsection}
+\label{subsec}
+\subsubsection{Subsubsection}
+\label{subsubsec}
+\section{Section 2}
+\label{sec2}
+References: \ref{sec}, \ref{subsec}, \ref{subsubsec}, and \ref{sec2}.

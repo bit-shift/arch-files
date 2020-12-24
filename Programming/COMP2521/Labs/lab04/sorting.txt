@@ -1,0 +1,29 @@
+- Oblivious Bubble Sort     --  unstable and unadaptive     --  O(n^2)
+- Bubble Sort               --  stable and adaptive         --  O(n^2)
+- Insertion Sort            --  stable and adaptive         --  O(n^2)
+- Selection Sort            --  stable and unadaptive       --  O(n^2)
+- Merge Sort                --  stable and unadaptive       --  O(nlog(n))
+- Vanilla Quick Sort        --  unstable and                --  O(n^2) / O(nlog(n))
+- Quick Sort (3)            --  unstable and                --  O(n^2) / O(nlog(n))
+- Randomised Quick Sort     --  unstable and                --  O(n^2) / O(nlog(n))
+- Shell Sort (4)            --  stable and adaptive         --  O(n^2) / O(nlog^2(n)) / O(nlog(n))
+- Shell Sort                --  stable and adaptive         --  O(n^2) / O(nlog^2(n)) / O(nlog(n))
+
+
+SortA
+----------------------------------------------------
+- stable
+- adaptive based on how quickly it gets ordered selections done
+- O(n^2) looks to be very parabolic
+- Sucks balls at the reverse sort, which is typical of a bubble sort, as it has to move every single element the maximum distance that the element can move.
+- Bubble sort
+
+
+SortB
+----------------------------------------------------
+- stable
+- unadaptive based on same time to sort sorted input as random input
+- O(nlog(n)) looks to be parabolic but at a slower increase and set as if it was shifted back a bit
+- stable and unadaptive means either merge or selection sort - time complexity looks far too fast for selection sort so my guess is mergesort
+- Merge Sort
+- Best case is O(n) - which is similar to what is being observed for smaller input - consistent with observations

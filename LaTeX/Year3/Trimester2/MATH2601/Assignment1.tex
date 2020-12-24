@@ -1,0 +1,125 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+% Install the required packages for the document 
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+
+% Page and style settings
+\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\begin{document}
+
+\begin{center}
+	\LARGE \textbf{MATH2601 - Assignment 1 }$\vert$\textbf{ Keegan Gyoery - z5197058}
+	\vspace{2mm}
+	\hrule width \hsize \kern 1mm \hrule width \hsize height 2pt 
+\end{center}
+
+\pagenumbering{arabic}
+
+% Let $\ds{V = \mathbb{R}^n}$ and define
+%	\begin{align*}
+%		V_1 & = \{\mathbf{x} \in V \:|\: x_1 + \dots + x_n = 0\}\\
+%		V_2 & = \{\mathbf{x} \in V \:|\: x_1 = \dots = x_n\}\\
+%	\end{align*}
+% We are requried to show that $\ds{V_1}$ and $\ds{V_2}$ are subspaces of $\ds{V}$, and that $\ds{V = V_1 \oplus V_2}$. We also need to find an example where this fails, if we replace $\ds{\mathbb{R}}$ by some other field $\ds{\mathbb{F}}$.
+
+We have $\ds{V = \mathbb{R}^n}$, and
+	\begin{align*}
+		V_1 & = \{\mathbf{x} \in V \:|\: x_1 + \dots + x_n = 0\}\\
+		V_2 & = \{\mathbf{x} \in V \:|\: x_1 = \dots = x_n\}.\\
+	\end{align*}
+Consider the zero vector, $\ds{\mathbf{0}}$, for $\ds{V = \mathbb{R}^n}$. The zero vector, $\ds{\mathbf{0}}$, has the components $\ds{x_i = 0}$, $\ds{\forall i \in \mathbb{Z}}$, $\ds{1 \leq i \leq n}$. Clearly, for $\ds{\mathbf{0}}$, $\ds{x_1 + \dots + x_n = 0}$ and $\ds{x_1 = \dots = x_n}$. As a result, $\ds{\mathbf{0} \in V_1}$, and $\ds{\mathbf{0} \in V_2}$. Thus, $\ds{V_1}$ and $\ds{V_2}$ are non-empty. Both $\ds{V_1}$ and $\ds{V_2}$ define their elements as an $\ds{\mathbf{x} \in V}$, with a further restriction applied. It is then clear to see that $\ds{V_1 \subseteq V}$, and $\ds{V_2 \subseteq V}$. Therefore, both $\ds{V_1}$ and $\ds{V_2}$ are non-empty subsets of $\ds{V}$. Applying the Subspace Lemma, we will prove that $\ds{V_1 \leq V}$, and $\ds{V_2 \leq V}$. 
+
+Consider the vectors $\ds{\mathbf{u}, \mathbf{v} \in V_1}$, and the scalar $\ds{\alpha \in \mathbb{R}}$. As $\ds{\mathbf{u}, \mathbf{v} \in V_1}$,
+	\begin{align*}
+		& u_1 + \dots + u_n = 0 \dots (A)\\
+		& v_1 + \dots + v_n = 0\dots (B).\\
+	\end{align*}
+Consider now the components of the vector $\ds{\alpha\mathbf{u} + \mathbf{v}}$, which are $\ds{\alpha u_i + v_i}$, $\ds{\forall i \in \mathbb{Z}}$, $\ds{1 \leq i \leq n}$.. 
+	\begin{align*}
+		(\alpha u_1 + v_1) + \dots + (\alpha u_n + v_n) & = (\alpha u_1 + \dots + \alpha u_n) + (v_1 + \dots + v_n)\\
+														& = \alpha(u_1 + \dots + u_n) + (v_1 + \dots + v_n)\\
+														& = \alpha(0) + 0 \text{ by } (A) \text{ and } (B)\\
+														& = 0\\
+	\end{align*}
+Therefore, the sum of the components of $\ds{\alpha\mathbf{u} + \mathbf{v}}$ is $\ds{0}$. Thus, $\ds{\alpha\mathbf{u} + \mathbf{v} \in V_1}$, and thus $\ds{V_1 \leq V}$ by the Subspace Lemma.
+
+Consider the vectors $\ds{\mathbf{s}, \mathbf{t} \in V_2}$, and the scalar $\ds{\beta \in \mathbb{R}}$. As $\ds{\mathbf{s}, \mathbf{t} \in V_2}$,
+	\begin{align*}
+		& s_1 = \dots = s_n \dots (C)\\
+		& t_1 = \dots = t_n \dots (D).\\
+	\end{align*}
+	Consider now the components of the vector $\ds{\beta\mathbf{s} + \mathbf{t}}$, which are $\ds{\beta s_i + t_i}$, $\ds{\forall i \in \mathbb{Z}}$, $\ds{1 \leq i \leq n}$. 
+	\begin{align*}
+		\:& \beta s_1 = \dots = \beta s_n \text{ from } (C)\\
+		\therefore \:& \beta s_1 + t_1 = \beta s_2 + t_1 = \dots = \beta s_n + t_1\\
+		\therefore \:& \beta s_1 + t_1 = \beta s_2 + t_2 = \dots = \beta s_n + t_n \text{ by } (D)\\ 
+	\end{align*}
+Therefore, all of the components of $\ds{\beta\mathbf{s} + \mathbf{t}}$ are equal. Thus, $\ds{\beta\mathbf{s} + \mathbf{t} \in V_2}$, and thus $\ds{V_2 \leq V}$ by the Subspace Lemma.
+
+\pagebreak
+
+Consider $\ds{V_1 \cap V_2}$, and let $\ds{\mathbf{y} \in V_1 \cap V_2}$. As $\ds{\mathbf{y} \in V_1}$, and $\ds{\mathbf{y} \in V_2}$, 
+	\begin{align*}
+		& y_1 + \dots + y_n = 0 \dots (E)\\
+		& y_1 = \dots = y_n \dots (F).\\
+	\end{align*}
+Considering $\ds{(E)}$, 
+	\begin{align*}
+		& y_1 + \dots + y_n = 0 \text{ from } (E)\\
+		& y_1 + y_1 + \dots + y_1 = 0 \text{ by } (F)\\
+		& ny_1 = 0\\
+		\therefore \: & y_1 = 0\\
+		\therefore \: & y_1 = y_2 = \dots = y_n = 0\\
+		\therefore \: & \mathbf{y} = \mathbf{0}\\
+		\therefore \: & V_1 \cap V_2 = \{\mathbf{0}\}\\
+	\end{align*}
+We can now justify that the sum of the vector spaces $\ds{V_1}$ and $\ds{V_2}$ is a direct sum, $\ds{V_1 \oplus V_2}$. Furthermore, we know $\ds{V}$ with the standard dot product, is an inner product space. Let $\ds{\mathbf{q} \in V_1}$, and $\ds{\mathbf{r} \in V_2}$, so we have, 
+	\begin{align*}
+		& q_1 + \dots + q_n = 0 \dots (G)\\
+		& r_1 = \dots = r_n \dots (H).\\
+	\end{align*}
+Consider their inner product $\ds{\langle \mathbf{q},\mathbf{r} \rangle = \mathbf{q}\cdot\mathbf{r}}$, which is the standard dot product.
+	\begin{align*}
+		\mathbf{q}\cdot\mathbf{v} & = q_1r_1 + q_2r_2 + \dots + q_nr_n\\
+								  & = q_1r_1 + q_2r_1 + \dots + q_nr_1 \text{ by } (H)\\
+								  & = r_1(q_1 + q_2 + \dots q_n)\\
+								  & = r_1(0) \text{ by } (G)\\
+								  & = 0\\
+		\therefore \langle \mathbf{q}, \mathbf{r} \rangle & = 0\\ 
+	\end{align*}
+Therefore by Definition 4.10, as $\ds{V_1 \leq V}$, $\ds{V_2 = V_1^{\bot}}$, that is, $\ds{V_2}$ is the orthogonal complement of $\ds{V_1}$. Using the standard basis $\ds{\mathcal{S}}$ for $\ds{V}$, it is clear that $\ds{\dim(V) = n}$, and thus $\ds{V}$ is finite dimensional. Futhermore, $\ds{V_1 \leq V}$, and so by Theorem 4.11, $\ds{V = V_1 \oplus V_1^{\bot} = V_1 \oplus V_2}$.
+
+Consider the small finite field $\ds{\mathbb{F} = \{0,1\}}$, where $\ds{1+1 = 0}$. Replace $\ds{\mathbb{R}}$ with $\ds{\mathbb{F}}$, so now $\ds{V = \mathbb{F}^n}$, and consider the case when $\ds{n = 2}$. By the definition of $\ds{V_1}$, we get that $\ds{V_1 = \{(0,0), (1,1)\}}$, and likewise, by the definition of $\ds{V_2}$, we get that $\ds{V_2 = \{(0,0), (1,1)\}}$. Note that $\ds{\mathbf{0} = (0,0)}$ when $\ds{n = 2}$. Therefore, it is clear that $\ds{V_1 \cap V_2 = \{(0,0), (1,1)\} \neq \{(0,0)\}}$. Thus, $\ds{V_1 \cap V_2 \neq {\mathbf{0}}}$, and so the sum of the vector spaces $\ds{V_1}$, and $\ds{V_2}$, cannot be direct. 
+\end{document}

@@ -1,0 +1,142 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper]{article}
+
+% Install the required packages for the document 
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usepackage{asyalign}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}{}
+\usetikzlibrary{arrows}
+
+% Page and style settings
+\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+
+% Begin the text of the document
+\begin{document}
+\pagenumbering{arabic}
+% the following four lines force that lines break after 80 characters in the R-output
+
+% Begin title and formatting
+\begin{center}
+{\large \textbf{MTRX 1701 - Introduction to Mechatronic Engineering}}\\
+\end{center}
+
+% Table formatting and text
+\vspace{-1mm}
+\begin{tabular*}{1.0\linewidth}{@{\extracolsep{\fill}}lr@{}}
+  \hline\noalign{\smallskip}
+Semester 1, \the\year & Name = \texttt{Keegan Gyoery} \\ 
+Tutor = \texttt{Nick Asthanasios} & SID = \texttt{470413467} \\
+\hline
+\end{tabular*}
+
+% Centre the heading for the document 
+\begin{center}
+ \large \textbf{Assignment 1}\\
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Begin the first section and label it 
+\section{Part 1}
+\label{sec1}
+
+% Begin introductory text to part 1
+The mechatronic system that I have chosen is the on-board computer system present in cars, more specifically the computer that regulates the engine and its functionality. The engine computer in production cars serves a multitude of purposes, aiming to generate maximum performance from the engine, whilst also minimising environmental impacts such as CO2 emissions. This computer receives sensory input from a wide variety of sources due to the complex nature of the engine and its moving parts.
+
+% Begin the list that answers each subsequent part
+\begin{enumerate}[label=(\alph*)]
+\item The sensors present within this system include:
+	\begin{itemize}
+	\item Engine and oil temperature sensors
+	\item Air pressure and temperature sensors
+	\item Oxygen sensors 
+	\item Leak sensors 
+	\item Spark plug sensors 
+	\item Timing sensors 
+	\item Throttle position sensor 
+	\item Rotational sensor
+	\item Clutch position sensor 
+	\item Accelerometer
+	\item Traction sensors 
+	\end{itemize}
+
+% Paragraph after the sensor list to explain their interaction in the system
+All of these sensors are used by the on-board engine computer in order to maximise performance of the engine in response to the user’s input and the current conditions to which the car is being subject to. Furthermore these sensors provide input to the controller in order for it to work out the operational conditions to maximise efficiency and to minimise emissions.
+
+% Second item in the list - part b question
+\item The actuators used in this system include:
+	\begin{itemize}
+	\item Spark plugs in order to ignite the combustion at the correct time determined by the computer system
+	\item Small motors to separate the clutch plate from the engine when the clutch is depressed
+	\item Small motors (synchro) to bring the engine speed up to the speed of the driveshaft for that gear ratio when clutch is re-engaging 
+	\item Valves that regulate the flow of fuel and oxygen to the engine for combustion, to increase speed of engine via greater combustion
+	\item Electronic displays such as speedometers, tachometers and warning lights 
+	\end{itemize}
+
+% Third item on the list - part c question
+\item The sensory information provided by the multitude of the sensors to the controllers should be used alongside the user’s input to provide the optimal solution to not only the user’s desired actions, but also to the environment within the engine and outside the car. For instance, the input of the driver pushing his foot down on the throttle sends an input from the throttle position sensor to the controller, which is then used to determine the speed at which the engine should revolve at, as desired by the driver. However this input should be used in conjunction with the input the controller receives from the traction sensor, telling the controller if the desired speed is actually being transferred safely to the wheels. If it is not being safely transferred, the controller must regulate the throttle position sensor’s input in order to maintain traction.
+
+% Fourth item on the list - part d question
+\item The user interacts with this system via the throttle, brake, clutch, transmission and any sport mode settings. These functions are the only input that the user can provide to the engine computer, which are then referenced against the computer’s other sensory inputs to determine the best course of action. This system regularly interacts with the user through the tachometer, speedometer, engine and oil temperatures, warning lights such as oil pressure warning and traction loss lights.
+
+% End the list for Part 1
+\end{enumerate}
+
+% Begin Section 2 
+\section{Part 2}
+\label{sec2}
+
+% Begin the list for Part 2 
+\begin{enumerate}[label=(\alph*)]
+\item A priorities matrix for the robotic pizza delivery system would be similar to the following.
+
+% Begin the project priorities matrix table
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+	\hline
+	& Constrain & Optimize & Accept \\
+	\hline
+	Feature & & X & \\
+	\hline
+	Cost & X & & \\
+	\hline
+	Time & & & X \\
+	\hline
+	\end{tabular}
+\end{center}
+
+
+
+
+\end{enumerate}
+
+\end{document}
+

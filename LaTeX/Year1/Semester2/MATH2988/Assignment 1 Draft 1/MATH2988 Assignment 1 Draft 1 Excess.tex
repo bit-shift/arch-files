@@ -1,0 +1,62 @@
+In order to complete the proof, we first will assume that there exists a $\displaystyle{c \in \mathbb{Z}^{+}}$, such that $\displaystyle{c}$ is a solution to the above polynomial congruence relation. Furthermore, we will construct the following definition.
+		\begin{align*}
+		x^n & \equiv x+1 \pmod{p}\\
+		\therefore x^n - x - 1 & \equiv 0 \pmod{p}\\
+		f(x) & \coloneqq x^n - x -1 \\
+		\therefore f(x) & \equiv 0 \pmod{p}\\
+		\end{align*}
+		Furthermore, we are able to eliminate the cases for $\displaystyle{n = 1}$ and $\displaystyle{n = p-1}$. We shall first examine the case where $\displaystyle{n=1}$.
+		\begin{align*}
+		x^{n} & \equiv x + 1 \pmod{p}\\
+		x^{1} & \equiv x + 1 \pmod{p}\\
+		\therefore x & \equiv x + 1 \pmod{p}\\
+		\end{align*}
+		This is obviously not possible, and thus the result does not hold for $\displaystyle{n=1}$. Now considering the case where $\displaystyle{n = p-1}$.
+		\begin{align*}
+		x^{n} & \equiv x + 1 \pmod{p}\\
+		x^{p-1} & \equiv x + 1 \pmod{p}\\
+		x^{p-1} & \equiv 1 \pmod{p}\\
+		\therefore 1 & \equiv x + 1 \pmod{p}\\
+		\end{align*}
+		Once again, this is obviously not possible, and thus the result does not hold for $\displaystyle{n = p-1}$.
+
+		\bigbreak
+
+		As a result of this assumption of the existence of $\displaystyle{c}$, we have the following results.
+		\begin{align*}
+		f(c) & \equiv 0 \pmod{p}\\
+		\therefore f(x) - f(c) & \equiv 0 \pmod{p}\\
+		\therefore x^n - x - 1 - c^n + c + 1 & \equiv 0 \pmod{p}\\
+		\therefore x^n - c^n - x + c & \equiv 0 \pmod{p}\\
+		\therefore (x-c)\big[x^{n-1} + x^{n-2}y + \dots + xy^{n-2} + y^{n-1} \big] - (x-c) & \equiv 0 \pmod{p}\\
+		\therefore (x-c)\big[x^{n-1} + x^{n-2}y + \dots + xy^{n-2} + y^{n-1} - 1 \big] & \equiv 0 \pmod{p}\\
+		\end{align*}
+		As a result, we have that $\displaystyle{p \mid (x-c)}$. Thus we get the following consequences.
+		\begin{align*}
+		x-c & \equiv 0 \pmod{p}\\
+		\therefore x & \equiv c \pmod{p}\\
+		\end{align*}
+		Thus there exists an integer solution $\displaystyle{x}$ for all $\displaystyle{n \in \{2,3,\dots,p-2 \}}$.
+
+		\bigbreak
+
+		ADD IN THE CONDITION ABOUT P GREATER THAN 3.
+
+
+
+In order to complete this proof, we shall use Fermat's factorisation method, which allows us to factorise any integer as the difference of two squares. That is we have the result $\displaystyle{n^2 + 1 = (p+q)(p-q)}$, where $\displaystyle{p,q \in \mathbb{Z}^+}$. Thus we can set the following results.
+		\begin{align*}
+		a & = p+q \\
+		b & = p-q \\
+		\end{align*}
+		Now consider $\displaystyle{a}$ and $\displaystyle{b}$, and their nature as either odd or even. We have 3 cases to consider.
+		\begin{itemize}
+		\item $\displaystyle{a}$ and $\displaystyle{b}$ are both even \dots\dots\dots\dots (1)
+		\item $\displaystyle{a}$ and $\displaystyle{b}$ are both odd \dots\dots\dots\dots (2)
+		\item One odd and one even factor \dots\dots (3)
+		\end{itemize}
+
+
+
+
+In approaching this problem, the main issue to overcome is the fact that the algorithm will require repition in order to solve for $\displaystyle{m}$. As a result, a naive approach cannot be taken, as the algorithm will not be polynomial time.

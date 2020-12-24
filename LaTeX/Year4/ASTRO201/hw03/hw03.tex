@@ -1,0 +1,231 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+% Install the required packages for the document 
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{bm}
+\usepackage{xlop}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+% Page and style settings
+%\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\newenvironment{nscentre}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\begin{document}
+\setlength{\abovedisplayskip}{8pt}{%
+\setlength{\belowdisplayskip}{8pt}{%
+
+
+\text{LSA}
+\hfill
+\text{University of Michigan}
+
+\begin{nscentre}
+	\textbf{ASTRO201: Introduction to Astrophysics}\\
+	\textbf{Homework 2}\\
+\end{nscentre}
+
+\text{Name: Keegan Gyoery}
+\hfill
+\text{UM-ID: 31799451}
+
+\pagenumbering{arabic}
+	\begin{enumerate}[leftmargin=*]
+		\item Let the hypothetical star have mass $\ds{M}$, and radius $\ds{R}$, and density distribution given by,
+				\begin{align*}
+					\rho(r) & = \rho_c\left(1 - \frac{r}{R}\right).
+				\end{align*}
+		\begin{enumerate}[label=\alph*)]
+			\item To calculate $\ds{\rho_c}$, we first use the formula relating the rate of change of mass $\ds{m(r)}$ over radius $\ds{r}$ with density $\ds{\rho(r)}$, 
+				\begin{align*}
+					\frac{dm(r)}{dr} & = 4\pi r^2 \rho(r) \\
+					\therefore dm(r) & = 4\pi r^2 \rho_c \left(1 - \frac{r}{R}\right)dr. 
+				\end{align*}
+				Integrating from a radius $\ds{r=0}$ to a radius of $\ds{r=R}$, 
+				\begin{align*}
+					\int_0^R dm(r) & = \int_0^R 4\pi r^2 \rho_c \left(1 - \frac{r}{R}\right)dr \\
+					m(r)|_0^R & = 4\pi\rho_c \int_0^R \left(r^2 - \frac{r^3}{R} \right) dr \\ 
+					m(R) - m(0) & = 4\pi\rho_c \left[\frac{r^3}{3} - \frac{r^4}{4R} \right]_0^R \\
+					M & = 4\pi\rho_c \left[\frac{R^3}{3} - \frac{R^3}{4} \right] \\
+					M & = 4\pi\rho_c \left(\frac{R^3}{12} \right) \\
+					\therefore \rho_c & = \frac{3M}{\pi R^3}.
+				\end{align*}
+
+			\item To determine the gravitational acceleration at $\ds{r = \frac{R}{2}}$, we must first determine the mass contained inside a radius of $\ds{r = \frac{R}{2}}$, 
+				\begin{align*}
+					\frac{dm(r)}{dr} & = 4\pi r^2 \rho(r) \\
+									 & = 4\pi r^2 \rho_c \left(1 - \frac{r}{R}\right) \\
+									 & = 4\pi r^2 \left(\frac{3M}{\pi R^3}\right) \left(1 - \frac{r}{R}\right) \\
+									 & = \frac{12Mr^2}{R^3}\left(1 - \frac{r}{R}\right) \\
+				\therefore dm(r) & = \frac{12M}{R^3}\left(r^2 - \frac{r^3}{R}\right) dr.
+				\end{align*}
+				Integrating from a radius of $\ds{r=0}$ to a radius of $\ds{r=\frac{R}{2}}$,
+				\begin{align*}
+					\int_0^{\frac{R}{2}}dm(r) & = \int_0^{\frac{R}{2}}\frac{12M}{R^3}\left(r^2 - \frac{r^3}{R}\right)dr \\
+					m(r)|_0^{\frac{R}{2}} & = \frac{12M}{R^3}\int_0^{\frac{R}{2}}\left(r^2 - \frac{r^3}{R}\right)dr \\
+					m\left(\frac{R}{2}\right) - m(0) & = \frac{12M}{R^3}\left[\frac{r^3}{3} - \frac{r^4}{4R}\right]_0^{\frac{R}{2}} \\
+					m\left(\frac{R}{2}\right) & = \frac{12M}{R^3}\left(\frac{R^3}{24} - \frac{R^3}{64}\right) \\
+					\therefore m\left(\frac{R}{2}\right) & = \frac{5M}{16}.
+				\end{align*}
+
+				Thus, using the acceleration due to gravity formula, we have
+				\begin{align*}
+					a_g(r) & = -\frac{GM(r)}{r^2} \\
+					a_g\left(\frac{R}{2}\right) & = -\frac{GM\left(\frac{R}{2}\right)}{\left(\frac{R}{2}\right)^2} \\
+					& = -\frac{G\left(\frac{5M}{16}\right)}{\frac{R^2}{4}} \\
+					\therefore a_g\left(\frac{R}{2}\right) & = -\frac{5GM}{4R^2} 
+				\end{align*}
+					
+		\end{enumerate}
+		\item The hydrostatic equilibrium equation is given as 
+			\begin{align*}
+				-\frac{dP}{dr} & = \frac{GM(<r)}{r^2}\rho.
+			\end{align*}
+			\begin{enumerate}[label=\alph*)]
+			\item The term $\ds{\frac{dP}{dr}}$ is the rate of change of the force of pressure with respect to the distance from the centre of the star, $\ds{r}$. The term $\ds{\rho}$ denotes the density of the star as a function of distance from the centre of the star, $\ds{r}$. The term $\ds{M(<r)}$ denotes the amount of mass inside distance of $\ds{r}$ units from the centre of the star.
+			\item Inside a star, the inward force of gravity is balanced by the outward force of thermal pressure.
+				\pagebreak
+			\item Rewriting the hydrostatic equilibrium equation above, with $\ds{V(r)}$ denoting volume at a distance of $\ds{r}$ units from the centre, 
+				\begin{align*}
+					-\frac{dP}{dr} & = \frac{GM(<r)}{r^2}\rho(r) \\
+								   & = \frac{G\rho(r)V(r)}{r^2}\rho(r) \\
+								   & = \frac{4G\pi r^3}{3r^2}\rho(r)^2 \\
+								   & = \frac{4G\pi r}{3} \left(\frac{3M}{\pi R^3}\right)^2\left(1 - \frac{r}{R}\right)^2 \\
+								   & = \frac{12GM^2r}{\pi R^6}\left(1 - \frac{2r}{R} + \frac{r^2}{R^2}\right) \\
+					\therefore -\frac{dP}{dr} & = \frac{12GM^2}{\pi R^6}\left(r - \frac{2r^2}{R} + \frac{r^3}{R^2}\right) \\
+				\end{align*}
+				Integrating the above result, subject to the zero boundary condition $\ds{P(R) = 0}$, we have
+				\begin{align*}
+					-\frac{dP}{dr} & = \frac{12GM^2}{\pi R^6}\left(r - \frac{2r^2}{R} + \frac{r^3}{R^2}\right) \\
+					\frac{dP}{dr} & = -\frac{12GM^2}{\pi R^6}\left(r - \frac{2r^2}{R} + \frac{r^3}{R^2}\right) \\
+					\int \frac{dP}{dr} & = \int -\frac{12GM^2}{\pi R^6}\left(r - \frac{2r^2}{R} + \frac{r^3}{R^2}\right) \\
+					\int dP & = -\frac{12GM^2}{\pi R^6} \int \left(r - \frac{2r^2}{R} + \frac{r^3}{R^2}\right) dr \\
+					\therefore P(r) & = -\frac{12GM^2}{\pi R^6} \left[\frac{r^2}{2} - \frac{2r^3}{3R} + \frac{r^4}{4R^2}\right] + C \\
+					\therefore 0 & = -\frac{12GM^2}{\pi R^6} \left[\frac{R^2}{2} - \frac{2R^3}{3R} + \frac{R^4}{4R^2}\right] + C \\
+					C & = \frac{12GM^2}{\pi R^6} \left[\frac{R^2}{2} - \frac{2R^2}{3} + \frac{R^2}{4}\right] \\
+					  & = \frac{12GM^2}{\pi R^6} \left[\frac{R^2}{12}\right] \\
+					\therefore C & = \frac{GM^2}{\pi R^4} \\
+					\therefore P(r) & = -\frac{12GM^2}{\pi R^6} \left[\frac{r^2}{2} - \frac{2r^3}{3R} + \frac{r^4}{4R^2}\right] + \frac{GM^2}{\pi R^4} \\
+									& = \frac{GM^2}{\pi R^4} \left[1 - 6\frac{r^2}{R^2} + 8\frac{r^3}{R^3} - 3\frac{r^4}{R^4}\right] \\
+					\therefore P(r) & = \frac{GM^2}{\pi R^4} \left[1 - 6\left(\frac{r}{R}\right)^2 + 8\left(\frac{r}{R}\right)^3 - 3\left(\frac{r}{R}\right)^4\right].
+				\end{align*}
+				Clearly, $\ds{P_c = \frac{GM^2}{\pi R^4}}$, and $\ds{P(r)}$ satisfies $\ds{P(0) = P_c}$.
+
+
+			\end{enumerate}
+			\pagebreak
+		\item We shall assume for this question, that the Sun's luminosity remains constant for the next $\ds{10^{10}}$ years, that the mass of the Sun is entirely protons, and that the Sun generates energy through hydrogen fusion, which has an efficiency rating of $\ds{0.7\%}$.
+			\begin{enumerate}[label=\alph*)]
+			\item If the Sun converts half of its mass into energy, via hydrogen fusion, the energy produced is 
+				\begin{align*}
+					E & = 0.007\times\frac{M}{2}\times c^2 \\
+					  & = 0.007\times \frac{2.0\times 10^33}{2}\times \left(3.0\times 10^{10}\right)^2 \\
+					  & = 0.063 \times 10^{53} \\
+					\therefore E & = 6.3 \times 10^{51}.
+				\end{align*}
+				Using the energy output derived above, we can compute the lifetime of the Sun in this scenario using the formula for lifetime, 
+				\begin{align*}
+					\tau & = \frac{E}{L} \\
+						 & = \frac{6.3 \time 10^51}{4\times 10^{33}} \\
+						 & = 1.575 \times 10^{18} \\
+					\therefore \tau & = 1.6 \times 10^{18}.
+				\end{align*}
+				In this scenario, the Sun would have a lifetime of $\ds{1.6 \times 10^{18}}$ seconds, or $\ds{5.0\times 10^{10}}$ years.
+			\item Again, using the assumptions started at the start of the question, if the Sun converts $\ds{10\%}$ of its mass into energy, via hydrogen fusion, the energy produced is 
+				\begin{align*}
+					E & = 0.007\times\frac{M}{10}\times c^2 \\
+					  & = 0.007\times \frac{2.0\times 10^{33}}{10}\times \left(3.0\times 10^{10}\right)^2 \\
+					  & = 0.0126 \times 10^{53} \\
+					\therefore E & = 1.26 \times 10^{51}.
+				\end{align*}
+				Using the energy output derived above, we can compute the lifetime of the Sun in this scenario using the formula for lifetime, 
+				\begin{align*}
+					\tau & = \frac{E}{L} \\
+						 & = \frac{1.26 \times 10^{51}}{4\times 10^{33}} \\
+						 & = 0.315 \times 10^{18} \\
+					\therefore \tau & = 3.2 \times 10^{17}.
+				\end{align*}
+				In this scenario, the Sun would have a lifetime of $\ds{3.2 \times 10^{17}}$ seconds, or $\ds{10^{10}}$ years.
+			\item Due to mass-energy equivalence, and from the assumptions above, the Sun will lose $\ds{0.07\%}$ of its mass, which is $\ds{1.4\times 10^{30}}$ grams.
+				\pagebreak
+			\item Using the formula relating mass and luminosity for stars on the main sequence, where Tau Scorpii has a mass of $\ds{14.7\:\text{M}_{\odot}}$, the lifetime of Tau Scorpii is,  
+				\begin{align*}
+					\frac{\tau}{\tau_{\odot}} & = \left(\frac{M}{M_{\odot}}\right)^{-2.5} \\
+					\tau & = \tau_{\odot} \left(\frac{M}{M_{\odot}}\right)^{-2.5} \\
+						 & = \left(3.15\times 10^{17}\right) \left(\frac{14.7\:M_{\odot}}{M_{\odot}}\right)^{-2.5} \\
+						 & = 3.802 \times 10^{14} \\
+					\therefore \tau & = 3.8 \times 10^{14}.
+				\end{align*}
+				The lifetime of Tau Scorpii is $\ds{3.8\time 10^{14}}$ seconds. Using the formula relating energy and lifetime, where Tau Scorpii has a luminosity of $\ds{20400\:\text{L}_{\odot}}$, we get an energy output for Tau Scorpii of
+				\begin{align*}
+					\tau & = \frac{E}{L} \\
+					\therefore E & = \tau L \\
+								 & = 3.802 \times 10^{14} \times 20400\times 4\times 10^{33} \\
+								 & = 3.1024 \times 10^{52} \\
+					\therefore E & = 3.1 \times 10^{52}.
+				\end{align*}
+				The energy output of Tau Scorpii over its lifetime is $\ds{3.1 \times 10^{52}}$. Now, using the principle of mass-energy conservation,				
+				\begin{align*}
+					E & = M c^2 \\
+					\therefore M & = \frac{E}{c^2} \\
+								 & = \frac{3.1024\times 10^{52}}{\left(3\times 10^{10}\right)^2} \\
+								 & = 3.447 \times 10^{31} \\
+					\therefore M & = 3.4 \times 10^{31}.
+				\end{align*}
+				Thus, the mass lost due to energy production in Tau Scorpii is $\ds{3.4 \times 10^{31}}$ grams. Using the lifetime of Tau Scorpii as calculated above, $\ds{3.8\time 10^{14}}$ seconds, Tau Scorpii loses $\ds{9.1 \times 10^{16}}$ grams of mass per second. As hydrogen fusion has an efficiency of $\ds{0.7\%}$, $\ds{1.3\times 10^{19}}$ grams of hydrogen are being converted to helium in the fusion process per second.
+		\end{enumerate}
+	\item From the book, the rate of energy released per second by hydrogen fusion is $\ds{4.3\times 10^{-5}}$ erg/s. Using the luminosity of the Sun as $\ds{4\times 10^{33}}$ erg, we get the number of reactions occuring per second as 
+		\begin{align*}
+			\text{\# reactions/s } & = \frac{4\times 10^{33}}{4.3\times 10^{-5}}\\
+			\therefore \text{\# reactions/s } & = 9.3 \times 10^{37}.
+		\end{align*}
+		Using the equation given for the reaction, two neutrinos are released per reaction, giving us $\ds{1.86 \times 10^{38}}$ neutrinos released per second. Considering a sphere of radius 1AU, the number of neutrinos passing through $\ds{1\:\text{cm}^2}$ is,
+		\begin{align*}
+			\text{\# neutrinos/cm}^2\text{/s} & = \frac{\text{\# neutrinos/s}}{4\pi r^2} \\
+											  & = \frac{1.86 \times 10^{38}}{4\pi \left(1.496\times 10^{13}\right)^2} \\
+											  & = 6.6136 \times 10^{10} \\
+			\therefore \text{\# neutrinos/cm}^2\text{/s} & = 6.6 \times 10^{10}.
+		\end{align*}
+	\end{enumerate}
+\end{document}

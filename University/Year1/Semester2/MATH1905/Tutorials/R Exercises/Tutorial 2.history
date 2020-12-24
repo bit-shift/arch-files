@@ -1,0 +1,48 @@
+x = c(0)
+0
+x = c(0,0,0,0,0,0,0,1,1,1,1,2,2,2,2,2,2,2,2,3,3,3,3,4,4)
+mean(x)
+sd(x)
+x = x+2
+x
+sd(x)
+mean(x)
+July = c(2,8,6,7,6,12,8,15,7,9,11,6,12,12)
+August = c(5,7,4,4,7,3,12,6,10,9,16,10,9,9)
+December = c(8,19,7,12,13,12,18,10,16,9,16,19,15,13)
+fivenum(July)
+fivenum(August)
+fivenum(December)
+Sxy = sum((July-mean(July))(August - mean(August)))
+Sxy = sum((July-mean(July))(August-mean(August)))
+x = July
+y = August
+Sxy = sum((July-mean(July))*(August-mean(August)))
+Syy = sum((August-mean(August))^2)
+Sxx = sum((July-mean(July))^2)
+r = (Sxy)/(sqrt(Syy*Sxx))
+r
+Sxy = sum((July-mean(July))*(December-mean(December)))
+Syy = sum((December-mean(December))^2)
+r = (Sxy)/(sqrt(Syy*Sxx))
+r = (Sxy)/(sqrt(Syy*Sxx))
+r
+left = c(74,113,69,68,61,70,99,46,74,71,76,64,62,100,77)
+right = c(92,116,73,73,75,83,105,52,78,89,83,72,66,110,78)
+Sxy = sum((left-mean(left))*(right-mean(right)))
+Syy = sum((right-mean(right))^2)
+Sxx = sum((left-mean(left))^2)
+r = (Sxy)/(sqrt(Syy*Sxx))
+r
+plot(left)
+plot(right)
+hold
+hold on;
+hold on
+holdon
+boxplot(right)
+boxplot(left)
+boxplot(right)
+boxplot(left)
+sd(left)
+sd(right)

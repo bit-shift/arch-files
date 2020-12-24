@@ -1,0 +1,48 @@
+-------------
+Exercise 1
+-------------
+Q1. IP Address is 128.119.245.12
+	Sending and receiving from port 80
+	IP of src is 192.168.1.102 from port 1161
+
+Q2. Seq number 232129013
+
+Q3. 1. 232129013	t=0.026477		ta=0.053937
+	2. 232129578	t=0.041737		ta=0.077294
+	3. 232131038	t=0.054026		ta=0.124085
+	4. 232132498	t=0.054690		ta=0.169118
+	5. 232133958	t=0.077405		ta=0.217299
+	6. 232135418	t=0.078157		ta=0.267802
+	
+	Take the difference between the two for RTT and use ewma
+
+Q4. Segments 2-6 are 1480 bytes (1460+20)
+	Segment 1 is 585 bytes (565+20)
+
+Q5. Min buffer space is 5840 - in SYN, ACK from dest
+	No throttling - increasing window size
+
+Q6. No retransmissions as no duplicate ACKs, or duplicate TCP segments sent - ie the same sequence number. Sequence number of the sent segments are always increasing.
+	(Some graph available)
+
+Q7. In this case the receiver typically ACKs two segments at a time, of size 1460*2 bytes
+	At the start it is one segment until segment 52 in wireshark - the first double ACK or delayed ACK
+
+Q8. Total time elapsed is 5.651141s
+	Total bytes transferred is 232293103 - 232129012
+	Discard last entry
+
+-------------
+Exercise 2
+-------------
+Q1. Seq=2818463618
+
+Q2. Seq=1247095790 Ack=2818463619 - Added 1 byte to the SYN seq number, as this is where it expects the next segment's data to begin. when it converts back to a byte stream.
+
+Q3. Seq=2818463619 - No data as the next segment sent by the client has the same sequence number as the ACK of the client SYNACK.
+	Ack=1247095791
+
+Q4. Client has done the active close, simultaneous close
+
+Q5. Server last ACK - Client ISN = data transferred to server
+	Client last ACK - Server ISN = data transferred to client

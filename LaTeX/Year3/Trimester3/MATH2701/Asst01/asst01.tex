@@ -1,0 +1,155 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+% Install the required packages for the document 
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{mathtools}
+
+% Page and style settings
+%\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\newenvironment{nscentre}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\begin{document}
+\setlength{\abovedisplayskip}{8pt}{%
+\setlength{\belowdisplayskip}{0pt}{%
+
+
+\text{School of Mathematics}
+\hfill
+\text{University of New South Wales}
+
+\begin{nscentre}
+	\textbf{MATH2701: Abstract Algebra and Fundamental Analysis}\\
+	\textbf{Short Assignment 1}\\
+\end{nscentre}
+
+\text{Name: Keegan Gyoery}
+\hfill
+\text{zID: z5197058}
+
+\pagenumbering{arabic}
+
+	\begin{enumerate}[leftmargin=*]
+		\item Let $\ds{GL_n(\mathbb{R}) \coloneqq \{A \in M_n(\mathbb{R}) \: | \: A \text{ is invertible}\}}$ be the general linear group. Show that
+		\begin{align*}
+			O_n(\mathbb{R}) & = \{Q \in GL_n(\mathbb{R}) \: | \: Q^{T}Q = I\}\\
+		\end{align*}
+		is a subgroup.
+		\bigbreak
+		By the subgroup lemma, we have to show that $\ds{O_n(\mathbb{R})}$ is a non-empty subset of $\ds{GL_n(\mathbb{R})}$, and it satisfies the closure conditions. Let $\ds{M \in O_n(\mathbb{R})}$. By definition of $\ds{O_n(\mathbb{R})}$, $\ds{M \in GL_n(\mathbb{R})}$. Thus, $\ds{O_n(\mathbb{R}) \subseteq GL_n(\mathbb{R})}$. Furthermore, clearly $\ds{I \in O_n(\mathbb{R})}$, so $\ds{O_n(\mathbb{R})}$ is a non-empty subset of $\ds{GL_n(\mathbb{R})}$. Considering closure under composition, let $\ds{M_1, M_2 \in O_n(\mathbb{R})}$, such that
+		\begin{align*}
+			M_1^TM_1 & = I \dots\dots (A)\\ 
+			M_2^TM_2 & = I \dots\dots (B).\\ 
+		\end{align*}
+		Further, it is clear that $\ds{M_1M_2 \in GL_n(\mathbb{R})}$. Consider now 
+		\begin{align*}
+			(M_1M_2)^T(M_1M_2) & = (M_2^TM_1^T)(M_1M_2)\\
+							   & = M_2^T(M_1^TM_1)M_2\\
+							   & = M_2^T(I)M_2 \text{ by } (A)\\
+							   & = M_2^TM_2\\
+			\therefore (M_1M_2)^T(M_1M_2) & = I \text{ by } (B)\\
+		\end{align*}
+		and so $\ds{M_1M_2 \in O_n(\mathbb{R})}$, satisfying closure under composition. Examining closure under inverses, let $\ds{M \in O_n(\mathbb{R})}$, we claim $\ds{M^{-1} = M^T}$. As $\ds{M \in GL_n(\mathbb{R})}$, clearly $\ds{M^T \in GL_n(\mathbb{R})}$, and so $\ds{M^{-1} \in GL_n(\mathbb{R})}$. As $\ds{M \in O_n(\mathbb{R})}$, $\ds{M^TM = I \dots\dots (C)}$. Now, consider
+		\begin{align*}
+			(M^{-1})^T(M^{-1}) & = (M^T)^{-1}(M^{-1})\\
+							   & = (MM^T)^{-1}\\
+							   & = \big((M^TM)^T\big)^{-1}\\
+							   & = \big((I)^T\big){-1} \text{ by } (C)\\
+							   & = (I)^{-1}\\
+			\therefore (M^{-1})^T(M^{-1}) & = I\\
+		\end{align*}
+		thus $\ds{M^{-1} = M^T \in O_n(\mathbb{R})}$. It is now clear to see that $\ds{O_n(\mathbb{R})}$ is a subgroup of $\ds{GL_n(\mathbb{R})}$.
+
+		\pagebreak
+
+	\item Let $\ds{\tau : \mathbb{R}^n \rightarrow \mathbb{R}^n}$ be an isometry and assume that $\ds{\tau(\mathbf{0}) = \mathbf{0}}$. Show that
+		\begin{enumerate}
+			\item $\ds{\tau}$ preserves the dot product on $\ds{\mathbb{R}^n}$: $\ds{\tau(\mathbf{x}) \cdot \tau(\mathbf{y}) = \mathbf{x} \cdot \mathbf{y}}$, for all $\ds{\mathbf{x}, \mathbf{y} \in \mathbb{R}^n}$.
+				\bigbreak
+				As $\ds{\tau}$ is an isometry, for all $\ds{\mathbf{x}, \mathbf{y} \in \mathbb{R}^n}$, we have the result $\ds{{\Vert \tau(\mathbf{x}) - \tau(\mathbf{y}) \Vert}^2 = {\Vert \mathbf{x} - \mathbf{y} \Vert}^2 \dots (A)}$. Considering the case when $\ds{\mathbf{y} = \mathbf{0}}$, coupled with $\ds{\tau(\mathbf{0}) = \mathbf{0}}$, the above equation yields \\ $\ds{{\Vert \tau(\mathbf{x}) \Vert}^2 = {\Vert \mathbf{x} \Vert}^2 \dots (B)}$. Returning to the equation labelled $\ds{(A)}$, we are able to deduce that $\ds{\tau}$ preserves the dot product, with the aid of equation $\ds{(B)}$.
+				\begin{align*}
+					{\Vert \tau(\mathbf{x}) - \tau(\mathbf{y}) \Vert}^2 & = {\Vert \mathbf{x} - \mathbf{y} \Vert}^2\\
+					\therefore [\tau(\mathbf{x}) - \tau(\mathbf{y})][\tau(\mathbf{x}) - \tau(\mathbf{y})] & = (\mathbf{x} - \mathbf{y})(\mathbf{x} - \mathbf{y})\\
+					\therefore \tau(\mathbf{x})\cdot\tau(\mathbf{x}) - 2\tau(\mathbf{x})\cdot\tau(\mathbf{y}) + \tau(\mathbf{y})\cdot\tau(\mathbf{y}) & = \mathbf{x}\cdot\mathbf{x} - 2\mathbf{x}\cdot\mathbf{y} + \mathbf{y}\cdot\mathbf{y}\\
+					\therefore {\Vert \tau(\mathbf{x}) \Vert}^2 - 2\tau(\mathbf{x})\cdot\tau(\mathbf{y}) + {\Vert \tau(\mathbf{y}) \Vert}^2 & = {\Vert \mathbf{x} \Vert}^2 - 2\mathbf{x}\cdot\mathbf{y} + {\Vert \mathbf{y} \Vert}^2\\
+					\therefore {\Vert \tau(\mathbf{x}) \Vert}^2 - 2\tau(\mathbf{x})\cdot\tau(\mathbf{y}) + {\Vert \tau(\mathbf{y}) \Vert}^2 & = {\Vert \tau(\mathbf{x}) \Vert}^2 - 2\mathbf{x}\cdot\mathbf{y} + {\Vert \tau(\mathbf{y}) \Vert}^2 \text{ by } (B)\\
+					\therefore - 2\tau(\mathbf{x})\cdot\tau(\mathbf{y}) & = - 2\mathbf{x}\cdot\mathbf{y}\\
+					\therefore \tau(\mathbf{x})\cdot\tau(\mathbf{y}) & = \mathbf{x}\cdot\mathbf{y}\\
+				\end{align*}
+				
+			\item if $\ds{\{\mathbf{e}_1, \mathbf{e}_2, \dots , \mathbf{e}_n\}}$ is the standard basis for $\ds{\mathbb{R}^n}$, then the matrix	
+				\begin{align*}
+					Q & = (\tau(\mathbf{e}_1), \tau(\mathbf{e}_2), \dots , \tau(\mathbf{e}_n))\\
+				\end{align*}
+				is orthogonal.
+				\bigbreak
+				Let $\ds{S = \{\mathbf{e}_1, \mathbf{e}_2, \dots , \mathbf{e}_n\}}$. As $\ds{S}$ is the standard basis, $\ds{S}$ is orthonormal, by definition 
+				\begin{align*}
+					\mathbf{e}_i \cdot \mathbf{e}_j & = 
+					\begin{cases}
+						\: 0 \hspace{5mm} \text{if } i \neq j\\
+						\: 1 \hspace{5mm} \text{else}\\
+					\end{cases} \dots\dots (A).\\
+				\end{align*}
+				For $\ds{Q}$ to be orthogonal, $\ds{Q^TQ = I}$. This is equivalent to 
+				\begin{align*}
+					\tau(\mathbf{e}_i) \cdot \tau(\mathbf{e}_j) & = 
+					\begin{cases}
+						\: 0 \hspace{10mm} \text{if } i \neq j\\
+						\: > 0 \hspace{6mm} \text{else}\\
+					\end{cases}\\
+				\end{align*}
+				As we know from the previous question, $\ds{\tau}$ preserves the dot product, and so\\$\ds{\tau(\mathbf{e}_i) \cdot \tau(\mathbf{e}_j) =	\mathbf{e}_i \cdot \mathbf{e}_j}$ for all $\ds{i,j}$. Thus, using result $\ds{(A)}$, we satisfy the above requirements for $\ds{Q}$ to be orthogonal, and thus $\ds{Q = (\tau(\mathbf{e}_1), \tau(\mathbf{e}_2), \dots , \tau(\mathbf{e}_n))}$ is orthogonal.
+
+			\item $\ds{\tau = T_{Q,\mathbf{0}}}$ is a linear isomorphism.
+				\bigbreak
+				From the Theorem in the Lecture Notes, we can decompose any isometry on $\ds{\mathbb{R}^n}$ into a translation composed with multiplication by an orthogonal matrix. That is, \\$\ds{\tau(\mathbf{x}) = T_{A,\mathbf{b}}(\mathbf{x}) = A\mathbf{x} + \mathbf{b}}$, where $\ds{A}$ is orthogonal, and $\ds{\mathbf{b}}$ is the vector of translation. By the construction of $\ds{Q}$ in the previous part, $\ds{Q(\mathbf{e}_i) = \tau(\mathbf{e}_i)}$, for all $\ds{i}$, and $\ds{Q}$ is orthogonal. Thus, let $\ds{A = Q}$. Furthermore, as $\ds{\tau(\mathbf{0}) = \mathbf{0}}$, we have $\ds{\tau(\mathbf{0}) = T_{Q,\mathbf{b}}(\mathbf{0}) = Q(\mathbf{0}) + \mathbf{b} = \mathbf{b} = \mathbf{0}}$. As $\ds{\mathbf{b} = \mathbf{0}}$, we get the result $\ds{\tau = T_{Q,\mathbf{0}} = Q}$. As $\ds{Q}$ is a linear map, and invertible, $\ds{\tau = T_{Q,\mathbf{0}}}$ is a linear isomorphism. 
+				\bigbreak
+				\begin{center}
+				\emph{This assignment is completely my own work except where acknowledged}\\
+				\emph{signed:} \hspace{50mm} \emph{date:}\\
+				\end{center}
+
+
+		\end{enumerate}
+
+
+
+
+
+	\end{enumerate}
+\end{document}

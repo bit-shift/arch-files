@@ -1,0 +1,37 @@
+---------------------------------------------------------------------------------------
+sorter.c
+---------------------------------------------------------------------------------------
+    - run the program and look at where it failed
+    - list the lines around it to get a feel for the context
+    - print the values of i, j, n
+    - j was at 21 somehow, way past n = 10
+    - j started at the last element and by context should have been working downwards
+    - j++ should have been j-- in the for loop
+    - worked perfectly after that
+---------------------------------------------------------------------------------------
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+---------------------------------------------------------------------------------------
+Queue.c
+---------------------------------------------------------------------------------------
+    - first issue was an assertion failure
+    - occurred at line 30 but list shows the assert.h inclusion
+    - this is where the assertion failure signal comes from
+    - set break at line 29
+    - looked at context of the assertion that was failing
+    - was failing before even completing the first loop
+    - checked the enterQueue function and found that size was not updating at all
+    - added in q->size++
+    - also noticed that it wasnt linking the node to the end of the list
+    - amended the code so that it would link the nodes
+    - infinite loop occured when showing q1
+    - no incrementation of curr
+    - added the line curr = curr->next
+    - program running smoothly except for final test, it should fail an assertion
+    - instead it has a segfault error
+    - segfault occurs at line q->head->item
+    - checking the program there is no case to deal with when the queue is empty
+    - that is, no case when q->head = NULL
+    - segfault occurs because trying to access NULL as a pointer doesnt work
+    - added the line if (q->head == NULL) return -1
+    - chose to return -1 as the error value when dequeuing from an empty queue
+---------------------------------------------------------------------------------------

@@ -1,0 +1,103 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper]{article}
+
+% Install the required packages for the document 
+\usepackage{envmath}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{asyalign}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{xhfill}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{harpoon}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz-3dplot}
+\usepackage{accents}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows}
+
+\begin{document}
+
+\begin{center}
+
+\tdplotsetmaincoords{70}{120}
+\begin{tikzpicture}[tdplot_main_coords]
+
+
+\def\BigSide{5}
+\def\SmallSide{1.5}
+\pgfmathsetmacro{\CalcSide}{\BigSide-\SmallSide}
+
+% The vertex at V
+\tdplotsetcoord{P}{sqrt(3)*\BigSide}{55}{45}
+
+\coordinate (sxl) at (\BigSide,\CalcSide,\BigSide);
+\coordinate (syl) at (\CalcSide,\CalcSide,\BigSide);
+\coordinate (szl) at (\CalcSide,\BigSide,\BigSide);
+
+
+
+	\draw[dashed] 
+	  (0,0,0) -- (Px)
+	  (0,0,0) -- (Py)
+	  (0,0,0) -- (Pz);
+	\draw[->] 
+	  (Px) -- ++ (1,0,0) node[anchor=north east]{$x$};
+	\draw[->]
+	   (Py) -- ++(0,1,0) node[anchor=north west]{$y$};
+	\draw[->] 
+	  (Pz) -- ++(0,0,1) node[anchor=south]{$z$};
+
+	\draw[thick]
+	  (Pxz) -- (P) -- (Pxy) -- (Px) -- (Pxz) -- (Pz) -- (Pyz) -- (P); 
+	\draw[thick]
+	  (Pyz) -- (Py) -- (Pxy);
+
+	\draw
+		(0,0,0) -- (5,5,4.96)
+		(5,0,0) -- (0,1,1.35);
+
+		
+	\draw[dashed]
+		(0,0,0) -- (5,5,0);
+
+
+	\node at (-1.5,-1,-1) {$\underaccent{\tilde}{a}$};
+	\node at (-1.6,0.5,-0.4) {$\underaccent{\tilde}{b}$};
+	\node at (0.4,0,1.2) {$\underaccent{\tilde}{c}$};
+	\node at (1.5,1,-0.4) {$\underaccent{\tilde}{a} + \underaccent{\tilde}{b}$};
+	\node at (1,1.5,2.8) {$\underaccent{\tilde}{a} + \underaccent{\tilde}{b} + \underaccent{\tilde}{c}$};
+	\node at (2.5,0,0.6) {$d$};
+
+\end{tikzpicture}
+
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

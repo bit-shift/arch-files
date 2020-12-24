@@ -1,0 +1,178 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+% Install the required packages for the document 
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{bm}
+\usepackage{xlop}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+% Page and style settings
+%\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\newenvironment{nscentre}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\begin{document}
+\setlength{\abovedisplayskip}{8pt}{%
+\setlength{\belowdisplayskip}{8pt}{%
+
+\begin{nscentre}
+	\textbf{MATH3611: Higher Analysis}\\
+	\textbf{Assignment 2}\\
+\end{nscentre}
+
+\text{Name: Keegan Gyoery}
+\hfill
+\text{zID: z5197058}
+
+\HRule
+
+\pagenumbering{arabic}
+	\begin{enumerate}[leftmargin=*]
+		\item \textbf{Claim:} $\ds{\text{Int}(S) = \emptyset}$.
+			\bigbreak
+			\textbf{Proof:} Consider $\ds{S = \{\{x_n\}_{n=1}^{\infty} \in \ell^1 : |x_n| < \nicefrac{1}{n}, \: \forall n\}}$, and choose $\ds{s \in S}$, such that \\ $\ds{s = (s_1, s_2, \dots, s_n, \dots)}$. Choose $\ds{r}$, so that for some $\ds{\epsilon > 0}$, $\ds{r_1 = (s_1, s_2, \dots, s_n + \nicefrac{\epsilon}{2}, \dots)}$ and $\ds{r_2 = (s_1, s_2, \dots, s_n - \nicefrac{\epsilon}{2}, \dots)}$. Examining the epsilon ball around $\ds{s}$, we have 
+			\begin{align*}
+				\text{B}(s,\epsilon) & = \{x \in \ell^1 : d_{\norm{\cdot}_1}(s,x) < \epsilon\}.
+			\end{align*}
+			Clearly, $\ds{s \in \text{B}(s,\epsilon)}$ and $\ds{r \in \text{B}(s,\epsilon)}$ as 
+			\begin{align*}
+				\norm{r_1 - s}_1 & = \frac{\epsilon}{2} < \epsilon,\\
+				\norm{r_2 - s}_1 & = \left|\frac{-\epsilon}{2}\right| = \frac{\epsilon}{2} < \epsilon.
+			\end{align*}
+			However, we can always choose $\ds{n}$ such that 
+			\begin{align*}
+				\frac{1}{n} & < \max\left\{\left|s_n + \frac{\epsilon}{2}\right|, \left|s_n - \frac{\epsilon}{2}\right|\right\}.
+			\end{align*}
+			Thus, either $\ds{r_1 \notin S}$ or $\ds{r_2 \notin S}$. So, for all $\ds{s \in S}$ and all $\ds{\epsilon > 0}$, $\ds{\text{B}(s,\epsilon)}$ will contain points in $\ds{S^{\complement}}$. Hence, $\ds{\text{Int}(S) = \emptyset}$.
+
+			\bigbreak
+
+			\textbf{Claim:} $\ds{\text{Bd}(S) = \{\{x_n\}_{n=1}^{\infty} \in \ell^1 : |x_n| \leq \nicefrac{1}{n}, \: \forall n\}}$.
+
+			\bigbreak
+
+			\textbf{Proof:} From the definition of $\ds{S}$, we have $\ds{S^{\complement} = \{\{x_n\}_{n=1}^{\infty} \in \ell^1 : \exists n, \: |x_n| \geq \nicefrac{1}{n}\}}$. Consider the sets $\ds{T_1 = \{\{x_n\}_{n=1}^{\infty} \in \ell^1 : \exists n, \: |x_n| > \nicefrac{1}{n}\}}$, and $\ds{T_2 = \{\{x_n\}_{n=1}^{\infty} \in \ell^1 : |x_n| \leq \nicefrac{1}{n}, \: \forall n\}}$. By construction we have $\ds{S = T_1 \cup T_2}$. 
+			\bigbreak
+		Choose $\ds{t_1 \in T_1}$ such that $\ds{t_1 = \{t_n\}_{n=1}^{\infty}}$, and let $\ds{t_n > \nicefrac{1}{n}}$ for some $\ds{n}$. Select $\ds{\epsilon = \frac{1}{2}\left(|t_n| - \nicefrac{1}{n}\right)}$ and consider a second sequence $\ds{x = \{x_n\}_{n=1}^{\infty} \in \text{B}(t_1, \epsilon)}$. Examining the distance between the sequences,
+		\begin{align*}
+			\norm{t_n - x_n}_1 & = |t_n - x_n| < \epsilon \\
+			|t_n| - |x_n| & \leq |t_n - x_n| \\
+			\therefore |t_n| - |x_n| & < \epsilon \\
+			\therefore |t_n| - |x_n| & < \frac{1}{2}\left(|t_n| - \frac{1}{n}\right) \\
+			\therefore |x_n| & > \frac{1}{2}\left(|t_n| + \frac{1}{n}\right) \\
+			\therefore |x_n| & > \frac{1}{n},
+		\end{align*}
+		so $\ds{x \in T_1}$. Hence, around every sequence $\ds{t_1 \in T_1}$, there exists $\ds{\text{B}(t_1, \epsilon) \subseteq T_1}$. Thus, $\ds{T_1 \subset \text{Int}(S^{\complement})}$.
+
+		\bigbreak
+		
+		Choose $\ds{t_2 \in T_2}$ such that $\ds{t_2 = \{t_n\}_{n=1}^{\infty}}$, and consider $\ds{\text{B}(t_2,\epsilon)}$. Again, consider a second sequence $\ds{x = \{x_n\}_{n=1}^{\infty}}$, defined piecewise by 
+		\begin{align*}
+			|x_n| & = 
+			\begin{cases}
+				|t_n| - \nicefrac{\epsilon}{4^n}, & \hspace{5mm} \text{if } t_n \neq \nicefrac{1}{n} \\
+				|t_n|, & \hspace{5mm} \text{if } t_n = \nicefrac{1}{n}. \\
+			\end{cases}
+		\end{align*}
+		We also construct $\ds{x}$ such that each $\ds{x_n}$ has the same sign as the corresponding $\ds{t_n}$. It follows that $\ds{|x_n| < \nicefrac{1}{n}}$ for all $\ds{n}$. Condsider now the set $\ds{K = \{n : t_n = \nicefrac{1}{n}\} \subset \mathbb{N}}$. $\ds{K}$ is a strict subset of the natural numbers, as if we had $\ds{K = \mathbb{N}}$, this would produce the harmonic series, a sequence that would not be in $\ds{\ell^1}$, and hence not considered. 
+
+		\bigbreak
+		Examining the distances between the sequences,
+		\begin{align*}
+			\norm{t_n - x_n}_1 & = |t_n - x_n| \\
+							   & = \epsilon \sum_{n \in K} \frac{1}{4^n} \\
+							   & < \epsilon \sum_{n \in \mathbb{N}} \frac{1}{4^n} \\
+							   & = \frac{\epsilon}{3} \\
+			\therefore \norm{t_n - x_n}_1 & < \epsilon.
+		\end{align*}
+		As $\ds{x \in S}$, for all $\ds{t_2 \in T_2}$ and all $\ds{\epsilon > 0}$, $\ds{\text{B}(t_2,\epsilon)}$ contains a sequence in $\ds{S}$. Thus, $\ds{T_2 \cap \text{Int}(S^{\complement}) = \emptyset}$. So $\ds{\text{Int}(S^{\complement}) = T_1}$. By definition, $\ds{\text{Bd}(S) = (\ell^1, \norm{\cdot}_1) \setminus (\text{Int}(S) \cup \text{Int}(S^{\complement})) = (\ell^1, \norm{\cdot}_1) \setminus \text{Int}(S^{\complement})}$, as $\ds{\text{Int}(S) = \emptyset}$. So, $\ds{\text{Bd}(S) = \left(\text{Int}(S^{\complement})\right)^{\complement} = T_1^{\complement}}$. Thus, $\ds{\text{Bd}(S) = \{\{x_n\}_{n=1}^{\infty} \in \ell^1 : |x_n| \leq \nicefrac{1}{n}, \: \forall n\}}$.
+
+			\bigbreak
+
+			\textbf{Claim:} $\ds{\text{Cl}(S) = \text{Bd}(S) = \{\{x_n\}_{n=1}^{\infty} \in \ell^1 : |x_n| \leq \nicefrac{1}{n}, \: \forall n\}}$.
+			\bigbreak
+			\textbf{Proof:} By definition, $\ds{\text{Cl}(S) = \text{Int}(S) \sqcup \text{Bd}(S) = \text{Bd}(S)}$ as $\ds{\text{Int}(S) = \emptyset}$.
+				\bigbreak
+		\item \textbf{Claim:} There exists a continuous function $\ds{f:[-1,1] \rightarrow \mathbb{R}}$ such that 
+			\begin{align*}
+				\int_{-1}^1 \frac{f(t)}{\pi + (x-t)^4}dt & = f(x) - \pi x, \hspace{5mm} \forall x \in [-1,1].
+			\end{align*}
+			\bigbreak
+			\textbf{Proof:} Consider the metric space $\ds{\left(C[-1,1],\norm{\cdot}_{\infty}\right)}$. The above integral equation can be rearranged to the form 
+			\begin{align*}
+				f(x) & = \pi x + \int_{-1}^1 \frac{f(t)}{\pi + (x-t)^4}dt,
+			\end{align*}
+			which may be written as a fixed point equation $\ds{Tf = f}$, where the map $\ds{T}$ is defined as 
+			\begin{align*}
+				Tf(x) & = \pi x + \int_{-1}^1 \frac{f(t)}{\pi + (x-t)^4}dt.
+			\end{align*}
+			Considering any $\ds{f_1,f_2 \in C[-1,1]}$, we have
+			\begin{align*}
+				\norm{Tf_1 - Tf_2}_{\infty} & = \norm{\pi x + \int_{-1}^1 \frac{f_1(t)}{\pi + (x-t)^4}dt - \pi x - \int_{-1}^1 \frac{f_2(t)}{\pi + (x-t)^4}dt}_{\infty}\\
+											& = \norm{\int_{-1}^1 \frac{f_1(t)}{\pi + (x-t)^4}dt - \int_{-1}^1 \frac{f_2(t)}{\pi + (x-t)^4}dt}_{\infty}\\
+											& = \norm{\int_{-1}^1 \frac{f_1(t) - f_2(t)}{\pi + (x-t)^4}dt}_{\infty}\\
+											& = \sup_{-1\leq x\leq 1}{\left|\int_{-1}^1 \frac{f_1(t) - f_2(t)}{\pi + (x-t)^4}dt\right|}\\
+											& \leq \sup_{-1\leq x\leq 1}{\int_{-1}^1 \left|\frac{f_1(t) - f_2(t)}{\pi + (x-t)^4}\right|dt}\\
+											& = \sup_{-1\leq x\leq 1}{\int_{-1}^1 \left|\frac{1}{\pi + (x-t)^4}\right||f_1(t) - f_2(t)|dt}\\
+											& \leq \norm{f_1 - f_2}_{\infty} \left\{\sup_{-1\leq x\leq 1}{\int_{-1}^1 \left|\frac{1}{\pi + (x-t)^4}\right|dt}\right\}\\
+											& \leq c\norm{f_1 - f_2}_{\infty},
+			\end{align*}
+			where 
+			\begin{align*}
+				c & = \sup_{-1\leq x\leq 1}\left\{\int_{-1}^1 \left|\frac{1}{\pi + (x-t)^4}\right|dt\right\}.
+			\end{align*}
+			By showing $\ds{c < 1}$, we can prove that $\ds{T}$ is a contraction map. We have 
+			\begin{align*}
+				c & = \sup_{-1\leq x\leq 1}\left\{\int_{-1}^1 \left|\frac{1}{\pi + (x-t)^4}\right|dt\right\} \\
+				  & \leq \sup_{-1\leq x\leq 1}\left\{\int_{-1}^1 \left|\frac{1}{\pi}\right|dt\right\} \\
+				  & = \sup_{-1\leq x\leq 1}\left\{\frac{2}{\pi}\right\} \\
+				  & = \frac{2}{\pi} \\
+				\therefore c & < 1.
+			\end{align*}
+			Thus, for any $\ds{f_1,f_2 \in C[-1,1]}$, $\ds{\norm{Tf_1 - Tf_2}_{\infty} \leq c\norm{f_1-f_2}_{\infty}}$, where $\ds{c < 1}$, and hence $\ds{T}$ is a contraction map. From lectures, we have that $\ds{C[-1,1]}$ is complete, and thus the sequence of continuous functions $\ds{\{f_n\}_{n=1}^{\infty}}$ converges to the fixed point $\ds{f \in C[-1,1]}$. Thus there exists a continous function $\ds{f:[-1,1]\rightarrow \mathbb{R}}$.
+
+
+			 
+	\end{enumerate}
+\end{document}

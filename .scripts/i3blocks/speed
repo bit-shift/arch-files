@@ -1,11 +1,11 @@
 #!/bin/bash
 
-case $BLOCK_BUTTON in
-	1) $TERMINAL -hold -e bash -c "speedtest && bash";;
-	3) pgrep -x dunst >/dev/null && notify-send -u low "<b>Speedtest Module</b>" "Left click - speedtest
-Right click - show usage message
-";;
-esac
+#case $BLOCK_BUTTON in
+#	1) $TERMINAL -hold -e bash -c "speedtest && bash";;
+#	3) pgrep -x dunst >/dev/null && notify-send -u low "<b>Speedtest Module</b>" "Left click - speedtest
+#Right click - show usage message
+#";;
+#esac
 
 error=$(speedtest --no-upload --simple 2>&1 | grep -o 'ERROR')
 speedmbps=$(speedtest --no-upload --simple | awk '/Download/' | grep -o '[0-9].*')

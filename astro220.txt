@@ -1,0 +1,31 @@
+Kate Daniels
+
+- Dynamics, broad application of classical dynamics
+- Disk dynamics 
+- Early epochs - merger events
+- Later epochs - evolution dominated by internal secular processes
+- Interactions of stars with perturbations in the disk
+- Emergence of dynamical chaos
+- Theoretical look - isolate the particular parameters that influence kinematics for evolution of disks
+- Cold torquing - major factor to disk structure
+
+- Emergence of dynamical chaos
+	- Analytic predictions
+- Galactic dynamics
+
+- Clumps of mass in the disk provide torque on stars in the disk
+	- Unclear of general movement directions
+	- Not known how the dispersion or flood inwards occurs or even if it occurs
+
+- Metallicity tagging issues with mergers of galaxies
+
+- Cold torquing 
+	- Changing the size of the orbit, but not perturbing it
+	- corotation - circular orbital frequency of the disk equals the spiral pattern speed
+	- bounces between spiral arms 
+	- spiral arms open up or dissipate - drops a star with angular momentum but no source of gravity?
+- Kinematically cold orbit - organised circular orbit - birth of star
+	- Orbit perturbations - rosettes - from other clumps
+	- Kinemtically heated group of stars
+	- Interaction via gravity with large clumps/clouds
+

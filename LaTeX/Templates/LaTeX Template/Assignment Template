@@ -1,0 +1,70 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper]{article}
+
+% Install the required packages for the document 
+\usepackage{envmath}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usepackage{asyalign}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}{}
+\usetikzlibrary{arrows}
+
+% Page and style settings
+\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+
+% Begin the text of the document
+\begin{document}
+\pagenumbering{arabic}
+% the following four lines force that lines break after 80 characters in the R-output
+
+% Begin title and formatting
+\begin{center}
+{\large \textbf{MTRX 1701 - Introduction to Mechatronic Engineering}}\\
+\end{center}
+
+% Table formatting and text
+\vspace{-1mm}
+\begin{tabular*}{1.0\linewidth}{@{\extracolsep{\fill}}lr@{}}
+  \hline\noalign{\smallskip}
+Semester 1, \the\year & Name = \texttt{Keegan Gyoery} \\ 
+Tutor = \texttt{Nick Asthanasios} & SID = \texttt{470413467} \\
+\hline
+\end{tabular*}
+
+% Centre the heading for the document 
+\begin{center}
+ \large \textbf{Assignment 1}\\
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

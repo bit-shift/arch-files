@@ -1,11 +1,11 @@
 #!/bin/bash
 
-case $BLOCK_BUTTON in
-	1) $TERMINAL -hold -e bash -c "nmtui && bash";;
-	3) pgrep -x dunst >/dev/null && notify-send -u low "<b>Wifi Module</b>" "Left click - open nmtui
-Right click - show usage message
-";;
-esac
+#case $BLOCK_BUTTON in
+#	1) $TERMINAL -hold -e bash -c "nmtui && bash";;
+#	3) pgrep -x dunst >/dev/null && notify-send -u low "<b>Wifi Module</b>" "Left click - open nmtui
+#Right click - show usage message
+#";;
+#esac
 
 device=$(nmcli device | grep -o '^wlp4s0.*' | awk '{print $1}')
 type=$(nmcli device | grep -o '^wlp4s0.*' | awk '/wlp4s0/ {print $2}')

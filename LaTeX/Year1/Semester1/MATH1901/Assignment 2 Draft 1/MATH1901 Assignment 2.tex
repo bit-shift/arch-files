@@ -1,0 +1,402 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper]{article}
+
+% Install the required packages for the document 
+\usepackage{envmath}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{harpoon}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{asyalign}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{xhfill}
+\usepackage{accents}
+\usepackage{cite}
+\usepackage{url}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows}
+
+% Page and style settings
+\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+
+
+% Begin the text of the document
+\begin{document}
+
+% Begin the Title Page
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+\textsc{\LARGE University of Sydney}\\[1.5cm] % Name of your university/college
+\textsc{\Large MATH 1901}\\[0.5cm] % Major heading such as course name
+\textsc{\large Differential Calculus (Advanced)}\\[0.5cm] % Minor heading such as course title
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Assignment 2}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}
+Keegan Gyoery % Your name
+\\
+\emph{SID:}
+470413467
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Tutor:} 
+Daniel Daners % Tutor's Name
+\\
+\emph{Tutorial:}
+Carslaw Tutorial Room 359, 10am
+\end{flushright}
+\end{minipage}\\[4cm]
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+\pagenumbering{arabic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item 
+
+	\begin{enumerate}
+		\item Using L'Hopital's Rule, we can compute the following limit.
+
+		\begin{align*}
+		\lim_{x\to1}\left(\frac{1}{\ln{x}}-\frac{1}{x-1}\right) & = \lim_{x\to1}\left(\frac{x-1}{(\ln{x})(x-1)}-\frac{\ln{x}}{(\ln{x})(x-1)}\right)\\
+		& = \lim_{x\to1}\left(\frac{x-1-\ln{x}}{(\ln{x})(x-1)}\right)\\
+		& = \lim_{x\to1}\left(\frac{\frac{d}{dx}(x-1-\ln{x})}{\frac{d}{dx}\left[(\ln{x})(x-1)\right]}\right)\\
+		& = \lim_{x\to1}\left(\frac{1-\frac{1}{x}}{\frac{1}{x}(x-1)+\ln{x}}\right)\\
+		& = \lim_{x\to1}\left(\frac{1-\frac{1}{x}}{1-\frac{1}{x}+\ln{x}}\right)\\
+		& = \lim_{x\to1}\left(\frac{\frac{d}{dx}(1-\frac{1}{x})}{\frac{d}{dx}(1-\frac{1}{x}+\ln{x})}\right)\\
+		& = \lim_{x\to1}\left(\frac{\frac{1}{x^2}}{\frac{1}{x^2}+\frac{1}{x}}\right)\\
+		& = \lim_{x\to1}\left(\frac{\frac{1}{x}}{\frac{1}{x}+1}\right)\\
+		& = \frac{1}{1+1}\\
+		\therefore \lim_{x\to1}\left(\frac{1}{\ln{x}}-\frac{1}{x-1}\right) & = \frac{1}{2}\\
+		\end{align*}
+
+		\item To compute the Taylor polynomial of order 5 of the function $\displaystyle{f(x) \coloneqq \frac{e^{x^2}}{x^2}}$ about $x = 1$, we must first determine the derivatives, up to and including the fifth derivative, at the point $x = 1$. In order to compute this derivative, we will use the Leibniz formula for the n-th derivative of a product of two functions. The formula to compute these derivatives is as follows:
+
+		\begin{align*}
+		(hg)^{(n)} & = \sum_{k = 0}^{n}
+		\binom{n}{k} h^{(k)}g^{(n-k)}\\
+		\end{align*}
+
+		Before calculating the derivatives using the Leibniz formula, we must compute the derivatives of $h$ and $g$, which are defined for this proof as $h \coloneqq e^{x^2}$ and $g \coloneqq x^{-2}$. For the function $g$, the derivatives are as follows.
+
+		\begin{align*}
+		g^{(0)} & = x^{-2}\\
+		g^{(1)} & = -2x^{-3}\\
+		g^{(2)} & = 6x^{-4}\\
+		g^{(3)} & = -24x^{-5}\\
+		g^{(4)} & = 120x^{-6}\\
+		g^{(5)} & = -720x^{-7}\\
+		\end{align*}
+
+		\pagebreak
+
+		For the function $h$, the derivatives are less straight forward to calculate.
+
+		\begin{align*}
+		h^{(0)} & = e^{x^2}\\[15pt]
+		h^{(1)} & = \frac{d}{dx}\left[e^{x^2}\right]\\
+		\therefore h^{(1)} & = 2xe^{x^2}\\[15pt]
+		h^{(2)} & = \frac{d}{dx}\left[2xe^{x^2}\right]\\
+		& = 2e^{x^2} + 4x^2e^{x^2}\\
+		\therefore h^{(2)} & = 2e^{x^2}\left[2x^2 + 1\right]\\[15pt]
+		h^{(3)} & = \frac{d}{dx}\left[2e^{x^2} + 4x^2e^{x^2}\right]\\
+		& = 4xe^{x^2} + 8xe^{x^2} + 8x^3e^{x^2}\\
+		\therefore h^{(3)} & = 4xe^{x^2}\left[2x^2 + 3\right]\\[15pt]
+		h^{(4)} & = \frac{d}{dx}\left[4xe^{x^2} + 8xe^{x^2} + 8x^3e^{x^2}\right]\\
+		& = 4e^{x^2} + 8x^2e^{x^2} + 8e^{x^2} + 16x^2e^{x^2} + 24x^2e^{x^2} + 16x^4e^{x^2}\\
+		& = 12e^{x^2} + 48x^2e^{x^2} + 16x^4e^{x^2}\\
+		\therefore h^{(4)} & = 4e^{x^2}\left[4x^4 + 12x^2 + 3\right]\\[15pt]
+		h^{(5)} & = \frac{d}{dx}\left[12e^{x^2} + 48x^2e^{x^2} + 16x^4e^{x^2}\right]\\
+		& = 24xe^{x^2} + 96xe^{x^2} + 96x^3e^{x^2} + 64x^3e^{x^2} + 32x^5e^{x^2}\\
+		& = 120xe^{x^2} + 160x^3e^{x^2} + 32x^5e^{x^2}\\
+		\therefore h^{(5)} & = 8xe^{x^2}\left[4x^4 + 20x^2 + 15\right]\\
+		\end{align*}
+
+		In order to calculate the derivatives of $\displaystyle{\frac{e^{x^2}}{x^2}}$, we must use the above derivatives of $h$, and $g$. Using these results, we can compute the derivatives at $x=1$, up to and inclduing, the fifth derivative. Computing the zeroth derivative, in other terms the function itself, at $x=1$, we get the result:
+
+		\begin{align*}
+		(hg)^{(0)} & = \frac{e^{x^2}}{x^2}\\
+		\therefore (hg)^{(0)} & = e \hspace{5mm} \text{Substituting } x = 1\\
+		\end{align*}
+
+		\pagebreak
+
+		Now computing the first derivative of the function using the Leibniz formula, and evaluating at $x=1$, we get the result:
+
+		\begin{align*}
+		(hg)^{(1)} & = \sum_{k = 0}^{1}
+		\binom{1}{k} h^{(k)}g^{(1-k)}\\
+		& = \binom{1}{0}h^{(0)}g^{(1)} + \binom{1}{1}h^{(1)}g^{(0)}\\
+		& = \binom{1}{0}\left[(e^{x^2})(-2x^{-3})\right] + \binom{1}{1}\left[(2xe^{x^2})(x^{-2})\right]\\
+		\therefore (hg)^{(1)} & = -2 + 2 \hspace{5mm} \text{Substituting } x = 1\\
+		& = 0\\
+		\end{align*}
+
+		Now computing the second derivative and evaluating at $x=1$, we get the result:
+
+		\begin{align*}
+		(hg)^{(2)} & = \sum_{k = 0}^{2}
+		\binom{2}{k} h^{(k)}g^{(2-k)}\\
+		& = \binom{2}{0}h^{(0)}g^{(2)} + \binom{2}{1}h^{(1)}g^{(1)} + \binom{2}{2}h^{(2)}g^{(0)}\\
+		& = \binom{2}{0}\left[(e^{x^2})(6x^{-4})\right] + \binom{2}{1}\left[(2xe^{x^2})(-2x^{-3})\right] + \binom{2}{2}\left[(2e^{x^2}(2x^2+1))(x^{-2})\right]\\
+		\therefore (hg)^{(2)} & = 6e -8e + 6e \hspace{5mm} \text{Substituting } x = 1\\
+		& = 4e\\
+		\end{align*}
+
+		Now computing the third derivative at $x=1$, we get the following result:
+
+		\begin{align*}
+		(hg)^{(3)} & = \sum_{k = 0}^{3}
+		\binom{3}{k} h^{(k)}g^{(3-k)}\\
+		& = \binom{3}{0}h^{(0)}g^{(3)} + \binom{3}{1}h^{(1)}g^{(2)} + \binom{3}{2}h^{(2)}g^{(1)} + \binom{3}{3}h^{(3)}g^{(0)}\\
+		& = \binom{3}{0}\left[(e^{x^2})(-24x^{-5})\right] + \binom{3}{1}\left[(2xe^{x^2})(6x^{-4})\right] \\
+		& \phantom{{=}} + \binom{3}{2}\left[(2e^{x^2}(2x^2+1))(-2x^{-3})\right] + \binom{3}{3}\left[(4xe^{x^2}(2x^2+3))(x^{-2})\right]\\
+		\therefore (hg)^{(3)} & = -24e + 36e - 36e + 20e \hspace{5mm} \text{Substituting } x = 1\\
+		& = -4e\\
+		\end{align*}
+
+		\pagebreak
+
+		Now computing the fourth derivative of the function at $x=1$, we get the result:
+
+		\begin{align*}
+		(hg)^{(4)} & = \sum_{k = 0}^{4}
+		\binom{4}{k} h^{(k)}g^{(4-k)}\\
+		& = \binom{4}{0}h^{(0)}g^{(4)} + \binom{4}{1}h^{(1)}g^{(3)} + \binom{4}{2}h^{(2)}g^{(2)} + \binom{4}{3}h^{(3)}g^{(1)} + \binom{4}{4}h^{(4)}g^{(0)}\\
+		& = \binom{4}{0}\left[(e^{x^2})(120x^{-6})\right] + \binom{4}{1}\left[(2xe^{x^2})(-24x^{-5})\right] \\
+		& \phantom{{=}} + \binom{4}{2}\left[(2e^{x^2}(2x^2+1))(6x^{-4})\right] + \binom{4}{3}\left[(4xe^{x^2}(2x^2+3))(-2x^{-3})\right]\\ 
+		& \phantom{{=}} + \binom{4}{4}\left[(4e^{x^2}(4x^4+12x^2+3))(x^{-2})\right]\\
+		\therefore (hg)^{(4)} & = 120e -192e + 216e - 160e + 76e \hspace{5mm} \text{Substituting } x = 1\\
+		& = 60e\\
+		\end{align*}
+
+		Now computing the fifth derivative of the function at $x=1$, we get the result that follows:
+
+		\begin{align*}
+		(hg)^{(5)} & = \sum_{k = 0}^{5}
+		\binom{5}{k} h^{(k)}g^{(5-k)}\\
+		& = \binom{5}{0}h^{(0)}g^{(5)} + \binom{5}{1}h^{(1)}g^{(4)} + \binom{5}{2}h^{(2)}g^{(3)} + \binom{5}{3}h^{(3)}g^{(2)} + \binom{5}{4}h^{(4)}g^{(1)} + \binom{5}{5}h^{(5)}g^{(0)}\\
+		& = \binom{5}{0}\left[(e^{x^2})(-720x^{-7})\right] + \binom{5}{1}\left[(2xe^{x^2})(120x^{-6})\right] \\
+		& \phantom{{=}} + \binom{5}{2}\left[(2e^{x^2}(2x^2+1))(-24x^{-5})\right] + \binom{5}{3}\left[(4xe^{x^2}(2x^2+3))(6x^{-4})\right]\\ 
+		& \phantom{{=}} + \binom{5}{4}\left[(4e^{x^2}(4x^4+12x^2+3))(-2x^{-3})\right] + \binom{5}{5}\left[(8xe^{x^2}(4x^4+20x^2+15))(x^{-2})\right]\\
+		\therefore (hg)^{(5)} & = -720e + 1200e -1440e + 1200e -760e + 312e \hspace{5mm} \text{Substituting } x = 1\\
+		& = -208e\\
+		\end{align*}
+
+		Using the results that we have just calculated, we will amalgamate the values of each derivative for the function $\displaystyle{f(x) = \frac{e^{x^2}}{x^2}}$ at $x=1$.
+
+		\begin{align*}
+		f^{(0)}(1) & = e\\
+		f^{(1)}(1) & = 0\\
+		f^{(2)}(1) & = 4e\\
+		f^{(3)}(1) & = -4e\\
+		f^{(4)}(1) & = 60e\\
+		f^{(5)}(1) & = -208e\\
+		\end{align*}
+
+		Now we will examine the general form for the Taylor expansion about some arbitrary point, $x_0$, of order 5. 
+
+		\begin{align*}
+		T_5(x) & = f(x_0) + f^{(1)}(x_0)(x-x_0) + \frac{f^{(2)}(x_0)}{2!}(x-x_0)^2 + \frac{f^{(3)}(x_0)}{3!}(x-x_0)^3 + \frac{f^{(4)}(x_0)}{4!}(x-x_0)^4\\ 
+		& \phantom{{=}} + \frac{f^{(5)}(x_0)}{5!}(x-x_0)^5\\
+		\end{align*}
+
+		Using the values for the derivatives of $f(x)$ about the point $x=1$, we can calculate the Taylor expansion of order 5 for the function $\displaystyle{f(x) = \frac{e^{x^2}}{x^2}}$.
+
+		\begin{align*}
+		T_5(x) & = f(x_0) + f^{(1)}(x_0)(x-x_0) + \frac{f^{(2)}(x_0)}{2!}(x-x_0)^2 + \frac{f^{(3)}(x_0)}{3!}(x-x_0)^3 + \frac{f^{(4)}(x_0)}{4!}(x-x_0)^4\\ 
+		& \phantom{{=}} + \frac{f^{(5)}(x_0)}{5!}(x-x_0)^5\\
+		& = f(1) + f^{(1)}(1)(x-1) + \frac{f^{(2)}(1)}{2!}(x-1)^2 + \frac{f^{(3)}(x1)}{3!}(x-1)^3 + \frac{f^{(4)}(1)}{4!}(x-1)^4\\ 
+		& \phantom{{=}} + \frac{f^{(5)}(1)}{5!}(x-1)^5\\
+		& = e + 0 + \frac{4e}{2}(x-1)^2 + \frac{-4e}{6}(x-1)^3 + \frac{60e}{24}(x-1)^4 + \frac{-208e}{120}(x-1)^5\\
+		\therefore T_5(x) & = e + 2e(x-1)^2 - \frac{2e}{3}(x-1)^3 + \frac{5e}{2}(x-1)^4 - \frac{26e}{15}(x-1)^5\\
+		\end{align*}
+
+
+	\end{enumerate}
+
+	\bigbreak
+
+	\item
+
+	\begin{enumerate}
+		\item The Mean Value Theorem states that for some function $f:[\hspace{0.5mm} a,b \hspace{0.5mm}] \rightarrow \mathbb{R}$ be continuous and $f:(\hspace{0.5mm} a,b \hspace{0.5mm}) \rightarrow \mathbb{R}$ be differentiable, there exists $c \in (\hspace{0.5mm} a,b \hspace{0.5mm})$ such that $\displaystyle{\frac{f(b)-f(a)}{b-a} = f^\prime (c)}$. By considering cases for the given inequality, $\displaystyle{\sqrt{1+x} \leq 1 + \frac{x}{2}}$ for $x \in (\hspace{0.5mm} -1,\infty \hspace{0.5mm})$, we can use the Mean Value Theorem to prove this inequality holds $\forall x \in (\hspace{0.5mm} -1,\infty \hspace{0.5mm})$.
+
+		\bigbreak
+
+		Considering the first case, where $x \in (-1,0)$, we define $\displaystyle{f(t) \coloneqq \sqrt{1+t}}$ for $t\in[x,0]$. By the Mean Value Theorem, there exists $c\in(x,0)$ such that:
+
+		\begin{align*}
+		\frac{f(0)-f(x)}{0-x} & = f^\prime(c)\\
+		\therefore \frac{1-\sqrt{1+x}}{-x} & = \frac{1}{2\sqrt{1+c}}\\
+		\therefore 1-\sqrt{1+x} & = \frac{-x}{2\sqrt{1+c}}\\
+		\end{align*}
+
+		As $c\in(x,0)$ for $x \in (-1,0)$, it follows that:
+
+		\begin{align*}
+		0 < \sqrt{1+c} < 1 \implies \frac{1}{2\sqrt{1+c}} > \frac{1}{2}\\
+		\end{align*}
+
+		Now, as for $x \in (-1,0)$, $x<0$, $\therefore -x > 0$. Thus it follows that:
+
+		\begin{align*}
+		\frac{-x}{2\sqrt{1+c}} & > \frac{-x}{2}\\
+		\therefore 1-\sqrt{1+x} & > \frac{-x}{2}\\
+		\therefore \sqrt{1+x} & < 1 + \frac{x}{2} \hspace{5mm} \forall x \in (-1,0)\\
+		\end{align*}
+
+		\pagebreak
+
+		Now, considering the second case, where $x \in (0,\infty)$, we define $\displaystyle{f(t) \coloneqq \sqrt{1+t}}$ for $t\in[0,x]$. By the Mean Value Theorem, there exists $c\in(0,x)$ such that:
+
+		\begin{align*}
+		\frac{f(x)-f(0)}{x-0} & = f^\prime(c)\\
+		\therefore \frac{\sqrt{1+x}-1}{x} & = \frac{1}{2\sqrt{1+c}}\\
+		\therefore \sqrt{1+x} - 1 & = \frac{x}{2\sqrt{1+c}}\\
+		\end{align*}
+
+		As $c\in(0,x)$ for $x \in (0,\infty)$, it follows that:
+
+		\begin{align*}
+		\sqrt{1+c} > 1 \implies \frac{1}{2\sqrt{1+c}} < \frac{1}{2}\\
+		\end{align*}
+
+		Now, as for $x \in (0,\infty)$, $x>0$. Thus it follows that:
+		\begin{align*}
+		\frac{x}{2\sqrt{1+c}} & < \frac{x}{2}\\
+		\therefore \sqrt{1+x} -1 & < \frac{x}{2}\\
+		\therefore \sqrt{1+x} & < 1 + \frac{x}{2} \hspace{5mm} \forall x \in (0,\infty)\\
+		\end{align*}
+
+		Now considering the third and final case, where $x=0$, we get the following results.
+
+		\begin{align*}
+		x = 0 \implies & 
+		\begin{cases}
+		\displaystyle{\sqrt{1+x} = 1}\\
+		\displaystyle{1 + \frac{x}{2} = 1}\\
+		\end{cases}\\
+		\therefore \sqrt{1+x} & = 1 + \frac{x}{2} \hspace{5mm} \text{ for } x = 0\\
+		\end{align*}
+
+		Thus combining the three cases, in the order Case 1, Case 3, Case 2, we get the following results.
+
+		\begin{align*}
+		\sqrt{1+x} < 1 + \frac{x}{2} \hspace{5mm} \forall x \in (-1,0)\\
+		\sqrt{1+x} = 1 + \frac{x}{2} \hspace{5mm} \forall x \in x=0\\
+		\sqrt{1+x} < 1 + \frac{x}{2} \hspace{5mm} \forall x \in (0,\infty)\\
+		\end{align*}
+
+		Collapsing the above results, the inequality, $\displaystyle{\sqrt{1+x} \leq 1 + \frac{x}{2}}$ holds $\forall x \in (-1,\infty)$, with equality occuring at $x=0$.
+
+		\bigbreak
+
+		\item Let $f:\mathbb{R} \rightarrow \mathbb{R}$ be a differentiable function. Fix some $x_0 \in \mathbb{R}$. Caratheodory's characterisation for differentiability at $x_0$ asserts that there exists a function $m_{x_0}:\mathbb{R} \rightarrow \mathbb{R}$ that is continuous at $x_0$, such that 
+
+		\begin{align*}
+		f(x) & = f(x_0) + m_{x_0}(x)(x-x_0)\\
+		\end{align*}
+
+		for all $x \in \mathbb{R}$. In this characterisation, $f^\prime (x_0) = m_{x_0}(x_0)$. This characterisation defines the function $f(x)$ to be differentiable at the point $x_0$. As a result, $\displaystyle{f^\prime(x_0) = \lim_{x \to x_0}\frac{f(x)-f(x_0)}{x-x_0}}$. In other words, $\displaystyle{m_{x_0}(x_0) = \lim_{x \to x_0}\frac{f(x)-f(x_0)}{x-x_0}}$.
+
+		\bigbreak
+
+		For the following proof, assume $f$ is bijective with inverse $\displaystyle{f^{-1}:\mathbb{R} \rightarrow \mathbb{R}}$, with $\displaystyle{f^\prime (x_0) \neq 0}$, and that the inverse is continuous. We are first required to prove that $f^{-1}$ is differentiable at $y_0 \coloneqq f(x_0)$.  Examining Caratheodory's characterisation at the point $y_0 \coloneqq f(x_0)$, we get the following result. 
+
+		\begin{align*}
+		f(x) & = f(x_0) + m_{x_0}(x)(x-x_0)\\
+		\therefore m_{x_0}(x_0) & = \lim_{x \to x_0}\frac{f(x) - f(x_0)}{x-x_0}\\
+		& = \lim_{x \to x_0}\frac{f(x) - f(x_0)}{f^{-1}(f(x))-f^{-1}(f(x_0))} \hspace{5mm} \text{as } f(x) \text{ is bijective and has an inverse}\\
+		& = \lim_{y \to y_0}\frac{y-y_0}{f^{-1}(y) - f^{-1}(y_0)}\\
+		\therefore \frac{1}{m_{x_0}(x_0)} & = \lim_{y \to y_0}\frac{f^{-1}(y) - f^{-1}(y_0)}{y-y_0} \hspace{5mm} \text{as } f^\prime (x_0) \neq 0 \text{ and thus } m_{x_0}(x_0) \neq 0\\
+		\end{align*}
+
+		Defining $\displaystyle{m_{y_0}(y_0) \coloneqq \frac{1}{m_{x_0}(x_0)}}$, we get the following result.
+
+		\begin{align*}
+		\therefore m_{y_0}(y_0) & = \lim_{y \to y_0}\frac{f^{-1}(y) - f^{-1}(y_0)}{y-y_0}\\
+		\end{align*}
+
+		Thus it is clear that the inverse function is defined and differentiable at the point $y_0 \coloneqq f(x_0)$. As we have the derivative in the form above, we are able to write the inverse function, $f^{-1}(x)$, in the form of Caratheodory's characterisation, by definition.
+
+		\begin{align*}
+		\therefore f^{-1}(y) & = f^{-1}(y_0) + m_{y_0}(y)(y-y_0)\\
+		\end{align*}
+
+		Thus it is clear that at the point $y_0 \coloneqq f(x_0)$, $f^{-1}(x)$ is differentiable, as it can be written in the form of Caratheodory's characterisation. In order for Caratheodory's characterisation to be valid for the inverse function, we assume that $f^{-1}(x)$ is continuous. Furthermore, $\displaystyle{f^\prime (x_0) \neq 0}$, and as $\displaystyle{f^\prime(x_0) = m_{x_0}(x_0)}$, $\therefore \displaystyle{m_{x_0}(x_0) \neq 0}$, and thus $\displaystyle{\frac{1}{m_{x_0}(x_0)} = m_{y_0}(y_0)}$ exists, and is defined. We are now required to prove $\displaystyle{(f^{-1})^\prime(y_0) = \frac{1}{f^\prime(f^{-1}(y_0))}}$, and so examining the relationship between Caratheodory's characterisation and the derivative of the function, we get the following results.
+
+		\begin{align*}
+		(f^{-1})^\prime(y_0) & = m_{y_0}(y_0) \hspace{5mm} \text{By definition of Caratheodory's characterisation}\\
+		& = \frac{1}{m_{x_0}(x_0)} \hspace{5mm} \text{By definition of } m_{y_0}(y_0)\\
+		& = \frac{1}{f^\prime (x_0)} \hspace{5mm} \text{By definition of Caratheodory's characterisation}\\
+		\therefore (f^{-1})^\prime(y_0) & = \frac{1}{f^\prime(f^{-1}(y_0))} \hspace{5mm} \text{By definition of } y_0 = f(x_0)\\
+		\end{align*}
+
+
+
+
+
+
+	\end{enumerate}
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+\end{document}

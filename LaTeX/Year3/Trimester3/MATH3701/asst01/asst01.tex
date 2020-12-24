@@ -1,0 +1,170 @@
+\documentclass[a4paper]{article}
+
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+\usepackage{titlesec}
+
+\renewcommand{\v}[1]{\textbf{#1}}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+\newcommand{\e}[1]{\varepsilon_{#1}(u)}
+\newcommand{\dote}[1]{\dot{\varepsilon}_{#1}(u)}
+\newcommand{\dotg}{\dot{\gamma}(u)}
+\newcommand{\ddotg}{\ddot{\gamma}(u)}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+\DeclareMathOperator{\spn}{span}
+
+\parskip=8pt
+\parindent=0pt
+\textwidth=6.25in
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\textheight=10in
+\topmargin=-0.75in
+\baselineskip=11pt
+
+\begin{document}
+\pagenumbering{arabic}
+\text{School of Mathematics}
+\hfill
+\text{University of New South Wales}
+\begin{center}
+  \vspace{-3mm}
+	\textbf{\large {MATH3701: Higher Topology and Differential Geometry \\
+	Assignment}}
+\end{center}
+\vspace{-5mm}
+\text{Name: Keegan Gyoery}
+\hfill
+\text{zID: z5197058}
+
+\begin{enumerate}[leftmargin=*]
+\item[\textbf{1.}]
+	Consider $\ds{d(l \gamma(u)), u \in I}$. Note that $\ds{l}$ is linear and so $\ds{dl = l}$.
+	\begin{align*}
+		d(l \circ \gamma(u)) & = d\gamma(u) \cdot dl(\gamma(u)) \\
+							 & = d\gamma(u) \cdot l \circ \gamma(u) \hspace{3mm} \text{as $l$ is linear} \\
+							 & = d\gamma(u) \cdot c.
+	\end{align*}
+	We know that $\ds{\gamma}$ sends $\ds{u}$ into $\ds{C}$, which is inside the plane $\ds{P}$. For any $\ds{x = \gamma(u)}$ inside the plane, by definition, $\ds{l \circ \gamma(u) =l(x) = c}$. From above, we have $\ds{d(l \circ \gamma(u)) = d\gamma(u) \cdot c}$. Alternatively, we can differentiate as follows:
+	\begin{align*}
+		\therefore d(l \circ \gamma(u)) & = d(l(x)) \\
+										& = d(c) \\
+										& = 0 \\
+		\therefore d\gamma(u) \cdot c & = 0 \\
+		d\gamma(u) & = 0.
+	\end{align*}
+	Thus all derivatives of $\ds{\gamma}$ are zero, so they cannot be linearly independent. Hence $\ds{\gamma}$ is not Frenet.
+\item[\textbf{2.}]
+	\begin{align*}
+		\gamma(u) & = (-u,\sin{2u}, \cos{2u})^\mathsf{T} \\
+		\dot{\gamma}(u) & = (-1, 2\cos{2u}, -2\sin{2u})^\mathsf{T} \\
+		\ddot{\gamma}(u) & = (0, -4\sin{2u}, -4\cos{2u})^\mathsf{T}.
+	\end{align*}
+	Clearly these are independent and so $\ds{\gamma}$ is Frenet. For the Frenet Frame we have:
+	\begin{align*}
+		\varepsilon_1(u) & = \frac{\dot{\gamma}(u)}{|\dot{\gamma}(u)|} = \frac{1}{\sqrt{5}}(-1, 2\cos{2u}, -2\sin{2u})^\mathsf{T}.
+	\end{align*}
+	Notice that $\ds{\ip{\varepsilon_1(u)}{\ddot{\gamma}(u)} = 0}$ and so $\ds{\ddot{\gamma}(u)}$ is perpendicular to $\ds{\varepsilon_1(u)}$. Hence for $\ds{\varepsilon_2(u)}$ we simply normalise $\ds{\ddot{\gamma}(u)}$.
+	\begin{align*}
+	\varepsilon_2(u) = (0, -\sin{2u}, -\cos{2u})^{\mathsf{T}}.
+	\end{align*}
+	For $\ds{\varepsilon_3(u)}$ we take the cross product of the first two vectors in the distinguished Frenet frame.
+	\begin{align*}
+		\varepsilon_3(u) & = \varepsilon_1(u) \times \varepsilon_2(u) \\
+						 & = \frac{1}{\sqrt{5}}(-1, 2\cos{2u}, -2\sin{2u})^\mathsf{T} \times (0, -\sin{2u}, -\cos{2u})^{\mathsf{T}} \\
+						 & = \frac{1}{\sqrt{5}}(-2, -\cos{2u}, \sin{2u})^\mathsf{T}.
+	\end{align*}
+	Note $\det(\varepsilon_1(u), \varepsilon_2(u), \varepsilon_3(u)) = -1$, we negate $\varepsilon_2(u)$ yielding a determinant of $+1$. Thus the distinguished Frenet frame for $\gamma$ is:
+	\begin{align*}
+		\varepsilon_1(u) & = \frac{1}{\sqrt{5}}(-1, 2\cos{2u}, -2\sin{2u})^\mathsf{T} \\
+		\varepsilon_2(u) & = (0, \sin{2u}, \cos{2u})^{\mathsf{T}} \\
+		\varepsilon_3(u) &  = \frac{1}{\sqrt{5}}(-2, -\cos{2u}, \sin{2u})^\mathsf{T}.
+	\end{align*}
+
+	\pagebreak
+
+\item[\textbf{3.}]
+\begin{enumerate}[leftmargin=*]
+\item[\textbf{a)}]
+	For any $\ds{i, j}$, we have $\ds{\ip{\varepsilon_i(u)}{\varepsilon_j(u)} = 0}$ or $\ds{1}$. In either case we know,
+	\begin{align*}
+		\frac{d}{du}\ip{\varepsilon_i(u)}{\varepsilon_j(u)} & = 0.
+	\end{align*}
+	Using the product rule:
+	\begin{align*}
+		\ip{\dote{i}}{\e{j}} + \ip{\e{i}}{\dote{j}} & = 0 \\
+		\ip{\dote{i}}{\e{j}} & = - \ip{\e{i}}{\dote{j}} \\
+		\ip{\dote{i}}{\e{j}} & = - \ip{\dote{j}}{\e{i}} \\
+		\therefore w_{ij} & = - w_{ji}.
+	\end{align*}
+\item[\textbf{b)}]
+	Proposition 2 tells us that for $\ds{1 \leq i \leq m - 1}$, then $\ds{\spn(\e{1}, ... , \e{i}) = \spn(\dot{\gamma}(u), \ddot{\gamma}(u), ... , \gamma^{(i)}(u))}$. Clearly $\ds{\e{i} \in \spn(\e{1}, ... , \e{i}) = \spn(\dot{\gamma}(u), \ddot{\gamma}(u), ... , \gamma^{(i)}(u))}$. Hence we can write,
+	\begin{align*}
+		\e{i} & = \alpha_1 \dot{\gamma}(u) + \alpha_2 \ddot{\gamma}(u) + ... + \alpha_i \gamma^{(i)}(u).
+	\end{align*}
+	Differentiating yields:
+	\begin{align*}
+		\dote{i} & = \alpha_1 \ddot{\gamma}(u) + ... + \alpha_i \gamma^{(i + 1)}(u). \\
+		\implies \dote{i} & \in \spn(\ddot{\gamma}(u), ... ,\gamma^{(i + 1)}(u)).
+	\end{align*}
+	Note that $\ds{\spn(\ddot{\gamma}(u), ... ,\gamma^{(i + 1)}(u))}$ is a subset of $\ds{\spn(\dot{\gamma}(u), \ddot{\gamma}(u), ..., \gamma^{(i + 1)}(u)) = \spn(\e{1}, ... , \e{i + 1})}$.
+	\begin{align*}
+		\therefore \dote{i+1} & \in \spn(\dot{\gamma}(u), \ddot{\gamma}(u), ..., \gamma^{(i + 1)}(u)).
+	\end{align*}
+	\item[\textbf{c)}]
+		First note that given $\ds{\dote{i} \in \spn(\e{1}, \e{2}, ... , \e{i + 1})}$ then we can write.
+	\begin{align*}
+		\dote{i} & = \alpha_1 \e{1} + \alpha_2 \e{2} + ... + \alpha_{i + 1} \e{i + 1}. \\
+		\implies w_{ij} & = \ip{\dote{i}}{\e{j}} \\
+		& = \ip{\alpha_1 \e{1} + \alpha_2 \e{2} + ... + \alpha_{i + 1} \e{i + 1}}{\e{j}} \\
+		& = \begin{cases}
+			0 & j > i + 1 \\
+			\alpha_j & j \leq i + 1.
+		\end{cases}
+	\end{align*}
+	We can obtain a similar expression for $\ds{w_{ji}}$,
+	\begin{align*}
+	$$w_{ji} = \begin{cases}
+			0 & i > j + 1 \\
+			\beta_i & i \leq j + 1.
+		\end{cases}
+	\end{align*}
+	We also know that $\ds{w_{ij} = -w_{ji}}$. Hence we have the following cases: \\ [1mm]
+	\textit{(1) $i > j + 1$ or $j > i + 1$:} \\ [1mm]
+		In this case either $w_{ij} = 0$ or $w_{ji} = 0$. Either way, as $w_{ij} = -w_{ji}$, we know that $w_{ij} = 0$. \\ [1mm]
+	\textit{(2) $i \leq j + 1$ and $j \leq i + 1$, this is equivalent to saying $|i - j| = 1$:} \\ [1mm]
+	$w_{ij} = \alpha_j$ and $w_{ji} = \beta_i$. Hence we also have the relationship $\alpha_j = -\beta_i$. \\ [1.5mm]
+	Thus $w_{ij} = 0$ unless $|i - j| = 1$.
+
+	\end{enumerate}
+
+\item[\textbf{4.}]
+	Note we have the following distinguished Frenet frame for $\ds{\gamma}$.
+	\begin{align*}
+		\varepsilon_1(u) & = \frac{1}{\sqrt{5}}(-1, 2\cos{2u}, -2\sin{2u})^\mathsf{T} \\
+		\varepsilon_2(u) & = (0, \sin{2u}, \cos{2u})^{\mathsf{T}} \\
+		\varepsilon_3(u) &  = \frac{1}{\sqrt{5}}(-2, -\cos{2u}, \sin{2u})^\mathsf{T}.
+	\end{align*}
+	Computing $\ds{\kappa_1(u)$ and $\kappa_2(u)}$:
+	\begin{align*}
+		\kappa_1(u) & = \frac{\ip{\dote{1}}{\e{2}}}{|\dotg|} \\
+					& = \frac{\ip{\frac{1}{\sqrt{5}} (0, -4\sin{2u}, -4\cos{2u})^{\mathsf{T}}}{(0, \sin{2u}, \cos{2u})^{\mathsf{T}}}}{\sqrt{5}} \\
+		\therefore \kappa_1(u) & = \frac{4}{5}. \\
+		\kappa_2(u) & = \frac{\ip{\dote{2}}{\e{3}}}{|\dotg|} \\
+					& = \frac{\ip{(0, -2\cos{2u}, 2\sin{2u})^{\mathsf{T}}}{\frac{1}{\sqrt{5}} (2, \cos{2u}, -\sin{2u})^{\mathsf{T}}}}{\sqrt{5}} \\
+		\therefore \kappa_2(u) & = -\frac{2}{5}.
+	\end{align*}
+
+\item[\textbf{5.}]
+
+\end{enumerate}
+\end{document}

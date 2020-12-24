@@ -1,0 +1,94 @@
+
+; <<>> DiG 9.7.3 <<>> @129.94.242.33 yahoo.com MX
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 51181
+;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 5, ADDITIONAL: 8
+
+;; QUESTION SECTION:
+;yahoo.com.			IN	MX
+
+;; ANSWER SECTION:
+yahoo.com.		556	IN	MX	1 mta7.am0.yahoodns.net.
+yahoo.com.		556	IN	MX	1 mta5.am0.yahoodns.net.
+yahoo.com.		556	IN	MX	1 mta6.am0.yahoodns.net.
+
+;; AUTHORITY SECTION:
+yahoo.com.		10976	IN	NS	ns5.yahoo.com.
+yahoo.com.		10976	IN	NS	ns3.yahoo.com.
+yahoo.com.		10976	IN	NS	ns1.yahoo.com.
+yahoo.com.		10976	IN	NS	ns4.yahoo.com.
+yahoo.com.		10976	IN	NS	ns2.yahoo.com.
+
+;; ADDITIONAL SECTION:
+ns1.yahoo.com.		182663	IN	A	68.180.131.16
+ns1.yahoo.com.		84566	IN	AAAA	2001:4998:130::1001
+ns2.yahoo.com.		192552	IN	A	68.142.255.16
+ns2.yahoo.com.		16822	IN	AAAA	2001:4998:140::1002
+ns3.yahoo.com.		76956	IN	A	203.84.221.53
+ns3.yahoo.com.		62895	IN	AAAA	2406:8600:b8:fe03::1003
+ns4.yahoo.com.		21164	IN	A	98.138.11.157
+ns5.yahoo.com.		85479	IN	A	119.160.253.83
+
+;; Query time: 0 msec
+;; SERVER: 129.94.242.33#53(129.94.242.33)
+;; WHEN: Sun Mar 17 16:48:55 2019
+;; MSG SIZE  rcvd: 360
+
+
+; <<>> DiG 9.7.3 <<>> @ns2.cecs.anu.edu.au. yahoo.com MX
+; (2 servers found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: REFUSED, id: 42445
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+;; WARNING: recursion requested but not available
+
+;; QUESTION SECTION:
+;yahoo.com.			IN	MX
+
+;; Query time: 7 msec
+;; SERVER: 150.203.161.36#53(150.203.161.36)
+;; WHEN: Sun Mar 17 16:52:20 2019
+;; MSG SIZE  rcvd: 27
+
+
+; <<>> DiG 9.7.3 <<>> @ns1.yahoo.com. yahoo.com MX
+; (2 servers found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 3401
+;; flags: qr aa rd; QUERY: 1, ANSWER: 3, AUTHORITY: 5, ADDITIONAL: 8
+;; WARNING: recursion requested but not available
+
+;; QUESTION SECTION:
+;yahoo.com.			IN	MX
+
+;; ANSWER SECTION:
+yahoo.com.		1800	IN	MX	1 mta5.am0.yahoodns.net.
+yahoo.com.		1800	IN	MX	1 mta7.am0.yahoodns.net.
+yahoo.com.		1800	IN	MX	1 mta6.am0.yahoodns.net.
+
+;; AUTHORITY SECTION:
+yahoo.com.		172800	IN	NS	ns2.yahoo.com.
+yahoo.com.		172800	IN	NS	ns4.yahoo.com.
+yahoo.com.		172800	IN	NS	ns3.yahoo.com.
+yahoo.com.		172800	IN	NS	ns5.yahoo.com.
+yahoo.com.		172800	IN	NS	ns1.yahoo.com.
+
+;; ADDITIONAL SECTION:
+ns1.yahoo.com.		86400	IN	AAAA	2001:4998:130::1001
+ns2.yahoo.com.		86400	IN	AAAA	2001:4998:140::1002
+ns3.yahoo.com.		86400	IN	AAAA	2406:8600:b8:fe03::1003
+ns1.yahoo.com.		1209600	IN	A	68.180.131.16
+ns2.yahoo.com.		1209600	IN	A	68.142.255.16
+ns3.yahoo.com.		1209600	IN	A	203.84.221.53
+ns4.yahoo.com.		1209600	IN	A	98.138.11.157
+ns5.yahoo.com.		1209600	IN	A	119.160.253.83
+
+;; Query time: 163 msec
+;; SERVER: 2001:4998:130::1001#53(2001:4998:130::1001)
+;; WHEN: Sun Mar 17 16:55:38 2019
+;; MSG SIZE  rcvd: 360
+

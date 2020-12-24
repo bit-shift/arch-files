@@ -1,0 +1,411 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper]{article}
+
+% Install the required packages for the document 
+\usepackage{envmath}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage[mathcal]{euscript}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{harpoon}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{asyalign}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{xhfill}
+\usepackage{accents}
+\usepackage{cite}
+\usepackage{url}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz-3dplot}
+\usepackage{eulervm}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows}
+
+% Page and style settings
+\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+
+
+% Begin the text of the document
+\begin{document}
+
+% Begin the Title Page
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+\textsc{\LARGE University of Sydney}\\[1.5cm] % Name of your university/college
+\textsc{\Large MATH 1903}\\[0.5cm] % Major heading such as course name
+\textsc{\large Integral Calculus and Modelling Advanced}\\[0.5cm] % Minor heading such as course title
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Assignment 1}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}
+Keegan Gyoery % Your name
+\\
+\emph{SID:}
+470413467
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Tutor:} 
+Dr Daniel Daners % Tutor's Name
+\\
+\emph{Tutorial:}
+Carslaw 361
+Tuesday 1pm
+\end{flushright}
+\end{minipage}\\[4cm]
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+\pagenumbering{arabic}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+	\item Let $\displaystyle{f \in \mathbb{R}^{\Delta}}$ and define $\displaystyle{g,h \in \mathbb{R}^{\Delta}}$ by the rules
+	\begin{align*}
+	g(x) & = \frac{f(x) + f(-x)}{2}\\
+	h(x) & = \frac{f(x) - f(-x)}{2}\\
+	\end{align*}
+	for all $\displaystyle{x \in {\Delta}}$. 
+
+	\bigbreak
+
+	We are now asked to prove which function out of $g$ and $h$ is even and which is odd. The definition of an even function is $\displaystyle{f(-x) = f(x)}$, and the definition of an odd function $\displaystyle{f(-x) = -f(x)}$. Both of these defintions will be used to determine the nature of the functions $g$ and $h$.
+
+	\bigbreak
+
+	Firstly, examining the function $g(x)$, we get the following results.
+
+	\begin{align*}
+	g(x) & = \frac{f(x) + f(-x)}{2}\\
+	\therefore g(-x) & = \frac{f(-x) + f(-(-x))}{2} \hspace{5mm} \text{substituting $\displaystyle{-x}$}\\
+	& = \frac{f(-x) + f(x)}{2}\\
+	& = \frac{f(x) + f(-x)}{2}\\
+	\therefore g(-x) & = g(x)\\
+	\end{align*}
+
+	Therefore, the function $g(x)$ is an even function as it satisfies the above defintion of an even function.
+
+	\bigbreak
+
+	Secondly, examining the function $h(x)$, we get the following results.
+
+	\begin{align*}
+	h(x) & = \frac{f(x) - f(-x)}{2}\\
+	\therefore h(-x) & = \frac{f(-x) - f(-(-x))}{2} \hspace{5mm} \text{substituting $\displaystyle{-x}$}\\
+	& = \frac{f(-x) - f(x)}{2}\\
+	& = \frac{-f(x) + f(-x)}{2}\\
+	& = \frac{-\Big[f(x) - f(-x)\Big]}{2}\\
+	\therefore h(-x) & = -h(x)\\
+	\end{align*}
+
+	Therefore, the function $h(x)$ is an odd function as it satisfies the above defintion of an odd function.
+
+	\pagebreak
+
+	\item Let $\displaystyle{f \in \mathbb{R}^{\Delta}}$. We are required to prove that
+
+	\begin{align*}
+	f = f_{even} + f_{odd}\\
+	\end{align*}
+
+	for some unique functions, $\displaystyle{f_{even}},{f_{odd} \in \mathbb{R}^{\Delta}}$ such that $\displaystyle{f_{even}}$ is even and $\displaystyle{f_{odd}}$ is odd.
+
+	\bigbreak
+
+	Using the functions from the previous question $g(x)$ and $h(x)$, we can define two functions, $\displaystyle{f_{even}}$ and $\displaystyle{f_{odd}}$, that are both unique and will satisfy the above condition. If we use the following definitions, the required result will become obvious.
+
+	\begin{align*}
+	f_{even} & \coloneqq \frac{f(x) + f(-x)}{2}\\
+	f_{odd} & \coloneqq \frac{f(x) - f(-x)}{2}\\
+	\therefore f_{even} + f_{odd} & = \frac{f(x) + f(-x)}{2} + \frac{f(x) - f(-x)}{2}\\
+	& = \frac{f(x)}{2} + \frac{f(-x)}{2} + \frac{f(x)}{2} - \frac{f(-x)}{2}\\
+	& = \frac{f(x)}{2} + \frac{f(x)}{2}\\
+	& = 2\frac{f(x)}{2}\\
+	& = f(x)\\
+	\therefore f_{even} + f_{odd} & = f(x)\\
+	\therefore f & = f_{even} + f_{odd}\\
+	\end{align*}
+
+	\item In order to find simplified expressions for $\displaystyle{f_{even}(x)}$ and $\displaystyle{f_{odd}(x)}$, in each of the following cases, we will use both the results from parts $1$ and $2$, in order to construct unique expressions for the $\displaystyle{f(x)}$ given in the question.
+
+	\begin{enumerate}
+		
+		\item For the first case we have $\displaystyle{\Delta = \mathbb{R}}$, and $\displaystyle{f(x)=e^x}$ for all $\displaystyle{x \in \Delta}$.
+
+		\begin{align*}
+		f(x) & = e^x\\
+		f_{even}(x) & = \frac{f(x) + f(-x)}{2}\\
+		\therefore f_{even}(x) & = \frac{e^x + e^{-x}}{2}\\
+		f_{odd}(x) & = \frac{f(x) - f(-x)}{2}\\
+		\therefore f_{odd}(x) & = \frac{e^x - e^{-x}}{2}\\
+		\end{align*}
+
+		\pagebreak
+
+		\item For the second case we have $\displaystyle{\Delta = \mathbb{R}\setminus \{\pm 1\}}$, and $\displaystyle{f(x)=\frac{1}{1-x}}$ for all $\displaystyle{x \in \Delta}$.
+
+		\begin{align*}
+		f(x) & = \frac{1}{1-x}\\
+		f_{even}(x) & = \frac{f(x) + f(-x)}{2}\\
+		& = \frac{\frac{1}{1-x} + \frac{1}{1+x}}{2}\\
+		& = \frac{\frac{1+x+1-x}{(1-x)(1+x)}}{2}\\
+		& = \frac{\frac{2}{1-x^2}}{2}\\
+		& = \frac{1}{1-x^2}\\
+		\therefore f_{even}(x) & = \frac{1}{1-x^2}\\
+		f_{odd}(x) & = \frac{f(x) - f(-x)}{2}\\
+		& = \frac{\frac{1}{1-x} - \frac{1}{1+x}}{2}\\
+		& = \frac{\frac{1+x-1+x}{(1-x)(1+x)}}{2}\\
+		& = \frac{\frac{2x}{1-x^2}}{2}\\
+		& = \frac{x}{1-x^2}\\
+		\therefore f_{odd}(x) & = \frac{x}{1-x^2}\\
+		\end{align*}
+
+		\pagebreak
+
+		\item For the third case we have $\displaystyle{\Delta = \mathbb{R} \setminus \mathbb{Z}}$, and $\displaystyle{f(x) = \lfloor{x}\rfloor}$ for all $\displaystyle{x \in \Delta}$. Due to the nature of the floor function and the defintion of the set in which $\displaystyle{\Delta}$ lies, we have the following facts for $\displaystyle{x}$ and $\displaystyle{\lfloor{x}\rfloor}$. Firstly, due to the definition of the set in which $\displaystyle{x}$ lies, that is $\displaystyle{x \in \Delta}$, where $\displaystyle{\Delta \in \mathbb{R} \setminus \mathbb{Z}}$, we have the following result.
+
+		\begin{align*}
+		n < x & < n+1 \hspace{5mm} \text{for some $\displaystyle{n \in \mathbb{Z}}$}\\
+		\therefore \lfloor{x}\rfloor & = n\\
+		\therefore -n > -x & > -(n+1)\\
+		\therefore -(n+1) < -x & < -n\\
+		\therefore \lfloor{-x}\rfloor & = -(n+1)\\
+		\therefore \lfloor{x}\rfloor + \lfloor{-x}\rfloor & = n - (n+1)\\
+		& = n - n - 1\\
+		& = -1\\
+		\therefore \lfloor{x}\rfloor + \lfloor{-x}\rfloor & = -1 \dots\dots(*)\\
+		\end{align*}
+
+		From this result we can find the necessary functions $\displaystyle{f_{even}(x)}$ and $\displaystyle{f_{odd}(x)}$, which are as follows.
+
+		\begin{align*}
+		f(x) & = \lfloor{x}\rfloor\\
+		f_{even}(x) & = \frac{f(x) + f(-x)}{2}\\
+		& = \frac{\lfloor{x}\rfloor + \lfloor{-x}\rfloor}{2}\\
+		& = -\frac{1}{2} \hspace{5mm} \text{using $\displaystyle{(*)}$}\\
+		\therefore f_{even}(x) & = -\frac{1}{2}\\
+		f_{odd}(x) & = \frac{f(x) - f(-x)}{2}\\
+		& = \frac{\lfloor{x}\rfloor - \lfloor{-x}\rfloor}{2}\\
+		& = \frac{\lfloor{x}\rfloor - \Big[ -1 -\lfloor{x}\rfloor \Big]}{2} \hspace{5mm} \text{using $\displaystyle{(*)}$}\\
+		& = \frac{\lfloor{x}\rfloor  + 1 + \lfloor{x}\rfloor}{2}\\
+		& = \frac{2\lfloor{x}\rfloor  + 1}{2}\\
+		& = \lfloor{x}\rfloor + \frac{1}{2}\\
+		\therefore f_{odd}(x) & = \lfloor{x}\rfloor + \frac{1}{2}\\
+		\end{align*}
+
+	\end{enumerate}
+
+	\pagebreak
+
+	\item For the following proofs, we define $\displaystyle{f \in \mathbb{R}^{\mathbb{R}}}$, and $f$ continuous such that all definite integrals $\displaystyle{\int_{a}^{b}f(x)dx}$ exist and are defined for all  $\displaystyle{a,b \in \mathbb{R}}$.
+
+	\bigbreak
+
+	Firstly, we shall determine the substitution $\displaystyle{t=-u}$, for use in the proofs that follow in $\displaystyle{4a}$, and $\displaystyle{4b}$.
+
+		\begin{align*}
+		t & = -u\\
+		t = x & \implies u = -x\\
+		t = -x & \implies u = x\\
+		t = a & \implies u = -a\\
+		t = -a & \implies u = a\\
+		t = 0 & \implies u = 0\\
+		\frac{dt}{du} & = -1\\
+		\therefore dt & = -du\\
+		\end{align*}
+
+	\begin{enumerate}
+
+		\item Using the properties of integrals, we will construct the following two proofs to show that, for all $\displaystyle{a \in \mathbb{R}}$,
+
+		\begin{align*}
+		\int_{-a}^{a}f(x)dx & = 
+		\begin{cases}
+		\displaystyle{2\int_{0}^{a}f(x)dx} \hspace{5mm} \text{if $f$ is even}\\
+		\displaystyle{0} \hfill \text{if $f$ is odd}\\
+		\end{cases}
+		\end{align*}
+
+		\bigbreak
+
+		For the first case, $f$ is even, and so we construct the following proof.
+
+		\begin{align*}
+		\int_{-a}^{a}f(x)dx & = \int_{-a}^{0}f(x)dx + \int_{0}^{a}f(x)dx\\
+		& = \int_{a}^{0}f(-t)(-dt) + \int_{0}^{a}f(x)dx \hspace{5mm} \text{substituting $x = -t$}\\
+		& = -\int_{a}^{0}f(t)dt + \int_{0}^{a}f(x)dx \hspace{5mm} \text{as $f(x)$ is even}\\
+		& = \int_{0}^{a}f(t)dt + \int_{0}^{a}f(x)dx\\
+		& = \int_{0}^{a}f(x)dx + \int_{0}^{a}f(x)dx \hspace{5mm} \text{dummy variable switch}\\
+		\therefore \int_{-a}^{a}f(x)dx & = 2\int_{0}^{a}f(x)dx \hspace{5mm} \text{if $f$ is even}\\
+		\end{align*}
+
+		And thus the first result is proven. 
+
+		\pagebreak
+
+		Now for the second case, $f$ is odd, and so we construct the following proof.
+
+		\begin{align*}
+		\int_{-a}^{a}f(x)dx & = \int_{-a}^{0}f(x)dx + \int_{0}^{a}f(x)dx\\
+		& = \int_{a}^{0}f(-t)(-dt) + \int_{0}^{a}f(x)dx \hspace{5mm} \text{substituting $x = -t$}\\
+		& = -\int_{a}^{0}\big[-f(t)\big]dt + \int_{0}^{a}f(x)dx \hspace{5mm} \text{as $f(x)$ is odd}\\
+		& = \int_{a}^{0}f(t)dt + \int_{0}^{a}f(x)dx\\
+		& = -\int_{0}^{a}f(t)dt + \int_{0}^{a}f(x)dx\\
+		& = -\int_{0}^{a}f(x)dx + \int_{0}^{a}f(x)dx \hspace{5mm} \text{dummy variable switch}\\
+		\therefore \int_{-a}^{a}f(x)dx & = 0 \hspace{5mm} \text{if $f$ is odd}\\
+		\end{align*}
+
+		And thus the second and final result is proven.
+
+		\pagebreak
+
+		\item For this question, we fix $\displaystyle{a \in \mathbb{R}}$ and define the area function $\displaystyle{A \in \mathbb{R}^{\mathbb{R}}}$ by the rule 
+		\begin{align*}
+		A(x) & = \int_{a}^{x}f(t)dt\\
+		\end{align*}
+		for all $\displaystyle{x \in \mathbb{R}}$.
+
+		\bigbreak
+
+		\begin{enumerate}
+
+		\item We are now required to prove that $\displaystyle{A}$ is even if and only if $\displaystyle{f}$ is odd. In order to complete this proof, we must prove the result from both sides of the implication. For the first part of the proof, we are required to prove $\displaystyle{f}$ is odd if $\displaystyle{A}$ is even.
+
+		\begin{align*}
+		A(x) & = A(-x)\\
+		\therefore A(x) - A(-x) & = 0\\
+		\therefore LHS & = \int_{a}^{x}f(t)dt - \int_{a}^{-x}f(t)dt\\
+		& = \int_{a}^{0}f(t)dt + \int_{0}^{x}f(t)dt - \int_{a}^{0}f(t)dt - \int_{0}^{-x}f(t)dt\\
+		& = \int_{0}^{x}f(t)dt - \int_{0}^{-x}f(t)dt\\
+		& = \int_{0}^{x}f(t)dt - \int_{0}^{x}f(-u)(-du) \hspace{5mm} \text{substituting $\displaystyle{t=-u}$}\\
+		& = \int_{0}^{x}f(t)dt + \int_{0}^{x}f(-u)du\\
+		& = \int_{0}^{x}f(t)dt + \int_{0}^{x}f(-t)dt \hspace{5mm} \text{dummy variable switch}\\
+		& = \int_{0}^{x}\Big[f(t) + f(-t)\Big]dt\\
+		\therefore \int_{0}^{x}\Big[f(t) + f(-t)\Big]dt & = 0\\
+		\therefore \frac{d}{dx}\left[\int_{0}^{x}\Big[f(t) + f(-t)\Big]dt \right] & = \frac{d}{dx}\left[0\right]\\
+		\therefore f(x) + f(-x) & = 0 \hspace{5mm} \text{by the Fundamental Theorem of Calculus}\\
+		\therefore f(-x) & = -f(x)\\ 
+		\end{align*}
+
+		Therefore $\displaystyle{f}$ is odd if $\displaystyle{A}$ is even.
+
+		\pagebreak
+
+		The second part requires the proof that $\displaystyle{A}$ is even if $\displaystyle{f}$ is odd, which is as follows.
+
+		\begin{align*}
+		\int_{-x}^{x}f(t)dt & = 0 \hspace{5mm} \text{as $\displaystyle{f}$ is odd}\\
+		\therefore LHS & = \int_{0}^{x}f(t)dt + \int_{-x}^{0}f(t)dt\\
+		& = \int_{0}^{x}f(t)dt - \int_{0}^{-x}f(t)dt\\
+		& = \int_{0}^{x}f(t)dt + \int_{a}^{0}f(t)dt - \int_{a}^{0}f(t)dt - \int_{0}^{-x}f(t)dt\\
+		& = \int_{a}^{x}f(t)dt - \int_{a}^{-x}f(t)dt\\
+		\therefore \int_{a}^{x}f(t)dt - \int_{a}^{-x}f(t)dt & = 0\\
+		\therefore \int_{a}^{x}f(t)dt & = \int_{a}^{-x}f(t)dt\\
+		\therefore A(x) & = A(-x)\\
+		\end{align*}
+
+		Therefore $\displaystyle{A}$ is even if $\displaystyle{f}$ is odd. Thus $\displaystyle{A}$ is even if and only if $\displaystyle{f}$ is odd.
+		
+		\pagebreak
+
+		\item We are now required to prove that $\displaystyle{A}$ is odd if and only if $\displaystyle{f}$ is even and $\displaystyle{A(0)=0}$. In order to complete this proof, we must prove the result from both sides of the implication. For the first part of the proof, we are required to prove $\displaystyle{f}$ is even, and $\displaystyle{A(0)=0}$ if $\displaystyle{A}$ is odd.
+
+		\bigbreak
+
+		Firstly, we shall prove that $\displaystyle{A(0)=0}$ if $\displaystyle{A}$ is odd.
+
+		\begin{align*}
+		A(-x) & = -A(x)\\
+		\therefore A(0) & = -A(0)\\
+		\therefore 2A(0) & = 0\\
+		\therefore A(0) & = 0\\
+		\end{align*}
+
+		Now we shall complete the remainder of the first proof.
+
+		\begin{align*}
+		A(x) & = -A(-x)\\
+		\therefore A(x) + A(-x) & = 0\\
+		\therefore LHS & = \int_{a}^{x}f(t)dt + \int_{a}^{-x}f(t)dt\\
+		& = \int_{a}^{0}f(t)dt + \int_{0}^{x}f(t)dt + \int_{a}^{0}f(t)dt + \int_{0}^{-x}f(t)dt\\
+		& = 2\int_{a}^{0}f(t)dt + \int_{0}^{x}f(t)dt + \int_{0}^{-x}f(t)dt\\
+		& = 2\int_{a}^{0}f(t)dt + \int_{0}^{x}f(t)dt + \int_{0}^{x}f(-u)(-du) \hspace{5mm} \text{substituting $\displaystyle{t=-u}$}\\
+		& = 2\int_{a}^{0}f(t)dt + \int_{0}^{x}f(t)dt - \int_{0}^{x}f(-u)du\\
+		& = 2\int_{a}^{0}f(t)dt + \int_{0}^{x}f(t)dt - \int_{0}^{x}f(-t)dt \hspace{5mm} \text{dummy variable switch}\\
+		& = 2A(0) + \int_{0}^{x}f(t)dt - \int_{0}^{x}f(-t)dt\\
+		& = \int_{0}^{x}f(t)dt - \int_{0}^{x}f(-t)dt\\
+		\therefore \int_{0}^{x}f(t)dt - \int_{0}^{x}f(-t)dt & = 0\\
+		\therefore \int_{0}^{x}f(t)dt & = \int_{0}^{x}f(-t)dt\\
+		\therefore \frac{d}{dx}\left[\int_{0}^{x}f(t)dt \right] & = \frac{d}{dx}\left[\int_{0}^{x}f(-t)dt \right]\\
+		\therefore f(x) & = f(-x) \hspace{5mm} \text{by the Fundamental Theorem of Calculus}\\
+		\end{align*}
+
+		Therefore $\displaystyle{f}$ is even if $\displaystyle{A}$ is odd and $\displaystyle{A(0)=0}$.
+
+		\pagebreak
+		The second part requires the proof that $\displaystyle{A}$ is odd if $\displaystyle{f}$ is even and $\displaystyle{A(0)=0}$, which is as follows.
+
+		\begin{align*}
+		\int_{-x}^{x}f(t)dt & = 2\int_{0}^{x}f(t)dt \hspace{5mm} \text{as $\displaystyle{f}$ is even}\\
+		\therefore \int_{-x}^{x}f(t)dt - 2\int_{0}^{x}f(t)dt & = 0\\
+		\therefore LHS & = \int_{-x}^{x}f(t)dt - 2\int_{0}^{x}f(t)dt\\
+		& = \int_{-x}^{x}f(t)dt - 2\int_{0}^{x}f(t)dt - 2A(0) \hspace{5mm} \text{as $\displaystyle{A(0)=0}$}\\
+		& = \int_{0}^{x}f(t)dt + \int_{-x}^{0}f(t)dt  - 2\int_{0}^{x}f(t)dt - 2A(0)\\
+		& = -\int_{0}^{x}f(t)dt + \int_{-x}^{0}f(t)dt - 2\int_{a}^{0}f(t)dt\\
+		& = -\int_{0}^{x}f(t)dt - \int_{a}^{0}f(t)dt - \int_{0}^{-x}f(t)dt - \int_{a}^{0}f(t)dt\\
+		& = -\int_{a}^{x}f(t)dt - \int_{a}^{-x}f(t)dt\\
+		\therefore -\int_{a}^{x}f(t)dt - \int_{a}^{-x}f(t)dt & = 0\\
+		\therefore -\int_{a}^{x}f(t)dt & = \int_{a}^{-x}f(t)dt\\
+		\therefore - A(x) & = A(-x)\\
+		\end{align*}
+
+		Therefore $\displaystyle{A}$ is odd if $\displaystyle{f}$ is even and $\displaystyle{A(0)=0}$. Therefore $\displaystyle{A}$ is odd if and only if $\displaystyle{f}$ is even and $\displaystyle{A(0)=0}$.
+
+		\end{enumerate}
+
+	\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

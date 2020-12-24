@@ -1,0 +1,108 @@
+		\bigbreak
+
+		EXPAND AND PROVE WHY THE INVERSE IS DIFFERENTIABLE AT Y0 
+
+		\bigbreak
+
+		REWORK FINAL PROOF FOR THE INVERSE AT Y0
+
+		\bigbreak
+
+		Examining Caratheodory's characterisation, we have the general form as follows:
+
+		\begin{align*}
+		f(x) & = f(x_0) + m_{x_0}(x)(x-x_0)\\
+		\end{align*}
+
+		For the inverse function, $f^{-1} (x)$, Charatheodory's characterisation becomes:
+
+		\begin{align*}
+		f^{-1} (x) & = f^{-1} (x_0) + m_{x_0}(x)(x-x_0)\\
+		\end{align*}
+
+		Replacing $x$ with $y_0$, we arrive at the following result, using the above characterisation of $f^{-1}(x)$.
+
+		\begin{align*}
+		f^{-1} (y_0) & = f^{-1} (x_0) + m_{x_0}(y_0)(y_0-x_0)\\
+		\therefore f^{-1} (y_0) - f^{-1} (x_0) & = m_{x_0}(y_0)(y_0-x_0)\\
+		\therefore \frac{f^{-1} (y_0) - f^{-1} (x_0)}{y_0-x_0} & = m_{x_0}(y_0)\\
+		\therefore m_{x_0}(y_0) & = \frac{f^{-1} (y_0) - f^{-1} (x_0)}{y_0-x_0}\\
+		\therefore (f^{-1})^\prime(y_0) & = \frac{f^{-1} (y_0) - f^{-1} (x_0)}{y_0-x_0}\\
+		& = \frac{1}{\frac{y_0-x_0}{f^{-1} (y_0) - f^{-1} (x_0)}}\\
+		& = \frac{1}{\frac{f(f^{-1}(y_0))-f(f^{-1}(x_0))}{f^{-1} (y_0) - f^{-1} (x_0)}} \dots\dots\dots\dots\dots(3)\\
+		\end{align*}
+
+		Now consider Caratheodory's characterisation for the function $f(f^{-1}(x))$ at the point $x = y_0$.
+
+		\begin{align*}
+		f(x) & = f(x_0) + m_{x_0}(x)(x-x_0)\\
+		\therefore f(f^{-1}(x)) & = f(f^{-1}(x_0)) + m_{x_0}(x)(f^{-1}(x)-f^{-1}(x_0))\\
+		\therefore f(f^{-1}(y_0)) & = f(f^{-1}(x_0)) + m_{x_0}(y_0)(f^{-1}(y_0)-f^{-1}(x_0))\\
+		\therefore f(f^{-1}(y_0)) - f(f^{-1}(x_0)) & = m_{x_0}(y_0)(f^{-1}(y_0)-f^{-1}(x_0))\\
+		\therefore \frac{f(f^{-1}(y_0)) - f(f^{-1}(x_0))}{(f^{-1}(y_0)-f^{-1}(x_0))} & = m_{x_0}(y_0)\\
+		\therefore m_{x_0}(y_0) & = \frac{f(f^{-1}(y_0)) - f(f^{-1}(x_0))}{(f^{-1}(y_0)-f^{-1}(x_0))}\\
+		\therefore f^\prime (f^{-1}(y_0)) & = \frac{f(f^{-1}(y_0)) - f(f^{-1}(x_0))}{(f^{-1}(y_0)-f^{-1}(x_0))} \dots\dots\dots\dots\dots(4)\\
+		\end{align*}
+
+		It can now easily be seen that the right hand side of equation $(4)$ is equal to the denominator of equation $(3)$. Thus substituting equation $(4)$ into $(3)$, we get the required result.
+
+		\begin{align*}
+		(f^{-1})^\prime(y_0) & = \frac{1}{\frac{f(f^{-1}(y_0))-f(f^{-1}(x_0))}{f^{-1} (y_0) - f^{-1} (x_0)}}\\
+		\therefore (f^{-1})^\prime(y_0) & = \frac{1}{f^\prime (f^{-1}(y_0))}\\
+		\end{align*}
+
+
+
+
+
+		%%%
+		%
+		%
+		%
+		%
+		%
+		%%%%
+		%%%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%%
+		%
+		%
+		%
+		%
+		%%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+		%
+
+		
+		Let us postulate that the inverse of $f(x)$, $f^{-1}(x)$, at $\displaystyle{y_0 \coloneqq f{x_0}}$, can be written in the form of Caratheodory's characterisation. Thus we have the result:
+
+		\begin{align*}
+		f^{-1}(y) & = f^{-1}(y_0) + m_{x_0}(x)(y-y_0)\\
+		\end{align*}

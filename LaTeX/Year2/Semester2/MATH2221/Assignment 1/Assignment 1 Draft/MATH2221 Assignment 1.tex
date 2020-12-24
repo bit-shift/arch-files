@@ -1,0 +1,462 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper]{article}
+
+% Install the required packages for the document 
+\usepackage{envmath}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage[mathcal]{euscript}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{subdepth}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{harpoon}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{asyalign}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{xhfill}
+\usepackage{accents}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{csquotes}
+\usepackage{wrapfig}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{minipage-marginpar}
+\usepackage{calc}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows}
+
+% Page and style settings
+\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+
+% Begin the text of the document
+\begin{document}
+
+\newlength{\strutheight}
+\settoheight{\strutheight}{\strut}
+
+% Begin the Title Page
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+\textsc{\LARGE University of New South Wales}\\[1.5cm] % Name of your university/college
+\textsc{\Large MATH 2221}\\[0.5cm] % Major heading such as course name
+\textsc{\large Higher Theory and Applications of Differential Equations}\\[0.5cm] % Minor heading such as course title
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Assignment 1}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+
+
+\begin{center} \large
+Keegan Gyoery (z5197058) % Your name
+\\
+\end{center}
+
+
+\vspace{4cm}
+
+{\today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+\pagenumbering{arabic}
+
+\begin{enumerate}
+
+	\item Consider the following ODE
+	\begin{align*}
+		Lu & = x^2u^{\prime\prime} - 5xu^{\prime} + 9u = x^3\\
+		& = u^{\prime\prime} - \frac{5}{x}u^{\prime} + \frac{9}{x^2}u = x\\
+	\end{align*}
+	Consider the homogeneous equation $\ds{Lu=0}$. We are required to verify that $\ds{u_{1}(x) = x^3}$ is a solution to the homogeneous problem. In order to verify, we simply substitute $\ds{u_{1}(x)}$ into $\ds{Lu=0}$. First, we must calculate the first and second derivatives of $\ds{u_{1}(x)}$.
+	\begin{align*}
+		u_{1}(x) & = x^3\\
+		u_{1}^{\prime}(x) & = 3x^2\\
+		u_{1}^{\prime\prime}(x) & = 6x\\
+	\end{align*}
+	Substituting the above three equations into $\ds{Lu=0}$ gives the following result.
+	\begin{align*}
+		Lu_{1} & = x^2(6x) - 5x(3x^2) + 9(x^3)\\
+		& = 6x^3 - 15x^3 + 9x^3\\
+		\therefore Lu_{1} & = 0
+	\end{align*}
+	Therefore, $\ds{u_{1}(x) = x^3}$ is a solution to the homogeneous equation.
+	\bigbreak
+	Using the principle of reduction of order, and from the lecture notes, a second solution is of the form $\ds{u_{2}(x) = u_{1}(x)v(x)}$. In order to apply reduction of order, $\ds{Lu=0}$ must be in the following form.
+	\begin{align*}
+		u^{\prime\prime} + p(x)u^{\prime} + q(x)u & = 0\\
+		u^{\prime\prime} - \frac{5}{x}u^{\prime} + \frac{9}{x^2}u & = 0\\
+	\end{align*}
+	As a result, $\ds{p(x) = - \frac{5}{x}}$ and $\ds{q(x) = \frac{9}{x^2}}$\\
+	Now, $\ds{v(x)}$ is given by the following formula.
+	\begin{align*}
+		v(x) & = \int\frac{1}{u_{1}(x)^2\exp{\int p(x)dx}}dx\\
+		& = \int\frac{1}{\big(x^3\big)^2\exp{\int \frac{-5}{x}dx}}dx\\
+		& = \int\frac{1}{x^6\exp{\int \frac{-5}{x}dx}}dx\\
+		& = \int\frac{1}{x^6\exp{-5\ln x}}dx\\
+		& = \int\frac{1}{x^6\exp{\ln x^{-5}}}dx\\
+		& = \int\frac{1}{x^6\big(x^{-5}\big)}dx\\
+		& = \int\frac{1}{x}dx\\
+		& = \ln x + C\\
+	\end{align*}
+	Thus, $\ds{u_{2}(x) = x^3\ln x}$. This is linearly independent to $\ds{u_{1}(x)}$ as in order to satisfy the following equation, $\ds{a_1 = a_2 = 0}$.
+	\begin{align*}
+		a_1x^3 + a_2x^3\ln x & = 0\\
+	\end{align*}
+	By definition, $\ds{u_{1}(x) = x^3}$ and $\ds{u_{2}(x) = x^3\ln x}$ are linearly independent.
+	\bigbreak
+	To find the general solution, we now apply the method of variation of parameters, using the two linearly independent solutions we have found in our previous efforts. The general solution to the ODE of form
+	\begin{align*}
+		u^{\prime\prime} + p(x)u^{\prime} + q(x)u & = f(x)\\
+	\end{align*}
+	is of the form
+	\begin{align*}
+		u(x) & = v_1(x)u_1(x) + v_2(x)u_2(x)\\
+	\end{align*}
+	where
+	\begin{align*}
+		v_1^{\prime}(x) & = \frac{-u_2(x)f(x)}{W(x)} \hspace{20mm}
+		v_2^{\prime}(x) = \frac{u_1(x)f(x)}{W(x)}\\
+	\end{align*}
+	To solve for $\ds{v_1(x)}$ and $\ds{v_2(x)}$, we first must compute $\ds{W(x)}$, the Wronskian of $\ds{u_1(x)}$ and $\ds{u_2(x)}$.
+	\begin{align*}
+		W(x) & =
+		\begin{vmatrix}
+			u_1(x) & u_2(x)\\
+			u_1^{\prime}(x) & u_2^{\prime}(x)
+		\end{vmatrix}\\
+		& =
+		\begin{vmatrix}
+			x^3 & x^3\ln x\\
+			3x^2 & 3x^2\ln x + x^2
+		\end{vmatrix}\\
+		& =
+		\begin{vmatrix}
+			x & x\ln x\\
+			3 & 3\ln x + 1
+		\end{vmatrix}\big(x^2\big)\big(x^2\big)\\
+		& = x^4 \big(3x\ln x + x - 3x\ln x \big)\\
+		\therefore W(x) & = x^5\\
+	\end{align*}
+	Using this result for the Wronskian, we can compute $\ds{v_1^{\prime}(x)}$ and $\ds{v_1(x)}$, using the formula presented before the Wronskian calculations.
+	\begin{align*}
+		v_1^{\prime}(x) & = \frac{-u_2(x)f(x)}{W(x)}\\
+		& = \frac{-x^3(\ln x)x}{x^5}\\
+		\therefore v_1^{\prime}(x) & = -\frac{\ln x}{x}\\
+		\therefore v_1(x) & = - \int \frac{\ln x}{x} dx\\
+		& = -\bigg[\frac{(\ln x)^2}{2} + C_1 \bigg]\\
+		\therefore v_1(x) & = -\frac{(\ln x)^2}{2} + C_1\\
+	\end{align*}
+	Using a similar process, we can compute $\ds{v_2^{\prime}(x)}$ and $\ds{v_2(x)}$
+	\begin{align*}
+		v_2^{\prime}(x) & = \frac{u_1(x)f(x)}{W(x)}\\
+		& = \frac{x^3\big(x\big)}{x^5}\\
+		\therefore v_2^{\prime}(x) & = \frac{1}{x}\\
+		\therefore v_2(x) & = \int \frac{1}{x} dx\\
+		\therefore v_2(x) & = \ln{x} + C_2\\
+	\end{align*}
+	Thus, the general solution to the inhomogeneous equation $\ds{Lu = x^3}$ is given by
+	\begin{align*}
+		u(x) & = v_1(x)u_1(x) + v_2(x)u_2(x)\\
+		& = \bigg[-\frac{(\ln x)^2}{2} + C_1\bigg]x^3 + \bigg[\ln{x} + C_2\bigg]x^3\ln x\\
+		& = -\frac{x^3(\ln x)^2}{2} + C_1x^3 + x^3(\ln{x})^2 + C_2x^3\ln x\\
+		\therefore u(x) & = \frac{x^3(\ln{x})^2}{2} + C_1x^3 + C_2x^3\ln x\\
+	\end{align*}
+
+	\bigbreak
+
+	\item Consider the following ODE
+	\begin{align*}
+		Lu & = u^{\prime\prime} - 4u^{\prime} + 5u = 3xe^{2x}\cos{x}\\
+	\end{align*}
+	with initial conditions $\ds{u(0) = 1}$ and $\ds{u^{\prime}(0) = 2}$. Consider now the homogeneous problem $\ds{Lu=0}$, where we are required to find the homgogeneous solution, using the characterstic polynomial as it is a second order DE.
+	\begin{align*}
+		u^{\prime\prime} - 4u^{\prime} + 5u & = 0\\
+		\lambda^2 - 4\lambda + 5 & = 0\\
+		\therefore \lambda & = \frac{4 \pm \sqrt{16-20}}{2}\\
+		& = \frac{4 \pm \sqrt{-4}}{2}\\
+		& = \frac{4 \pm 2i}{2}\\
+		\lambda & = 2 \pm i\\
+		\therefore \lambda_1 & = 2 + i\\
+		\therefore \lambda_2 & = 2 - 1\\
+	\end{align*}
+	Using the general form for the solution to a second order DE we get the result
+	\begin{align*}
+		u_H(x) & = Ae^{\lambda_1x} + Be^{\lambda_2x}\\
+		& = Ae^{(2+i)x} + Be^{(2-i)x}\\
+		& = e^{2x}\Big(Ae^{ix} + Be^{-ix}\Big)\\
+		& = e^{2x}\Big(A(\cos{x} + i\sin{x}) + B(\cos{x} - i\sin{x})\Big)\\
+		& = e^{2x}\Big((A+B)\cos{x} + i(A-B)\sin{x}\Big)\\
+		\therefore u_H(x) & = e^{2x}\Big(C_1\cos{x} + C_2\sin{x}\Big)\\
+	\end{align*}
+	In order to find the solution to the ODE, we must now determine the particular solution to the inhomogeneous problem. Using the theorem that states that for $\ds{Lu_P = x^re^{\mu x}}$, and $\ds{p^{(k)}(\mu)\neq 0}$, there exists a unique polynomial $\ds{v(x)}$ of degree $\ds{r}$ such that $\ds{u_P = x^k v(x) e^{\mu x}}$ is a solution to $\ds{Lu_P = x^re^{\mu x}}$. \\
+	In this problem, $\ds{r = 1}$, and, $\ds{\mu_1 = 2 + i}$ and $\ds{\mu_2 = 2 - i}$. Using this, we can calculate what k is.
+	\begin{align*}
+		p(z) & = z^2 - 4z + 5\\
+		p^{\prime}(z) & = 2z - 4\\
+		p(\mu_1) & = 0\\
+		p^{\prime}(\mu_1) & = 2(2+i) - 4\\
+		& = 2i \neq 0\\
+		p(\mu_2) & = 0\\
+		p^{\prime}(\mu_2) & = 2(2-i) - 4\\
+		& = -2i \neq 0\\
+		\therefore k & = 1\\
+	\end{align*}
+	Based off this result for $\ds{k}$, we look for a particular solution of the following form.
+	\begin{align*}
+		u_P(x) & = x(Cx + D)(Ae^{(2+i)x} + Be^{(2-i)x})\\
+		\therefore u_P(x) & = x(Cx + D)e^{2x}(E\cos{x} + F\sin{x})\\
+	\end{align*}
+	In order to solve for the constants in the particular solution, we must find the first and second derivatives of the particular solution.
+	\begin{align*}
+		u_P(x) & = x(Cx + D)e^{2x}(E\cos{x} + F\sin{x})\\
+		u_P(x) & = (Cx^2 + Dx)e^{2x}(E\cos{x} + F\sin{x})\dots\dots\dots\dots(1)\\
+		u_P^{\prime}(x) & = \Big[(2Cx + D)e^{2x} + 2(Cx^2 + Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\ 
+		& \phantom{{}={}} + \Big[(Cx^2 + Dx)e^{2x} \Big](-E\sin{x} + F\cos{x})\dots\dots\dots\dots(2)\\
+		u_P^{\prime\prime}(x) & = \Big[2Ce^{2x} + 2(2Cx+D)e^{2x} +2\big[(2Cx+D)e^{2x} + 2(Cx^2+Dx)e^{2x}\big] \Big](E\cos{x} + F\sin{x})\\
+		& \phantom{{}={}} + \Big[(2Cx+D)e^{2x} + 2(Cx^2+Dx)e^{2x} \Big](-E\sin{x} + F\cos{x})\\
+		& \phantom{{}={}} + \Big[(2Cx+D)e^{2x} + 2(Cx^2+Dx)e^{2x} \Big](-E\sin{x} + F\cos{x})\\
+		& \phantom{{}={}} + \Big[(Cx^2+Dx)e^{2x} \Big](-E\cos{x} - F\sin{x})\\
+		u_P^{\prime\prime}(x) & = \Big[2Ce^{2x} + 2(2Cx+D)e^{2x} +2\big[(2Cx+D)e^{2x} + 2(Cx^2+Dx)e^{2x}\big] \Big](E\cos{x} + F\sin{x})\\
+		& \phantom{{}={}} + 2\Big[(2Cx+D)e^{2x} + 2(Cx^2+Dx)e^{2x} \Big](-E\sin{x} + F\cos{x})\\
+		& \phantom{{}={}} - \Big[(Cx^2+Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\
+		u_P^{\prime\prime}(x) & = \Big[2Ce^{2x} + 2(2Cx+D)e^{2x} +\big[2(2Cx+D)e^{2x} + 4(Cx^2+Dx)e^{2x}\big] \Big](E\cos{x} + F\sin{x})\\
+		& \phantom{{}={}} + 2\Big[(2Cx+D)e^{2x} + 2(Cx^2+Dx)e^{2x} \Big](-E\sin{x} + F\cos{x})\\
+		& \phantom{{}={}} - \Big[(Cx^2+Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\
+		u_P^{\prime\prime}(x) & = \Big[2Ce^{2x} + 4(2Cx+D)e^{2x} + 3(Cx^2+Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\
+		& \phantom{{}={}} + 2\Big[(2Cx+D)e^{2x} + 2(Cx^2+Dx)e^{2x} \Big](-E\sin{x} + F\cos{x})\dots\dots\dots\dots(3)\\
+	\end{align*}
+	\pagebreak
+	We are now required to solve $\ds{u_P^{\prime\prime} - 4u_P^{\prime} + 5u_P = 3xe^{2x}\cos{x}}$, for which we need to substitute in equations $\ds{(1)}$, $\ds{(2)}$ and $\ds{(3)}$.
+	\begin{align*}
+		u_P^{\prime\prime} - 4u_P^{\prime} + 5u_P & = \Big[2Ce^{2x} + 4(2Cx+D)e^{2x} + 3(Cx^2+Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\
+		& \phantom{{}={}} + 2\Big[(2Cx+D)e^{2x} + 2(Cx^2+Dx)e^{2x} \Big](-E\sin{x} + F\cos{x})\\
+		& \phantom{{}={}} - 4\Big[(2Cx + D)e^{2x} + 2(Cx^2 + Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\ 
+		& \phantom{{}={}} - 4\Big[(Cx^2 + Dx)e^{2x} \Big](-E\sin{x} + F\cos{x})\\
+		& \phantom{{}={}} + 5(Cx^2 + Dx)e^{2x}(E\cos{x} + F\sin{x})\\
+		& = \Big[2Ce^{2x} + 4(2Cx+D)e^{2x} + 3(Cx^2+Dx)e^{2x} + 5(Cx^2 + Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\
+		& \phantom{{}={}} + 2\Big[(2Cx+D)e^{2x} + 2(Cx^2+Dx)e^{2x} \Big](-E\sin{x} + F\cos{x})\\
+		& \phantom{{}={}} - 4\Big[(2Cx + D)e^{2x} + 2(Cx^2 + Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\ 
+		& \phantom{{}={}} - 4\Big[(Cx^2 + Dx)e^{2x} \Big](-E\sin{x} + F\cos{x})\\
+		& = \Big[2Ce^{2x} + 4(2Cx+D)e^{2x} + 8(Cx^2+Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\
+		& \phantom{{}={}} + \Big[2(2Cx+D)e^{2x} + 4(Cx^2+Dx)e^{2x} \Big](-E\sin{x} + F\cos{x})\\
+		& \phantom{{}={}} - 4\Big[(2Cx + D)e^{2x} + 2(Cx^2 + Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\ 
+		& \phantom{{}={}} - 4\Big[(Cx^2 + Dx)e^{2x} \Big](-E\sin{x} + F\cos{x})\\
+		& = \Big[2Ce^{2x} + 4(2Cx+D)e^{2x} + 8(Cx^2+Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\
+		& \phantom{{}={}} + \Big[2(2Cx+D)e^{2x} + 4(Cx^2+Dx)e^{2x} - 4(Cx^2 + Dx)e^{2x} \Big](-E\sin{x} + F\cos{x})\\
+		& \phantom{{}={}} - 4\Big[(2Cx + D)e^{2x} + 2(Cx^2 + Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\ 
+		& = \Big[2Ce^{2x} + 4(2Cx+D)e^{2x} - 4(2Cx + D)e^{2x} + 8(Cx^2+Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\
+		& \phantom{{}={}} + \Big[2(2Cx+D)e^{2x}\Big](-E\sin{x} + F\cos{x})\\
+		& \phantom{{}={}} - 8\Big[(Cx^2 + Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\
+		& = \Big[2Ce^{2x} + 8(Cx^2+Dx)e^{2x} - 8(Cx^2 + Dx)e^{2x} \Big](E\cos{x} + F\sin{x})\\
+		& \phantom{{}={}} + \Big[2(2Cx+D)e^{2x}\Big](-E\sin{x} + F\cos{x})\\
+		& = \Big[2Ce^{2x} \Big](E\cos{x} + F\sin{x}) + \Big[2(2Cx+D)e^{2x}\Big](-E\sin{x} + F\cos{x})\\
+		\therefore 3xe^{2x}\cos{x} & = \Big[2Ce^{2x} \Big](E\cos{x} + F\sin{x}) + \Big[2(2Cx+D)e^{2x}\Big](-E\sin{x} + F\cos{x})\\
+		& = e^{2x}\Big[2CE\cos{x} + 2CF\sin{x} - 4CEx\sin{x} + 4CFx\cos{x} - 2DE\sin{x} + 2DF\cos{x} \Big]\\
+		& = e^{2x}\Big[(2CE + 2DF)\cos{x} + (2CF - 2DE)\sin{x} - 4CEx\sin{x} + 4CFx\cos{x} \Big]\\
+		& \implies
+		\begin{cases}
+			(2CE + 2DF) = 0\\
+			(2CF - 2DE) = 0\\
+			- 4CE = 0\\
+			4CF = 3\\
+		\end{cases}
+		\implies
+		\begin{cases}
+			CE = -DF\\
+			CF = DE\\
+			CE = 0\\
+			CF = \frac{3}{4}\\
+		\end{cases}
+		\implies
+		\begin{cases}
+			DF = 0\\
+			DE = \frac{3}{4}\\
+			CE = 0\\
+			CF = \frac{3}{4}\\
+		\end{cases} \dots\dots (4)\\
+		\therefore u_P(x) & = (Cx^2 + Dx)e^{2x}(E\cos{x} + F\sin{x})\\
+		& = e^{2x}\Big[CEx^2\cos{x} + CFx^2\sin{x} + DEx\cos{x} + DFx\sin{x} \Big]\\
+		& = e^{2x}\bigg[0 + \frac{3}{4}x^2\sin{x} + \frac{3}{4}x\cos{x} + 0 \bigg]\\
+		\therefore u_P(x) & = e^{2x}\bigg[\frac{3}{4}x^2\sin{x} + \frac{3}{4}x\cos{x} \bigg]\\
+	\end{align*}
+	Note that the system of equations denoted by $\ds{(4)}$ is not solvable for the individual constants $\ds{C}$, $\ds{D}$, $\ds{E}$, and $\ds{F}$, but if the pairs of constants are in fact treated as one single constant, the system of equations has the solution presented. 
+	\begin{align*}
+		\begin{cases}
+			DF = 0\\
+			DE = \frac{3}{4}\\
+			CE = 0\\
+			CF = \frac{3}{4}\\
+		\end{cases}
+		\implies 
+		\begin{cases}
+			G_1 = 0\\
+			G_2 = \frac{3}{4}\\
+			G_3 = 0\\
+			G_4 = \frac{3}{4}\\
+		\end{cases}\\
+	\end{align*}
+	Combining the particular solution with the homogeneous solution, we have the general solution to the ODE.
+	\begin{align*}
+		u(x) & = u_H(x) + u_P(x)\\
+		\therefore u(x) & = e^{2x}\Big(C_1\cos{x} + C_2\sin{x}\Big) + e^{2x}\bigg[\frac{3}{4}x^2\sin{x} + \frac{3}{4}x\cos{x} \bigg]\\
+	\end{align*}
+	Imparting the initial conditions $\ds{u(0) = 1}$ and $\ds{u^{\prime}(0) = 2}$, we get the solution that follows.
+	\begin{align*}
+		u(x) & = e^{2x}\Big(C_1\cos{x} + C_2\sin{x}\Big) + e^{2x}\bigg[\frac{3}{4}x^2\sin{x} + \frac{3}{4}x\cos{x} \bigg]\\
+		u(0) & = C_1 = 1 \\
+		\therefore u(x) & = e^{2x}\Big(\cos{x} + C_2\sin{x}\Big) + e^{2x}\bigg[\frac{3}{4}x^2\sin{x} + \frac{3}{4}x\cos{x} \bigg]\\
+		u^{\prime}(x) & = 2e^{2x}\bigg[\cos{x} + C_2\sin{x} + \frac{3}{4}(x^2\sin{x} + x\cos{x}) \bigg]\\
+		& \phantom{{}={}} + e^{2x}\bigg[-\sin{x} + C_2\cos{x} + \frac{3}{4}(2x\sin{x} + x^2\cos{x} + \cos{x} - x\sin{x}) \bigg]\\
+		u^{\prime}(0) & = 2(1) + \bigg[C_2 + \frac{3}{4} \bigg] = 2\\
+		\therefore C_2 & = -\frac{3}{4}\\
+		\therefore u(x) & = e^{2x}\Big(\cos{x} -\frac{3}{4}\sin{x}\Big) + e^{2x}\bigg[\frac{3}{4}x^2\sin{x} + \frac{3}{4}x\cos{x} \bigg]\\
+		\therefore u(x) & = e^{2x}\bigg[\cos{x} + \frac{3}{4} \big(x^2\sin{x} -\sin{x} + x\cos{x}\big) \bigg]\\
+	\end{align*}
+
+
+	\item Consider the following ODE
+	\begin{align*}
+		Lu & = xu^{\prime\prime} + \sin{x}u = 0\\
+	\end{align*}
+	with initial conditions $\ds{u(0) = 0}$ and $\ds{u^{\prime}(0) = 2}$. We are required to find the first four terms in the power series solution about the point $\ds{x=0}$. To construct a solution, we first must put the ODE into the form below.
+	\begin{align*}
+		u^{\prime\prime} + p(x)u^{\prime} + q(x)u & = 0\\
+		\therefore u^{\prime\prime} + \frac{\sin{x}}{x}u & = 0\\
+		\therefore p(x) & = 0\\
+		\therefore q(x) & = \frac{\sin{x}}{x}\\
+	\end{align*}
+	Considering $\ds{q(x)}$, we know it is analytic everywhere with a removable singularity at $\ds{x=0}$. Furthermore, we know it converges for all $\ds{x}$. Moreover, we can represent $\ds{q(x)}$ as a power series using the following results.
+	\begin{align*}
+		\sin{x} & = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \dots\\
+		& = \sum^{\infty}_{j=0}\frac{(-1)^jx^{2j+1}}{(2j+1)!}\\
+		\therefore \frac{\sin{x}}{x} & = \sum^{\infty}_{j=0}\frac{(-1)^jx^{2j}}{(2j+1)!}\\
+	\end{align*}
+	The solution to this ODE can be written in the form of a power series, and thus we look for a solution to the problem of the following form.
+	\begin{align*}
+		u(x) & = \sum^{\infty}_{k=0}A_kx^k \\
+	\end{align*}
+	In order to find the coefficients $\ds{A_k}$, we must find the first and second derivatives of $\ds{u(x)}$.
+	\begin{align*}
+		u(x) & = \sum^{\infty}_{k=0}A_kx^k \\
+		u^{\prime}(x) & = \sum^{\infty}_{k=1}kA_kx^{k-1} \\
+		u^{\prime\prime}(x) & = \sum^{\infty}_{k=2}k(k-1)A_kx^{k-2} \\
+	\end{align*}
+	We then solve the original ODE using the above form as the solution.
+	\begin{align*}
+		\sum^{\infty}_{k=2}k(k-1)A_kx^{k-2} + \sum^{\infty}_{j=0}\frac{(-1)^jx^{2j}}{(2j+1)!}\sum^{\infty}_{k=0}A_kx^k & = 0\\
+		\sum^{\infty}_{k=0}(k+2)(k+1)A_{k+2}x^{k} + \sum^{\infty}_{j=0}\frac{(-1)^jx^{2j}}{(2j+1)!}\sum^{\infty}_{k=0}A_kx^k & = 0\\
+	\end{align*}
+	In order to solve for the coefficients, we will expand the above equation.
+	\begin{align*}
+		& (2)(1)A_2 + (3)(2)A_3x + (4)(3)A_4x^2 + (5)(4)A_5x^3 + (6)(5)A_6x^4 + (7)(6)A_7x^5 + \dots\\
+		& + \Big(1 - \frac{x^2}{3!} + \frac{x^4}{5!} - \frac{x^6}{7!} + \dots \Big)\Big(A_0 + A_1x + A_2x^2 + A_3x^3 + A_4x^4 + A_5x^5 + A_6x^6 + A_7x^7 + \dots \Big) = 0\\
+	\end{align*}
+	Using the above equation, we collect like terms.
+	\begin{align*}
+		& (2A_2 + A_0) + (6A_3 + A_1)x + \Big(12A_4 + A_2 - \frac{A_0}{3!}\Big)x^2 + \Big(20A_5 + A_3 - \frac{A_1}{3!} \Big)x^3\\ 
+		& + \Big(30A_6 + A_4 - \frac{A_2}{3!} + \frac{A_0}{5!} \Big)x^4 +  \Big(42A_7 + A_5 - \frac{A_3}{3!} + \frac{A_1}{5!} \Big)x^5 + \dots = 0 \dots\dots\dots (A)\\
+	\end{align*}
+	We now apply the initial conditions $\ds{u(0) = 0}$ and $\ds{u^{\prime}(0) = 2}$.
+	\begin{align*}
+		u(x) & = \sum^{\infty}_{k=0}A_kx^k \\
+		u(0) & = A_0 = 0\\
+		u^{\prime}(x) & = \sum^{\infty}_{k=1}kA_kx^{k-1} \\
+		u^{\prime}(0) & = A_1 = 2\\
+	\end{align*}
+	From $\ds{(A)}$, we know that each coefficient must be equal to 0 in order to satisfy the ODE.
+	\begin{alignat*}{2}
+		2A_2 + A_0 = 0 & \implies 2A_2 + 0 = 0 && \implies A_2 = 0\\
+		6A_3 + A_1 = 0 & \implies 6A_3 + 2 = 0 && \implies A_3 = -\frac{1}{3}\\
+		12A_4 + A_2 - \frac{A_0}{3!} = 0 & \implies 12A_4 + 0 - 0 = 0 && \implies A_4 = 0\\
+		20A_5 + A_3 - \frac{A_1}{3!} = 0 & \implies 20A_5 -\frac{1}{3} - \frac{2}{3!} = 0 && \implies A_5 = \frac{1}{30}\\
+		30A_6 + A_4 - \frac{A_2}{3!} + \frac{A_0}{5!} = 0 & \implies 30A_6 + 0 - 0 + 0 = 0 && \implies A_6 = 0\\
+		42A_7 + A_5 - \frac{A_3}{3!} + \frac{A_1}{5!} = 0 & \implies 42A_7 + \frac{1}{30} + \frac{1}{3\cdot3!} + \frac{2}{5!} = 0 && \implies A_7 = -\frac{19}{7560}\\
+	\end{alignat*}
+	Thus the first four non-zero terms of the power series solution to the ODE are
+	\begin{align*}
+		u(x) & = 2x - \frac{1}{3}x^3 + \frac{1}{30}x^5 - \frac{19}{7560}x^7 + \dots\\
+	\end{align*}
+	From the theorem stated in lecture notes, the formal solution $\ds{u(x)}$ is analytic for $\ds{\abs{x} < \rho}$ if
+	$\ds{p(x)}$ is analytic for $\ds{\abs{x} < \rho}$ and $\ds{q(x)}$ is analytic for $\ds{\abs{x} < \rho}$. For this ODE, as stated earlier, $\ds{q(x)}$ is analytic everywhere, that is for all $\ds{x}$, as is $\ds{p(x)}$, which is trivial. Therefore, $\ds{u(x)}$ is analytic everywhere, and thus converges for all $\ds{x}$.
+
+	\bigbreak 
+
+	\item Consider the following ODE
+	\begin{align*}
+		u^{\prime\prime\prime} + pu^{\prime\prime} + qu^{\prime} + ru & = f(t)\\
+	\end{align*}
+	where $\ds{p}$, $\ds{q}$ and $\ds{r}$ are constants. In the test set-up of the process, the coefficients were found to be $\ds{p=4}$, $\ds{q=5}$ and $\ds{r=2}$. The process remains stable, that is $\ds{u(t)}$ is bounded for $\ds{t\in [0, \infty)}$. The process is set to be scaled up, and it is expected that $\ds{p}$ and $\ds{q}$ will remain positive, but $\ds{r}$ may become negative. Consider the homogeneous solution to the test set-up conditions, by using the characteristic polynomial.
+	\begin{align*}
+		u^{\prime\prime\prime} + 4u^{\prime\prime} + 5u^{\prime} + 2u & = 0\\
+		\therefore \lambda^3 + 4\lambda^2 + 5\lambda + 2 & = 0\\
+		(\lambda + 1)(\lambda^2 + 3\lambda + 2) & = 0\\
+		(\lambda + 1)(\lambda + 2)(\lambda + 1) & = 0\\
+		(\lambda + 1)^2(\lambda + 2) & = 0\\
+		\therefore \lambda_1 = -1 \hspace{7mm} \lambda_2 = -1 \hspace{7mm} \lambda_3 & = -2\\
+	\end{align*}
+	From these results, we have the homogeneous solution.
+	\begin{align*}
+		u_H(t) & = Ae^{-2t} + Be^{-t} + Cte^{-t}\\
+	\end{align*}
+	It is evident then that $\ds{u_H(t) \rightarrow 0}$ as $\ds{t \rightarrow \infty}$, thus confirming the stability of the homogenous equation. Consider now the scaled up process. If $\ds{r}$ becomes negative, using the sums and products to coefficients, we get
+	\begin{align*}
+		\lambda_1\lambda_2\lambda_3 & = -r > 0 \hspace{5mm} \text{if } r < 0\\
+	\end{align*}
+	which will force $\ds{\lambda_i > 0}$ for an $\ds{i \in \{1,2,3\}}$. Thus, the homogeneous solution of the scaled process will be of the general form (assuming $\ds{\lambda_3}$ is the positive root)
+	\begin{align*}
+		u_H(t) & = Ae^{-\lambda_1} + Be^{-\lambda_2} + Ce^{\lambda_3}\\
+	\end{align*}
+	where all $\ds{\lambda_i > 0 \hspace{3mm} \forall i \in \{1,2,3\}}$. This homogenous solution is no longer stable,  meaning that $\ds{u(t)}$ is not bounded for $\ds{t\in [0, \infty)}$. 
+	\bigbreak
+	Consider now $\ds{f(t)}$, the forcing term. If the forcing term is of a form that converges as $\ds{t\rightarrow \infty}$, then the particular solution will be of a similar form to the forcing term, and will thus converge as $\ds{t\rightarrow \infty}$. Therefore, the particular solution is also stable, that is $\ds{u_P(t) \rightarrow 0}$ as $\ds{t \rightarrow \infty}$. Therefore, as $\ds{u(t) = u_H(t) + u_P(t)}$, $\ds{u(t)}$ is stable whenever $\ds{f(t)}$ is of a form that converges, and $\ds{p}$, $\ds{q}$ and $\ds{r}$ are all positive. Thus the displacement of the apparatus as a function of time will remain bounded and stable.
+	\bigbreak
+	However, even if $\ds{f(t)}$ is of a convergent, and $\ds{r < 0}$, as shown above, the homogeneous becomes unbounded and unstable, thus forcing $\ds{u(t)}$ to also become unbounded and unstable. If $\ds{f(t)}$ is not convergent, then it depends on the particular solution to determine the stability of $\ds{u(t)}$, but more than likely, it will be unstable.
+	\bigbreak
+	If $\ds{u(t)}$ becomes unstable through any of the outlined conditions above, the displacement of the apparatus as a function of time is no longer bounded and could move erratically and dangerously.
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,282 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+% Install the required packages for the document 
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{bm}
+\usepackage{xlop}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+% Page and style settings
+%\parskip=8pt
+\parindent=0pt
+% Right margin
+\textwidth=6.25in
+% Left margin
+\oddsidemargin=0pt
+\evensidemargin=0pt
+% Bottom margin
+\textheight=10in
+% Top margin
+\topmargin=-0.75in
+\baselineskip=11pt
+% end of page and other style settings
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{calrsfs}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\e}{\mathbb{E}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\newenvironment{nscentre}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+
+\usepackage{fullpage}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\begin{document}
+\setlength{\abovedisplayskip}{8pt}{%
+\setlength{\belowdisplayskip}{8pt}{%
+
+
+\text{LSA}
+\hfill
+\text{University of Michigan}
+
+\begin{nscentre}
+	\textbf{MATH562: Continuous Optimisation}\\
+	\textbf{Homework 1}\\
+\end{nscentre}
+
+\text{Name: Keegan Gyoery}
+\hfill
+\text{UM-ID: 31799451}
+
+\pagenumbering{arabic}
+	\begin{enumerate}[leftmargin=*]
+		\item \begin{enumerate}[label=\alph*)]
+			\item Let $\ds{f(x_1,x_2) = (x_1 - 3)^2 + (x_2 - 3)^2}$. The domain of $\ds{f}$ is the set  $\ds{D = \mathbb{R}^2}$. The range of $\ds{f}$ is the set $\ds{S = \{f(\mathbf{x}) \in \mathbb{R} : f( \mathbf{x} ) \geq 0, \forall \mathbf{x} \in D\}}$. Considering the Gradient $\ds{(\nabla)}$ and Hessian $\ds{(H)}$ of $\ds{f(\mathbf{x})}$, 
+				\begin{align*}
+					\nabla f(\mathbf{x}) & = 
+					\begin{bmatrix}
+						2(x_1-3) \\
+						2(x_2-3) \\
+					\end{bmatrix}, \\
+					Hf(\mathbf{x}) & = 
+					\begin{bmatrix}
+						2 & 0 \\
+						0 & 2 \\
+					\end{bmatrix}.
+				\end{align*}
+				Both the Gradient and Hessian of $\ds{f(\mathbf{x})}$ have domain $\ds{D = \mathbb{R}^2}$. The Gradient has range $\ds{S = M_{2,1}(\mathbb{R})}$, the set of all $\ds{2\times 1}$ matrices over the real numbers. The Hessian has range
+				\begin{align*} S & = 
+					\begin{bmatrix}
+						2 & 0 \\
+						0 & 2 \\
+					\end{bmatrix}.
+				\end{align*}
+
+			\item Let $\ds{f(x_1,x_2) = 4x_1^2 + 9x_2^3 - 36}$. The domain of $\ds{f}$ is the set  $\ds{D = \mathbb{R}^2}$. The range of $\ds{f}$ is the set $\ds{S = \mathbb{R}}$. Considering the Gradient $\ds{(\nabla)}$ and Hessian $\ds{(H)}$ of $\ds{f(\mathbf{x})}$, 
+				\begin{align*}
+					\nabla f(\mathbf{x}) & = 
+					\begin{bmatrix}
+						8x_1 \\
+						27x_2^2 \\
+					\end{bmatrix}, \\
+					Hf(\mathbf{x}) & = 
+					\begin{bmatrix}
+						8 & 0 \\
+						0 & 54x_2 \\
+					\end{bmatrix}.
+				\end{align*}
+				Both the Gradient and Hessian of $\ds{f(\mathbf{x})}$ have domain $\ds{D = \mathbb{R}^2}$. The Gradient has range 
+				\begin{align*} S & = \left\{A \in M_{2,1}(\mathbb{R}) : A =
+						\begin{bmatrix}
+							a \\
+							b \\
+						\end{bmatrix},
+					a \in \mathbb{R}, b \geq 0 \right\}.
+				\end{align*}
+				The Hessian has range
+				\begin{align*} S & = \left\{A \in M_{2,2}(\mathbb{R}) : A =
+						\begin{bmatrix}
+							8 & 0 \\
+							0 & a \\
+						\end{bmatrix},
+					a \in \mathbb{R} \right\}.
+				\end{align*}
+
+			\item Let $\ds{f(x_1,x_2) = x_1^2 + x_2 + 6}$. The domain of $\ds{f}$ is the set  $\ds{D = \mathbb{R}^2}$. The range of $\ds{f}$ is the set $\ds{S = \mathbb{R}}$. Considering the Gradient $\ds{(\nabla)}$ and Hessian $\ds{(H)}$ of $\ds{f(\mathbf{x})}$, 
+				\begin{align*}
+					\nabla f(\mathbf{x}) & = 
+					\begin{bmatrix}
+						2x_1 \\
+						1 \\
+					\end{bmatrix}, \\
+					Hf(\mathbf{x}) & = 
+					\begin{bmatrix}
+						2 & 0 \\
+						0 & 0 \\
+					\end{bmatrix}.
+				\end{align*}
+				Both the Gradient and Hessian of $\ds{f(\mathbf{x})}$ have domain $\ds{D = \mathbb{R}^2}$. The Gradient has range 
+				\begin{align*} S & = \left\{A \in M_{2,1}(\mathbb{R}) : A =
+						\begin{bmatrix}
+							a \\
+							1 \\
+						\end{bmatrix},
+					a \in \mathbb{R}\right\}.
+				\end{align*}
+				The Hessian has range
+				\begin{align*} S & = 
+					\begin{bmatrix}
+						2 & 0 \\
+						0 & 0 \\
+					\end{bmatrix}.
+				\end{align*}
+
+			\item Let $\ds{f(x_1,x_2) = x_1x_2 + x_1^3 -3}$. The domain of $\ds{f}$ is the set  $\ds{D = \mathbb{R}^2}$. The range of $\ds{f}$ is the set $\ds{S = \mathbb{R}}$. Considering the Gradient $\ds{(\nabla)}$ and Hessian $\ds{(H)}$ of $\ds{f(\mathbf{x})}$, 
+				\begin{align*}
+					\nabla f(\mathbf{x}) & = 
+					\begin{bmatrix}
+						x_2 + 3x_1^2 \\
+						x_1 \\
+					\end{bmatrix}, \\
+					Hf(\mathbf{x}) & = 
+					\begin{bmatrix}
+						6x_1 & 1 \\
+						1 & 0 \\
+					\end{bmatrix}.
+				\end{align*}
+				Both the Gradient and Hessian of $\ds{f(\mathbf{x})}$ have domain $\ds{D = \mathbb{R}^2}$. The Gradient has range 
+				\begin{align*} S & = \left\{A \in M_{2,1}(\mathbb{R}) : A =
+						\begin{bmatrix}
+							a \\
+							b \\
+						\end{bmatrix},
+					a,b \in \mathbb{R} \right\}.
+				\end{align*}
+				The Hessian has range
+				\begin{align*} S & = \left\{A \in M_{2,2}(\mathbb{R}) : A =
+						\begin{bmatrix}
+							a & 1 \\
+							1 & 0 \\
+						\end{bmatrix},
+					a \in \mathbb{R} \right\}.
+				\end{align*}
+		\end{enumerate}
+
+		\item Consider $\ds{f:\mathbb{R}^3 \rightarrow \mathbb{R}^3}$, where 
+			\begin{align*}
+				f(\mathbf{x}) & = 
+				\begin{bmatrix}
+					x_1^2 + x_2^3 - x_3^4 \\
+					x_1x_2x_3 \\
+					2x_1x_2 - 3x_2x_3 + x_1x_3 \\
+				\end{bmatrix}.
+			\end{align*}
+			The Jacobian $\ds{(J)}$ of $\ds{f(\mathbf{x})}$ is 
+			\begin{align*}
+				Jf(\mathbf{x}) & = 
+				\begin{bmatrix}
+					2x_1 & 3x_2^2 & -4x_3^3 \\
+					x_2x_3 & x_1x_3 & x_1x_2 \\
+					2x_1 + x_3 & 2x_1 - 3x_3 & -3x_2 + x_1 \\
+				\end{bmatrix}.
+			\end{align*}
+
+		\item Consider $\ds{f:\mathbb{R}^2 \rightarrow \mathbb{R}}$, where $\ds{f(\mathbf{x}) = x_1^3x_2^4+ \frac{x_2}{x_1}}$. The Gradient $\ds{(\nabla)}$ and Hessian $\ds{(H)}$ of $\ds{f(\mathbf{x})}$ are
+			\begin{align*}
+				\nabla f(\mathbf{x}) & = 
+				\begin{bmatrix}
+					3x_1^2x_2^4 - \frac{x_2}{x_1^2} \\
+					\\
+					4x_2^3x_1^3 + \frac{1}{x_1} \\
+				\end{bmatrix}, \\
+				\\
+				Hf(\mathbf{x}) & = 
+				\begin{bmatrix}
+					6x_1x_2^4 - \frac{2x_2}{x_1^3} & 12x_1^2x_2^3 - \frac{1}{x_1^2} \\
+					\\
+					12x_1^2x_2^3 - \frac{1}{x_1^2} & 12x_2^2x_1^3 \\
+				\end{bmatrix}.
+			\end{align*}
+			Both the Gradient and Hessian of $\ds{f(\mathbf{x})}$ have domain $\ds{D = \{\mathbf{x} \in \mathbb{R}^2 : \mathbf{x} = (x_1,x_2), x_1 \neq 0\}}$. The Gradient has range 
+				\begin{align*} S & = \left\{A \in M_{2,1}(\mathbb{R}) : A =
+						\begin{bmatrix}
+							a \\
+							b \\
+						\end{bmatrix},
+					a,b \in \mathbb{R} \right\}.
+				\end{align*}
+				The Hessian has range
+				\begin{align*} S & = \left\{A \in M_{2,2}(\mathbb{R}) : A =
+						\begin{bmatrix}
+							a & b \\
+							c & d \\
+						\end{bmatrix},
+					a,b,c,d \in \mathbb{R} \right\}.
+				\end{align*}
+
+		\item \begin{enumerate}[label=\alph*)]
+			\item Let $\ds{\mathbf{x} = (H,L,W)}$. The box then has a surface area of $\ds{A(\mathbf{x}) = 2HL + 2LW + 2HW}$, and a volume of $\ds{V(\mathbf{x}) = HLW}$. Thus, we can rewrite the formulas given as
+				\begin{align*}
+					Q(\mathbf{x}) & = KHLW(T-T_a), \\
+					h_c(\mathbf{x}) & = k_c(2HL + 2LW + 2HW)(T-T_a), \\
+					h_r(\mathbf{x}) & = k_r(2HL + 2LW + 2HW)(T-T_a^4). 
+				\end{align*}
+				Furthermore, total heat loss, $\ds{T(\mathbf{x})}$, is found by multiplying rate of heat loss per unit of time, by the amount of time elapsed. Thus, we have the following equation for total heat loss, over $\ds{S}$ units of time,
+				\begin{align*}
+					T(\mathbf{x}) & = S(h_c + h_r) \\
+					\therefore T(\mathbf{x}) & = S(2HL + 2LW + 2HW) \left[k_c(T-T_a) + k_r(T-T_a^4)\right].
+				\end{align*}
+				Thus, to formulate the minimisation problem, we must minimise $\ds{T(\mathbf{x})}$, subject to the conditions 
+				\begin{align*}
+					Q(\mathbf{x}) & \geq Q^{\prime}, \\
+					0 \leq H & \leq H^{\prime}, \\
+					0 \leq L & \leq L^{\prime}, \\
+					0 \leq W & \leq W^{\prime}.
+				\end{align*}
+
+			\item Again, let $\ds{\mathbf{x} = (H,L,W)}$. Considering an insulation thickness of $\ds{t}$, on the outside of the box, the box now has the dimensions $\ds{\mathbf{x}+2t = (H+2t,L+2t,W+2t)}$. Calculating the volume of the insulation, $\ds{V_i(\mathbf{x})}$, requires us to calculate the new volume of the box, with the insulation on the outside, and then subtract the original volume of the box, yielding
+				\begin{align*}
+					V_i(\mathbf{x}) & = V(\mathbf{x} + 2t) - V(\mathbf{x}) \\
+									& = (H+2t)(L+2t)(W+2t) - HLW \\
+					\therefore V_i(\mathbf{x}) & = 2t(HL + LW + HW) + 4t^2(H + L + W) + 8t^3.
+				\end{align*}
+				As cost is proportional to the volume of the insulation, we have $\ds{C_i(\mathbf{x}) = \alpha V_i(\mathbf{x})}$, for some constant $\ds{\alpha}$. Thus, for the cost of the insulation, we have 
+				\begin{align*}
+					C_i(\mathbf{x}) & = \alpha \left[2t(HL + LW + HW) + 4t^2(H + L + W) + 8t^3\right].
+				\end{align*}
+				As we may consider the insulation to have negligible effect when computing the surface area and volume for heat loss and heat storage, we may use the equation for $\ds{Q(\mathbf{X})}$ in part $\ds{a)}$, for the conditions. Thus, in formulating the minimisation problem, we must minimise $\ds{C_i(\mathbf{x})}$, subject to the conditions
+				\begin{align*}
+					Q(\mathbf{x}) & \geq Q^{\prime}, \\
+					0 \leq H & \leq H^{\prime}, \\
+					0 \leq L & \leq L^{\prime}, \\
+					0 \leq W & \leq W^{\prime}.
+				\end{align*}
+				
+
+
+		\end{enumerate}
+
+	\end{enumerate}
+\end{document}

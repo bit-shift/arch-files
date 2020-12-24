@@ -1,0 +1,75 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper]{article}
+
+% Install the required packages for the document 
+\usepackage{envmath}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{asyalign}
+\usepackage{physics}
+\usepackage{cite}
+\usepackage{url}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usetikzlibrary{arrows}
+
+\begin{document}
+
+\begin{tikzpicture}
+	% X - axis
+	\draw[->,thick] (-5,0)--(5,0) node[right]{$x$};
+	% Y - axis
+	\draw[->,thick] (0,-5)--(0,5) node[above]{$y$};
+	% Lines for the meridians 
+	\draw (-4,-4 ) -- (4,4);
+	\draw (-3,-4 ) -- (3,4);
+	\draw (-2,-4 ) -- (2,4);
+	\draw (-1,-4 ) -- (1,4);
+	\draw (0,-4 ) -- (0,4);
+	\draw (1,-4 ) -- (-1,4);
+	\draw (2,-4 ) -- (-2,4);
+	\draw (3,-4 ) -- (-3,4);
+	\draw (4,-4 ) -- (-4,4);
+	\draw (-4,4 ) -- (4,4) node[right]{$(a,b)$};
+	\draw (-4,-4 ) -- (4,-4) node[right]{$(a,-b)$};
+
+	\draw (-3.8,3.8) -- (3.8,3.8);
+	\draw (-3.4,3.4) -- (3.4,3.4) node[right]{$v(\theta + \Delta \theta)$};
+	\draw (-2.8,2.8) -- (2.8,2.8);
+	\draw (-1.8,1.8) -- (1.8,1.8);
+
+	\draw[dashed] (3.4,3.4) -- (3.4,0) node[below]{$a_2$};
+	\draw[dashed] (2.8,2.8) -- (2.8,0) node[below]{$a_1$};
+	\draw[dashed] (2.8,2.8) -- (3.4,2.8) node[right]{$v(\theta)$};
+
+	\draw (-3.8,-3.8) -- (3.8,-3.8);
+	\draw (-3.4,-3.4) -- (3.4,-3.4);
+	\draw (-2.8,-2.8) -- (2.8,-2.8);
+	\draw (-1.8,-1.8) -- (1.8,-1.8);
+
+\end{tikzpicture}
+
+
+
+
+
+
+
+
+
+
+\end{document}

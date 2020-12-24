@@ -1,0 +1,164 @@
+% Begin the document and set up the style of the document
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{moreenum}
+\usepackage{algpseudocode}
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\bf}{}{0em}{} % Text formatting of sections
+\titlespacing*{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\usepackage{enumitem}
+
+\newcommand{\indep}{\mathrel{\text{\scalebox{1.07}{$\perp\mkern-10mu\perp$}}}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\code}{\texttt}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\begin{document}
+
+\begin{center}
+	\LARGE \textbf{COMP3821 Assignment 2}
+	\vspace{2mm}
+	\hrule width \hsize \kern 1mm \hrule width \hsize height 2pt
+\end{center}
+
+\pagenumbering{arabic}
+
+\section{1.1}
+Define the subproblem $\ds{P(i)}$, where $\ds{i \in \{1,2,\dots,n\}}$ represents the number of slices of pizza remaining. The subproblem is now to minimise the amount of topping lost, $\ds{L(i)}$, after having taken $\ds{n-i}$ pieces of pizza, so we arrive at $\ds{i}$ slices remaining. The rules for topping loss and slice choosing remain the same as in task T. 
+
+\section{1.2}
+For the recurrence relation, we have the optimal solution to $\ds{P(i)}$, let it be $\ds{S(i)}$, which is the minimum amount of topping lost to arrive at $\ds{i}$ pieces remaining. Then the minimum amount of topping lost in choosing piece $\ds{i}$, denoted by $\ds{S(i-1)}$, to arrive at $\ds{i-1}$ pieces left is constructed by choosing the piece with minimum topping loss that is adjacent to the empty space. This is expressed in the relationship below, where subscripts $\ds{l}$ and $\ds{r}$ represent the index of the slices on the left and right ends of the empty space.
+\begin{align*}
+	S(i-1) & = \min\{S(i) + a_l + b_l\times i, S(i) + a_r + b_r\times i \}\\
+\end{align*}
+The base  case is when $\ds{n}$ slices remain, which is given by
+\begin{align*}
+	S(n) & = a_i + b_i \times n\\
+\end{align*}
+where $\ds{i}$ is the index of the slice we are considering starting from.
+
+\section{1.3}
+In the pseudocode below, $\ds{n}$ is a global variable for the size of the pizza, $\ds{a}$, and $\ds{b}$ are global arrays containing all $\ds{a_i}$ and $\ds{b_i}$ respectively. $\ds{l}$ and $\ds{r}$ are the index of the slices on the left and right of the empty space.
+\vspace{2mm}
+\hrule
+\vspace{2mm}
+\begin{algorithmic}
+	\Procedure{Lost}{$\ds{k}$, $\ds{s}$, $\ds{l}$, $\ds{r}$, lost}
+	\If {$\ds{k = n}$} 
+		\State \Return $\ds{a_s + b_s \times n}$
+	\EndIf
+	\If {$\ds{b_l < b_r}$}
+		\State add $\ds{\gets a_l + b_l \times k}$
+		\State $\ds{l \gets l-1 \mod n}$
+	\Else 
+		\State add $\ds{\gets a_r + b_r \times k}$
+		\State $\ds{r \gets r+1 \mod n}$
+	\EndIf
+	\State \Return lost + add + \textproc{Lost}($\ds{k+1}$, $\ds{s}$, $\ds{l}$, $\ds{r}$, lost)
+	\EndProcedure
+\end{algorithmic}
+\pagebreak
+\begin{algorithmic}
+	\Procedure{MinimumLost}{}
+	\State $\ds{\text{min} \gets \infty}$
+	\ForAll{$\ds{i \text{ in } 1\dots n}$}
+		\State $\ds{l \gets l-1 \mod n}$
+		\State $\ds{r \gets r+1 \mod n}$
+		\State $\ds{\text{check} \gets \textproc{Lost}(0,\:i,\:l,\:r,\:0)}$
+		\If {$\ds{\text{check} < \text{min}}$}
+			\State $\ds{\text{min} \gets \text{check}}$
+		\EndIf
+	\EndFor
+	\State \Return min
+	\EndProcedure
+\end{algorithmic}
+
+\section{1.4}
+The worst case complexity is $\ds{O(n^2)}$.
+
+\vspace{2mm}
+\hrule width \hsize \kern 1mm
+
+\section{2.1}
+The cost of the configuration outlined is $\ds{5+2+4+2+5+1 = 19}$.
+
+\section{2.2}
+The set of legal swaps, $\ds{\{(1,4),(7,8)\}}$, gives the configuration with the smallest cost.
+
+\section{2.3}
+Define the subproblem $\ds{P(i)_j}$, where $\ds{n}$ is the size of the configuration, and $\ds{i \in \{0,1,\dots,n\}}$ represents the $\ds{i}$-th black marble in the configuration. Let $\ds{j}$ be the number of swaps performed with the $\ds{i}$ black marbles. Thus, $\ds{j \in \{0,1,\dots,i\}}$, The subproblem is now to minimise the distance of the sub-configuration, given by the first $\ds{i}$ black marbles of the overall configuration, by using only $\ds{j}$ swaps. When constructing the sub-configuration, only remove the black marbles that are not in the first $\ds{i}$ black marbles when counting from the left. The same rules apply as defined in the overall problem. Let the optimal solution $\ds{S(i)_j}$ to $\ds{P(i)_j}$ have the minimum distance $\ds{D(i)_j}$.
+
+\section{2.4}
+Let $\ds{m_k}$ be the index of the $\ds{k}$-th marble, $\ds{h_k}$ be the index of the matching box for the marble at $\ds{m_k}$, and $\ds{b_i}$ be the index of the $\ds{i}$-th black marble. The recurrence relation is given by the following formula.
+\begin{align*}
+	D(i+1)_j & = \{\min\{D(i)_j - \Big[|m_k-h_k|-|h_k-b_{i+1}|\Big], D(i)_j\} \: :\: \forall k\in \{1,\dots,i+1\}, \: \forall j\}\\
+\end{align*}
+The formula is essentially computing the change obtained by swapping a marble and the $\ds{(i+1)}$-th black marble, and determining if extending a previous solution is best (as long as the swap is legal), or keeping the previous solution is best.
+\bigbreak
+\noindent The base case is given when $\ds{i = 0}$, that is the subproblem has no black marbles in the sub-configuration. This also forces $\ds{j = 0}$. Thus $\ds{D(0)_0}$ is simply the cost of the configuration as it stands, as no swaps are able to be performed.
+
+\pagebreak
+
+\section{2.5}
+The algorithm solves each subroblem and stores in a 2-D array for each solution $\ds{D(i)_j}$, indexed by $\ds{(i,j)}$. Thus computing the solution to $\ds{P(i)_j}$ is performed in at most $\ds{O(n^2)}$ time, as we must loop through all previous solutions. Overall the algorithm runs in $\ds{O(n^3)}$ time as there are at most $\ds{n}$ black marbles. Obviously this is not the $\ds{O(n^2)}$ time asked for, however I could not think how to reduce this solution down to $\ds{O(n^2)}$ time.
+
+\vspace{2mm}
+\hrule width \hsize \kern 1mm
+
+\section{3.1}
+Let each vertex $\ds{v \in V}$ represent a single polygon in the plane. Let an edge $\ds{e \in E}$ be the un-ordered pair $\ds{(v_1,v_2)}$ for $\ds{v_1,v_2 \in V}$. Each edge connects the vertices whose polygons share an edge in the plane.
+
+\section{3.2}
+Each vertex $\ds{v \in V}$ contains the variables $\ds{b_v}$ and $\ds{r_v}$. Each of these variables are binary variables, meaning they can hold the value of either 0 or 1. If $\ds{v}$ is coloured blue, $\ds{b_v = 1}$, if $\ds{v}$ is coloured red, $\ds{r_v = 1}$, and if $\ds{v}$ is uncoloured, $\ds{b_v = 0}$ and $\ds{r_v = 0}$. Clearly, $\ds{b_v}$ and $\ds{r_v}$ both cannot be 1.
+
+\section{3.3}
+For each edge $\ds{(u,v) \in E}$, we have the constraints
+\begin{align*}
+	b_u + b_v & \leq 1\\
+	r_u + r_v & \leq 1\\
+\end{align*}
+For each vertex $\ds{v \in V}$, we have the constraint
+\begin{align*}
+	b_v + r_v & \leq 1\\
+\end{align*}
+
+\section{3.4}
+The objective function we wish to maximise is 
+\begin{align*}
+	\sum_{v \in V} (b_v + r_v)\\
+\end{align*}
+
+\vspace{2mm}
+\hrule width \hsize \kern 1mm
+\vspace{2mm}
+
+\section{4.1}
+It is better to model the problem with Integer Linear Programming, as we wish to determine the number of bags in each of the $\ds{p}$ stacks, and we cannot have part of a bag in one stack, and another part in another stack.
+
+\section{4.2}
+Let $\ds{b_{iq}}$ be a binary variable that takes the values of either 0 or 1. If $\ds{b_{iq} = 1}$, this indicates that the $\ds{i}$-th bag is in the $\ds{q}$-th stack. Let $\ds{h(q)}$ be the height of the $\ds{q}$-th stack. It is given that there are $\ds{n}$ bags, $\ds{p}$ stacks, and each stack may have a height of $\ds{h}$ bags. The final variable is the force given by the $\ds{i}$-th bag, in the $\ds{q}$-th stack, denoted by $\ds{f_{iq}}$.
+
+\section{4.3}
+For each stack of bags, we have the constraint
+\begin{align*}
+	\sum^{n}_{i=1} b_{iq} & \leq h \\
+\end{align*}
+For each bag, we have the constraint
+\begin{align*}
+	\sum^{p}_{q=1} b_{iq} & = 1\\
+\end{align*}
+
+\section{4.4}
+The objective function that we wish to minimise is 
+\begin{align*}
+	\sum^{n}_{i=1} \sum^{p}_{q=1} b_{iq} f_{iq}\\
+\end{align*}
+
+\end{document}
